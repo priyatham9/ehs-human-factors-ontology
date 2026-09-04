@@ -1,0 +1,867 @@
+# ehs-hfo.ttl -- EHS Human Factors Ontology (contextual performance-influencing factors)
+#
+# STATUS OF THE CONTENT IN THIS FILE
+# ----------------------------------
+# The four "context dimensions" modelled here (Task, Operational, Human, System)
+# are NOT a new taxonomy. They are a relabelling of the four PIF context
+# categories published by the U.S. Nuclear Regulatory Commission in IDHEAS-G
+# (NUREG-2198, 2021), which states verbatim:
+#
+#   "PIFs are classified according to the four types of context: environment
+#    and situation, system, personnel, and task."   (NUREG-2198, Section 3)
+#
+# Two of the four labels are identical (Task, System); the other two are
+# synonyms (Operational <-> Environment and Situation, Human <-> Personnel).
+# The twenty factors below are the twenty IDHEAS-G PIFs, adopted unchanged.
+# See ../docs/PROVENANCE.md and ../README.md for why this ontology claims
+# adoption rather than invention.
+#
+# The IRIs in this file do NOT currently dereference. They are stable
+# identifiers, not resolvable documents.
+#
+# Licence: MIT (see ../LICENSE)
+
+@prefix ehs:     <https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#> .
+@prefix xw:      <https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo>
+    a owl:Ontology ;
+    dcterms:title "EHS Human Factors Ontology (EHS-HFO)"@en ;
+    dcterms:creator "Priyatham Chimmani" ;
+    dcterms:license <https://opensource.org/licenses/MIT> ;
+    owl:versionInfo "0.1.0" ;
+    dcterms:description """A machine-readable encoding of the four-context performance-influencing-factor
+structure of IDHEAS-G (NUREG-2198), relabelled for occupational and process EHS
+use, together with an explicit crosswalk to SPAR-H, CREAM, HFACS and the HSE
+PIF list. The ontology asserts no human error probabilities and no calibrated
+risk numbers."""@en ;
+    rdfs:comment "Adoption, not invention. The four-category structure is the NRC's (NUREG-2198, 2021)."@en .
+
+
+##############################################################################
+# 1. Annotation properties
+##############################################################################
+
+ehs:sourceRef a owl:AnnotationProperty ;
+    rdfs:label "source reference"@en ;
+    rdfs:comment "Citation key resolving to an entry in ../CITATIONS.md."@en .
+
+ehs:verbatimLabel a owl:AnnotationProperty ;
+    rdfs:label "verbatim label"@en ;
+    rdfs:comment "The wording used in the cited source document, transcribed without alteration."@en .
+
+ehs:observableProxy a owl:AnnotationProperty ;
+    rdfs:label "observable proxy"@en ;
+    rdfs:comment """A routinely collected industrial data element that has been PROPOSED as an
+indicator of this factor. These proposals are unvalidated: no study cited in
+this repository establishes that any of them measures the factor it is attached
+to. They exist to make the measurement question explicit, not to answer it."""@en .
+
+ehs:boundaryNote a owl:AnnotationProperty ;
+    rdfs:label "boundary note"@en ;
+    rdfs:comment "Records a known disagreement about which context a factor belongs to."@en .
+
+
+##############################################################################
+# 2. Classes
+##############################################################################
+
+ehs:ContextDimension a owl:Class ;
+    rdfs:label "context dimension"@en ;
+    skos:definition "One of the four categories of context into which performance-influencing factors are grouped."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:PerformanceInfluencingFactor a owl:Class ;
+    rdfs:label "performance-influencing factor"@en ;
+    skos:definition "A characteristic of the work context that is held to affect the reliability of human performance."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:FactorLevel a owl:Class ;
+    rdfs:label "factor level"@en ;
+    skos:definition "An ordinal state assigned to a factor for a specific scenario. Ordinal only; the ranks are not on a probability scale."@en .
+
+ehs:ErrorMode a owl:Class ;
+    rdfs:label "error mode"@en ;
+    skos:definition "A class of human failure distinguished by the level of cognitive control at which it arises."@en ;
+    ehs:sourceRef "rasmussen1983" , "reason1990" .
+
+ehs:ControlLevel a owl:Class ;
+    rdfs:label "cognitive control level"@en ;
+    skos:definition "A level of cognitive control in the skill/rule/knowledge framework."@en ;
+    ehs:sourceRef "rasmussen1983" .
+
+ehs:ExternalFramework a owl:Class ;
+    rdfs:label "external framework"@en ;
+    skos:definition "A published human-factors or human-reliability framework external to this ontology."@en .
+
+ehs:ExternalFactor a owl:Class ;
+    rdfs:label "external factor"@en ;
+    skos:definition """A factor, PSF, PIF, CPC or category belonging to an external framework. The IRI is
+local to this repository: the cited bodies do not publish IRIs for these concepts."""@en .
+
+ehs:Alignment a owl:Class ;
+    rdfs:label "alignment"@en ;
+    skos:definition """A reified, individually cited assertion that one local factor corresponds to one
+external factor with a stated strength of match."""@en .
+
+ehs:MatchStrength a owl:Class ;
+    rdfs:label "match strength"@en ;
+    skos:definition "How closely a local factor corresponds to an external factor."@en .
+
+ehs:CoverageGap a owl:Class ;
+    rdfs:label "coverage gap"@en ;
+    skos:definition "An external factor this ontology does not cover, or covers only at partial strength, recorded explicitly."@en ;
+    rdfs:comment """A gap is compatible with an ehs:MatchPartial alignment and only with that
+strength. Partial overlap is not coverage: xw:cream-TimeOfDay overlaps
+ehs:MentalFatigue at the edges and is still a gap, because neither factor
+represents circadian phase. A gap alongside a close, broader or narrower match
+would be a contradiction, and tests/test_crosswalk.py fails on one."""@en .
+
+ehs:ContextDimension owl:disjointWith ehs:PerformanceInfluencingFactor .
+ehs:ErrorMode        owl:disjointWith ehs:ControlLevel .
+
+
+##############################################################################
+# 3. Properties
+##############################################################################
+
+ehs:inDimension a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "in dimension"@en ;
+    rdfs:domain ehs:PerformanceInfluencingFactor ;
+    rdfs:range ehs:ContextDimension .
+
+ehs:correspondsToIdheasCategory a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "corresponds to IDHEAS-G category"@en ;
+    rdfs:domain ehs:ContextDimension ;
+    rdfs:range ehs:ExternalFactor ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:localFactor a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "local factor"@en ;
+    rdfs:domain ehs:Alignment ;
+    rdfs:range ehs:PerformanceInfluencingFactor .
+
+ehs:externalFactor a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "external factor"@en ;
+    rdfs:domain ehs:Alignment ;
+    rdfs:range ehs:ExternalFactor .
+
+ehs:hasMatchStrength a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "has match strength"@en ;
+    rdfs:domain ehs:Alignment ;
+    rdfs:range ehs:MatchStrength .
+
+ehs:definedIn a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "defined in"@en ;
+    rdfs:domain ehs:ExternalFactor ;
+    rdfs:range ehs:ExternalFramework .
+
+ehs:externalParent a owl:ObjectProperty ;
+    rdfs:label "external parent"@en ;
+    rdfs:domain ehs:ExternalFactor ;
+    rdfs:range ehs:ExternalFactor ;
+    rdfs:comment "Position of the external factor within its own framework's hierarchy, where that framework has one."@en .
+
+ehs:degradationRaisesDemandOn a owl:ObjectProperty ;
+    rdfs:label "degradation raises demand on"@en ;
+    rdfs:domain ehs:PerformanceInfluencingFactor ;
+    rdfs:range ehs:ControlLevel ;
+    rdfs:comment """Theoretical claim taken from the cited source: degrading this factor pushes
+performance toward the named control level. Not an empirically estimated effect."""@en .
+
+ehs:predisposesTo a owl:ObjectProperty ;
+    rdfs:label "predisposes to"@en ;
+    rdfs:domain ehs:PerformanceInfluencingFactor ;
+    rdfs:range ehs:ErrorMode ;
+    rdfs:comment """Theoretical claim taken from the cited source. No effect size, no probability,
+no empirical calibration is asserted or implied."""@en .
+
+ehs:arisesAt a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "arises at"@en ;
+    rdfs:domain ehs:ErrorMode ;
+    rdfs:range ehs:ControlLevel .
+
+ehs:uncoveredFactor a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "uncovered factor"@en ;
+    rdfs:domain ehs:CoverageGap ;
+    rdfs:range ehs:ExternalFactor .
+
+ehs:ordinalRank a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:label "ordinal rank"@en ;
+    rdfs:domain ehs:FactorLevel ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Order only. Differences and ratios between ranks carry no meaning."@en .
+
+
+##############################################################################
+# 4. Match strengths (SKOS-flavoured, but deliberately NOT skos:exactMatch --
+#    these are analyst judgements, not asserted identity)
+##############################################################################
+
+ehs:MatchExact   a owl:NamedIndividual , ehs:MatchStrength ; rdfs:label "exact"@en ;
+    skos:definition "Same construct, same scope, wording effectively identical."@en .
+ehs:MatchClose   a owl:NamedIndividual , ehs:MatchStrength ; rdfs:label "close"@en ;
+    skos:definition "Same construct; wording or scope differs in ways unlikely to change an assessment."@en .
+ehs:MatchBroader a owl:NamedIndividual , ehs:MatchStrength ; rdfs:label "broader"@en ;
+    skos:definition "The external factor subsumes the local factor along with other content."@en .
+ehs:MatchNarrower a owl:NamedIndividual , ehs:MatchStrength ; rdfs:label "narrower"@en ;
+    skos:definition "The external factor covers only part of the local factor."@en .
+ehs:MatchPartial a owl:NamedIndividual , ehs:MatchStrength ; rdfs:label "partial"@en ;
+    skos:definition "Overlapping but non-nested constructs; the correspondence is interpretive."@en .
+
+ehs:MatchExact ehs:sourceRef "groth2012" .
+ehs:MatchPartial rdfs:comment "Groth and Mosleh (2012) report that PIFs across methods are not defined specifically enough for consistent interpretation. Rows marked partial are where that bites."@en .
+
+
+##############################################################################
+# 5. Factor levels (ordinal, five states)
+##############################################################################
+
+ehs:LevelEnhanced a owl:NamedIndividual , ehs:FactorLevel ;
+    rdfs:label "enhanced"@en ; ehs:ordinalRank 2 ;
+    skos:definition "Better than the nominal condition assumed by the base assessment."@en ;
+    rdfs:comment "SPAR-H is one of the few methods that admits beneficial PSF influence; the level is retained here for that reason."@en ;
+    ehs:sourceRef "gertman2005" .
+
+ehs:LevelNominal a owl:NamedIndividual , ehs:FactorLevel ;
+    rdfs:label "nominal"@en ; ehs:ordinalRank 1 ;
+    skos:definition "The condition assumed by the base assessment; no adjustment warranted."@en .
+
+ehs:LevelDegraded a owl:NamedIndividual , ehs:FactorLevel ;
+    rdfs:label "degraded"@en ; ehs:ordinalRank 0 ;
+    skos:definition "Worse than nominal in a way an analyst would record."@en .
+
+ehs:LevelSeverelyDegraded a owl:NamedIndividual , ehs:FactorLevel ;
+    rdfs:label "severely degraded"@en ; ehs:ordinalRank -1 ;
+    skos:definition "Worse than nominal to a degree that would ordinarily stop or re-plan the task."@en .
+
+ehs:LevelUnknown a owl:NamedIndividual , ehs:FactorLevel ;
+    rdfs:label "unknown"@en ; ehs:ordinalRank -99 ;
+    skos:definition "Not assessed. Distinct from nominal: an unassessed factor is not a satisfactory one."@en ;
+    rdfs:comment "Kept separate on purpose. Treating missing data as nominal is the single most common way a screening tool understates a hazard."@en .
+
+
+##############################################################################
+# 6. Cognitive control levels and error modes (Rasmussen SRK / Reason GEMS)
+##############################################################################
+
+ehs:SkillBasedControl a owl:NamedIndividual , ehs:ControlLevel ;
+    rdfs:label "skill-based control"@en ;
+    skos:definition "Sensory-motor performance running automatically, without conscious control, once an intention is formed."@en ;
+    ehs:sourceRef "rasmussen1983" .
+
+ehs:RuleBasedControl a owl:NamedIndividual , ehs:ControlLevel ;
+    rdfs:label "rule-based control"@en ;
+    skos:definition "Performance governed by stored rules or procedures for a familiar situation."@en ;
+    ehs:sourceRef "rasmussen1983" .
+
+ehs:KnowledgeBasedControl a owl:NamedIndividual , ehs:ControlLevel ;
+    rdfs:label "knowledge-based control"@en ;
+    skos:definition "Performance in an unfamiliar situation for which no rule is available, requiring reasoning from a mental model of the system."@en ;
+    ehs:sourceRef "rasmussen1983" .
+
+ehs:SkillBasedSlipOrLapse a owl:NamedIndividual , ehs:ErrorMode ;
+    rdfs:label "skill-based slip or lapse"@en ;
+    ehs:arisesAt ehs:SkillBasedControl ;
+    skos:definition "Execution failure of a correct intention: attentional slip or memory lapse."@en ;
+    ehs:sourceRef "reason1990" .
+
+ehs:RuleBasedMistake a owl:NamedIndividual , ehs:ErrorMode ;
+    rdfs:label "rule-based mistake"@en ;
+    ehs:arisesAt ehs:RuleBasedControl ;
+    skos:definition "Correct execution of a wrong rule, or misapplication of a normally good rule."@en ;
+    ehs:sourceRef "reason1990" .
+
+ehs:KnowledgeBasedMistake a owl:NamedIndividual , ehs:ErrorMode ;
+    rdfs:label "knowledge-based mistake"@en ;
+    ehs:arisesAt ehs:KnowledgeBasedControl ;
+    skos:definition "Failure of reasoning in a novel situation handled without an applicable rule."@en ;
+    ehs:sourceRef "reason1990" .
+
+
+##############################################################################
+# 7. The four context dimensions
+#
+#    Each is bound to the IDHEAS-G category it renames. This binding is the
+#    point: it is what stops the four dimensions being presented as new.
+##############################################################################
+
+ehs:TaskContext a owl:NamedIndividual , ehs:ContextDimension ;
+    rdfs:label "Task context"@en ;
+    skos:definition "Characteristics of the task being performed and of the information it requires."@en ;
+    ehs:correspondsToIdheasCategory xw:idheas-Task ;
+    ehs:sourceRef "nureg2198" ;
+    rdfs:comment "Label identical to the IDHEAS-G category."@en .
+
+ehs:OperationalContext a owl:NamedIndividual , ehs:ContextDimension ;
+    rdfs:label "Operational context"@en ;
+    skos:definition "Physical conditions of the place where the work occurs."@en ;
+    ehs:correspondsToIdheasCategory xw:idheas-EnvironmentAndSituation ;
+    ehs:sourceRef "nureg2198" ;
+    rdfs:comment "Synonym for the IDHEAS-G category 'Environment and situation'. The rename buys familiarity for an occupational-safety audience and nothing else."@en .
+
+ehs:HumanContext a owl:NamedIndividual , ehs:ContextDimension ;
+    rdfs:label "Human context"@en ;
+    skos:definition "Attributes of the people, teams and organisational processes performing the work."@en ;
+    ehs:correspondsToIdheasCategory xw:idheas-Personnel ;
+    ehs:sourceRef "nureg2198" ;
+    rdfs:comment "Synonym for the IDHEAS-G category 'Personnel'."@en .
+
+ehs:SystemContext a owl:NamedIndividual , ehs:ContextDimension ;
+    rdfs:label "System context"@en ;
+    skos:definition "Attributes of the plant, equipment, tools and interfaces the work is performed through."@en ;
+    ehs:correspondsToIdheasCategory xw:idheas-System ;
+    ehs:sourceRef "nureg2198" ;
+    rdfs:comment "Label identical to the IDHEAS-G category."@en .
+
+
+##############################################################################
+# 8. The twenty factors
+#
+#    These are the twenty IDHEAS-G PIFs (NUREG-2198), adopted without addition,
+#    deletion or subdivision. ehs:verbatimLabel carries the NRC's own wording as
+#    transcribed from the report text; rdfs:label carries the wording used here.
+#    Nothing in this section is original to this repository except the
+#    ehs:observableProxy annotations, which are proposals and are unvalidated.
+##############################################################################
+
+### 8.1 Operational context (IDHEAS-G: environment and situation) -- five factors
+
+ehs:WorkplaceAccessibilityAndHabitability a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Workplace accessibility and habitability"@en ;
+    ehs:verbatimLabel "Accessibility/habitability of workplace including travel paths" ;
+    ehs:inDimension ehs:OperationalContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Confined-space and hot-work permit records; access-route length recorded on the permit." .
+
+ehs:WorkplaceVisibility a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Workplace visibility"@en ;
+    ehs:verbatimLabel "Workplace visibility" ;
+    ehs:inDimension ehs:OperationalContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Illuminance survey records; shift start time as a crude night-work indicator." .
+
+ehs:NoiseAndCommunicationPathways a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Noise and communication pathways"@en ;
+    ehs:verbatimLabel "Noise in workplace and communication pathways" ;
+    ehs:inDimension ehs:OperationalContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Area noise dosimetry; hearing-conservation programme enrolment by work area." .
+
+ehs:ThermalConditions a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Thermal conditions"@en ;
+    ehs:verbatimLabel "Cold/heat/humidity" ;
+    ehs:inDimension ehs:OperationalContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "WBGT readings or site weather records joined to the work order date and location." .
+
+ehs:ResistanceToPhysicalMovement a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Resistance to physical movement"@en ;
+    ehs:verbatimLabel "Resistance to physical movement" ;
+    ehs:inDimension ehs:OperationalContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Required PPE ensemble recorded on the permit (encapsulating suit, SCBA, fall arrest)." .
+
+### 8.2 System context (IDHEAS-G: system) -- three factors
+
+ehs:SystemTransparency a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "System transparency to personnel"@en ;
+    ehs:verbatimLabel "System and I&C transparency to personnel" ;
+    ehs:inDimension ehs:SystemContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:KnowledgeBasedMistake ;
+    ehs:observableProxy "Count of unlabelled or mislabelled equipment findings from field walkdowns." ;
+    rdfs:comment "The link to knowledge-based mistakes is interpretive: an opaque system denies the operator the mental model that knowledge-based reasoning requires (Rasmussen 1983)."@en .
+
+ehs:HumanSystemInterface a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Human-system interface"@en ;
+    ehs:verbatimLabel "HSI" ;
+    ehs:inDimension ehs:SystemContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:SkillBasedSlipOrLapse ;
+    ehs:observableProxy "DCS alarm-rate statistics; count of standing alarms per operator per hour." .
+
+ehs:EquipmentAndTools a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Equipment and tools"@en ;
+    ehs:verbatimLabel "Equipment and tools" ;
+    ehs:inDimension ehs:SystemContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "CMMS overdue preventive-maintenance backlog for the asset named on the work order." .
+
+### 8.3 Human context (IDHEAS-G: personnel) -- five factors
+
+ehs:Staffing a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Staffing"@en ;
+    ehs:verbatimLabel "Staffing" ;
+    ehs:inDimension ehs:HumanContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Roster headcount against the shift minimum-manning standard; vacancy rate." .
+
+ehs:ProceduresGuidanceAndInstructions a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Procedures, guidance and instructions"@en ;
+    ehs:verbatimLabel "Procedures, guidance, and instructions" ;
+    ehs:inDimension ehs:HumanContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:RuleBasedMistake ;
+    ehs:observableProxy "Document-control system: procedure revision age, overdue periodic review flag, open change requests." ;
+    ehs:boundaryNote "IDHEAS-G files procedures under Personnel. Practitioners frequently file them under Task or System. The disagreement is recorded rather than resolved." .
+
+ehs:Training a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Training"@en ;
+    ehs:verbatimLabel "Training" ;
+    ehs:inDimension ehs:HumanContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:RuleBasedMistake , ehs:KnowledgeBasedMistake ;
+    ehs:observableProxy "LMS completion and recency for the qualification the task requires; months in role." .
+
+ehs:TeamAndOrganizationFactors a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Team and organisation factors"@en ;
+    ehs:verbatimLabel "Team and organization factors" ;
+    ehs:inDimension ehs:HumanContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Crew composition stability; proportion of contractor to employee hours on the job." .
+
+ehs:WorkProcesses a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Work processes"@en ;
+    ehs:verbatimLabel "Work processes" ;
+    ehs:inDimension ehs:HumanContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Permit-to-work audit findings; management-of-change records open at the time of the task." .
+
+### 8.4 Task context (IDHEAS-G: task) -- seven factors
+
+ehs:InformationAvailabilityAndReliability a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Information availability and reliability"@en ;
+    ehs:verbatimLabel "Information availability and reliability" ;
+    ehs:inDimension ehs:TaskContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:RuleBasedMistake , ehs:KnowledgeBasedMistake ;
+    ehs:observableProxy "Instrument out-of-service list; count of failed or bypassed transmitters on the unit." .
+
+ehs:ScenarioFamiliarity a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Scenario familiarity"@en ;
+    ehs:verbatimLabel "Scenario familiarity" ;
+    ehs:inDimension ehs:TaskContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:degradationRaisesDemandOn ehs:KnowledgeBasedControl ;
+    ehs:predisposesTo ehs:KnowledgeBasedMistake ;
+    ehs:observableProxy "Work-order type (routine PM against corrective or first-of-a-kind); count of prior executions of the same procedure at the site." ;
+    rdfs:comment "The demand claim is Rasmussen's: an unfamiliar situation for which no rule is stored must be handled at the knowledge-based level."@en .
+
+ehs:MultitaskingInterruptionsAndDistractions a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Multitasking, interruptions and distractions"@en ;
+    ehs:verbatimLabel "Multitasking, interruptions, and distractions" ;
+    ehs:inDimension ehs:TaskContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:SkillBasedSlipOrLapse ;
+    ehs:observableProxy "Concurrent open permits per supervisor; radio or phone traffic volume during the task window." .
+
+ehs:TaskComplexity a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Task complexity"@en ;
+    ehs:verbatimLabel "Task complexity" ;
+    ehs:inDimension ehs:TaskContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:degradationRaisesDemandOn ehs:KnowledgeBasedControl ;
+    ehs:observableProxy "Procedure step count; number of distinct systems or crafts named on the permit." ;
+    rdfs:comment "Interpretive. SPAR-H treats complexity as difficulty of performance; the step from difficulty to knowledge-based demand is this ontology's reading, not a finding."@en .
+
+ehs:MentalFatigue a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Mental fatigue"@en ;
+    ehs:verbatimLabel "Mental fatigue" ;
+    ehs:inDimension ehs:TaskContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:SkillBasedSlipOrLapse ;
+    ehs:observableProxy "Hours elapsed since shift start; consecutive shifts worked; overtime hours in the trailing 7 days." ;
+    ehs:boundaryNote "IDHEAS-G files mental fatigue under Task. An occupational-safety practitioner would ordinarily file it under Human or Operational. The disagreement is recorded rather than resolved." ;
+    rdfs:comment "Time-on-shift is the natural proxy here, and it is also where this ontology's claims stop: hour-of-shift injury counts are not risk rates without an exposure denominator (Hanecke et al. 1998; Folkard and Tucker 2003)."@en .
+
+ehs:TimePressureAndStress a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Time pressure and stress"@en ;
+    ehs:verbatimLabel "Time pressure and stress" ;
+    ehs:inDimension ehs:TaskContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:predisposesTo ehs:KnowledgeBasedMistake ;
+    ehs:observableProxy "Scheduled against actual outage duration; work orders flagged as expedited or emergency." ;
+    ehs:boundaryNote "IDHEAS-G files time pressure and stress under Task. SPAR-H splits the same content across two separate PSFs (available time; stress and stressors)." .
+
+ehs:PhysicalDemands a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
+    rdfs:label "Physical demands"@en ;
+    ehs:verbatimLabel "Physical demands" ;
+    ehs:inDimension ehs:TaskContext ;
+    ehs:sourceRef "nureg2198" ;
+    ehs:observableProxy "Manual-handling assessment on the job safety analysis; required lift weight recorded on the work order." .
+
+
+##############################################################################
+# 9. External frameworks
+##############################################################################
+
+xw:fw-IDHEAS-G a owl:NamedIndividual , ehs:ExternalFramework ;
+    rdfs:label "IDHEAS-G"@en ;
+    dcterms:bibliographicCitation "U.S. Nuclear Regulatory Commission (2021). The General Methodology of an Integrated Human Event Analysis System (IDHEAS-G). NUREG-2198." ;
+    ehs:sourceRef "nureg2198" .
+
+xw:fw-SPARH a owl:NamedIndividual , ehs:ExternalFramework ;
+    rdfs:label "SPAR-H"@en ;
+    dcterms:bibliographicCitation "Gertman, D.I., Blackman, H.S., Marble, J.L., Byers, J.C. & Smith, C.L. (2005). The SPAR-H Human Reliability Analysis Method. NUREG/CR-6883, INL/EXT-05-00509." ;
+    ehs:sourceRef "gertman2005" .
+
+xw:fw-CREAM a owl:NamedIndividual , ehs:ExternalFramework ;
+    rdfs:label "CREAM"@en ;
+    dcterms:bibliographicCitation "Hollnagel, E. (1998). Cognitive Reliability and Error Analysis Method (CREAM). Oxford: Elsevier Science." ;
+    ehs:sourceRef "hollnagel1998" ;
+    rdfs:comment "The nine CPC labels used here were transcribed from an open-access secondary source (Shirali et al. 2019, MethodsX) because the book text was not consulted directly. See ../docs/PROVENANCE.md."@en .
+
+xw:fw-HFACS a owl:NamedIndividual , ehs:ExternalFramework ;
+    rdfs:label "HFACS"@en ;
+    dcterms:bibliographicCitation "Shappell, S.A. & Wiegmann, D.A. (2000). The Human Factors Analysis and Classification System--HFACS. DOT/FAA/AM-00/7. Revised taxonomy as figured in Shappell et al. (2006), DOT/FAA/AM-06/18." ;
+    ehs:sourceRef "shappell2000" , "shappell2006" ;
+    rdfs:comment "Two versions matter here. The 2000 report subdivides Preconditions into Substandard Conditions and Substandard Practices of Operators. The revised taxonomy figured in the 2006 report uses Environmental Factors, Condition of Operators and Personnel Factors. The crosswalk maps to the revised taxonomy and says so."@en .
+
+xw:fw-HSE-PIF a owl:NamedIndividual , ehs:ExternalFramework ;
+    rdfs:label "HSE Performance Influencing Factors"@en ;
+    dcterms:bibliographicCitation "Health and Safety Executive. Performance Influencing Factors (PIFs). HSE human factors guidance, https://www.hse.gov.uk/humanfactors/assets/docs/pifs.pdf" ;
+    ehs:sourceRef "hse_pifs" ;
+    rdfs:comment "HSE states of its own list: 'NB. This list is not exhaustive'."@en .
+
+
+##############################################################################
+# 10. External factors
+#
+#    Complete inventories, transcribed from the cited documents. Completeness is
+#    enforced by tests/test_crosswalk.py, which fails if any external factor
+#    listed here is absent from the crosswalk.
+##############################################################################
+
+### 10.1 IDHEAS-G context categories (NUREG-2198)
+
+xw:idheas-EnvironmentAndSituation a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Environment and situation"@en ; ehs:verbatimLabel "environment and situation" ; ehs:definedIn xw:fw-IDHEAS-G ; ehs:sourceRef "nureg2198" .
+xw:idheas-System a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "System"@en ; ehs:verbatimLabel "system" ; ehs:definedIn xw:fw-IDHEAS-G ; ehs:sourceRef "nureg2198" .
+xw:idheas-Personnel a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Personnel"@en ; ehs:verbatimLabel "personnel" ; ehs:definedIn xw:fw-IDHEAS-G ; ehs:sourceRef "nureg2198" .
+xw:idheas-Task a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Task"@en ; ehs:verbatimLabel "task" ; ehs:definedIn xw:fw-IDHEAS-G ; ehs:sourceRef "nureg2198" .
+
+### 10.2 SPAR-H performance shaping factors (NUREG/CR-6883) -- eight
+
+xw:sparh-AvailableTime a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Available time"@en ; ehs:verbatimLabel "Available time" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+xw:sparh-StressAndStressors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Stress and stressors"@en ; ehs:verbatimLabel "Stress and stressors" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+xw:sparh-ExperienceAndTraining a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Experience and training"@en ; ehs:verbatimLabel "Experience and training" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+xw:sparh-Complexity a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Complexity"@en ; ehs:verbatimLabel "Complexity" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+xw:sparh-Procedures a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Procedures"@en ; ehs:verbatimLabel "Procedures (including job aids)" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+xw:sparh-ErgonomicsHMI a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Ergonomics and human-machine interface"@en ; ehs:verbatimLabel "Ergonomics (including the human-machine interface)" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+xw:sparh-FitnessForDuty a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Fitness for duty"@en ; ehs:verbatimLabel "Fitness for duty" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+xw:sparh-WorkProcesses a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Work processes"@en ; ehs:verbatimLabel "Work processes" ; ehs:definedIn xw:fw-SPARH ; ehs:sourceRef "gertman2005" .
+
+### 10.3 CREAM common performance conditions -- nine
+
+xw:cream-AdequacyOfOrganisation a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Adequacy of organisation"@en ; ehs:verbatimLabel "Adequacy of organization" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-WorkingConditions a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Working conditions"@en ; ehs:verbatimLabel "Working conditions" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-AdequacyOfMMI a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Adequacy of MMI and operational support"@en ; ehs:verbatimLabel "Adequacy of man-machine interface and operational support" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-AvailabilityOfProcedures a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Availability of procedures and plans"@en ; ehs:verbatimLabel "Availability of procedures and plans" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-NumberOfSimultaneousGoals a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Number of simultaneous goals"@en ; ehs:verbatimLabel "Number of simultaneous goals" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-AvailableTime a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Available time"@en ; ehs:verbatimLabel "Available time" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-TimeOfDay a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Time of day (circadian rhythm)"@en ; ehs:verbatimLabel "Time of the day" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-AdequacyOfTrainingAndExperience a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Adequacy of training and experience"@en ; ehs:verbatimLabel "Adequacy of training and experience" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+xw:cream-CrewCollaborationQuality a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Crew collaboration quality"@en ; ehs:verbatimLabel "Crew collaboration quality" ; ehs:definedIn xw:fw-CREAM ; ehs:sourceRef "hollnagel1998" , "shirali2019" .
+
+### 10.4 HFACS -- four levels and their categories (revised taxonomy, Figure 2 of DOT/FAA/AM-06/18)
+
+xw:hfacs-UnsafeActs a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Unsafe acts"@en ; ehs:verbatimLabel "UNSAFE ACTS" ; ehs:definedIn xw:fw-HFACS ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-Preconditions a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Preconditions for unsafe acts"@en ; ehs:verbatimLabel "PRECONDITIONS FOR UNSAFE ACTS" ; ehs:definedIn xw:fw-HFACS ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-UnsafeSupervision a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Unsafe supervision"@en ; ehs:verbatimLabel "UNSAFE SUPERVISION" ; ehs:definedIn xw:fw-HFACS ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-OrganizationalInfluences a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Organizational influences"@en ; ehs:verbatimLabel "ORGANIZATIONAL INFLUENCES" ; ehs:definedIn xw:fw-HFACS ; ehs:sourceRef "shappell2000" , "shappell2006" .
+
+xw:hfacs-Errors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Errors"@en ; ehs:verbatimLabel "Errors" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-UnsafeActs ; ehs:sourceRef "shappell2006" .
+xw:hfacs-DecisionErrors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Decision errors"@en ; ehs:verbatimLabel "Decision Errors" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Errors ; ehs:sourceRef "shappell2006" .
+xw:hfacs-SkillBasedErrors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Skill-based errors"@en ; ehs:verbatimLabel "Skill-Based Errors" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Errors ; ehs:sourceRef "shappell2006" .
+xw:hfacs-PerceptualErrors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Perceptual errors"@en ; ehs:verbatimLabel "Perceptual Errors" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Errors ; ehs:sourceRef "shappell2006" .
+xw:hfacs-Violations a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Violations"@en ; ehs:verbatimLabel "Violations" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-UnsafeActs ; ehs:sourceRef "shappell2006" .
+xw:hfacs-RoutineViolations a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Routine violations"@en ; ehs:verbatimLabel "Routine" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Violations ; ehs:sourceRef "shappell2006" .
+xw:hfacs-ExceptionalViolations a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Exceptional violations"@en ; ehs:verbatimLabel "Exceptional" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Violations ; ehs:sourceRef "shappell2006" .
+
+xw:hfacs-EnvironmentalFactors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Environmental factors"@en ; ehs:verbatimLabel "Environmental Factors" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Preconditions ; ehs:sourceRef "shappell2006" .
+xw:hfacs-PhysicalEnvironment a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Physical environment"@en ; ehs:verbatimLabel "Physical Environment" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-EnvironmentalFactors ; ehs:sourceRef "shappell2006" .
+xw:hfacs-TechnologicalEnvironment a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Technological environment"@en ; ehs:verbatimLabel "Technological Environment" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-EnvironmentalFactors ; ehs:sourceRef "shappell2006" .
+xw:hfacs-ConditionOfOperators a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Condition of operators"@en ; ehs:verbatimLabel "Condition of Operators" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Preconditions ; ehs:sourceRef "shappell2006" .
+xw:hfacs-AdverseMentalStates a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Adverse mental states"@en ; ehs:verbatimLabel "Adverse Mental States" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-ConditionOfOperators ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-AdversePhysiologicalStates a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Adverse physiological states"@en ; ehs:verbatimLabel "Adverse Physiological States" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-ConditionOfOperators ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-PhysicalMentalLimitations a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Physical/mental limitations"@en ; ehs:verbatimLabel "Physical/Mental Limitations" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-ConditionOfOperators ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-PersonnelFactors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Personnel factors"@en ; ehs:verbatimLabel "Personnel Factors" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-Preconditions ; ehs:sourceRef "shappell2006" .
+xw:hfacs-CrewResourceManagement a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Crew resource management"@en ; ehs:verbatimLabel "Crew Resource Management" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-PersonnelFactors ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-PersonalReadiness a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Personal readiness"@en ; ehs:verbatimLabel "Personal Readiness" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-PersonnelFactors ; ehs:sourceRef "shappell2000" , "shappell2006" .
+
+xw:hfacs-InadequateSupervision a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Inadequate supervision"@en ; ehs:verbatimLabel "Inadequate Supervision" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-UnsafeSupervision ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-PlannedInappropriateOperations a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Planned inappropriate operations"@en ; ehs:verbatimLabel "Planned Inappropriate Operations" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-UnsafeSupervision ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-FailedToCorrectProblem a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Failed to correct problem"@en ; ehs:verbatimLabel "Failed to Correct Problem" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-UnsafeSupervision ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-SupervisoryViolations a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Supervisory violations"@en ; ehs:verbatimLabel "Supervisory Violations" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-UnsafeSupervision ; ehs:sourceRef "shappell2000" , "shappell2006" .
+
+xw:hfacs-ResourceManagement a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Resource management"@en ; ehs:verbatimLabel "Resource Management" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-OrganizationalInfluences ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-OrganizationalClimate a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Organizational climate"@en ; ehs:verbatimLabel "Organizational Climate" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-OrganizationalInfluences ; ehs:sourceRef "shappell2000" , "shappell2006" .
+xw:hfacs-OperationalProcess a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Operational process"@en ; ehs:verbatimLabel "Operational Process" ; ehs:definedIn xw:fw-HFACS ; ehs:externalParent xw:hfacs-OrganizationalInfluences ; ehs:sourceRef "shappell2000" , "shappell2006" .
+
+### 10.5 HSE Performance Influencing Factors -- 26 items under three headings
+
+xw:hse-JobFactors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Job factors"@en ; ehs:verbatimLabel "Job factors" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:sourceRef "hse_pifs" .
+xw:hse-PersonFactors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Person factors"@en ; ehs:verbatimLabel "Person factors" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:sourceRef "hse_pifs" .
+xw:hse-OrganisationFactors a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Organisation factors"@en ; ehs:verbatimLabel "Organisation factors" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:sourceRef "hse_pifs" .
+
+xw:hse-ClarityOfSignsSignals a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Clarity of signs, signals, instructions and other information"@en ; ehs:verbatimLabel "Clarity of signs, signals, instructions and other information" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-SystemEquipmentInterface a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "System/equipment interface"@en ; ehs:verbatimLabel "System/equipment interface (labelling, alarms, error avoidance/ tolerance)" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-DifficultyComplexityOfTask a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Difficulty/complexity of task"@en ; ehs:verbatimLabel "Difficulty/complexity of task" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-RoutineOrUnusual a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Routine or unusual"@en ; ehs:verbatimLabel "Routine or unusual" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-DividedAttention a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Divided attention"@en ; ehs:verbatimLabel "Divided attention" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-ProceduresInadequate a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Procedures inadequate or inappropriate"@en ; ehs:verbatimLabel "Procedures inadequate or inappropriate" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-PreparationForTask a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Preparation for task"@en ; ehs:verbatimLabel "Preparation for task (e.g. permits, risk assessments, checking)" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-TimeAvailableRequired a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Time available/required"@en ; ehs:verbatimLabel "Time available/required" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-ToolsAppropriateForTask a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Tools appropriate for task"@en ; ehs:verbatimLabel "Tools appropriate for task" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-CommunicationJob a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Communication (job)"@en ; ehs:verbatimLabel "Communication, with colleagues, supervision, contractor, other" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-WorkingEnvironment a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Working environment"@en ; ehs:verbatimLabel "Working environment (noise, heat, space, lighting, ventilation)" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-JobFactors ; ehs:sourceRef "hse_pifs" .
+
+xw:hse-PhysicalCapability a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Physical capability and condition"@en ; ehs:verbatimLabel "Physical capability and condition" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-PersonFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-Fatigue a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Fatigue"@en ; ehs:verbatimLabel "Fatigue (acute from temporary situation, or chronic)" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-PersonFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-StressMorale a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Stress/morale"@en ; ehs:verbatimLabel "Stress/morale" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-PersonFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-WorkOverloadUnderload a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Work overload/underload"@en ; ehs:verbatimLabel "Work overload/underload" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-PersonFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-Competence a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Competence"@en ; ehs:verbatimLabel "Competence to deal with circumstances" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-PersonFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-Motivation a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Motivation vs. other priorities"@en ; ehs:verbatimLabel "Motivation vs. other priorities" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-PersonFactors ; ehs:sourceRef "hse_pifs" .
+
+xw:hse-WorkPressures a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Work pressures"@en ; ehs:verbatimLabel "Work pressures e.g. production vs. safety" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-SupervisionLeadership a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Level and nature of supervision/leadership"@en ; ehs:verbatimLabel "Level and nature of supervision / leadership" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-CommunicationOrg a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Communication (organisation)"@en ; ehs:verbatimLabel "Communication" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-ManningLevels a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Manning levels"@en ; ehs:verbatimLabel "Manning levels" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-PeerPressure a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Peer pressure"@en ; ehs:verbatimLabel "Peer pressure" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-ClarityOfRoles a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Clarity of roles and responsibilities"@en ; ehs:verbatimLabel "Clarity of roles and responsibilities" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-ConsequencesOfFailure a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Consequences of failure to follow rules/procedures"@en ; ehs:verbatimLabel "Consequences of failure to follow rules/procedures" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-OrganisationalLearning a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Effectiveness of organisational learning"@en ; ehs:verbatimLabel "Effectiveness of organisational learning (learning from experiences)" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+xw:hse-SafetyCulture a owl:NamedIndividual , ehs:ExternalFactor ; rdfs:label "Organisational or safety culture"@en ; ehs:verbatimLabel "Organisational or safety culture, e.g. everyone breaks the rules" ; ehs:definedIn xw:fw-HSE-PIF ; ehs:externalParent xw:hse-OrganisationFactors ; ehs:sourceRef "hse_pifs" .
+
+
+##############################################################################
+# 11. Additional properties used by the crosswalk
+##############################################################################
+
+ehs:noCounterpartIn a owl:ObjectProperty ;
+    rdfs:label "no counterpart in"@en ;
+    rdfs:domain ehs:PerformanceInfluencingFactor ;
+    rdfs:range ehs:ExternalFramework ;
+    rdfs:comment "Asserts that the named framework has no factor corresponding to this one. A negative claim, recorded so that it can be argued with."@en .
+
+ehs:outOfScopeNote a owl:AnnotationProperty ;
+    rdfs:label "out of scope note"@en ;
+    rdfs:comment "Marks an external factor deliberately not crosswalked, with the reason."@en .
+
+xw:hfacs-UnsafeActs ehs:outOfScopeNote "Unsafe acts are outcomes, not context. Modelled here as error modes (section 6), not as performance-influencing factors." .
+xw:hfacs-Errors ehs:outOfScopeNote "Outcome category, not context." .
+xw:hfacs-DecisionErrors ehs:outOfScopeNote "Corresponds to the mistake classes in section 6, not to a factor." .
+xw:hfacs-SkillBasedErrors ehs:outOfScopeNote "Corresponds to ehs:SkillBasedSlipOrLapse, not to a factor." .
+xw:hfacs-PerceptualErrors ehs:outOfScopeNote "Outcome category, not context." .
+xw:hfacs-Violations ehs:outOfScopeNote "Violations are intentional deviations and are outside the error taxonomy this ontology encodes." .
+xw:hfacs-RoutineViolations ehs:outOfScopeNote "See parent." .
+xw:hfacs-ExceptionalViolations ehs:outOfScopeNote "See parent." .
+xw:hfacs-Preconditions ehs:outOfScopeNote "Structural container; its children are crosswalked individually." .
+xw:hfacs-EnvironmentalFactors ehs:outOfScopeNote "Structural container; its children are crosswalked individually." .
+xw:hfacs-ConditionOfOperators ehs:outOfScopeNote "Structural container; its children are crosswalked individually." .
+xw:hfacs-PersonnelFactors ehs:outOfScopeNote "Structural container; its children are crosswalked individually." .
+xw:hfacs-UnsafeSupervision ehs:outOfScopeNote "Structural container; its children are crosswalked individually." .
+xw:hfacs-OrganizationalInfluences ehs:outOfScopeNote "Structural container; its children are crosswalked individually." .
+xw:hse-JobFactors ehs:outOfScopeNote "Heading, not a factor." .
+xw:hse-PersonFactors ehs:outOfScopeNote "Heading, not a factor." .
+xw:hse-OrganisationFactors ehs:outOfScopeNote "Heading, not a factor." .
+xw:idheas-EnvironmentAndSituation ehs:outOfScopeNote "Bound to a context dimension by ehs:correspondsToIdheasCategory, not by a factor-level alignment." .
+xw:idheas-System ehs:outOfScopeNote "Bound to a context dimension by ehs:correspondsToIdheasCategory." .
+xw:idheas-Personnel ehs:outOfScopeNote "Bound to a context dimension by ehs:correspondsToIdheasCategory." .
+xw:idheas-Task ehs:outOfScopeNote "Bound to a context dimension by ehs:correspondsToIdheasCategory." .
+
+
+##############################################################################
+# 12. Alignments
+#
+#    One reified, individually cited assertion per correspondence. Strengths are
+#    analyst judgements made against the transcribed source wording, not
+#    measured agreement. Nobody has adjudicated them but the author.
+##############################################################################
+
+### 12.1 Operational context
+
+ehs:WorkplaceAccessibilityAndHabitability ehs:noCounterpartIn xw:fw-SPARH .
+xw:al-WAH-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkplaceAccessibilityAndHabitability ; ehs:externalFactor xw:cream-WorkingConditions ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-WAH-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkplaceAccessibilityAndHabitability ; ehs:externalFactor xw:hfacs-PhysicalEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" .
+xw:al-WAH-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkplaceAccessibilityAndHabitability ; ehs:externalFactor xw:hse-WorkingEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hse_pifs" ; rdfs:comment "HSE bundles noise, heat, space, lighting and ventilation into one factor; IDHEAS-G splits them across four."@en .
+
+ehs:WorkplaceVisibility ehs:noCounterpartIn xw:fw-SPARH .
+xw:al-Vis-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkplaceVisibility ; ehs:externalFactor xw:cream-WorkingConditions ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-Vis-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkplaceVisibility ; ehs:externalFactor xw:hfacs-PhysicalEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" .
+xw:al-Vis-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkplaceVisibility ; ehs:externalFactor xw:hse-WorkingEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hse_pifs" .
+
+ehs:NoiseAndCommunicationPathways ehs:noCounterpartIn xw:fw-SPARH .
+xw:al-Noise-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:NoiseAndCommunicationPathways ; ehs:externalFactor xw:cream-WorkingConditions ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-Noise-cream2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:NoiseAndCommunicationPathways ; ehs:externalFactor xw:cream-CrewCollaborationQuality ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hollnagel1998" ; rdfs:comment "Only the communication-pathway half of the local factor overlaps."@en .
+xw:al-Noise-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:NoiseAndCommunicationPathways ; ehs:externalFactor xw:hfacs-PhysicalEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" .
+xw:al-Noise-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:NoiseAndCommunicationPathways ; ehs:externalFactor xw:hse-WorkingEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hse_pifs" .
+xw:al-Noise-hse2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:NoiseAndCommunicationPathways ; ehs:externalFactor xw:hse-CommunicationJob ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+
+ehs:ThermalConditions ehs:noCounterpartIn xw:fw-SPARH .
+xw:al-Thermal-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ThermalConditions ; ehs:externalFactor xw:cream-WorkingConditions ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-Thermal-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ThermalConditions ; ehs:externalFactor xw:hfacs-PhysicalEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" .
+xw:al-Thermal-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ThermalConditions ; ehs:externalFactor xw:hse-WorkingEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hse_pifs" .
+
+ehs:ResistanceToPhysicalMovement ehs:noCounterpartIn xw:fw-SPARH .
+xw:al-Resist-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ResistanceToPhysicalMovement ; ehs:externalFactor xw:cream-WorkingConditions ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-Resist-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ResistanceToPhysicalMovement ; ehs:externalFactor xw:hfacs-PhysicalEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" .
+xw:al-Resist-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ResistanceToPhysicalMovement ; ehs:externalFactor xw:hse-WorkingEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hse_pifs" .
+
+### 12.2 System context
+
+xw:al-SysTrans-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:SystemTransparency ; ehs:externalFactor xw:sparh-ErgonomicsHMI ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "gertman2005" .
+xw:al-SysTrans-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:SystemTransparency ; ehs:externalFactor xw:cream-AdequacyOfMMI ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-SysTrans-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:SystemTransparency ; ehs:externalFactor xw:hfacs-TechnologicalEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" .
+xw:al-SysTrans-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:SystemTransparency ; ehs:externalFactor xw:hse-ClarityOfSignsSignals ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-HSI-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:HumanSystemInterface ; ehs:externalFactor xw:sparh-ErgonomicsHMI ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "gertman2005" .
+xw:al-HSI-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:HumanSystemInterface ; ehs:externalFactor xw:cream-AdequacyOfMMI ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hollnagel1998" .
+xw:al-HSI-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:HumanSystemInterface ; ehs:externalFactor xw:hfacs-TechnologicalEnvironment ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "shappell2006" .
+xw:al-HSI-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:HumanSystemInterface ; ehs:externalFactor xw:hse-SystemEquipmentInterface ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Equip-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:EquipmentAndTools ; ehs:externalFactor xw:sparh-ErgonomicsHMI ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "gertman2005" ; rdfs:comment "SPAR-H has no tools-and-parts PSF; the correspondence is to the ergonomics PSF only in so far as tools form part of the interface."@en .
+xw:al-Equip-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:EquipmentAndTools ; ehs:externalFactor xw:cream-AdequacyOfMMI ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hollnagel1998" .
+xw:al-Equip-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:EquipmentAndTools ; ehs:externalFactor xw:hfacs-TechnologicalEnvironment ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" .
+xw:al-Equip-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:EquipmentAndTools ; ehs:externalFactor xw:hse-ToolsAppropriateForTask ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+### 12.3 Human context
+
+xw:al-Staff-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Staffing ; ehs:externalFactor xw:sparh-WorkProcesses ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "gertman2005" ; rdfs:comment "SPAR-H has no staffing PSF. Staffing adequacy falls inside its work-processes PSF only by implication."@en .
+xw:al-Staff-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Staffing ; ehs:externalFactor xw:cream-AdequacyOfOrganisation ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-Staff-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Staffing ; ehs:externalFactor xw:hfacs-ResourceManagement ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "shappell2006" ; rdfs:comment "Note the level shift: a precondition-level factor here maps to an organisational-level HFACS category."@en .
+xw:al-Staff-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Staffing ; ehs:externalFactor xw:hse-ManningLevels ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Proc-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ProceduresGuidanceAndInstructions ; ehs:externalFactor xw:sparh-Procedures ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "gertman2005" .
+xw:al-Proc-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ProceduresGuidanceAndInstructions ; ehs:externalFactor xw:cream-AvailabilityOfProcedures ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hollnagel1998" .
+xw:al-Proc-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ProceduresGuidanceAndInstructions ; ehs:externalFactor xw:hfacs-OperationalProcess ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "shappell2006" ; rdfs:comment "HFACS has no procedures category at the precondition level; the nearest home is the organisational-level operational process."@en .
+xw:al-Proc-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ProceduresGuidanceAndInstructions ; ehs:externalFactor xw:hse-ProceduresInadequate ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+xw:al-Proc-hse2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ProceduresGuidanceAndInstructions ; ehs:externalFactor xw:hse-PreparationForTask ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Train-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Training ; ehs:externalFactor xw:sparh-ExperienceAndTraining ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "gertman2005" .
+xw:al-Train-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Training ; ehs:externalFactor xw:cream-AdequacyOfTrainingAndExperience ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hollnagel1998" .
+xw:al-Train-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Training ; ehs:externalFactor xw:hfacs-ResourceManagement ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2006" ; rdfs:comment "Interpretive. HFACS distributes training deficiency across organisational resource management and supervisory failure rather than giving it a precondition category."@en .
+xw:al-Train-hfacs2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Training ; ehs:externalFactor xw:hfacs-InadequateSupervision ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2000" .
+xw:al-Train-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:Training ; ehs:externalFactor xw:hse-Competence ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Team-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:sparh-WorkProcesses ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "gertman2005" .
+xw:al-Team-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:cream-AdequacyOfOrganisation ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hollnagel1998" .
+xw:al-Team-cream2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:cream-CrewCollaborationQuality ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hollnagel1998" .
+xw:al-Team-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:hfacs-CrewResourceManagement ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "shappell2000" .
+xw:al-Team-hfacs2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:hfacs-OrganizationalClimate ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2006" .
+xw:al-Team-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:hse-SupervisionLeadership ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+xw:al-Team-hse2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:hse-ClarityOfRoles ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+xw:al-Team-hse3 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:hse-SafetyCulture ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+xw:al-Team-hse4 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TeamAndOrganizationFactors ; ehs:externalFactor xw:hse-CommunicationOrg ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" ; rdfs:comment "One local factor absorbing four HSE organisation factors is a sign of coarseness, not of coverage."@en .
+
+xw:al-WP-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkProcesses ; ehs:externalFactor xw:sparh-WorkProcesses ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "gertman2005" ; rdfs:comment "Identical label in both frameworks; IDHEAS-G took the term from SPAR-H."@en .
+xw:al-WP-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkProcesses ; ehs:externalFactor xw:cream-AdequacyOfOrganisation ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "hollnagel1998" .
+xw:al-WP-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkProcesses ; ehs:externalFactor xw:hfacs-OperationalProcess ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "shappell2006" .
+xw:al-WP-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkProcesses ; ehs:externalFactor xw:hse-WorkPressures ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+xw:al-WP-hse2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:WorkProcesses ; ehs:externalFactor xw:hse-ConsequencesOfFailure ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+
+### 12.4 Task context
+
+xw:al-Info-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:InformationAvailabilityAndReliability ; ehs:externalFactor xw:sparh-ErgonomicsHMI ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "gertman2005" .
+xw:al-Info-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:InformationAvailabilityAndReliability ; ehs:externalFactor xw:cream-AdequacyOfMMI ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hollnagel1998" .
+xw:al-Info-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:InformationAvailabilityAndReliability ; ehs:externalFactor xw:hfacs-TechnologicalEnvironment ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2006" .
+xw:al-Info-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:InformationAvailabilityAndReliability ; ehs:externalFactor xw:hse-ClarityOfSignsSignals ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Fam-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ScenarioFamiliarity ; ehs:externalFactor xw:sparh-ExperienceAndTraining ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "gertman2005" ; rdfs:comment "SPAR-H treats novelty as a property of the operator (experience) rather than of the scenario. The two are not the same construct."@en .
+xw:al-Fam-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ScenarioFamiliarity ; ehs:externalFactor xw:cream-AdequacyOfTrainingAndExperience ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hollnagel1998" .
+ehs:ScenarioFamiliarity ehs:noCounterpartIn xw:fw-HFACS .
+xw:al-Fam-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:ScenarioFamiliarity ; ehs:externalFactor xw:hse-RoutineOrUnusual ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Multi-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MultitaskingInterruptionsAndDistractions ; ehs:externalFactor xw:sparh-Complexity ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "gertman2005" .
+xw:al-Multi-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MultitaskingInterruptionsAndDistractions ; ehs:externalFactor xw:cream-NumberOfSimultaneousGoals ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hollnagel1998" .
+xw:al-Multi-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MultitaskingInterruptionsAndDistractions ; ehs:externalFactor xw:hfacs-AdverseMentalStates ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2000" ; rdfs:comment "HFACS lists distraction among adverse mental states, which conflates an environmental demand with an operator state."@en .
+xw:al-Multi-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MultitaskingInterruptionsAndDistractions ; ehs:externalFactor xw:hse-DividedAttention ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Cplx-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TaskComplexity ; ehs:externalFactor xw:sparh-Complexity ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "gertman2005" .
+xw:al-Cplx-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TaskComplexity ; ehs:externalFactor xw:cream-NumberOfSimultaneousGoals ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hollnagel1998" .
+xw:al-Cplx-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TaskComplexity ; ehs:externalFactor xw:hfacs-PlannedInappropriateOperations ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2000" ; rdfs:comment "Weak. HFACS has no task-complexity category; the nearest is a supervisory failure to match task to crew."@en .
+xw:al-Cplx-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TaskComplexity ; ehs:externalFactor xw:hse-DifficultyComplexityOfTask ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Fatigue-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MentalFatigue ; ehs:externalFactor xw:sparh-FitnessForDuty ; ehs:hasMatchStrength ehs:MatchBroader ; ehs:sourceRef "gertman2005" .
+xw:al-Fatigue-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MentalFatigue ; ehs:externalFactor xw:cream-TimeOfDay ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hollnagel1998" ; rdfs:comment "CREAM's circadian CPC is the only explicit time-of-day factor in any of the five frameworks, and it is not the same construct as mental fatigue."@en .
+xw:al-Fatigue-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MentalFatigue ; ehs:externalFactor xw:hfacs-AdverseMentalStates ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "shappell2000" .
+xw:al-Fatigue-hfacs2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MentalFatigue ; ehs:externalFactor xw:hfacs-AdversePhysiologicalStates ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2000" .
+xw:al-Fatigue-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:MentalFatigue ; ehs:externalFactor xw:hse-Fatigue ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Time-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TimePressureAndStress ; ehs:externalFactor xw:sparh-AvailableTime ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "gertman2005" .
+xw:al-Time-sparh2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TimePressureAndStress ; ehs:externalFactor xw:sparh-StressAndStressors ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "gertman2005" ; rdfs:comment "One IDHEAS-G factor spans two SPAR-H PSFs. Anyone porting SPAR-H multipliers across this boundary is double counting."@en .
+xw:al-Time-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TimePressureAndStress ; ehs:externalFactor xw:cream-AvailableTime ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hollnagel1998" .
+xw:al-Time-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TimePressureAndStress ; ehs:externalFactor xw:hfacs-AdverseMentalStates ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2000" .
+xw:al-Time-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TimePressureAndStress ; ehs:externalFactor xw:hse-TimeAvailableRequired ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+xw:al-Time-hse2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TimePressureAndStress ; ehs:externalFactor xw:hse-StressMorale ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+xw:al-Time-hse3 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:TimePressureAndStress ; ehs:externalFactor xw:hse-WorkPressures ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+
+xw:al-Phys-sparh a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:PhysicalDemands ; ehs:externalFactor xw:sparh-FitnessForDuty ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "gertman2005" .
+xw:al-Phys-cream a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:PhysicalDemands ; ehs:externalFactor xw:cream-WorkingConditions ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hollnagel1998" .
+xw:al-Phys-hfacs a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:PhysicalDemands ; ehs:externalFactor xw:hfacs-PhysicalMentalLimitations ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "shappell2000" .
+xw:al-Phys-hfacs2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:PhysicalDemands ; ehs:externalFactor xw:hfacs-AdversePhysiologicalStates ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "shappell2000" .
+xw:al-Phys-hse a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:PhysicalDemands ; ehs:externalFactor xw:hse-PhysicalCapability ; ehs:hasMatchStrength ehs:MatchClose ; ehs:sourceRef "hse_pifs" .
+xw:al-Phys-hse2 a owl:NamedIndividual , ehs:Alignment ; ehs:localFactor ehs:PhysicalDemands ; ehs:externalFactor xw:hse-WorkOverloadUnderload ; ehs:hasMatchStrength ehs:MatchPartial ; ehs:sourceRef "hse_pifs" .
+
+
+##############################################################################
+# 13. Coverage gaps
+#
+#    External factors this ontology does not cover, or covers only at partial
+#    strength. Asserted rather than left implicit, because a crosswalk that only
+#    records its successes is a sales document.
+##############################################################################
+
+xw:gap-cream-TimeOfDay a owl:NamedIndividual , ehs:CoverageGap ;
+    ehs:uncoveredFactor xw:cream-TimeOfDay ;
+    rdfs:comment """No local factor represents time of day or circadian phase. IDHEAS-G has no such
+PIF either, so the gap is inherited rather than introduced. This is the gap that
+matters most for shift-based occupational settings, and closing it would require
+an exposure denominator by hour of shift that no public dataset currently
+supplies (Hanecke et al. 1998; Folkard and Tucker 2003)."""@en ;
+    ehs:sourceRef "hollnagel1998" , "folkard2003" , "hanecke1998" .
+
+xw:gap-hfacs-PersonalReadiness a owl:NamedIndividual , ehs:CoverageGap ;
+    ehs:uncoveredFactor xw:hfacs-PersonalReadiness ;
+    rdfs:comment """No local factor represents personal readiness in the HFACS sense: an
+individual's off-duty preparation for work, including rest, diet and compliance
+with alcohol and self-medication rules. The gap is inherited rather than
+introduced. IDHEAS-G has no fitness-for-duty PIF, whereas SPAR-H does, and the
+twenty factors here are IDHEAS-G's twenty adopted unchanged. ehs:MentalFatigue
+is the nearest local factor and is deliberately not aligned to this one: fatigue
+is a state during the task, personal readiness is conduct before it, and one
+causes the other rather than being it."""@en ;
+    ehs:sourceRef "shappell2000" , "shappell2006" , "nureg2198" , "gertman2005" .
+
+xw:gap-hse-Motivation a owl:NamedIndividual , ehs:CoverageGap ;
+    ehs:uncoveredFactor xw:hse-Motivation ;
+    rdfs:comment "No local factor represents motivation or competing priorities as an attribute of the individual."@en ;
+    ehs:sourceRef "hse_pifs" .
+
+xw:gap-hse-PeerPressure a owl:NamedIndividual , ehs:CoverageGap ;
+    ehs:uncoveredFactor xw:hse-PeerPressure ;
+    rdfs:comment "No local factor represents peer pressure. Team and organisation factors is too coarse to stand in for it."@en ;
+    ehs:sourceRef "hse_pifs" .
+
+xw:gap-hse-OrganisationalLearning a owl:NamedIndividual , ehs:CoverageGap ;
+    ehs:uncoveredFactor xw:hse-OrganisationalLearning ;
+    rdfs:comment "No local factor represents the effectiveness of organisational learning."@en ;
+    ehs:sourceRef "hse_pifs" .
+
+xw:gap-hfacs-FailedToCorrectProblem a owl:NamedIndividual , ehs:CoverageGap ;
+    ehs:uncoveredFactor xw:hfacs-FailedToCorrectProblem ;
+    rdfs:comment "No local factor represents a supervisor's failure to correct a known deficiency."@en ;
+    ehs:sourceRef "shappell2000" .
+
+xw:gap-hfacs-SupervisoryViolations a owl:NamedIndividual , ehs:CoverageGap ;
+    ehs:uncoveredFactor xw:hfacs-SupervisoryViolations ;
+    rdfs:comment "No local factor represents wilful supervisory disregard of rules."@en ;
+    ehs:sourceRef "shappell2000" .
+
+# End of ehs-hfo.ttl

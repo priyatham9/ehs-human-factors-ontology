@@ -1,0 +1,29 @@
+{
+  "scenario_id": "reactor-startup-nonroutine",
+  "description": "Batch reactor restart after an unplanned trip. The assigned operator qualified three weeks ago and has not run this recovery before; the recovery sequence is not covered by an approved procedure; the outage window is fixed by a downstream commitment.",
+  "synthetic": false,
+  "provenance": "Illustrative worked example written by hand for this repository. It is not a record of a real event at any site and contains no site data.",
+  "factor_levels": {
+    "ehs:Training": "ehs:LevelDegraded",
+    "ehs:ScenarioFamiliarity": "ehs:LevelSeverelyDegraded",
+    "ehs:TimePressureAndStress": "ehs:LevelDegraded",
+    "ehs:ProceduresGuidanceAndInstructions": "ehs:LevelDegraded",
+    "ehs:InformationAvailabilityAndReliability": "ehs:LevelNominal",
+    "ehs:HumanSystemInterface": "ehs:LevelNominal",
+    "ehs:Staffing": "ehs:LevelNominal",
+    "ehs:TaskComplexity": "ehs:LevelNominal",
+    "ehs:MentalFatigue": "ehs:LevelNominal",
+    "ehs:WorkProcesses": "ehs:LevelNominal",
+    "ehs:TeamAndOrganizationFactors": "ehs:LevelNominal",
+    "ehs:EquipmentAndTools": "ehs:LevelNominal",
+    "ehs:SystemTransparency": "ehs:LevelNominal",
+    "ehs:MultitaskingInterruptionsAndDistractions": "ehs:LevelNominal",
+    "ehs:PhysicalDemands": "ehs:LevelNominal",
+    "ehs:WorkplaceVisibility": "ehs:LevelNominal",
+    "ehs:WorkplaceAccessibilityAndHabitability": "ehs:LevelNominal",
+    "ehs:NoiseAndCommunicationPathways": "ehs:LevelNominal",
+    "ehs:ThermalConditions": "ehs:LevelNominal",
+    "ehs:ResistanceToPhysicalMovement": "ehs:LevelNominal"
+  },
+  "mitigations": {}
+}
