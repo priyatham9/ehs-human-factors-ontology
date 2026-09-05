@@ -22,9 +22,12 @@ four types of context: environment and situation, system, personnel, and task."
 | Human context | Personnel | synonym |
 
 Two labels are identical; two are synonyms. The twenty factors are IDHEAS-G's
-twenty PIFs, adopted unchanged. The same four-way cut is also visible in THERP
-(1983), CREAM (1998), SPAR-H (2005), NUREG-1792 (2005), HFACS and the HSE PIF
-list.
+twenty PIFs, adopted unchanged. Grouping PIFs into a small number of context
+categories is itself conventional — THERP (1983) splits them internal/external,
+HSE uses Job/Person/Organisation, and CREAM (1998), SPAR-H (2005), NUREG-1792
+(2005) and HFACS each group on their own lines — but those partitions differ in
+arity and none of them draws IDHEAS-G's four-way boundary. Only the IDHEAS-G
+correspondence is claimed as one to one, and only it is machine-checked.
 
 This is said first because it is the thing a reviewer would otherwise find and
 hold against the work. The taxonomy is adopted, deliberately and with citation.

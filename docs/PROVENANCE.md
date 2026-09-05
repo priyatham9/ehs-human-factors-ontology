@@ -28,10 +28,16 @@ Two labels are identical and two are synonyms. The twenty factors are
 IDHEAS-G's twenty PIFs, adopted without addition, deletion or subdivision.
 
 **Nothing about this taxonomy is new, and the repository does not claim it is.**
-The same four-way cut is visible in THERP's internal/external PSF split (1983),
-CREAM's nine common performance conditions (1998), SPAR-H's eight PSFs (2005),
-the NRC's own 15-PSF good-practice set (NUREG-1792, 2005), HFACS's Preconditions
-sub-tree, and HSE's Job/Person/Organisation headings. A reviewer drawn from the
+Partitioning context this way is itself long-standing practice, though the
+partitions differ in arity and are not the same cut: THERP splits PSFs
+internal/external (1983, two-way), HSE uses Job/Person/Organisation (three-way),
+and CREAM's nine common performance conditions (1998), SPAR-H's eight PSFs
+(2005), the NRC's 15-PSF good-practice set (NUREG-1792, 2005) and HFACS's
+Preconditions sub-tree each group factors on their own lines. The claim here is
+only that dividing PIFs into a small number of context groups is conventional —
+not that any of these frameworks draws IDHEAS-G's four-way boundary. Only the
+IDHEAS-G correspondence is asserted as one to one, and only that one is
+machine-checked. A reviewer drawn from the
 human reliability analysis community would identify the IDHEAS-G correspondence
 immediately, and any claim of novelty here would be a straightforward error.
 

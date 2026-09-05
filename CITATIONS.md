@@ -53,6 +53,15 @@ category was confirmed against the report's own listing: five environment-and-
 situation PIFs, three system, five personnel, seven task. The domain-transfer
 and HEP-variability sentences quoted below were also read in the document.
 
+*Second reviewer's note.* A later independent pass could not re-retrieve the PDF
+(nrc.gov returned HTTP 403 to that reviewer's environment) and so did not
+personally re-read the four-context sentence. Independent search corroborated the
+substance — four contexts, 20 PIFs, and the PIF-to-category assignments — but
+corroboration is not the same as reading the sentence in the report. Because the
+central claim of this repository rests on this one quotation, it remains the
+highest-value verification to repeat: open ML21127A272 and confirm the wording
+verbatim before submission or publication.
+
 **What it supports here.** The entire four-context structure, and therefore the
 central claim of this repository — that the structure is adopted rather than
 invented. IDHEAS-G organises 20 PIFs into exactly four context categories, and
