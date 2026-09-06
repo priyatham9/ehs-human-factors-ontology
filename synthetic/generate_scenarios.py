@@ -84,7 +84,7 @@ SYNTHETIC_HEADER = (
 #: deliberate: naming levels here would let this file drift out of step with the
 #: Turtle, and an invented level name would only surface as a runtime error.
 #: Ranks are 2 enhanced, 1 nominal, 0 degraded, -1 severely degraded. Rank -99
-#: (unknown) is never sampled — omission is handled separately by
+#: (unknown) is never sampled - omission is handled separately by
 #: ``_OMISSION_RATE``, because "not assessed" is an absence, not a level choice.
 #:
 #: These are the author's choices. They encode no claim about how often real work

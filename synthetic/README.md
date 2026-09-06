@@ -17,7 +17,7 @@ software properties, so that is all this corpus is used for:
 - derivation traces stay well-formed and every derived fact is reachable from
   the scenario inputs
 - every rule in the base is reachable by at least one input
-- the banding rules behave monotonically — degrading a factor never improves the
+- the banding rules behave monotonically - degrading a factor never improves the
   band
 - the unassessed-factor path is exercised, since a factor omitted from a
   scenario is treated as unknown rather than as satisfactory
@@ -74,7 +74,7 @@ hand.
 
 The one hand-written scenario in the repository is
 `examples/reactor_startup_nonroutine.json`. It is **not** synthetic in this
-sense and does not live here — it is an illustrative worked example written by
+sense and does not live here - it is an illustrative worked example written by
 hand to demonstrate a specific chain of reasoning, and it carries
 `"synthetic": false` with its own provenance note. It is still not a record of
 any real event, and it contains no site data. It is an illustration, and the

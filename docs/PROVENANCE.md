@@ -9,7 +9,7 @@ attack the weakest link without having to find it first.
 This is the single most important statement in the repository, so it is placed
 first.
 
-The four context dimensions — Task, Operational, Human, System — are the four
+The four context dimensions - Task, Operational, Human, System - are the four
 performance-influencing-factor context categories published by the U.S. Nuclear
 Regulatory Commission in IDHEAS-G (NUREG-2198, 2021). The report classifies its
 20 PIFs "according to the four types of context: environment and situation,
@@ -34,7 +34,7 @@ internal/external (1983, two-way), HSE uses Job/Person/Organisation (three-way),
 and CREAM's nine common performance conditions (1998), SPAR-H's eight PSFs
 (2005), the NRC's 15-PSF good-practice set (NUREG-1792, 2005) and HFACS's
 Preconditions sub-tree each group factors on their own lines. The claim here is
-only that dividing PIFs into a small number of context groups is conventional —
+only that dividing PIFs into a small number of context groups is conventional -
 not that any of these frameworks draws IDHEAS-G's four-way boundary. Only the
 IDHEAS-G correspondence is asserted as one to one, and only that one is
 machine-checked. A reviewer drawn from the
@@ -88,10 +88,10 @@ into substandard conditions and substandard practices of operators. The revised
 taxonomy figured in the 2006 report (DOT/FAA/AM-06/18, "Figure 2. The HFACS
 framework.") uses three groups instead:
 
-- *Condition of Operators* — Physical/Mental Limitations, Adverse Mental States,
+- *Condition of Operators* - Physical/Mental Limitations, Adverse Mental States,
   Adverse Physiological States
-- *Environmental Factors* — Technological Environment, Physical Environment
-- *Personnel Factors* — Personal Readiness, Crew Resource Management
+- *Environmental Factors* - Technological Environment, Physical Environment
+- *Personnel Factors* - Personal Readiness, Crew Resource Management
 
 **This crosswalk maps to the 2006 arrangement**, and `xw:fw-HFACS` says so. A
 reader checking these rows against the 2000 report will not find some of the
@@ -112,8 +112,8 @@ The nine Common Performance Conditions in section 10.3 of the Turtle file were
 transcribed from Shirali et al. (2019, *MethodsX*), an open-access paper that
 reproduces them.
 
-This is recorded three times — here, on `xw:fw-CREAM` in the ontology, and in
-`CITATIONS.md` — because a transcription at one remove can go wrong in ways the
+This is recorded three times - here, on `xw:fw-CREAM` in the ontology, and in
+`CITATIONS.md` - because a transcription at one remove can go wrong in ways the
 transcriber cannot see. Anyone relying on the CREAM rows should check them
 against Hollnagel directly before quoting them. Shirali et al. are cited as a
 transcription source, not as authority for CREAM.

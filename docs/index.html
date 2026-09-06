@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Human factors ontology - ehs-human-factors-ontology</title>
-<meta name="description" content="Contextual human error risk factors formalised as an ontology with auditable derivation traces." />
+<meta name="description" content="Contextual human error risk factors formalised as an OWL ontology with a crosswalk to prior human reliability work and auditable derivation traces." />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="theme-color" content="#F7F7F3" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0A0C10" media="(prefers-color-scheme: dark)" />
@@ -15,6 +15,7 @@
 <style>
 /* ============ tokens ============ */
 :root {
+ color-scheme:light;
  --paper:#F7F7F3; --surface:#FFFFFF; --surface-2:#EFEFE9;
  --ink:#101311; --ink-2:#3A403C; --muted:#666D68;
  --rule:#101311; --rule-soft:#D6D7CE;
@@ -27,6 +28,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+ color-scheme:dark;
  --paper:#0A0C10; --surface:#12151C; --surface-2:#171B24;
  --ink:#EAECF2; --ink-2:#BFC4CF; --muted:#838A99;
  --rule:#EAECF2; --rule-soft:#262B36;
@@ -36,6 +38,7 @@
   }
 }
 :root[data-theme="dark"] {
+ color-scheme:dark;
  --paper:#0A0C10; --surface:#12151C; --surface-2:#171B24;
  --ink:#EAECF2; --ink-2:#BFC4CF; --muted:#838A99;
  --rule:#EAECF2; --rule-soft:#262B36;
@@ -43,17 +46,30 @@
  --warn:#E3B25F; --warn-wash:#241C0C;
  --grid-dot:rgba(234,236,242,.09); --shadow:rgba(0,0,0,.4);
 }
+:root[data-theme="light"]{color-scheme:light}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
 h1,h2,h3{margin:0;line-height:1.06;letter-spacing:-.01em}
 p{margin:0 0 1em}
 a{color:var(--accent)}
+img,svg{max-width:100%}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
 .display{font-stretch:125%;font-weight:900;text-transform:uppercase}
 .label{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ============ accessibility baseline ============ */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--accent);color:var(--accent-ink);padding:11px 17px;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;text-decoration:none}
+.skip:focus{left:0}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+/* long unbreakable strings (file paths, URLs, identifiers) must wrap, not overflow */
+code,.mono,.src,.f-src,.backlink{overflow-wrap:anywhere}
 
 /* ============ topbar ============ */
 .topbar{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:2px solid var(--rule)}
@@ -76,7 +92,7 @@ a{color:var(--accent)}
 .pulse{width:7px;height:7px;background:var(--accent);flex:none;animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.pulse{animation:none}}
-.hero h1{font-size:clamp(2.4rem,6.4vw,4.6rem);max-width:16ch}
+.hero h1{font-size:clamp(2.4rem,6.4vw,4.6rem);max-width:16ch;overflow-wrap:break-word;hyphens:auto}
 .hero-role{margin-top:18px;font-size:1.05rem;color:var(--ink-2);max-width:62ch}
 .hero-lede{margin-top:14px;font-size:1rem;color:var(--muted);max-width:66ch}
 .hero-links{display:flex;flex-wrap:wrap;margin-top:30px}
@@ -148,70 +164,252 @@ a{color:var(--accent)}
 .footer-links a{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
 .footer-links a:hover{color:var(--accent)}
 
-.tbl-wrap{overflow-x:auto;border:2px solid var(--rule);background:var(--surface)}
-table{border-collapse:collapse;width:100%;font-family:var(--font-mono);font-size:.75rem}
-th{text-align:left;padding:10px 13px;border-bottom:2px solid var(--rule);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-td{padding:9px 13px;border-bottom:1px solid var(--rule-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
-tr:last-child td{border-bottom:0}
-.fig{border:2px solid var(--rule);background:var(--surface);padding:20px;margin-bottom:22px}
+/* ============ figure tokens ============ */
+:root{
+ --fig-paper:#FFFFFF; --fig-grid:#D6D7CE; --fig-axis:#3A403C; --fig-mute:#666D68;
+ --s1:#0072B2; --s2:#D55E00; --s3:#009E73; --s4:#CC79A7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+ --fig-paper:#12151C; --fig-grid:#262B36; --fig-axis:#BFC4CF; --fig-mute:#838A99;
+ --s1:#56B4E9; --s2:#E69F00; --s3:#5ECFA6; --s4:#E58FBE;
+  }
+}
+:root[data-theme="dark"]{
+ --fig-paper:#12151C; --fig-grid:#262B36; --fig-axis:#BFC4CF; --fig-mute:#838A99;
+ --s1:#56B4E9; --s2:#E69F00; --s3:#5ECFA6; --s4:#E58FBE;
+}
+
+/* ============ accessibility ============ */
+/* Focus rings, the skip link and the reduced-motion block now live in
+   tools/shared.css so every page in the portfolio inherits them from one place.
+   What stays here is the belt-and-braces guard against a stray wide child. */
+body{overflow-x:hidden}
+
+/* ============ topbar: scroll-tracked nav ============ */
+.topnav a.is-active{color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent)}
+@media(max-width:900px){
+  .topbar-inner{flex-wrap:wrap;padding:11px 30px 0}
+  .topnav{order:3;width:100%;margin:0 -30px;padding:0 30px 4px;overflow-x:auto;overscroll-behavior-x:contain;border-top:1px solid var(--rule-soft);scrollbar-width:none}
+  .topnav::-webkit-scrollbar{display:none}
+  .topnav a{white-space:nowrap;flex:none}
+}
+
+/* ============ crossbar: the six sibling projects ============ */
+.xbar{background:var(--surface-2);border-top:2px solid var(--rule)}
+.xbar-inner{max-width:var(--maxw);margin:0 auto;padding:0 30px;display:flex;align-items:stretch;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+.xbar-inner::-webkit-scrollbar{display:none}
+.xbar-tag{flex:none;display:inline-flex;align-items:center;padding:8px 14px 8px 0;font-family:var(--font-mono);font-size:.5625rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.xbar a{flex:none;display:inline-flex;align-items:center;gap:8px;padding:8px 13px;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-left:1px solid var(--rule-soft);white-space:nowrap;transition:color .15s,background .15s}
+.xbar a:last-child{border-right:1px solid var(--rule-soft)}
+.xbar a:hover{color:var(--ink);background:var(--surface)}
+.xbar a[aria-current="page"]{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.xbar a[aria-current="page"] .dot{background:var(--accent-ink)}
+.dot{width:6px;height:6px;flex:none;background:var(--rule-soft)}
+.topbar{border-bottom:0}
+.hero{border-top:2px solid var(--rule)}
+
+/* ============ vertical rhythm ============ */
+.section{padding:78px 0;scroll-margin-top:112px}
+.section:nth-of-type(even){background:var(--surface-2)}
+.rail-head{margin-bottom:14px}
+.rail-head h2{max-width:22ch}
+.sec-lede{max-width:68ch;margin:0 0 34px;padding-left:18px;border-left:2px solid var(--accent);font-size:1.02rem;line-height:1.6;color:var(--ink-2)}
+.sec-lede strong{color:var(--ink);font-weight:700}
+
+/* ============ opener: why the work exists ============ */
+.opener{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);border:2px solid var(--rule);background:var(--surface)}
+.opener-main{padding:36px 34px}
+.opener-side{padding:36px 34px;border-left:2px solid var(--rule-soft);background:var(--surface-2)}
+.opener-main .big{font-size:1.22rem;line-height:1.45;color:var(--ink);font-weight:600;max-width:40ch;margin-bottom:18px}
+.opener-main p{font-size:.94rem;line-height:1.62;color:var(--ink-2);max-width:56ch}
+.opener-main p:last-child{margin-bottom:0}
+.opener-side h3{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:14px}
+.opener-side p{font-size:.875rem;line-height:1.6;color:var(--ink-2)}
+.opener-side p:last-child{margin-bottom:0}
+.opener-side ul{margin:0;padding-left:19px;font-size:.875rem;line-height:1.58;color:var(--ink-2)}
+.opener-side li{margin-bottom:9px}
+.opener-side li:last-child{margin-bottom:0}
+@media(max-width:860px){.opener{grid-template-columns:1fr}.opener-side{border-left:0;border-top:2px solid var(--rule-soft)}}
+
+/* ============ pull quote ============ */
+.pull{margin:30px 0;padding:2px 0 2px 24px;border-left:4px solid var(--accent);max-width:62ch}
+.pull p{font-size:1.06rem;line-height:1.5;color:var(--ink);font-weight:600;margin-bottom:9px}
+.pull .attrib{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+
+/* ============ tables ============ */
+.tbl{margin:0 0 26px}
+.tbl-wrap{overflow:auto;max-height:540px;overscroll-behavior:contain;border:2px solid var(--rule);background:var(--surface)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-family:var(--font-mono);font-size:.75rem}
+thead th{position:sticky;top:0;z-index:2;text-align:left;padding:11px 14px;background:var(--surface-2);box-shadow:inset 0 -2px 0 var(--rule);font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap}
+td{padding:9px 14px;box-shadow:inset 0 -1px 0 var(--rule-soft);font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink-2)}
+tbody tr:nth-child(even) td{background:var(--surface-2)}
+tbody tr:hover td{background:var(--accent-wash);color:var(--ink)}
+td.t-first{color:var(--ink);font-weight:600}
+tbody tr:last-child td{box-shadow:none}
+.tbl-cap{margin-top:12px;font-size:.8125rem;line-height:1.55;color:var(--ink-2);max-width:76ch}
+.tbl-cap .src{display:block;margin-top:7px;font-family:var(--font-mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ============ figures ============ */
+.fig{border:2px solid var(--rule);background:var(--surface);padding:22px;margin:0 0 26px}
+.fig-scroll{overflow-x:auto;overscroll-behavior-x:contain}
+.fig svg{display:block;width:100%;height:auto;max-width:100%}
 .fig img{width:100%;height:auto;display:block}
-.fig figcaption{margin-top:14px;font-size:.8125rem;color:var(--ink-2);line-height:1.55}
-.fig .label{display:block;margin-bottom:10px}
-.prose{max-width:74ch}
-.prose h3{margin-top:30px;font-size:1.05rem}
-.prose p{margin-top:10px;font-size:.9rem;color:var(--ink-2)}
-.prose ul{font-size:.9rem;color:var(--ink-2);padding-left:20px}
-.prose li{margin-bottom:7px}
+.fig figcaption{margin-top:16px;font-size:.8125rem;color:var(--ink-2);line-height:1.6;max-width:76ch}
+.fig figcaption .src{display:block;margin-top:7px;font-family:var(--font-mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fig .label{display:block;margin-bottom:12px}
+.fig-title{font-size:1.05rem;line-height:1.28;margin:0 0 7px;max-width:54ch;letter-spacing:-.01em}
+.fig-sub{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.06em;color:var(--muted);margin:0 0 20px;max-width:80ch;line-height:1.5}
+.fig-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.fig-legend span{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fig-legend i{width:12px;height:3px;flex:none}
+
+/* ============ prose ============ */
+.prose{max-width:72ch}
+.prose h3{margin-top:34px;margin-bottom:10px;font-size:1.02rem;font-family:var(--font-mono);font-weight:700;letter-spacing:-.01em}
+.prose h3:first-child{margin-top:0}
+.prose p{margin:0 0 14px;font-size:.94rem;line-height:1.66;color:var(--ink-2)}
+.prose ul{margin:0 0 16px;font-size:.94rem;line-height:1.62;color:var(--ink-2);padding-left:20px}
+.prose li{margin-bottom:9px}
+.prose strong{color:var(--ink)}
 .prose code{font-family:var(--font-mono);font-size:.8125em;background:var(--surface-2);padding:2px 5px}
-.backlink{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
-.backlink:hover{color:var(--accent)}
+.prose a{text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:1px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 40px}
+.cols .prose{max-width:none}
+
+/* ============ definition grid ============ */
+.defs{border:2px solid var(--rule);background:var(--surface)}
+.def{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);border-top:1px solid var(--rule-soft)}
+.def:first-child{border-top:0}
+.def dt{padding:16px 20px;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);font-weight:700;background:var(--surface-2)}
+.def dd{margin:0;padding:16px 20px;font-size:.875rem;line-height:1.6;color:var(--ink-2)}
+@media(max-width:660px){.def{grid-template-columns:1fr}.def dd{padding-top:0}}
+
+/* ============ trace block ============ */
+.trace{border:2px solid var(--rule);background:var(--surface);overflow-x:auto;overscroll-behavior-x:contain}
+.trace pre{margin:0;padding:22px;font-family:var(--font-mono);font-size:.6875rem;line-height:1.7;color:var(--ink-2);white-space:pre}
+.trace-cap{margin-top:12px;font-size:.8125rem;color:var(--ink-2);line-height:1.55;max-width:76ch}
+.trace-cap .src{display:block;margin-top:7px;font-family:var(--font-mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ============ misc ============ */
+.notice{margin-bottom:26px}
+.notice:last-child{margin-bottom:0}
+.backlink{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);border-bottom:2px solid var(--rule-soft);padding-bottom:2px}
+.backlink:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.footer{border-top:2px solid var(--rule)}
+.footer-note{margin-top:16px;font-size:.8125rem;line-height:1.6;color:var(--muted);max-width:64ch}
+.hero h1{max-width:18ch}
+.hero-role{font-size:1.08rem;max-width:64ch}
+.status{margin-top:36px}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="#top"><span class="brand-mark"></span> ehs-human-factors-ontology</a>
-    <nav class="topnav"><a href="#premise">Premise</a><a href="#crosswalk">Crosswalk</a><a href="#trace">Traces</a><a href="#limits">Limits</a></nav>
+    <nav class="topnav" aria-label="Sections on this page"><a href="#why">Why</a><a href="#adopted">Adopted</a><a href="#crosswalk">Crosswalk</a><a href="#trace">Trace</a><a href="#engine">Engine</a><a href="#gaps">Gaps</a><a href="#limits">Limits</a></nav>
     <button class="toggle" id="themeToggle" aria-label="Toggle colour scheme">
-      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
-      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
     </button>
   </div>
+  <nav class="xbar" aria-label="Research portfolio">
+    <div class="xbar-inner">
+      <span class="xbar-tag">Portfolio</span>
+      <a href="https://github.com/priyatham9/ehs-osha-analysis"><span class="dot"></span>OSHA data quality</a><a href="https://github.com/priyatham9/ehs-ai-grounding-eval"><span class="dot"></span>Grounding benchmark</a><a href="https://github.com/priyatham9/ehs-human-factors-ontology" aria-current="page"><span class="dot"></span>Human factors ontology</a><a href="https://github.com/priyatham9/ehs-risk-sem"><span class="dot"></span>Risk SEM</a><a href="https://github.com/priyatham9/ehs-capitals-calculator"><span class="dot"></span>Capitals calculator</a><a href="https://github.com/priyatham9/ehs-benchmarks"><span class="dot"></span>EHS benchmarks</a><a href="https://github.com/priyatham9/ehs-ai-research"><span class="dot"></span>Hub</a>
+    </div>
+  </nav>
 </header>
 <section class="hero" id="top">
   <div class="wrap">
-    <div class="hero-eyebrow"><span class="pulse"></span><span class="label">Ontology - formalisation with crosswalk to prior art</span></div>
+    <div class="hero-eyebrow"><span class="pulse"></span><span class="label">Ontology - adopted taxonomy, contributed formalisation</span></div>
     <h1 class="display">Human error context, formalised and traceable</h1>
-    <p class="hero-role">An OWL ontology of contextual factors shaping human error, mapped explicitly onto SPAR-H, CREAM, HFACS and HSE performance influencing factors, with a forward-chaining engine that emits a derivation trace for every conclusion.</p>
+    <p class="hero-role">An OWL ontology of 20 contextual factors shaping human error, adopted from IDHEAS-G and mapped explicitly onto 4 external frameworks through 90 cited alignments and 6 asserted absences, with a forward-chaining engine that emits a real derivation trace for every conclusion. Factor levels are analyst-assigned, and the page says so throughout.</p>
     <div class="hero-links">
       <a class="btn btn-primary" href="https://github.com/priyatham9/ehs-human-factors-ontology">Repository</a>
-      <a class="btn" href="#premise">The premise</a>
+      <a class="btn" href="#why">Why this exists</a>
+      <a class="btn" href="https://github.com/priyatham9/ehs-ai-research">All projects</a>
     </div>
-    <div class="status"><div class="st-cell"><span class="st-k">OWL classes</span><span class="st-v">10</span></div><div class="st-cell"><span class="st-k">Properties</span><span class="st-v">18</span></div><div class="st-cell"><span class="st-k">Individuals</span><span class="st-v">220</span></div><div class="st-cell"><span class="st-k">Derivation traces</span><span class="st-v accent">Yes</span></div></div>
+    <div class="status"><div class="st-cell"><span class="st-k">Factors</span><span class="st-v">20</span></div><div class="st-cell"><span class="st-k">Alignments</span><span class="st-v">90</span></div><div class="st-cell"><span class="st-k">Asserted absences</span><span class="st-v">6</span></div><div class="st-cell"><span class="st-k">Derivation traces</span><span class="st-v accent">Every conclusion</span></div></div>
   </div>
 </section>
-<section class="section" id="premise"><div class="wrap"><div class="rail-head"><span class="rail-num">01</span><h2 class="display">The premise</h2></div><div class="prose"><p>Contextual factors shaping human error are usually handled as a checklist. This repository represents them as an ontology with explicit inference rules, so that a conclusion about elevated error risk can be traced back to the specific facts and rules that produced it.</p><p>The auditability is the point. A risk score no one can interrogate is not usable in a regulated setting, whatever its accuracy.</p></div></div></section><section class="section" id="crosswalk"><div class="wrap"><div class="rail-head"><span class="rail-num">02</span><h2 class="display">Crosswalk to prior work</h2></div><div class="prose"><p>The factors here are not new. They are drawn from and mapped onto four decades of established human reliability work, and the mapping is published as a first-class artifact rather than hidden:</p><ul><li><strong>SPAR-H</strong> and NUREG/CR-6883 performance shaping factors</li><li><strong>CREAM</strong> common performance conditions (Hollnagel)</li><li><strong>HFACS</strong> (Wiegmann and Shappell)</li><li><strong>HSE</strong> performance influencing factors</li><li><strong>Rasmussen</strong> skill, rule and knowledge-based error levels</li></ul><p>Claiming novelty for a relabelling of performance shaping factors would not survive a reviewer from the human reliability community, and should not. The contribution is the formalisation and the traceable inference, not the factor list.</p><p><a class="backlink" href="https://github.com/priyatham9/ehs-human-factors-ontology/blob/main/ontology/ehs-hfo.ttl">Ontology source (Turtle)</a></p></div></div></section><section class="section" id="trace"><div class="wrap"><div class="rail-head"><span class="rail-num">03</span><h2 class="display">Derivation traces</h2></div><div class="prose"><p>The forward-chaining engine emits, for every conclusion, the chain of rules and asserted facts that produced it. This is a genuine derivation trace, not a post-hoc narration generated after the fact by a language model.</p><p>The distinction matters: a generated explanation can be fluent and wrong about its own reasoning. A derivation trace cannot, because it is the reasoning.</p></div></div></section><section class="section" id="limits"><div class="wrap"><div class="rail-head"><span class="rail-num">04</span><h2 class="display">Honest limits</h2></div><div class="notice"><h3>What is not established</h3><ul><li>Factor levels are analyst-assigned ordinals. The observable proxies suggested for deriving them from operational data are proposed, not validated - no study establishes that any proxy measures the factor it is attached to.</li><li>An internal review flagged that adopting a PIF set while restructuring the error taxonomy it was constructed against requires an explicit compatibility argument. That argument is owed and not yet made.</li><li>The engine has not been evaluated against expert judgement on real scenarios.</li></ul></div></div></section>
+<main id="main">
+<section class="section" id="why"><div class="wrap"><div class="rail-head"><span class="rail-num">01</span><h2 class="display">Why this exists</h2></div><div class="opener"><div class="opener-main"><p class="big">A derivation trace is the reasoning, not a description of it written afterwards.</p><p>A language model asked to explain a risk score will produce a fluent explanation. That explanation is generated after the answer and is not causally connected to how the answer was produced, so it can be confident, readable and wrong about its own reasoning. In a regulated setting that is worse than no explanation, because it invites reliance it cannot support.</p><p>This repository takes the other route. Contextual factors shaping human error are encoded as an OWL ontology, and a forward-chaining rule engine evaluates a scenario against it. Every derived fact records the rule that fired and the facts that satisfied that rule's body, down to the scenario inputs. The trace is not a narration of the reasoning. It is the reasoning, printed.</p><p>Two properties make it auditable rather than merely verbose. Every rule declares whether its basis is literature, in which case a citation is enforced at construction, or convention, in which case it says so and names no source. And output is deterministic: two runs of the same scenario produce byte-identical reports, because an audit record that changes between runs is not an audit record.</p></div><div class="opener-side"><h3>Conceded up front</h3><ul><li><strong>Factor levels are analyst-assigned ordinals.</strong> A person decides that training is degraded. Nothing in this repository measures it.</li><li>The observable proxies suggested for deriving levels from operational data are proposed, not validated.</li><li>A compatibility argument is owed. Adopting one project's factor set while restructuring the error taxonomy it was built against needs to be justified explicitly, and that argument is not yet made.</li></ul></div></div></div></section><section class="section" id="adopted"><div class="wrap"><div class="rail-head"><span class="rail-num">02</span><h2 class="display">The taxonomy is adopted, not invented</h2></div><p class="sec-lede">The most useful thing this page can do is tell you what is borrowed before you find out yourself.</p><div class="cols"><div class="prose"><p>The four context dimensions here are not new, and the twenty factors are not new either. They are the performance-influencing-factor context categories and the twenty PIFs published by the U.S. Nuclear Regulatory Commission in IDHEAS-G (NUREG-2198, 2021), adopted unchanged. Two of the four labels are identical to the source's; two are synonyms.</p><p>This is said first because it is what a reviewer from the human reliability community would otherwise find and hold against the work. Claiming novelty for a relabelling of performance shaping factors would not survive that reviewer, and should not.</p><p>Adding another loosely defined factor grouping would also make a documented problem worse rather than better: existing PSF sets already range from one factor to more than fifty, and the literature reports that they are not defined precisely enough to be applied consistently.</p></div><div class="prose"><h3>So what is contributed</h3><ul><li><strong>An encoding.</strong> Fixed identifiers with the source's own wording attached, so a reader can check the transcription rather than trust it. Hand-written Turtle, 867 lines, parsed by a standard-library parser because the repository takes no dependencies.</li><li><strong>A crosswalk as a first-class artifact.</strong> Every factor mapped to its counterpart in 4 external frameworks, with a match strength and a citation on every row, and an explicit assertion of absence where a framework has none. Generated from the ontology, and the test suite fails if the two disagree.</li><li><strong>Traceable inference.</strong> The rule engine, and the guarantees below.</li></ul><p><a class="backlink" href="https://github.com/priyatham9/ehs-human-factors-ontology/blob/main/ontology/ehs-hfo.ttl">Ontology source (Turtle)</a></p></div></div></div></section><section class="section" id="crosswalk"><div class="wrap"><div class="rail-head"><span class="rail-num">03</span><h2 class="display">Crosswalk to prior work</h2></div><p class="sec-lede">20 factors across 4 context dimensions, mapped onto 4 external frameworks with a citation on every row.</p><figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 860 212" role="img" aria-label="Crosswalk match strength by framework" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace"><rect x="0" y="0" width="860" height="212" fill="var(--fig-paper)"/><text x="57.0" y="43.7" font-size="11" text-anchor="end" fill="var(--fig-axis)" font-weight="600">CREAM</text><rect x="71.0" y="26" width="168.7" height="26" fill="var(--s1)"/><text x="155.4" y="43.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">7</text><rect x="239.7" y="26" width="192.8" height="26" fill="var(--s3)"/><text x="336.1" y="43.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">8</text><rect x="432.6" y="26" width="168.7" height="26" fill="var(--s2)"/><text x="516.9" y="43.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">7</text><text x="611.3" y="43.7" font-size="11" text-anchor="start" fill="var(--fig-mute)" font-weight="600">22</text><text x="57.0" y="81.7" font-size="11" text-anchor="end" fill="var(--fig-axis)" font-weight="600">HFACS</text><rect x="71.0" y="64" width="144.6" height="26" fill="var(--s1)"/><text x="143.3" y="81.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">6</text><rect x="215.6" y="64" width="192.8" height="26" fill="var(--s3)"/><text x="312.0" y="81.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">8</text><rect x="408.4" y="64" width="216.9" height="26" fill="var(--s2)"/><text x="516.9" y="81.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">9</text><rect x="625.4" y="64" width="24.1" height="26" fill="var(--fig-grid)"/><text x="637.4" y="81.7" font-size="10" text-anchor="middle" fill="var(--fig-axis)" font-weight="700">1</text><text x="659.5" y="81.7" font-size="11" text-anchor="start" fill="var(--fig-mute)" font-weight="600">24</text><text x="57.0" y="119.7" font-size="11" text-anchor="end" fill="var(--fig-axis)" font-weight="600">HSE-PIF</text><rect x="71.0" y="102" width="337.4" height="26" fill="var(--s1)"/><text x="239.7" y="119.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">14</text><rect x="408.4" y="102" width="120.5" height="26" fill="var(--s3)"/><text x="468.7" y="119.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">5</text><rect x="529.0" y="102" width="241.0" height="26" fill="var(--s2)"/><text x="649.5" y="119.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">10</text><text x="780.0" y="119.7" font-size="11" text-anchor="start" fill="var(--fig-mute)" font-weight="600">29</text><text x="57.0" y="157.7" font-size="11" text-anchor="end" fill="var(--fig-axis)" font-weight="600">SPAR-H</text><rect x="71.0" y="140" width="168.7" height="26" fill="var(--s1)"/><text x="155.4" y="157.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">7</text><rect x="239.7" y="140" width="48.2" height="26" fill="var(--s3)"/><text x="263.8" y="157.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">2</text><rect x="287.9" y="140" width="168.7" height="26" fill="var(--s2)"/><text x="372.3" y="157.7" font-size="10" text-anchor="middle" fill="var(--fig-paper)" font-weight="700">7</text><rect x="456.7" y="140" width="120.5" height="26" fill="var(--fig-grid)"/><text x="516.9" y="157.7" font-size="10" text-anchor="middle" fill="var(--fig-axis)" font-weight="700">5</text><text x="587.2" y="157.7" font-size="11" text-anchor="start" fill="var(--fig-mute)" font-weight="600">21</text></svg></div><div class="fig-legend"><span><i style="background:var(--s1)"></i>close</span><span><i style="background:var(--s3)"></i>broader</span><span><i style="background:var(--s2)"></i>partial</span><span><i style="background:var(--fig-grid)"></i>none</span></div><figcaption>Match strength for every correspondence, by external framework. 90 alignments and 6 asserted absences across 4 frameworks, of which only 34 are close matches. The rest are broader, narrower or partial. The strength <code>exact</code> is declared in the ontology and deliberately never used, and a test enforces that, because asserting exact identity between factors written decades apart for different industries would claim more than the sources support.<span class="src">Source artifact: crosswalk/crosswalk.csv</span></figcaption></figure><figure class="tbl"><div class="tbl-wrap"><table><thead><tr><th>dimension</th><th>local factor</th><th>framework</th><th>external counterpart</th><th>strength</th><th>citation</th></tr></thead><tbody><tr><td class="t-first">Human context</td><td>Procedures, guidance and instructions</td><td>CREAM</td><td>Availability of procedures and plans</td><td>close</td><td>hollnagel1998</td></tr><tr><td class="t-first">Human context</td><td>Procedures, guidance and instructions</td><td>HFACS</td><td>Operational process</td><td>broader</td><td>shappell2006</td></tr><tr><td class="t-first">Human context</td><td>Procedures, guidance and instructions</td><td>HSE Performance Influencing Factors</td><td>Preparation for task</td><td>partial</td><td>hse_pifs</td></tr><tr><td class="t-first">Human context</td><td>Procedures, guidance and instructions</td><td>HSE Performance Influencing Factors</td><td>Procedures inadequate or inappropriate</td><td>close</td><td>hse_pifs</td></tr><tr><td class="t-first">Human context</td><td>Procedures, guidance and instructions</td><td>SPAR-H</td><td>Procedures</td><td>close</td><td>gertman2005</td></tr><tr><td class="t-first">Human context</td><td>Staffing</td><td>CREAM</td><td>Adequacy of organisation</td><td>broader</td><td>hollnagel1998</td></tr><tr><td class="t-first">Human context</td><td>Staffing</td><td>HFACS</td><td>Resource management</td><td>close</td><td>shappell2006</td></tr><tr><td class="t-first">Human context</td><td>Staffing</td><td>HSE Performance Influencing Factors</td><td>Manning levels</td><td>close</td><td>hse_pifs</td></tr><tr><td class="t-first">Human context</td><td>Staffing</td><td>SPAR-H</td><td>Work processes</td><td>partial</td><td>gertman2005</td></tr><tr><td class="t-first">Human context</td><td>Team and organisation factors</td><td>CREAM</td><td>Adequacy of organisation</td><td>close</td><td>hollnagel1998</td></tr><tr><td class="t-first">Human context</td><td>Team and organisation factors</td><td>CREAM</td><td>Crew collaboration quality</td><td>close</td><td>hollnagel1998</td></tr><tr><td class="t-first">Human context</td><td>Team and organisation factors</td><td>HFACS</td><td>Crew resource management</td><td>close</td><td>shappell2000</td></tr><tr><td class="t-first">Human context</td><td>Team and organisation factors</td><td>HFACS</td><td>Organizational climate</td><td>partial</td><td>shappell2006</td></tr><tr><td class="t-first">Human context</td><td>Team and organisation factors</td><td>HSE Performance Influencing Factors</td><td>Clarity of roles and responsibilities</td><td>partial</td><td>hse_pifs</td></tr></tbody></table></div><figcaption class="tbl-cap">Every row carries a match strength, a citation and, where the correspondence is imperfect, a note saying why. Rows with strength <code>none</code> are assertions that a framework has no counterpart at all, which is a claim someone can argue with rather than a silence. Showing 14 of 96 rows.<span class="src">Source artifact: crosswalk/crosswalk.csv</span></figcaption></figure></div></section><section class="section" id="trace"><div class="wrap"><div class="rail-head"><span class="rail-num">04</span><h2 class="display">A derivation trace</h2></div><p class="sec-lede">This is the whole argument for the approach, so it is shown rather than described.</p><div class="trace"><pre>  screeningBand(stop-and-review)  &lt;- R33-band-stop-and-review [convention; no source]
+    rule: screeningBand(stop-and-review) :- severelyDegradedFactor(?F), not mitigatedFactor(?F), aggravatedErrorMode(?M).
+    because: A severely degraded factor occurring alongside an aggravated error mode puts the scenario in the stop-and-review band. Threshold chosen by the author; no source supports it.
+      severelyDegradedFactor(ehs:ScenarioFamiliarity)  &lt;- R02-severely-degraded [literature; nureg2198]
+        rule: severelyDegradedFactor(?F) :- factorLevel(?F, ?L), levelSeverelyDegraded(?L).
+        because: A factor at the lowest assessed level is severely degraded.
+          factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)  [given]
+          levelSeverelyDegraded(ehs:LevelSeverelyDegraded)  [given]
+      aggravatedErrorMode(ehs:KnowledgeBasedMistake)  &lt;- R22-aggravated-by-second-factor [literature; groth2012]
+        rule: aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).
+        because: An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim.
+          degradedFactor(ehs:ScenarioFamiliarity)  &lt;- R01-degraded [literature; nureg2198]
+            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).
+            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.
+              factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)  [given]
+              levelDegraded(ehs:LevelSeverelyDegraded)  [given]
+          factorPredisposesTo(ehs:ScenarioFamiliarity, ehs:KnowledgeBasedMistake)  [given]
+          degradedFactor(ehs:TimePressureAndStress)  &lt;- R01-degraded [literature; nureg2198]
+            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).
+            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.
+              factorLevel(ehs:TimePressureAndStress, ehs:LevelDegraded)  [given]
+              levelDegraded(ehs:LevelDegraded)  [given]
+          factorPredisposesTo(ehs:TimePressureAndStress, ehs:KnowledgeBasedMistake)  [given]
+        (3 further derivations recorded and not expanded here)
+    (2 further derivations recorded and not expanded here)</pre></div><p class="trace-cap">The top of the derivation for the screening band, produced by running the repository's own command-line tool against its committed worked example at the moment this page was generated. Two things to notice. The band rule announces itself as <code>[convention; no source]</code>, because the threshold is the author's and no literature supports it. And the chain bottoms out in <code>[given]</code>, which are facts the scenario or the ontology supplied, so there is nothing between the input and the conclusion that a reader cannot inspect.<span class="src">Generated at build time from examples/reactor_startup_nonroutine.json</span></p></div></section><section class="section" id="engine"><div class="wrap"><div class="rail-head"><span class="rail-num">05</span><h2 class="display">What the engine guarantees</h2></div><p class="sec-lede">Guarantees worth having, and the narrow shape of the thing they apply to.</p><dl class="defs"><div class="def"><dt>Termination</dt><dd>No function symbols, so the Herbrand base is finite and evaluation reaches a fixpoint.</dd></div><div class="def"><dt>Negation</dt><dd>Stratified negation as failure, checked at construction. A negative dependency inside a cycle raises rather than picking an answer.</dd></div><div class="def"><dt>Determinism</dt><dd>The fact index is seeded in sorted order and alternative derivations are canonically sorted, so two runs produce byte-identical reports.</dd></div><div class="def"><dt>Rule basis</dt><dd>Every rule declares <code>literature</code>, which requires a citation and is enforced in the constructor, or <code>convention</code>, which states that the author chose a threshold and no source supports it. Every screening-band rule is convention, and a test fails if one ever claims otherwise.</dd></div><div class="def"><dt>Missing data</dt><dd>A factor omitted from a scenario is carried as unknown, never as nominal, and the report prints assessment coverage. Treating missing data as satisfactory is the standard way a screening tool understates a hazard.</dd></div><div class="def"><dt>Output</dt><dd>An ordinal screening band. Not a probability, not a rate, and the report says so in the line that prints it.</dd></div></dl></div></section><section class="section" id="gaps"><div class="wrap"><div class="rail-head"><span class="rail-num">06</span><h2 class="display">What the factor set does not reach</h2></div><p class="sec-lede">A crosswalk is only credible if it publishes its own gaps.</p><figure class="tbl"><div class="tbl-wrap"><table><thead><tr><th>Framework</th><th>Local factor with no counterpart</th><th>What is asserted</th></tr></thead><tbody><tr><td class="t-first">SPAR-H</td><td>Noise and communication pathways</td><td style="white-space:normal">Asserted absence: no counterpart in this framework.</td></tr><tr><td class="t-first">SPAR-H</td><td>Resistance to physical movement</td><td style="white-space:normal">Asserted absence: no counterpart in this framework.</td></tr><tr><td class="t-first">SPAR-H</td><td>Thermal conditions</td><td style="white-space:normal">Asserted absence: no counterpart in this framework.</td></tr><tr><td class="t-first">SPAR-H</td><td>Workplace accessibility and habitability</td><td style="white-space:normal">Asserted absence: no counterpart in this framework.</td></tr><tr><td class="t-first">SPAR-H</td><td>Workplace visibility</td><td style="white-space:normal">Asserted absence: no counterpart in this framework.</td></tr><tr><td class="t-first">HFACS</td><td>Scenario familiarity</td><td style="white-space:normal">Asserted absence: no counterpart in this framework.</td></tr></tbody></table></div><figcaption class="tbl-cap">The asserted absences. A crosswalk that only records matches is a crosswalk that hides its own coverage; these rows say what the adopted factor set does not reach. Coverage runs the other way too: 78 external factors are declared in the ontology and 51 of them have a local counterpart, so the uncovered remainder in that direction is visible rather than implied.<span class="src">Source artifact: crosswalk/crosswalk.csv, rows with strength none</span></figcaption></figure></div></section><section class="section" id="limits"><div class="wrap"><div class="rail-head"><span class="rail-num">07</span><h2 class="display">Honest limits</h2></div><div class="notice"><h3>What is not established</h3><ul><li><strong>Factor levels are analyst-assigned ordinals.</strong> The observable proxies suggested for deriving them from operational data are proposed, not validated. No study here establishes that any proxy measures the factor it is attached to, and a screening band computed from unvalidated inputs inherits their uncertainty entirely.</li><li><strong>A compatibility argument is owed.</strong> An internal review flagged that adopting a PIF set while restructuring the error taxonomy it was constructed against requires an explicit argument that the two remain compatible. That argument is not yet made.</li><li><strong>The engine has not been evaluated against expert judgement.</strong> Nobody has checked whether its screening bands agree with what experienced analysts would say about the same scenarios.</li><li><strong>The screening bands are conventions.</strong> The thresholds are the author's. The engine declares this in every trace, which makes it honest, not validated.</li><li><strong>The scenario corpus is synthetic.</strong> It is fabricated, labelled as such in the repository, and used only to exercise the engine. The worked example is a hand-written illustration and is not a record of a real event at any site.</li></ul></div></div></section>
+</main>
 <footer class="footer">
   <div class="wrap">
     <span class="label">Priyatham Chimmani &middot; EHS data infrastructure, analytics and applied AI</span>
     <div class="footer-links">
-      <a href="https://github.com/priyatham9/ehs-human-factors-ontology">Repository</a>
+      <a href="https://github.com/priyatham9/ehs-ai-research">Research hub</a>
+      <a href="https://priyatham9.github.io">priyatham9.github.io</a>
+      <a href="https://github.com/priyatham9/ehs-human-factors-ontology">This repository</a>
       <a href="https://github.com/priyatham9">GitHub</a>
       <a href="https://linkedin.com/in/priyatham9">LinkedIn</a>
     </div>
+    <p class="footer-note">Every number, table and figure on this page is read from a committed
+    artifact in this repository at build time by <span class="mono">tools/build_sites.py</span>.
+    Captions name the artifact. The page cannot report a value the pipeline did not produce.</p>
   </div>
 </footer>
 <script>
 (function () {
   var root = document.documentElement, KEY = 'ehs-ai-theme';
   try { var s = localStorage.getItem(KEY); if (s) root.setAttribute('data-theme', s); } catch (e) {}
-  document.getElementById('themeToggle').addEventListener('click', function () {
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function () {
     var c = root.getAttribute('data-theme');
     if (!c) c = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     var n = c === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', n);
     try { localStorage.setItem(KEY, n); } catch (e) {}
   });
+})();
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.topnav a[href^="#"]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {}, ratio = {};
+  links.forEach(function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) { map[el.id] = a; ratio[el.id] = 0; }
+  });
+  var ids = Object.keys(map);
+  if (!ids.length) return;
+  function paint() {
+    var best = null, bestv = 0;
+    ids.forEach(function (id) { if (ratio[id] > bestv) { bestv = ratio[id]; best = id; } });
+    links.forEach(function (a) { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
+    if (best) { map[best].classList.add('is-active'); map[best].setAttribute('aria-current', 'true'); }
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { ratio[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+    paint();
+  }, { rootMargin: '-116px 0px -50% 0px', threshold: [0, 0.05, 0.2, 0.5, 0.9] });
+  ids.forEach(function (id) { obs.observe(document.getElementById(id)); });
 })();
 </script>
 </body>

@@ -130,7 +130,7 @@ def build_markdown(ontology: Ontology) -> str:
         node = ontology.graph.expand(curie)
         label = ontology.graph.literal(node, "rdfs:label") or curie
         definition = ontology.graph.literal(node, "skos:definition") or ""
-        w(f"- **{label}** — {definition}\n")
+        w(f"- **{label}** - {definition}\n")
     w(
         "\n`**no counterpart**` is an assertion, not a blank. It says the framework has\n"
         "no factor corresponding to this one, and it is recorded so that it can be\n"
@@ -166,7 +166,7 @@ def build_markdown(ontology: Ontology) -> str:
             cells = [f"**{_escape_md(factor.label)}**"]
             for framework_curie, _ in FRAMEWORK_COLUMNS:
                 entries = _cell_entries(ontology, factor.curie, framework_curie)
-                cells.append(_escape_md("; ".join(entries)) if entries else "—")
+                cells.append(_escape_md("; ".join(entries)) if entries else "-")
             w("| " + " | ".join(cells) + " |\n")
 
     # ---- alignment notes ------------------------------------------------ #
@@ -189,7 +189,7 @@ def build_markdown(ontology: Ontology) -> str:
             local = ontology.factor(alignment.local_factor)
             w(
                 f"- **{local.label} → {external.label}** "
-                f"({_strength_label(ontology, alignment)}) — "
+                f"({_strength_label(ontology, alignment)}) - "
                 f"{_escape_md(alignment.comment or '')}\n"
             )
 
@@ -231,7 +231,7 @@ def build_markdown(ontology: Ontology) -> str:
         w("| External entry | Framework | Reason |\n| --- | --- | --- |\n")
         for external in out_of_scope:
             framework = ontology.frameworks.get(external.framework or "")
-            label = framework.label if framework else "—"
+            label = framework.label if framework else "-"
             w(
                 f"| {_escape_md(external.label)} | {_escape_md(label)} "
                 f"| {_escape_md(external.out_of_scope_note or '')} |\n"
@@ -242,7 +242,7 @@ def build_markdown(ontology: Ontology) -> str:
     for framework in sorted(
         ontology.frameworks.values(), key=lambda f: f.label
     ):
-        w(f"- **{framework.label}** — {framework.citation or 'no citation recorded'}")
+        w(f"- **{framework.label}** - {framework.citation or 'no citation recorded'}")
         if framework.source_refs:
             w(f" [{', '.join(f'`{r}`' for r in framework.source_refs)}]")
         w("\n")

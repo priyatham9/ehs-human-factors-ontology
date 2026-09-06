@@ -56,14 +56,14 @@ and HEP-variability sentences quoted below were also read in the document.
 *Second reviewer's note.* A later independent pass could not re-retrieve the PDF
 (nrc.gov returned HTTP 403 to that reviewer's environment) and so did not
 personally re-read the four-context sentence. Independent search corroborated the
-substance — four contexts, 20 PIFs, and the PIF-to-category assignments — but
+substance - four contexts, 20 PIFs, and the PIF-to-category assignments - but
 corroboration is not the same as reading the sentence in the report. Because the
 central claim of this repository rests on this one quotation, it remains the
 highest-value verification to repeat: open ML21127A272 and confirm the wording
 verbatim before submission or publication.
 
 **What it supports here.** The entire four-context structure, and therefore the
-central claim of this repository — that the structure is adopted rather than
+central claim of this repository - that the structure is adopted rather than
 invented. IDHEAS-G organises 20 PIFs into exactly four context categories, and
 states it in these words:
 
@@ -92,9 +92,9 @@ Manuscript completed September 2004; published August 2005.
 and its text extracted. Report numbers, the five-author list and both dates were
 read in the document. The eight PSFs were read in the passage stating that "in
 1999, further research identified eight PSFs capable of influencing human
-performance", and the two parenthesised forms this repository transcribes —
+performance", and the two parenthesised forms this repository transcribes - 
 "Procedures (including job aids)" and "Ergonomics (including the human-machine
-interface)" — were both located verbatim.
+interface)" - were both located verbatim.
 
 **What it supports here.** The eight SPAR-H performance shaping factors
 transcribed in section 10.2 of the Turtle file: available time; stress;
@@ -140,13 +140,13 @@ day".
 
 **What it supports here.** It is the intermediary through which CREAM's nine
 CPCs were transcribed. It is cited as a transcription source only. It is an
-open-access secondary source, not the authority for CREAM — Hollnagel is — and
+open-access secondary source, not the authority for CREAM - Hollnagel is - and
 the Turtle file records the substitution at `xw:fw-CREAM`.
 
 ### `shappell2000`
 
 Shappell, S.A. & Wiegmann, D.A. (2000). *The Human Factors Analysis and
-Classification System — HFACS.* Report No. DOT/FAA/AM-00/7. Washington, DC:
+Classification System - HFACS.* Report No. DOT/FAA/AM-00/7. Washington, DC:
 Office of Aviation Medicine, Federal Aviation Administration. February 2000.
 
 **Verification:** primary. The report PDF was retrieved from the FAA at
@@ -162,8 +162,8 @@ supervisory categories recorded as coverage gaps
 **Where the 2000 wording differs, precisely.** Of the 28 HFACS category names
 transcribed in section 10.4 of the Turtle file, 22 appear verbatim in this 2000
 report and six do not. Five of the six are the Preconditions groups introduced by
-the 2006 revision — *Environmental Factors*, *Physical Environment*,
-*Technological Environment*, *Condition of Operators* and *Personnel Factors* —
+the 2006 revision - *Environmental Factors*, *Physical Environment*,
+*Technological Environment*, *Condition of Operators* and *Personnel Factors* - 
 which is the version difference already described under `shappell2006` and in
 `docs/PROVENANCE.md`. The sixth is narrower and is recorded here so it is not
 mistaken for a transcription error: this repository uses the 2006 wording
@@ -191,10 +191,10 @@ the Turtle file were located verbatim in the report text.
 this crosswalk maps to. Under *Preconditions for Unsafe Acts* the 2006 figure
 shows three groups, confirmed in the document text:
 
-- *Condition of Operators* — Physical/Mental Limitations, Adverse Mental States,
+- *Condition of Operators* - Physical/Mental Limitations, Adverse Mental States,
   Adverse Physiological States
-- *Environmental Factors* — Technological Environment, Physical Environment
-- *Personnel Factors* — Personal Readiness, Crew Resource Management
+- *Environmental Factors* - Technological Environment, Physical Environment
+- *Personnel Factors* - Personal Readiness, Crew Resource Management
 
 This differs from the 2000 report, which subdivides Preconditions into
 substandard conditions and substandard practices of operators. The crosswalk
@@ -229,7 +229,7 @@ Groth, K.M. & Mosleh, A. (2012). A data-informed PIF hierarchy for model-based
 Human Reliability Analysis. *Reliability Engineering & System Safety*, 108,
 154–174. DOI: 10.1016/j.ress.2012.08.006.
 
-**Verification:** bibliographic. The DOI resolves to exactly this record — both
+**Verification:** bibliographic. The DOI resolves to exactly this record - both
 authors, title, journal, volume 108, pages 154–174 and the 2012 date all match.
 The article text was not read.
 
@@ -256,7 +256,7 @@ all match. The article text was not read; the three cognitive control levels are
 used here as the standard attribution they have become.
 
 **What it supports here.** The three cognitive control levels in section 6 of
-the Turtle file — skill-based, rule-based, knowledge-based — and the rules that
+the Turtle file - skill-based, rule-based, knowledge-based - and the rules that
 reason about a task being pushed from one level to another. The worked reactor
 scenario turns on this: an unfamiliar situation with no covering procedure
 displaces the operator from rule-based to knowledge-based control.
@@ -267,8 +267,8 @@ Reason, J. (1990). *Human Error.* Cambridge: Cambridge University Press.
 
 **Verification:** bibliographic.
 
-**What it supports here.** The error modes in section 6 — skill-based slips and
-lapses, rule-based mistakes, knowledge-based mistakes — as the Generic
+**What it supports here.** The error modes in section 6 - skill-based slips and
+lapses, rule-based mistakes, knowledge-based mistakes - as the Generic
 Error-Modelling System maps them onto Rasmussen's control levels.
 
 ---
@@ -299,7 +299,7 @@ write:
 The relevance here is the qualifier, not the shape of the curve: every study
 feeding that trend had to correct for exposure first. A *rate* claim about hour
 of shift requires an exposure denominator, and this repository has none of any
-kind. Note also what this entry does **not** license — the author's separate work
+kind. Note also what this entry does **not** license - the author's separate work
 on OSHA filings reports raw injury counts by hour of shift, which are not
 exposure-corrected and are not comparable to this figure. See
 `docs/PROVENANCE.md`.
@@ -377,7 +377,7 @@ otherwise look like an oversight.
 
 **Rasmussen (1997) and Leveson (STAMP)** are not cited in support of anything
 here. Both argue against decomposing accidents into additive contributing
-factors — Rasmussen in favour of modelling work-system constraints, Leveson in
+factors - Rasmussen in favour of modelling work-system constraints, Leveson in
 favour of treating safety as control-structure constraint enforcement. This
 repository builds a factor-based model. Citing either as friendly authority
 would misrepresent them. The tension is real and is stated in the README under

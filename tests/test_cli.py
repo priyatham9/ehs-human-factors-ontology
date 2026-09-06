@@ -2,7 +2,7 @@
 
 Every command the README advertises is exercised here, so a documented command
 cannot quietly stop working. Output is captured rather than inspected in
-detail — the substance is tested elsewhere; what matters here is that the
+detail - the substance is tested elsewhere; what matters here is that the
 entry points exist, exit cleanly, and print something.
 """
 

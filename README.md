@@ -23,15 +23,15 @@ four types of context: environment and situation, system, personnel, and task."
 
 Two labels are identical; two are synonyms. The twenty factors are IDHEAS-G's
 twenty PIFs, adopted unchanged. Grouping PIFs into a small number of context
-categories is itself conventional — THERP (1983) splits them internal/external,
+categories is itself conventional - THERP (1983) splits them internal/external,
 HSE uses Job/Person/Organisation, and CREAM (1998), SPAR-H (2005), NUREG-1792
-(2005) and HFACS each group on their own lines — but those partitions differ in
+(2005) and HFACS each group on their own lines - but those partitions differ in
 arity and none of them draws IDHEAS-G's four-way boundary. Only the IDHEAS-G
 correspondence is claimed as one to one, and only it is machine-checked.
 
 This is said first because it is the thing a reviewer would otherwise find and
 hold against the work. The taxonomy is adopted, deliberately and with citation.
-What is contributed is the encoding, the crosswalk and the traceability — and
+What is contributed is the encoding, the crosswalk and the traceability - and
 those are worth less than a new taxonomy would be if a new taxonomy were
 warranted. It is not: Boring (2010) documents that PSF sets already range from
 one factor to fifty-plus, and Groth and Mosleh (2012) report that the existing
@@ -117,8 +117,8 @@ Screening band: stop-and-review
 ```
 
 Two things to notice. The band rule announces itself as a convention with no
-source, because it is one. And the chain bottoms out in `[given]` — facts the
-scenario or the ontology supplied — so there is nothing between the input and
+source, because it is one. And the chain bottoms out in `[given]` - facts the
+scenario or the ontology supplied - so there is nothing between the input and
 the conclusion that a reader cannot inspect.
 
 This is a hand-written illustration. It is not a record of a real event and
@@ -134,8 +134,8 @@ available. The parser covers the Turtle 1.1 subset the file uses and raises with
 a line and column on anything else; what it does not support is listed in its
 module docstring.
 
-Alignments are **reified** — each is an individual with a local factor, an
-external factor, a match strength and a citation — rather than direct
+Alignments are **reified** - each is an individual with a local factor, an
+external factor, a match strength and a citation - rather than direct
 `skos:closeMatch` triples. That costs verbosity and buys the ability to attach a
 source and a caveat to a single correspondence, which is the whole point of the
 exercise.
@@ -164,7 +164,7 @@ A bottom-up Datalog evaluator with stratified negation as failure.
   per stratum, which is ample for twenty factors and twenty-one rules.
 
 Every rule declares a `basis`. `literature` means the proposition appears in the
-cited source and the rule must carry a citation — enforced in `Rule.__post_init__`.
+cited source and the rule must carry a citation - enforced in `Rule.__post_init__`.
 `convention` means the author chose a threshold and no source supports it. Every
 screening-band rule is `convention`, and a test fails if one ever claims
 otherwise. The distinction is printed in every trace, because the difference
@@ -249,7 +249,7 @@ The ones most likely to matter, in rough order of severity.
 8. **No time-of-day or circadian factor.** CREAM has one; IDHEAS-G does not, so
    neither does this. It is recorded as a coverage gap rather than quietly
    dropped. Closing it honestly would need an exposure denominator by hour of
-   shift, which no public dataset supplies — the problem Hanecke et al. (1998)
+   shift, which no public dataset supplies - the problem Hanecke et al. (1998)
    had to build estimated exposure models to work around.
 9. **Mitigations are counted, never judged.** The engine records that a control
    was claimed. It cannot tell whether it exists or works.
@@ -326,7 +326,7 @@ python3 -m unittest discover -s tests -t .
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of
-  scope with a reason — nothing may be silently dropped
+  scope with a reason - nothing may be silently dropped
 - every alignment cites a source; no alignment claims `exact`
 - every citation key resolves to a `CITATIONS.md` entry that declares how it was
   verified, and no entry is unused
@@ -348,7 +348,7 @@ are marked `primary`, meaning the document was retrieved and the specific wordin
 read in it rather than taken on trust. That includes NUREG-2198, where the
 four-context sentence, all twenty PIF names and each PIF's context assignment
 were confirmed against the published report. The five that remain `bibliographic`
-say so, and `docs/PROVENANCE.md` names the weakest link — the CREAM rows, which
+say so, and `docs/PROVENANCE.md` names the weakest link - the CREAM rows, which
 are transcribed at one remove and should be checked against Hollnagel before
 anyone quotes them.
 

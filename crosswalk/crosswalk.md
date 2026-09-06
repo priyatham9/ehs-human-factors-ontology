@@ -17,11 +17,11 @@ close the correspondence is. Strengths are **analyst judgements made against
 transcribed source wording**, not measured agreement. Nobody has adjudicated
 them but the author, and there is no inter-rater reliability figure to quote.
 
-- **exact** — Same construct, same scope, wording effectively identical.
-- **close** — Same construct; wording or scope differs in ways unlikely to change an assessment.
-- **broader** — The external factor subsumes the local factor along with other content.
-- **narrower** — The external factor covers only part of the local factor.
-- **partial** — Overlapping but non-nested constructs; the correspondence is interpretive.
+- **exact** - Same construct, same scope, wording effectively identical.
+- **close** - Same construct; wording or scope differs in ways unlikely to change an assessment.
+- **broader** - The external factor subsumes the local factor along with other content.
+- **narrower** - The external factor covers only part of the local factor.
+- **partial** - Overlapping but non-nested constructs; the correspondence is interpretive.
 
 `**no counterpart**` is an assertion, not a blank. It says the framework has
 no factor corresponding to this one, and it is recorded so that it can be
@@ -94,20 +94,20 @@ Rows where the correspondence needed qualifying. These are the places a
 reviewer is most likely to disagree, which is why they are listed rather
 than buried in the Turtle.
 
-- **Equipment and tools → Ergonomics and human-machine interface** (partial) — SPAR-H has no tools-and-parts PSF; the correspondence is to the ergonomics PSF only in so far as tools form part of the interface.
-- **Mental fatigue → Time of day (circadian rhythm)** (partial) — CREAM's circadian CPC is the only explicit time-of-day factor in any of the five frameworks, and it is not the same construct as mental fatigue.
-- **Multitasking, interruptions and distractions → Adverse mental states** (partial) — HFACS lists distraction among adverse mental states, which conflates an environmental demand with an operator state.
-- **Noise and communication pathways → Crew collaboration quality** (partial) — Only the communication-pathway half of the local factor overlaps.
-- **Procedures, guidance and instructions → Operational process** (broader) — HFACS has no procedures category at the precondition level; the nearest home is the organisational-level operational process.
-- **Scenario familiarity → Experience and training** (partial) — SPAR-H treats novelty as a property of the operator (experience) rather than of the scenario. The two are not the same construct.
-- **Staffing → Resource management** (close) — Note the level shift: a precondition-level factor here maps to an organisational-level HFACS category.
-- **Staffing → Work processes** (partial) — SPAR-H has no staffing PSF. Staffing adequacy falls inside its work-processes PSF only by implication.
-- **Task complexity → Planned inappropriate operations** (partial) — Weak. HFACS has no task-complexity category; the nearest is a supervisory failure to match task to crew.
-- **Team and organisation factors → Communication (organisation)** (partial) — One local factor absorbing four HSE organisation factors is a sign of coarseness, not of coverage.
-- **Time pressure and stress → Stress and stressors** (close) — One IDHEAS-G factor spans two SPAR-H PSFs. Anyone porting SPAR-H multipliers across this boundary is double counting.
-- **Training → Resource management** (partial) — Interpretive. HFACS distributes training deficiency across organisational resource management and supervisory failure rather than giving it a precondition category.
-- **Work processes → Work processes** (close) — Identical label in both frameworks; IDHEAS-G took the term from SPAR-H.
-- **Workplace accessibility and habitability → Working environment** (broader) — HSE bundles noise, heat, space, lighting and ventilation into one factor; IDHEAS-G splits them across four.
+- **Equipment and tools → Ergonomics and human-machine interface** (partial) - SPAR-H has no tools-and-parts PSF; the correspondence is to the ergonomics PSF only in so far as tools form part of the interface.
+- **Mental fatigue → Time of day (circadian rhythm)** (partial) - CREAM's circadian CPC is the only explicit time-of-day factor in any of the five frameworks, and it is not the same construct as mental fatigue.
+- **Multitasking, interruptions and distractions → Adverse mental states** (partial) - HFACS lists distraction among adverse mental states, which conflates an environmental demand with an operator state.
+- **Noise and communication pathways → Crew collaboration quality** (partial) - Only the communication-pathway half of the local factor overlaps.
+- **Procedures, guidance and instructions → Operational process** (broader) - HFACS has no procedures category at the precondition level; the nearest home is the organisational-level operational process.
+- **Scenario familiarity → Experience and training** (partial) - SPAR-H treats novelty as a property of the operator (experience) rather than of the scenario. The two are not the same construct.
+- **Staffing → Resource management** (close) - Note the level shift: a precondition-level factor here maps to an organisational-level HFACS category.
+- **Staffing → Work processes** (partial) - SPAR-H has no staffing PSF. Staffing adequacy falls inside its work-processes PSF only by implication.
+- **Task complexity → Planned inappropriate operations** (partial) - Weak. HFACS has no task-complexity category; the nearest is a supervisory failure to match task to crew.
+- **Team and organisation factors → Communication (organisation)** (partial) - One local factor absorbing four HSE organisation factors is a sign of coarseness, not of coverage.
+- **Time pressure and stress → Stress and stressors** (close) - One IDHEAS-G factor spans two SPAR-H PSFs. Anyone porting SPAR-H multipliers across this boundary is double counting.
+- **Training → Resource management** (partial) - Interpretive. HFACS distributes training deficiency across organisational resource management and supervisory failure rather than giving it a precondition category.
+- **Work processes → Work processes** (close) - Identical label in both frameworks; IDHEAS-G took the term from SPAR-H.
+- **Workplace accessibility and habitability → Working environment** (broader) - HSE bundles noise, heat, space, lighting and ventilation into one factor; IDHEAS-G splits them across four.
 
 ## Coverage gaps
 
@@ -189,13 +189,13 @@ against, and so their absence is not read as an oversight.
 
 ## Source documents
 
-- **CREAM** — Hollnagel, E. (1998). Cognitive Reliability and Error Analysis Method (CREAM). Oxford: Elsevier Science. [`hollnagel1998`]
+- **CREAM** - Hollnagel, E. (1998). Cognitive Reliability and Error Analysis Method (CREAM). Oxford: Elsevier Science. [`hollnagel1998`]
  - The nine CPC labels used here were transcribed from an open-access secondary source (Shirali et al. 2019, MethodsX) because the book text was not consulted directly. See ../docs/PROVENANCE.md.
-- **HFACS** — Shappell, S.A. & Wiegmann, D.A. (2000). The Human Factors Analysis and Classification System--HFACS. DOT/FAA/AM-00/7. Revised taxonomy as figured in Shappell et al. (2006), DOT/FAA/AM-06/18. [`shappell2000`, `shappell2006`]
+- **HFACS** - Shappell, S.A. & Wiegmann, D.A. (2000). The Human Factors Analysis and Classification System--HFACS. DOT/FAA/AM-00/7. Revised taxonomy as figured in Shappell et al. (2006), DOT/FAA/AM-06/18. [`shappell2000`, `shappell2006`]
  - Two versions matter here. The 2000 report subdivides Preconditions into Substandard Conditions and Substandard Practices of Operators. The revised taxonomy figured in the 2006 report uses Environmental Factors, Condition of Operators and Personnel Factors. The crosswalk maps to the revised taxonomy and says so.
-- **HSE Performance Influencing Factors** — Health and Safety Executive. Performance Influencing Factors (PIFs). HSE human factors guidance, https://www.hse.gov.uk/humanfactors/assets/docs/pifs.pdf [`hse_pifs`]
+- **HSE Performance Influencing Factors** - Health and Safety Executive. Performance Influencing Factors (PIFs). HSE human factors guidance, https://www.hse.gov.uk/humanfactors/assets/docs/pifs.pdf [`hse_pifs`]
  - HSE states of its own list: 'NB. This list is not exhaustive'.
-- **IDHEAS-G** — U.S. Nuclear Regulatory Commission (2021). The General Methodology of an Integrated Human Event Analysis System (IDHEAS-G). NUREG-2198. [`nureg2198`]
-- **SPAR-H** — Gertman, D.I., Blackman, H.S., Marble, J.L., Byers, J.C. & Smith, C.L. (2005). The SPAR-H Human Reliability Analysis Method. NUREG/CR-6883, INL/EXT-05-00509. [`gertman2005`]
+- **IDHEAS-G** - U.S. Nuclear Regulatory Commission (2021). The General Methodology of an Integrated Human Event Analysis System (IDHEAS-G). NUREG-2198. [`nureg2198`]
+- **SPAR-H** - Gertman, D.I., Blackman, H.S., Marble, J.L., Byers, J.C. & Smith, C.L. (2005). The SPAR-H Human Reliability Analysis Method. NUREG/CR-6883, INL/EXT-05-00509. [`gertman2005`]
 
 Full bibliography with verification status: `../CITATIONS.md`.
