@@ -87,6 +87,25 @@ class ErrorMode:
     label: str
     control_level: Optional[str]
     definition: str
+    approximates: Tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class MacrocognitiveFunction:
+    """One of the five IDHEAS-G macrocognitive functions."""
+
+    curie: str
+    label: str
+    definition: str
+
+
+@dataclass(frozen=True)
+class CognitiveFailureMode:
+    """A failure mode of one macrocognitive function."""
+
+    curie: str
+    label: str
+    function: str
 
 
 @dataclass(frozen=True)
@@ -100,6 +119,8 @@ class Factor:
     source_refs: Tuple[str, ...]
     predisposes_to: Tuple[str, ...]
     raises_demand_on: Tuple[str, ...]
+    applies_to_functions: Tuple[str, ...]
+    affects_failure_modes: Tuple[str, ...]
     observable_proxies: Tuple[str, ...]
     boundary_notes: Tuple[str, ...]
     comment: Optional[str]
@@ -169,6 +190,8 @@ class Ontology:
         self.dimensions: Dict[str, Dimension] = {}
         self.levels: Dict[str, FactorLevel] = {}
         self.error_modes: Dict[str, ErrorMode] = {}
+        self.functions: Dict[str, MacrocognitiveFunction] = {}
+        self.failure_modes: Dict[str, CognitiveFailureMode] = {}
         self.factors: Dict[str, Factor] = {}
         self.frameworks: Dict[str, Framework] = {}
         self.external_factors: Dict[str, ExternalFactor] = {}
@@ -239,6 +262,26 @@ class Ontology:
                 label=self._label(node),
                 control_level=self._opt_curie(g.value(node, "ehs:arisesAt")),
                 definition=self._lit(node, "skos:definition") or "",
+                approximates=tuple(
+                    self._curie(o) for o in g.objects(node, "ehs:approximatesFailureMode")
+                ),
+            )
+
+        for node in g.instances_of("ehs:MacrocognitiveFunction"):
+            curie = self._curie(node)
+            self.functions[curie] = MacrocognitiveFunction(
+                curie=curie,
+                label=self._label(node),
+                definition=self._lit(node, "skos:definition") or "",
+            )
+
+        for node in g.instances_of("ehs:CognitiveFailureMode"):
+            curie = self._curie(node)
+            function = g.value(node, "ehs:failureOfFunction")
+            if function is None:
+                raise OntologyError(f"{curie} has no ehs:failureOfFunction")
+            self.failure_modes[curie] = CognitiveFailureMode(
+                curie=curie, label=self._label(node), function=self._curie(function)
             )
 
         for node in g.instances_of("ehs:PerformanceInfluencingFactor"):
@@ -258,6 +301,12 @@ class Ontology:
                 raises_demand_on=tuple(
                     self._curie(o)
                     for o in g.objects(node, "ehs:degradationRaisesDemandOn")
+                ),
+                applies_to_functions=tuple(
+                    self._curie(o) for o in g.objects(node, "ehs:appliesToFunction")
+                ),
+                affects_failure_modes=tuple(
+                    self._curie(o) for o in g.objects(node, "ehs:affectsFailureMode")
                 ),
                 observable_proxies=self._lits(node, "ehs:observableProxy"),
                 boundary_notes=self._lits(node, "ehs:boundaryNote"),
@@ -335,6 +384,26 @@ class Ontology:
             for mode in factor.predisposes_to:
                 if mode not in self.error_modes:
                     problems.append(f"{factor.curie} predisposes to unknown {mode}")
+            if not factor.applies_to_functions:
+                problems.append(f"{factor.curie} applies to no macrocognitive function")
+            for fn in factor.applies_to_functions:
+                if fn not in self.functions:
+                    problems.append(f"{factor.curie} applies to unknown function {fn}")
+            for cfm in factor.affects_failure_modes:
+                if cfm not in self.failure_modes:
+                    problems.append(f"{factor.curie} affects unknown failure mode {cfm}")
+                elif self.failure_modes[cfm].function not in factor.applies_to_functions:
+                    problems.append(
+                        f"{factor.curie} affects {cfm} but does not apply to its function"
+                    )
+
+        for cfm in self.failure_modes.values():
+            if cfm.function not in self.functions:
+                problems.append(f"{cfm.curie} is a failure of unknown function {cfm.function}")
+        for mode in self.error_modes.values():
+            for cfm in mode.approximates:
+                if cfm not in self.failure_modes:
+                    problems.append(f"{mode.curie} approximates unknown failure mode {cfm}")
 
         for alignment in self.alignments.values():
             if alignment.local_factor not in self.factors:

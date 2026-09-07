@@ -187,6 +187,33 @@ against, and so their absence is not read as an oversight.
 | System | IDHEAS-G | Bound to a context dimension by ehs:correspondsToIdheasCategory. |
 | Task | IDHEAS-G | Bound to a context dimension by ehs:correspondsToIdheasCategory. |
 
+## Macrocognitive function applicability
+
+IDHEAS-G defines PIF applicability and effect relative to macrocognitive functions and their failure modes, not as free-standing context variables. The table records which functions each local factor applies to. The assignment is the repository author's reading of NUREG-2198, not a table copied from it; see `../docs/COMPATIBILITY.md` for the argument and its limits.
+
+| Local factor | Applies to function(s) | Affects failure mode(s) |
+|---|---|---|
+| Equipment and tools | action execution | failure of action execution |
+| Human-system interface | action execution, detection | failure of action execution, failure of detection |
+| Information availability and reliability | detection, understanding | failure of detection, failure of understanding |
+| Mental fatigue | action execution, detection | failure of action execution, failure of detection |
+| Multitasking, interruptions and distractions | action execution, detection | failure of action execution, failure of detection |
+| Noise and communication pathways | detection, interteam coordination | failure of detection, failure of interteam coordination |
+| Physical demands | action execution | failure of action execution |
+| Procedures, guidance and instructions | action execution, decisionmaking | failure of action execution, failure of decisionmaking |
+| Resistance to physical movement | action execution | failure of action execution |
+| Scenario familiarity | decisionmaking, understanding | failure of decisionmaking, failure of understanding |
+| Staffing | interteam coordination | failure of interteam coordination |
+| System transparency to personnel | understanding | failure of understanding |
+| Task complexity | decisionmaking, understanding | failure of decisionmaking, failure of understanding |
+| Team and organisation factors | interteam coordination | failure of interteam coordination |
+| Thermal conditions | action execution | failure of action execution |
+| Time pressure and stress | decisionmaking, understanding | failure of decisionmaking, failure of understanding |
+| Training | decisionmaking, understanding | failure of decisionmaking, failure of understanding |
+| Work processes | action execution, interteam coordination | failure of action execution, failure of interteam coordination |
+| Workplace accessibility and habitability | action execution | failure of action execution |
+| Workplace visibility | detection | failure of detection |
+
 ## Source documents
 
 - **CREAM** - Hollnagel, E. (1998). Cognitive Reliability and Error Analysis Method (CREAM). Oxford: Elsevier Science. [`hollnagel1998`]

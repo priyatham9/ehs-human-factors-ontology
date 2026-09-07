@@ -114,6 +114,17 @@ ehs:MatchStrength a owl:Class ;
     rdfs:label "match strength"@en ;
     skos:definition "How closely a local factor corresponds to an external factor."@en .
 
+ehs:MacrocognitiveFunction a owl:Class ;
+    rdfs:label "macrocognitive function"@en ;
+    skos:definition "One of the five high-level cognitive functions IDHEAS-G uses to model a human action: detection, understanding, decisionmaking, action execution, and interteam coordination."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:CognitiveFailureMode a owl:Class ;
+    rdfs:label "cognitive failure mode"@en ;
+    skos:definition "The way a macrocognitive function can fail. IDHEAS-G defines failure modes relative to a function, and defines PIF effects relative to those failure modes."@en ;
+    rdfs:comment "IDHEAS-G enumerates several finer failure modes within each function. Only the function-level failure is modelled here; the finer modes are not reproduced, so nothing below this granularity is claimed."@en ;
+    ehs:sourceRef "nureg2198" .
+
 ehs:CoverageGap a owl:Class ;
     rdfs:label "coverage gap"@en ;
     skos:definition "An external factor this ontology does not cover, or covers only at partial strength, recorded explicitly."@en ;
@@ -125,6 +136,8 @@ would be a contradiction, and tests/test_crosswalk.py fails on one."""@en .
 
 ehs:ContextDimension owl:disjointWith ehs:PerformanceInfluencingFactor .
 ehs:ErrorMode        owl:disjointWith ehs:ControlLevel .
+ehs:ErrorMode        owl:disjointWith ehs:CognitiveFailureMode .
+ehs:MacrocognitiveFunction owl:disjointWith ehs:ControlLevel .
 
 
 ##############################################################################
@@ -186,6 +199,32 @@ ehs:arisesAt a owl:ObjectProperty , owl:FunctionalProperty ;
     rdfs:label "arises at"@en ;
     rdfs:domain ehs:ErrorMode ;
     rdfs:range ehs:ControlLevel .
+
+ehs:appliesToFunction a owl:ObjectProperty ;
+    rdfs:label "applies to macrocognitive function"@en ;
+    rdfs:domain ehs:PerformanceInfluencingFactor ;
+    rdfs:range ehs:MacrocognitiveFunction ;
+    rdfs:comment "A PIF is applicable only relative to the macrocognitive function whose task it affects. This property records that function-specific applicability instead of treating the PIF as a free-standing context variable."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:affectsFailureMode a owl:ObjectProperty ;
+    rdfs:label "affects cognitive failure mode"@en ;
+    rdfs:domain ehs:PerformanceInfluencingFactor ;
+    rdfs:range ehs:CognitiveFailureMode ;
+    rdfs:comment "The failure mode, of a specific macrocognitive function, whose likelihood a degraded PIF is taken to raise. Every affectsFailureMode assertion must point to a failure mode of a function the PIF appliesToFunction."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:failureOfFunction a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:label "failure of function"@en ;
+    rdfs:domain ehs:CognitiveFailureMode ;
+    rdfs:range ehs:MacrocognitiveFunction ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:approximatesFailureMode a owl:ObjectProperty ;
+    rdfs:label "approximates cognitive failure mode"@en ;
+    rdfs:domain ehs:ErrorMode ;
+    rdfs:range ehs:CognitiveFailureMode ;
+    rdfs:comment "An SRK/GEMS error mode and the IDHEAS-G failure mode it most nearly corresponds to. This is a compatibility mapping made by the author of this repository, not a claim found in either source. See docs/COMPATIBILITY.md for where it is clean and where it is not."@en .
 
 ehs:uncoveredFactor a owl:ObjectProperty , owl:FunctionalProperty ;
     rdfs:label "uncovered factor"@en ;
@@ -286,6 +325,68 @@ ehs:KnowledgeBasedMistake a owl:NamedIndividual , ehs:ErrorMode ;
 
 
 ##############################################################################
+# 6a. IDHEAS-G macrocognitive functions and their failure modes
+#
+#    PIF applicability and effect are stated relative to these, not globally.
+#    The definitions are paraphrases of NUREG-2198; the assignment of each PIF
+#    to functions is the repository author's reading and is marked as such.
+##############################################################################
+
+ehs:Detection a owl:NamedIndividual , ehs:MacrocognitiveFunction ;
+    rdfs:label "detection"@en ;
+    skos:definition "Noticing and recognising cues, alarms and other information that a change in plant state has occurred."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:FailureOfDetection a owl:NamedIndividual , ehs:CognitiveFailureMode ;
+    rdfs:label "failure of detection"@en ;
+    ehs:failureOfFunction ehs:Detection ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:Understanding a owl:NamedIndividual , ehs:MacrocognitiveFunction ;
+    rdfs:label "understanding"@en ;
+    skos:definition "Forming a situation model from the information detected."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:FailureOfUnderstanding a owl:NamedIndividual , ehs:CognitiveFailureMode ;
+    rdfs:label "failure of understanding"@en ;
+    ehs:failureOfFunction ehs:Understanding ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:Decisionmaking a owl:NamedIndividual , ehs:MacrocognitiveFunction ;
+    rdfs:label "decisionmaking"@en ;
+    skos:definition "Selecting a response given the situation model."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:FailureOfDecisionmaking a owl:NamedIndividual , ehs:CognitiveFailureMode ;
+    rdfs:label "failure of decisionmaking"@en ;
+    ehs:failureOfFunction ehs:Decisionmaking ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:ActionExecution a owl:NamedIndividual , ehs:MacrocognitiveFunction ;
+    rdfs:label "action execution"@en ;
+    skos:definition "Carrying out the selected response on the plant."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:FailureOfActionExecution a owl:NamedIndividual , ehs:CognitiveFailureMode ;
+    rdfs:label "failure of action execution"@en ;
+    ehs:failureOfFunction ehs:ActionExecution ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:InterteamCoordination a owl:NamedIndividual , ehs:MacrocognitiveFunction ;
+    rdfs:label "interteam coordination"@en ;
+    skos:definition "Communication and coordination across teams and organisational units."@en ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:FailureOfInterteamCoordination a owl:NamedIndividual , ehs:CognitiveFailureMode ;
+    rdfs:label "failure of interteam coordination"@en ;
+    ehs:failureOfFunction ehs:InterteamCoordination ;
+    ehs:sourceRef "nureg2198" .
+
+ehs:SkillBasedSlipOrLapse ehs:approximatesFailureMode ehs:FailureOfActionExecution .
+ehs:RuleBasedMistake ehs:approximatesFailureMode ehs:FailureOfDecisionmaking .
+ehs:KnowledgeBasedMistake ehs:approximatesFailureMode ehs:FailureOfUnderstanding , ehs:FailureOfDecisionmaking .
+
+##############################################################################
 # 7. The four context dimensions
 #
 #    Each is bound to the IDHEAS-G category it renames. This binding is the
@@ -335,6 +436,9 @@ ehs:SystemContext a owl:NamedIndividual , ehs:ContextDimension ;
 
 ehs:WorkplaceAccessibilityAndHabitability a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Workplace accessibility and habitability"@en ;
+    ehs:appliesToFunction ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Accessibility/habitability of workplace including travel paths" ;
     ehs:inDimension ehs:OperationalContext ;
     ehs:sourceRef "nureg2198" ;
@@ -342,6 +446,9 @@ ehs:WorkplaceAccessibilityAndHabitability a owl:NamedIndividual , ehs:Performanc
 
 ehs:WorkplaceVisibility a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Workplace visibility"@en ;
+    ehs:appliesToFunction ehs:Detection ;
+    ehs:affectsFailureMode ehs:FailureOfDetection ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Workplace visibility" ;
     ehs:inDimension ehs:OperationalContext ;
     ehs:sourceRef "nureg2198" ;
@@ -349,6 +456,9 @@ ehs:WorkplaceVisibility a owl:NamedIndividual , ehs:PerformanceInfluencingFactor
 
 ehs:NoiseAndCommunicationPathways a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Noise and communication pathways"@en ;
+    ehs:appliesToFunction ehs:Detection , ehs:InterteamCoordination ;
+    ehs:affectsFailureMode ehs:FailureOfDetection , ehs:FailureOfInterteamCoordination ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Noise in workplace and communication pathways" ;
     ehs:inDimension ehs:OperationalContext ;
     ehs:sourceRef "nureg2198" ;
@@ -356,6 +466,9 @@ ehs:NoiseAndCommunicationPathways a owl:NamedIndividual , ehs:PerformanceInfluen
 
 ehs:ThermalConditions a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Thermal conditions"@en ;
+    ehs:appliesToFunction ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Cold/heat/humidity" ;
     ehs:inDimension ehs:OperationalContext ;
     ehs:sourceRef "nureg2198" ;
@@ -363,6 +476,9 @@ ehs:ThermalConditions a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
 
 ehs:ResistanceToPhysicalMovement a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Resistance to physical movement"@en ;
+    ehs:appliesToFunction ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Resistance to physical movement" ;
     ehs:inDimension ehs:OperationalContext ;
     ehs:sourceRef "nureg2198" ;
@@ -372,6 +488,9 @@ ehs:ResistanceToPhysicalMovement a owl:NamedIndividual , ehs:PerformanceInfluenc
 
 ehs:SystemTransparency a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "System transparency to personnel"@en ;
+    ehs:appliesToFunction ehs:Understanding ;
+    ehs:affectsFailureMode ehs:FailureOfUnderstanding ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "System and I&C transparency to personnel" ;
     ehs:inDimension ehs:SystemContext ;
     ehs:sourceRef "nureg2198" ;
@@ -381,6 +500,9 @@ ehs:SystemTransparency a owl:NamedIndividual , ehs:PerformanceInfluencingFactor 
 
 ehs:HumanSystemInterface a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Human-system interface"@en ;
+    ehs:appliesToFunction ehs:Detection , ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfDetection , ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "HSI" ;
     ehs:inDimension ehs:SystemContext ;
     ehs:sourceRef "nureg2198" ;
@@ -389,6 +511,9 @@ ehs:HumanSystemInterface a owl:NamedIndividual , ehs:PerformanceInfluencingFacto
 
 ehs:EquipmentAndTools a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Equipment and tools"@en ;
+    ehs:appliesToFunction ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Equipment and tools" ;
     ehs:inDimension ehs:SystemContext ;
     ehs:sourceRef "nureg2198" ;
@@ -398,6 +523,9 @@ ehs:EquipmentAndTools a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
 
 ehs:Staffing a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Staffing"@en ;
+    ehs:appliesToFunction ehs:InterteamCoordination ;
+    ehs:affectsFailureMode ehs:FailureOfInterteamCoordination ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Staffing" ;
     ehs:inDimension ehs:HumanContext ;
     ehs:sourceRef "nureg2198" ;
@@ -405,6 +533,9 @@ ehs:Staffing a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
 
 ehs:ProceduresGuidanceAndInstructions a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Procedures, guidance and instructions"@en ;
+    ehs:appliesToFunction ehs:Decisionmaking , ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfDecisionmaking , ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Procedures, guidance, and instructions" ;
     ehs:inDimension ehs:HumanContext ;
     ehs:sourceRef "nureg2198" ;
@@ -414,6 +545,9 @@ ehs:ProceduresGuidanceAndInstructions a owl:NamedIndividual , ehs:PerformanceInf
 
 ehs:Training a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Training"@en ;
+    ehs:appliesToFunction ehs:Understanding , ehs:Decisionmaking ;
+    ehs:affectsFailureMode ehs:FailureOfUnderstanding , ehs:FailureOfDecisionmaking ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Training" ;
     ehs:inDimension ehs:HumanContext ;
     ehs:sourceRef "nureg2198" ;
@@ -422,6 +556,9 @@ ehs:Training a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
 
 ehs:TeamAndOrganizationFactors a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Team and organisation factors"@en ;
+    ehs:appliesToFunction ehs:InterteamCoordination ;
+    ehs:affectsFailureMode ehs:FailureOfInterteamCoordination ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Team and organization factors" ;
     ehs:inDimension ehs:HumanContext ;
     ehs:sourceRef "nureg2198" ;
@@ -429,6 +566,9 @@ ehs:TeamAndOrganizationFactors a owl:NamedIndividual , ehs:PerformanceInfluencin
 
 ehs:WorkProcesses a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Work processes"@en ;
+    ehs:appliesToFunction ehs:InterteamCoordination , ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfInterteamCoordination , ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Work processes" ;
     ehs:inDimension ehs:HumanContext ;
     ehs:sourceRef "nureg2198" ;
@@ -438,6 +578,9 @@ ehs:WorkProcesses a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
 
 ehs:InformationAvailabilityAndReliability a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Information availability and reliability"@en ;
+    ehs:appliesToFunction ehs:Detection , ehs:Understanding ;
+    ehs:affectsFailureMode ehs:FailureOfDetection , ehs:FailureOfUnderstanding ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Information availability and reliability" ;
     ehs:inDimension ehs:TaskContext ;
     ehs:sourceRef "nureg2198" ;
@@ -446,6 +589,9 @@ ehs:InformationAvailabilityAndReliability a owl:NamedIndividual , ehs:Performanc
 
 ehs:ScenarioFamiliarity a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Scenario familiarity"@en ;
+    ehs:appliesToFunction ehs:Understanding , ehs:Decisionmaking ;
+    ehs:affectsFailureMode ehs:FailureOfUnderstanding , ehs:FailureOfDecisionmaking ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Scenario familiarity" ;
     ehs:inDimension ehs:TaskContext ;
     ehs:sourceRef "nureg2198" ;
@@ -456,6 +602,9 @@ ehs:ScenarioFamiliarity a owl:NamedIndividual , ehs:PerformanceInfluencingFactor
 
 ehs:MultitaskingInterruptionsAndDistractions a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Multitasking, interruptions and distractions"@en ;
+    ehs:appliesToFunction ehs:Detection , ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfDetection , ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Multitasking, interruptions, and distractions" ;
     ehs:inDimension ehs:TaskContext ;
     ehs:sourceRef "nureg2198" ;
@@ -464,6 +613,9 @@ ehs:MultitaskingInterruptionsAndDistractions a owl:NamedIndividual , ehs:Perform
 
 ehs:TaskComplexity a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Task complexity"@en ;
+    ehs:appliesToFunction ehs:Understanding , ehs:Decisionmaking ;
+    ehs:affectsFailureMode ehs:FailureOfUnderstanding , ehs:FailureOfDecisionmaking ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Task complexity" ;
     ehs:inDimension ehs:TaskContext ;
     ehs:sourceRef "nureg2198" ;
@@ -473,6 +625,9 @@ ehs:TaskComplexity a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
 
 ehs:MentalFatigue a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Mental fatigue"@en ;
+    ehs:appliesToFunction ehs:Detection , ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfDetection , ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Mental fatigue" ;
     ehs:inDimension ehs:TaskContext ;
     ehs:sourceRef "nureg2198" ;
@@ -483,6 +638,9 @@ ehs:MentalFatigue a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
 
 ehs:TimePressureAndStress a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Time pressure and stress"@en ;
+    ehs:appliesToFunction ehs:Understanding , ehs:Decisionmaking ;
+    ehs:affectsFailureMode ehs:FailureOfUnderstanding , ehs:FailureOfDecisionmaking ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Time pressure and stress" ;
     ehs:inDimension ehs:TaskContext ;
     ehs:sourceRef "nureg2198" ;
@@ -492,6 +650,9 @@ ehs:TimePressureAndStress a owl:NamedIndividual , ehs:PerformanceInfluencingFact
 
 ehs:PhysicalDemands a owl:NamedIndividual , ehs:PerformanceInfluencingFactor ;
     rdfs:label "Physical demands"@en ;
+    ehs:appliesToFunction ehs:ActionExecution ;
+    ehs:affectsFailureMode ehs:FailureOfActionExecution ;
+    ehs:boundaryNote "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it." ;
     ehs:verbatimLabel "Physical demands" ;
     ehs:inDimension ehs:TaskContext ;
     ehs:sourceRef "nureg2198" ;

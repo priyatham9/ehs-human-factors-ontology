@@ -36,7 +36,7 @@ would band. Quoting a frequency from this corpus as though it described real
 work would be a fabrication, and the fact that the number was computed by
 running real code does not change that.
 
-If a headline number in a paper, a README, a slide or a petition can be traced
+If a headline number in a paper, a README, a slide or a report can be traced
 back to this directory, it is wrong and it should be removed.
 
 ## Guardrails

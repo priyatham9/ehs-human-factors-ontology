@@ -30,9 +30,11 @@ Intensional (derived):
 ``unassessedFactor(F)``             factor with no assessment recorded
 ``mitigatedFactor(F)``              a control is claimed against the factor
 ``unmitigatedDegradation(F)``       degraded and no control claimed
-``degradedInDimension(D, F)``       a degraded factor, with its dimension
-``dimensionDegraded(D)``            at least one degraded factor in D
-``multiDimensionDegradation()``     degradation in two or more dimensions
+``degradedForFunction(N, F)``       a degraded factor, with a function it applies to
+``functionChallenged(N)``           at least one applicable degraded factor for N
+``failureModeElevated(N, K, F)``    factor F raises failure mode K of function N
+``failureModeAggravated(N, K)``     two distinct degraded factors raise K of N
+``multiFunctionChallenge()``        two or more functions challenged
 ``controlDemand(C)``                the task is pushed to a control level
 ``unsupportedControlDemand(C)``     that demand is not backed by training
 ``elevatedErrorMode(M)``            an error mode flagged by a degraded factor
@@ -70,6 +72,9 @@ _E = Var("E")
 _L = Var("L")
 _M = Var("M")
 _C = Var("C")
+_N = Var("N")
+_O = Var("O")
+_K = Var("K")
 
 KNOWLEDGE_BASED = "ehs:KnowledgeBasedControl"
 KB_MISTAKE = "ehs:KnowledgeBasedMistake"
@@ -161,34 +166,68 @@ RULES: Tuple[Rule, ...] = (
         head=_p("unmitigatedDegradation", _F),
         source_refs=("hse_pifs",),
     ),
-    # -- dimension roll-up -------------------------------------------------- #
+    # -- function-specific roll-up (IDHEAS-G structure) -------------------- #
     Rule(
-        rule_id="R07-degraded-in-dimension",
-        description="Attach each degraded factor to its context dimension.",
-        body=(_p("degradedFactor", _F), _p("factorInDimension", _F, _D)),
-        head=_p("degradedInDimension", _D, _F),
-        source_refs=("nureg2198",),
-    ),
-    Rule(
-        rule_id="R08-dimension-degraded",
-        description="A dimension containing any degraded factor is itself degraded.",
-        body=(_p("degradedInDimension", _D, _F),),
-        head=_p("dimensionDegraded", _D),
-        source_refs=("nureg2198",),
-    ),
-    Rule(
-        rule_id="R09-multi-dimension",
+        rule_id="R07-degraded-for-function",
         description=(
-            "Degradation present in two or more distinct dimensions. IDHEAS-G "
-            "treats context as multidimensional, so degradation spread across "
-            "dimensions is worth naming separately from depth within one."
+            "Attach each degraded factor to every macrocognitive function the "
+            "ontology says it applies to. A PIF has no effect outside the functions "
+            "it applies to, so nothing is rolled up across a whole context category."
+        ),
+        body=(_p("degradedFactor", _F), _p("factorAppliesToFunction", _F, _N)),
+        head=_p("degradedForFunction", _N, _F),
+        source_refs=("nureg2198",),
+    ),
+    Rule(
+        rule_id="R08-function-challenged",
+        description="A function with any applicable degraded factor is challenged.",
+        body=(_p("degradedForFunction", _N, _F),),
+        head=_p("functionChallenged", _N),
+        source_refs=("nureg2198",),
+    ),
+    Rule(
+        rule_id="R09-failure-mode-elevated",
+        description=(
+            "A degraded factor raises the cognitive failure mode of the function it "
+            "affects. The function is carried in the conclusion so the trace shows "
+            "which function and which failure mode the finding belongs to."
         ),
         body=(
-            _p("dimensionDegraded", _D),
-            _p("dimensionDegraded", _E),
-            _lt(_D, _E),
+            _p("degradedFactor", _F),
+            _p("factorAffectsFailureMode", _F, _K),
+            _p("failureModeOfFunction", _K, _N),
         ),
-        head=_p("multiDimensionDegradation"),
+        head=_p("failureModeElevated", _N, _K, _F),
+        source_refs=("nureg2198",),
+    ),
+    Rule(
+        rule_id="R12-failure-mode-aggravated",
+        description=(
+            "Two distinct degraded factors raising the same failure mode of the same "
+            "function. Two routes to one failure mode are open; no multiplicative "
+            "claim is made."
+        ),
+        body=(
+            _p("failureModeElevated", _N, _K, _F),
+            _p("failureModeElevated", _N, _K, _G),
+            _lt(_F, _G),
+        ),
+        head=_p("failureModeAggravated", _N, _K),
+        source_refs=("nureg2198",),
+    ),
+    Rule(
+        rule_id="R13-multi-function",
+        description=(
+            "Two or more distinct macrocognitive functions are challenged. This "
+            "replaces the earlier multi-dimension rule: IDHEAS-G structures PIF "
+            "effects by function, not by context category."
+        ),
+        body=(
+            _p("functionChallenged", _N),
+            _p("functionChallenged", _O),
+            _lt(_N, _O),
+        ),
+        head=_p("multiFunctionChallenge"),
         source_refs=("nureg2198",),
     ),
     # -- cognitive control demand ------------------------------------------ #
@@ -297,18 +336,29 @@ RULES: Tuple[Rule, ...] = (
         basis="convention",
     ),
     Rule(
-        rule_id="R31-band-elevated-multi-dimension",
+        rule_id="R31-band-elevated-multi-function",
         description=(
-            "Unmitigated degradation in two or more dimensions raises the band to "
-            "elevated. Threshold chosen by the author; no source supports it."
+            "Unmitigated degradation bearing on two or more distinct macrocognitive "
+            "functions raises the band to elevated. Threshold chosen by the author; "
+            "no source supports it."
         ),
         body=(
             _p("unmitigatedDegradation", _F),
-            _p("factorInDimension", _F, _D),
+            _p("factorAppliesToFunction", _F, _N),
             _p("unmitigatedDegradation", _G),
-            _p("factorInDimension", _G, _E),
-            _lt(_D, _E),
+            _p("factorAppliesToFunction", _G, _O),
+            _lt(_N, _O),
         ),
+        head=_p("screeningBand", "elevated"),
+        basis="convention",
+    ),
+    Rule(
+        rule_id="R35-band-elevated-failure-mode-aggravated",
+        description=(
+            "An aggravated cognitive failure mode of any function raises the band to "
+            "elevated. Threshold chosen by the author; no source supports it."
+        ),
+        body=(_p("failureModeAggravated", _N, _K),),
         head=_p("screeningBand", "elevated"),
         basis="convention",
     ),
@@ -377,9 +427,15 @@ def ontology_facts(ontology: Ontology) -> List[Fact]:
             facts.append(Fact("factorPredisposesTo", (factor.curie, mode)))
         for control in factor.raises_demand_on:
             facts.append(Fact("factorRaisesDemandOn", (factor.curie, control)))
+        for function in factor.applies_to_functions:
+            facts.append(Fact("factorAppliesToFunction", (factor.curie, function)))
+        for cfm in factor.affects_failure_modes:
+            facts.append(Fact("factorAffectsFailureMode", (factor.curie, cfm)))
     for mode in ontology.error_modes.values():
         if mode.control_level is not None:
             facts.append(Fact("errorModeAtControl", (mode.curie, mode.control_level)))
+    for cfm in ontology.failure_modes.values():
+        facts.append(Fact("failureModeOfFunction", (cfm.curie, cfm.function)))
     for level in ontology.levels.values():
         if level.is_degraded:
             facts.append(Fact("levelDegraded", (level.curie,)))

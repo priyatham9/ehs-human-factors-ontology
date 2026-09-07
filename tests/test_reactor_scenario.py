@@ -201,6 +201,33 @@ class TestReactorScenario(unittest.TestCase):
         self.assertIn("IDHEAS-G", text)
         self.assertIn("NUREG-2198", text)
 
+    def test_understanding_and_decisionmaking_are_the_challenged_functions(self) -> None:
+        """The three stated conditions bear on understanding and decisionmaking;
+        procedures also apply to action execution. Detection and interteam
+        coordination are untouched, and the report must say so by omission."""
+        self.assertEqual(
+            self.assessment.challenged_functions,
+            ["ehs:ActionExecution", "ehs:Decisionmaking", "ehs:Understanding"],
+        )
+        self.assertIn(
+            ("ehs:Decisionmaking", "ehs:FailureOfDecisionmaking"),
+            self.assessment.aggravated_failure_modes,
+        )
+        self.assertIn(
+            ("ehs:Understanding", "ehs:FailureOfUnderstanding"),
+            self.assessment.aggravated_failure_modes,
+        )
+        self.assertNotIn(
+            ("ehs:ActionExecution", "ehs:FailureOfActionExecution"),
+            self.assessment.aggravated_failure_modes,
+        )
+
+    def test_the_report_names_function_and_failure_mode(self) -> None:
+        text = render_text(self.assessment)
+        self.assertIn("Macrocognitive functions (IDHEAS-G)", text)
+        self.assertIn("failure of decisionmaking", text)
+        self.assertIn("failureModeAggravated(ehs:Understanding, ehs:FailureOfUnderstanding)", text)
+
     # -- counterfactuals: the conclusion must depend on the inputs ---------- #
 
     def test_removing_the_training_deficit_removes_the_unsupported_demand(

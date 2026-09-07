@@ -361,3 +361,32 @@ cited sources: NUREG-2198, NUREG/CR-6883 and DOT/FAA reports are US government
 works; the HSE PIF list is HSE's; CREAM is Hollnagel's. Factor names and short
 labels are transcribed as terminology for the purpose of crosswalking. No source
 document is reproduced here, and none should be added to this repository.
+
+## Macrocognitive functions and failure modes
+
+An internal review observed that IDHEAS-G's twenty PIFs are defined relative
+to macrocognitive functions and their cognitive failure modes, and that the
+ontology had stripped that structure out, bolted the PIF list onto SRK/GEMS
+without a compatibility argument, and rolled PIFs up across whole context
+categories with no basis in the source.
+
+That has been corrected. The ontology now carries the five macrocognitive
+functions (detection, understanding, decisionmaking, action execution,
+interteam coordination) and a function-level failure mode for each. Every
+PIF states which functions it applies to (`ehs:appliesToFunction`) and which
+failure modes it affects (`ehs:affectsFailureMode`); applicability is no
+longer global. The engine's category-level roll-up rules are gone, replaced
+by function-specific rules whose conclusions and derivation traces name the
+function and the failure mode. The worked reactor scenario now reports, for
+example, an aggravated failure of understanding and of decisionmaking with
+action execution elevated and detection untouched.
+
+The function assignment of each PIF is the repository author's reading of
+NUREG-2198, not a table copied from it, and each factor carries a boundary
+note saying so. The argument for how SRK/GEMS error types relate to IDHEAS-G
+failure modes, where the mapping is clean (slips and lapses to action
+execution), where it is not (rule- and knowledge-based mistakes against
+understanding and decisionmaking; nothing at all for detection or interteam
+coordination), and what is consequently not claimed, is in
+[docs/COMPATIBILITY.md](docs/COMPATIBILITY.md). The per-factor function
+table is in `crosswalk/crosswalk.md`.

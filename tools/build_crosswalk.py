@@ -237,6 +237,27 @@ def build_markdown(ontology: Ontology) -> str:
                 f"| {_escape_md(external.out_of_scope_note or '')} |\n"
             )
 
+    # ---- function-specific applicability (IDHEAS-G) ---------------------- #
+    w("\n## Macrocognitive function applicability\n\n")
+    w(
+        "IDHEAS-G defines PIF applicability and effect relative to macrocognitive "
+        "functions and their failure modes, not as free-standing context variables. "
+        "The table records which functions each local factor applies to. The "
+        "assignment is the repository author's reading of NUREG-2198, not a table "
+        "copied from it; see `../docs/COMPATIBILITY.md` for the argument and its "
+        "limits.\n\n"
+    )
+    w("| Local factor | Applies to function(s) | Affects failure mode(s) |\n")
+    w("|---|---|---|\n")
+    for factor in sorted(ontology.factors.values(), key=lambda f: f.label):
+        fns = ", ".join(
+            ontology.functions[c].label for c in sorted(factor.applies_to_functions)
+        )
+        cfms = ", ".join(
+            ontology.failure_modes[c].label for c in sorted(factor.affects_failure_modes)
+        )
+        w(f"| {_escape_md(factor.label)} | {fns} | {cfms} |\n")
+
     # ---- provenance ----------------------------------------------------- #
     w("\n## Source documents\n\n")
     for framework in sorted(

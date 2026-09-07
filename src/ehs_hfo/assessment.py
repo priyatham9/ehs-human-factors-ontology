@@ -60,6 +60,9 @@ class Assessment:
     dimensions: List[DimensionSummary]
     elevated_error_modes: List[str]
     aggravated_error_modes: List[str]
+    challenged_functions: List[str]
+    elevated_failure_modes: List[Tuple[str, str, str]]
+    aggravated_failure_modes: List[Tuple[str, str]]
     unsupported_demands: List[str]
     unmitigated: List[str]
     screening_band: str
@@ -138,6 +141,16 @@ def assess(
         aggravated_error_modes=[
             f.args[0] for f in result.query("aggravatedErrorMode", 1)
         ],
+        challenged_functions=sorted(
+            f.args[0] for f in result.query("functionChallenged", 1)
+        ),
+        elevated_failure_modes=sorted(
+            (f.args[0], f.args[1], f.args[2])
+            for f in result.query("failureModeElevated", 3)
+        ),
+        aggravated_failure_modes=sorted(
+            (f.args[0], f.args[1]) for f in result.query("failureModeAggravated", 2)
+        ),
         unsupported_demands=[
             f.args[0] for f in result.query("unsupportedControlDemand", 1)
         ],
@@ -207,6 +220,22 @@ def render_text(assessment: Assessment, show_traces: bool = True) -> str:
             out.append(f"    unassessed         {names}")
     out.append("")
 
+    out.append("Macrocognitive functions (IDHEAS-G)")
+    out.append(_rule())
+    if assessment.challenged_functions:
+        for fn in assessment.challenged_functions:
+            out.append(f"  Challenged: {ontology.functions[fn].label}")
+            for n, k, f in assessment.elevated_failure_modes:
+                if n == fn:
+                    tag = "aggravated" if (n, k) in assessment.aggravated_failure_modes else "elevated"
+                    out.append(
+                        f"    {tag:10} {ontology.failure_modes[k].label}  "
+                        f"<- {ontology.factor(f).label}"
+                    )
+    else:
+        out.append("  No function challenged by the supplied levels.")
+    out.append("")
+
     out.append("Findings")
     out.append(_rule())
     if assessment.unsupported_demands:
@@ -242,6 +271,10 @@ def render_text(assessment: Assessment, show_traces: bool = True) -> str:
         out.extend("  " + line for line in assessment.band_trace())
         out.append("")
 
+        for n, k in assessment.aggravated_failure_modes:
+            out.append(f"Derivation trace: failureModeAggravated({n}, {k})")
+            out.extend("  " + line for line in assessment.explain("failureModeAggravated", n, k))
+            out.append("")
         for curie in assessment.aggravated_error_modes:
             out.append(f"Derivation trace: aggravatedErrorMode({curie})")
             out.append(_rule())
