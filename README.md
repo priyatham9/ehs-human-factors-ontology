@@ -1,5 +1,7 @@
 # ehs-human-factors-ontology
 
+[![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml)
+
 A machine-readable encoding of the four-context performance-influencing-factor
 structure used in human reliability analysis, an explicit crosswalk from it to
 SPAR-H, CREAM, HFACS and the HSE PIF list, and a dependency-free rule engine
@@ -69,7 +71,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 158 tests
+python3 -m unittest discover -s tests -t .          # 171 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
@@ -311,7 +313,7 @@ src/ehs_hfo/
 tools/build_crosswalk.py    regenerates crosswalk/ from the Turtle
 synthetic/                  fabricated corpus + generator (read its README)
 examples/                   hand-written worked scenario
-tests/                      158 tests, stdlib unittest
+tests/                      171 tests, stdlib unittest
 docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
@@ -322,7 +324,7 @@ CITATIONS.md                bibliography with per-entry verification status
 python3 -m unittest discover -s tests -t .
 ```
 
-158 tests, no third-party dependencies. Beyond ordinary unit coverage they
+171 tests, no third-party dependencies. Beyond ordinary unit coverage they
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of
