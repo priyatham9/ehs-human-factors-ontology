@@ -2,10 +2,7 @@
 
 [![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml)
 
-A machine-readable encoding of the four-context performance-influencing-factor
-structure used in human reliability analysis, an explicit crosswalk from it to
-SPAR-H, CREAM, HFACS and the HSE PIF list, and a dependency-free rule engine
-that evaluates a work scenario against it and shows its working.
+A machine-readable encoding of the four-context performance-influencing-factor structure used in human reliability analysis. It provides 20 PIFs, 90 alignments to SPAR-H, CREAM, HFACS and the HSE PIF list, and a rule engine for scenario assessment. The four context dimensions are not new; they are adopted from IDHEAS-G (NUREG-2198, 2021).
 
 Python 3.9+, standard library only. No pip installs, no build step.
 
@@ -71,7 +68,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 171 tests
+python3 -m unittest discover -s tests -t .          # 189 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
