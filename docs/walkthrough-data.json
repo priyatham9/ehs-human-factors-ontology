@@ -1,0 +1,1816 @@
+{
+  "scenario_id": "reactor-startup-nonroutine",
+  "scenario_description": "Batch reactor restart after an unplanned trip. The assigned operator qualified three weeks ago and has not run this recovery before; the recovery sequence is not covered by an approved procedure; the outage window is fixed by a downstream commitment.",
+  "scenario_provenance": "Illustrative worked example written by hand for this repository. It is not a record of a real event at any site and contains no site data.",
+  "levels": {
+    "ehs:LevelEnhanced": {
+      "label": "enhanced",
+      "rank": 2
+    },
+    "ehs:LevelNominal": {
+      "label": "nominal",
+      "rank": 1
+    },
+    "ehs:LevelDegraded": {
+      "label": "degraded",
+      "rank": 0
+    },
+    "ehs:LevelSeverelyDegraded": {
+      "label": "severely degraded",
+      "rank": -1
+    },
+    "ehs:LevelUnknown": {
+      "label": "unknown",
+      "rank": -99
+    }
+  },
+  "dimensions": [
+    {
+      "curie": "ehs:HumanContext",
+      "label": "Human context",
+      "idheas_category": "xw:idheas-Personnel",
+      "factors": [
+        {
+          "curie": "ehs:ProceduresGuidanceAndInstructions",
+          "label": "Procedures, guidance and instructions",
+          "verbatim_label": "Procedures, guidance, and instructions",
+          "level_curie": "ehs:LevelDegraded",
+          "level_label": "degraded"
+        },
+        {
+          "curie": "ehs:Staffing",
+          "label": "Staffing",
+          "verbatim_label": "Staffing",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:TeamAndOrganizationFactors",
+          "label": "Team and organisation factors",
+          "verbatim_label": "Team and organization factors",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:Training",
+          "label": "Training",
+          "verbatim_label": "Training",
+          "level_curie": "ehs:LevelDegraded",
+          "level_label": "degraded"
+        },
+        {
+          "curie": "ehs:WorkProcesses",
+          "label": "Work processes",
+          "verbatim_label": "Work processes",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        }
+      ]
+    },
+    {
+      "curie": "ehs:OperationalContext",
+      "label": "Operational context",
+      "idheas_category": "xw:idheas-EnvironmentAndSituation",
+      "factors": [
+        {
+          "curie": "ehs:NoiseAndCommunicationPathways",
+          "label": "Noise and communication pathways",
+          "verbatim_label": "Noise in workplace and communication pathways",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:ResistanceToPhysicalMovement",
+          "label": "Resistance to physical movement",
+          "verbatim_label": "Resistance to physical movement",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:ThermalConditions",
+          "label": "Thermal conditions",
+          "verbatim_label": "Cold/heat/humidity",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:WorkplaceAccessibilityAndHabitability",
+          "label": "Workplace accessibility and habitability",
+          "verbatim_label": "Accessibility/habitability of workplace including travel paths",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:WorkplaceVisibility",
+          "label": "Workplace visibility",
+          "verbatim_label": "Workplace visibility",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        }
+      ]
+    },
+    {
+      "curie": "ehs:SystemContext",
+      "label": "System context",
+      "idheas_category": "xw:idheas-System",
+      "factors": [
+        {
+          "curie": "ehs:EquipmentAndTools",
+          "label": "Equipment and tools",
+          "verbatim_label": "Equipment and tools",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:HumanSystemInterface",
+          "label": "Human-system interface",
+          "verbatim_label": "HSI",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:SystemTransparency",
+          "label": "System transparency to personnel",
+          "verbatim_label": "System and I&C transparency to personnel",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        }
+      ]
+    },
+    {
+      "curie": "ehs:TaskContext",
+      "label": "Task context",
+      "idheas_category": "xw:idheas-Task",
+      "factors": [
+        {
+          "curie": "ehs:InformationAvailabilityAndReliability",
+          "label": "Information availability and reliability",
+          "verbatim_label": "Information availability and reliability",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:MentalFatigue",
+          "label": "Mental fatigue",
+          "verbatim_label": "Mental fatigue",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:MultitaskingInterruptionsAndDistractions",
+          "label": "Multitasking, interruptions and distractions",
+          "verbatim_label": "Multitasking, interruptions, and distractions",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:PhysicalDemands",
+          "label": "Physical demands",
+          "verbatim_label": "Physical demands",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:ScenarioFamiliarity",
+          "label": "Scenario familiarity",
+          "verbatim_label": "Scenario familiarity",
+          "level_curie": "ehs:LevelSeverelyDegraded",
+          "level_label": "severely degraded"
+        },
+        {
+          "curie": "ehs:TaskComplexity",
+          "label": "Task complexity",
+          "verbatim_label": "Task complexity",
+          "level_curie": "ehs:LevelNominal",
+          "level_label": "nominal"
+        },
+        {
+          "curie": "ehs:TimePressureAndStress",
+          "label": "Time pressure and stress",
+          "verbatim_label": "Time pressure and stress",
+          "level_curie": "ehs:LevelDegraded",
+          "level_label": "degraded"
+        }
+      ]
+    }
+  ],
+  "fired_rules": [
+    {
+      "rule_id": "R01-degraded",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedFactor(ehs:ProceduresGuidanceAndInstructions)",
+      "premises": [
+        "factorLevel(ehs:ProceduresGuidanceAndInstructions, ehs:LevelDegraded)",
+        "levelDegraded(ehs:LevelDegraded)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).",
+      "description": "A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here."
+    },
+    {
+      "rule_id": "R01-degraded",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedFactor(ehs:ScenarioFamiliarity)",
+      "premises": [
+        "factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)",
+        "levelDegraded(ehs:LevelSeverelyDegraded)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).",
+      "description": "A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here."
+    },
+    {
+      "rule_id": "R01-degraded",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedFactor(ehs:TimePressureAndStress)",
+      "premises": [
+        "factorLevel(ehs:TimePressureAndStress, ehs:LevelDegraded)",
+        "levelDegraded(ehs:LevelDegraded)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).",
+      "description": "A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here."
+    },
+    {
+      "rule_id": "R01-degraded",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedFactor(ehs:Training)",
+      "premises": [
+        "factorLevel(ehs:Training, ehs:LevelDegraded)",
+        "levelDegraded(ehs:LevelDegraded)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).",
+      "description": "A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here."
+    },
+    {
+      "rule_id": "R02-severely-degraded",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "severelyDegradedFactor(ehs:ScenarioFamiliarity)",
+      "premises": [
+        "factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)",
+        "levelSeverelyDegraded(ehs:LevelSeverelyDegraded)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "severelyDegradedFactor(?F) :- factorLevel(?F, ?L), levelSeverelyDegraded(?L).",
+      "description": "A factor at the lowest assessed level is severely degraded."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:ActionExecution, ehs:ProceduresGuidanceAndInstructions)",
+      "premises": [
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:Decisionmaking, ehs:ProceduresGuidanceAndInstructions)",
+      "premises": [
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:Decisionmaking, ehs:ScenarioFamiliarity)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:Understanding, ehs:ScenarioFamiliarity)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:Decisionmaking, ehs:TimePressureAndStress)",
+      "premises": [
+        "degradedFactor(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:Understanding, ehs:TimePressureAndStress)",
+      "premises": [
+        "degradedFactor(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:Decisionmaking, ehs:Training)",
+      "premises": [
+        "degradedFactor(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R07-degraded-for-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "degradedForFunction(ehs:Understanding, ehs:Training)",
+      "premises": [
+        "degradedFactor(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "degradedForFunction(?N, ?F) :- degradedFactor(?F), factorAppliesToFunction(?F, ?N).",
+      "description": "Attach each degraded factor to every macrocognitive function the ontology says it applies to. A PIF has no effect outside the functions it applies to, so nothing is rolled up across a whole context category."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:ActionExecution)",
+      "premises": [
+        "degradedForFunction(ehs:ActionExecution, ehs:ProceduresGuidanceAndInstructions)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:Decisionmaking)",
+      "premises": [
+        "degradedForFunction(ehs:Decisionmaking, ehs:ProceduresGuidanceAndInstructions)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:Decisionmaking)",
+      "premises": [
+        "degradedForFunction(ehs:Decisionmaking, ehs:ScenarioFamiliarity)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:Understanding)",
+      "premises": [
+        "degradedForFunction(ehs:Understanding, ehs:ScenarioFamiliarity)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:Decisionmaking)",
+      "premises": [
+        "degradedForFunction(ehs:Decisionmaking, ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:Understanding)",
+      "premises": [
+        "degradedForFunction(ehs:Understanding, ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:Decisionmaking)",
+      "premises": [
+        "degradedForFunction(ehs:Decisionmaking, ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R08-function-challenged",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "functionChallenged(ehs:Understanding)",
+      "premises": [
+        "degradedForFunction(ehs:Understanding, ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "functionChallenged(?N) :- degradedForFunction(?N, ?F).",
+      "description": "A function with any applicable degraded factor is challenged."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:ActionExecution, ehs:FailureOfActionExecution, ehs:ProceduresGuidanceAndInstructions)",
+      "premises": [
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAffectsFailureMode(ehs:ProceduresGuidanceAndInstructions, ehs:FailureOfActionExecution)",
+        "failureModeOfFunction(ehs:FailureOfActionExecution, ehs:ActionExecution)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ProceduresGuidanceAndInstructions)",
+      "premises": [
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAffectsFailureMode(ehs:ProceduresGuidanceAndInstructions, ehs:FailureOfDecisionmaking)",
+        "failureModeOfFunction(ehs:FailureOfDecisionmaking, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ScenarioFamiliarity)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorAffectsFailureMode(ehs:ScenarioFamiliarity, ehs:FailureOfDecisionmaking)",
+        "failureModeOfFunction(ehs:FailureOfDecisionmaking, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:ScenarioFamiliarity)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorAffectsFailureMode(ehs:ScenarioFamiliarity, ehs:FailureOfUnderstanding)",
+        "failureModeOfFunction(ehs:FailureOfUnderstanding, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:TimePressureAndStress)",
+      "premises": [
+        "degradedFactor(ehs:TimePressureAndStress)",
+        "factorAffectsFailureMode(ehs:TimePressureAndStress, ehs:FailureOfDecisionmaking)",
+        "failureModeOfFunction(ehs:FailureOfDecisionmaking, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:TimePressureAndStress)",
+      "premises": [
+        "degradedFactor(ehs:TimePressureAndStress)",
+        "factorAffectsFailureMode(ehs:TimePressureAndStress, ehs:FailureOfUnderstanding)",
+        "failureModeOfFunction(ehs:FailureOfUnderstanding, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:Training)",
+      "premises": [
+        "degradedFactor(ehs:Training)",
+        "factorAffectsFailureMode(ehs:Training, ehs:FailureOfDecisionmaking)",
+        "failureModeOfFunction(ehs:FailureOfDecisionmaking, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R09-failure-mode-elevated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:Training)",
+      "premises": [
+        "degradedFactor(ehs:Training)",
+        "factorAffectsFailureMode(ehs:Training, ehs:FailureOfUnderstanding)",
+        "failureModeOfFunction(ehs:FailureOfUnderstanding, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).",
+      "description": "A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)",
+      "premises": [
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ProceduresGuidanceAndInstructions)",
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ScenarioFamiliarity)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)",
+      "premises": [
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ProceduresGuidanceAndInstructions)",
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)",
+      "premises": [
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ProceduresGuidanceAndInstructions)",
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:Training"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)",
+      "premises": [
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ScenarioFamiliarity)",
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)",
+      "premises": [
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ScenarioFamiliarity)",
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:Training"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Understanding, ehs:FailureOfUnderstanding)",
+      "premises": [
+        "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:ScenarioFamiliarity)",
+        "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Understanding, ehs:FailureOfUnderstanding)",
+      "premises": [
+        "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:ScenarioFamiliarity)",
+        "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:Training"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)",
+      "premises": [
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:TimePressureAndStress)",
+        "failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress",
+        "ehs:Training"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R12-failure-mode-aggravated",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "failureModeAggravated(ehs:Understanding, ehs:FailureOfUnderstanding)",
+      "premises": [
+        "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:TimePressureAndStress)",
+        "failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress",
+        "ehs:Training"
+      ],
+      "rule_text": "failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).",
+      "description": "Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made."
+    },
+    {
+      "rule_id": "R13-multi-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "multiFunctionChallenge()",
+      "premises": [
+        "functionChallenged(ehs:ActionExecution)",
+        "functionChallenged(ehs:Decisionmaking)"
+      ],
+      "premise_factors": [],
+      "rule_text": "multiFunctionChallenge() :- functionChallenged(?N), functionChallenged(?O), lt(?N, ?O).",
+      "description": "Two or more distinct macrocognitive functions are challenged. This replaces the earlier multi-dimension rule: IDHEAS-G structures PIF effects by function, not by context category."
+    },
+    {
+      "rule_id": "R13-multi-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "multiFunctionChallenge()",
+      "premises": [
+        "functionChallenged(ehs:ActionExecution)",
+        "functionChallenged(ehs:Understanding)"
+      ],
+      "premise_factors": [],
+      "rule_text": "multiFunctionChallenge() :- functionChallenged(?N), functionChallenged(?O), lt(?N, ?O).",
+      "description": "Two or more distinct macrocognitive functions are challenged. This replaces the earlier multi-dimension rule: IDHEAS-G structures PIF effects by function, not by context category."
+    },
+    {
+      "rule_id": "R13-multi-function",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "nureg2198"
+      ],
+      "conclusion": "multiFunctionChallenge()",
+      "premises": [
+        "functionChallenged(ehs:Decisionmaking)",
+        "functionChallenged(ehs:Understanding)"
+      ],
+      "premise_factors": [],
+      "rule_text": "multiFunctionChallenge() :- functionChallenged(?N), functionChallenged(?O), lt(?N, ?O).",
+      "description": "Two or more distinct macrocognitive functions are challenged. This replaces the earlier multi-dimension rule: IDHEAS-G structures PIF effects by function, not by context category."
+    },
+    {
+      "rule_id": "R10-control-demand",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "rasmussen1983"
+      ],
+      "conclusion": "controlDemand(ehs:KnowledgeBasedControl)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorRaisesDemandOn(ehs:ScenarioFamiliarity, ehs:KnowledgeBasedControl)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "controlDemand(?C) :- degradedFactor(?F), factorRaisesDemandOn(?F, ?C).",
+      "description": "Degrading a factor that the ontology marks as raising demand on a control level creates that demand. Scenario familiarity is the principal case: a situation for which no stored rule applies must be handled by reasoning from a model of the system."
+    },
+    {
+      "rule_id": "R11-unsupported-demand",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "rasmussen1983",
+        "reason1990"
+      ],
+      "conclusion": "unsupportedControlDemand(ehs:KnowledgeBasedControl)",
+      "premises": [
+        "controlDemand(ehs:KnowledgeBasedControl)",
+        "degradedFactor(ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "unsupportedControlDemand(?C) :- controlDemand(?C), degradedFactor(ehs:Training).",
+      "description": "A demand for a given control level is unsupported when the operator's training is itself degraded. Knowledge-based performance depends on the quality of the mental model training is supposed to have built."
+    },
+    {
+      "rule_id": "R20-elevated-from-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "reason1990"
+      ],
+      "conclusion": "elevatedErrorMode(ehs:RuleBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)",
+        "factorPredisposesTo(ehs:ProceduresGuidanceAndInstructions, ehs:RuleBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "elevatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M).",
+      "description": "A degraded factor flags the error modes the ontology associates with it. The association is a theoretical claim from the cited source; no effect size is attached to it."
+    },
+    {
+      "rule_id": "R20-elevated-from-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "reason1990"
+      ],
+      "conclusion": "elevatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorPredisposesTo(ehs:ScenarioFamiliarity, ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "elevatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M).",
+      "description": "A degraded factor flags the error modes the ontology associates with it. The association is a theoretical claim from the cited source; no effect size is attached to it."
+    },
+    {
+      "rule_id": "R20-elevated-from-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "reason1990"
+      ],
+      "conclusion": "elevatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:TimePressureAndStress)",
+        "factorPredisposesTo(ehs:TimePressureAndStress, ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "elevatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M).",
+      "description": "A degraded factor flags the error modes the ontology associates with it. The association is a theoretical claim from the cited source; no effect size is attached to it."
+    },
+    {
+      "rule_id": "R20-elevated-from-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "reason1990"
+      ],
+      "conclusion": "elevatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:Training)",
+        "factorPredisposesTo(ehs:Training, ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "elevatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M).",
+      "description": "A degraded factor flags the error modes the ontology associates with it. The association is a theoretical claim from the cited source; no effect size is attached to it."
+    },
+    {
+      "rule_id": "R20-elevated-from-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "reason1990"
+      ],
+      "conclusion": "elevatedErrorMode(ehs:RuleBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:Training)",
+        "factorPredisposesTo(ehs:Training, ehs:RuleBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "elevatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M).",
+      "description": "A degraded factor flags the error modes the ontology associates with it. The association is a theoretical claim from the cited source; no effect size is attached to it."
+    },
+    {
+      "rule_id": "R21-elevated-from-unsupported-demand",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "rasmussen1983",
+        "reason1990"
+      ],
+      "conclusion": "elevatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "unsupportedControlDemand(ehs:KnowledgeBasedControl)",
+        "errorModeAtControl(ehs:KnowledgeBasedMistake, ehs:KnowledgeBasedControl)"
+      ],
+      "premise_factors": [],
+      "rule_text": "elevatedErrorMode(?M) :- unsupportedControlDemand(?C), errorModeAtControl(?M, ?C).",
+      "description": "An unsupported demand for a control level flags the error mode that arises at that level."
+    },
+    {
+      "rule_id": "R22-aggravated-by-second-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "groth2012"
+      ],
+      "conclusion": "aggravatedErrorMode(ehs:RuleBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)",
+        "factorPredisposesTo(ehs:ProceduresGuidanceAndInstructions, ehs:RuleBasedMistake)",
+        "degradedFactor(ehs:Training)",
+        "factorPredisposesTo(ehs:Training, ehs:RuleBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:Training"
+      ],
+      "rule_text": "aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).",
+      "description": "An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim."
+    },
+    {
+      "rule_id": "R22-aggravated-by-second-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "groth2012"
+      ],
+      "conclusion": "aggravatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorPredisposesTo(ehs:ScenarioFamiliarity, ehs:KnowledgeBasedMistake)",
+        "degradedFactor(ehs:TimePressureAndStress)",
+        "factorPredisposesTo(ehs:TimePressureAndStress, ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).",
+      "description": "An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim."
+    },
+    {
+      "rule_id": "R22-aggravated-by-second-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "groth2012"
+      ],
+      "conclusion": "aggravatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "factorPredisposesTo(ehs:ScenarioFamiliarity, ehs:KnowledgeBasedMistake)",
+        "degradedFactor(ehs:Training)",
+        "factorPredisposesTo(ehs:Training, ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:Training"
+      ],
+      "rule_text": "aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).",
+      "description": "An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim."
+    },
+    {
+      "rule_id": "R22-aggravated-by-second-factor",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "groth2012"
+      ],
+      "conclusion": "aggravatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "degradedFactor(ehs:TimePressureAndStress)",
+        "factorPredisposesTo(ehs:TimePressureAndStress, ehs:KnowledgeBasedMistake)",
+        "degradedFactor(ehs:Training)",
+        "factorPredisposesTo(ehs:Training, ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress",
+        "ehs:Training"
+      ],
+      "rule_text": "aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).",
+      "description": "An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim."
+    },
+    {
+      "rule_id": "R23-time-pressure-on-knowledge-based",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "rasmussen1983",
+        "reason1990"
+      ],
+      "conclusion": "aggravatedErrorMode(ehs:KnowledgeBasedMistake)",
+      "premises": [
+        "unsupportedControlDemand(ehs:KnowledgeBasedControl)",
+        "degradedFactor(ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "aggravatedErrorMode(ehs:KnowledgeBasedMistake) :- unsupportedControlDemand(ehs:KnowledgeBasedControl), degradedFactor(ehs:TimePressureAndStress).",
+      "description": "Knowledge-based performance is slow and effortful, so time pressure bears on it more heavily than on rule-based or skill-based performance. Where a knowledge-based demand is already unsupported and time pressure is degraded, the knowledge-based mistake mode is recorded as aggravated."
+    },
+    {
+      "rule_id": "R24-procedure-substitution",
+      "stratum": 0,
+      "basis": "literature",
+      "source_refs": [
+        "rasmussen1983",
+        "hollnagel1998"
+      ],
+      "conclusion": "noRuleBasedFallback()",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)",
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "noRuleBasedFallback() :- degradedFactor(ehs:ScenarioFamiliarity), degradedFactor(ehs:ProceduresGuidanceAndInstructions).",
+      "description": "Adequate procedures can carry an unfamiliar task at the rule-based level. Where scenario familiarity is degraded and procedures are also degraded, the fallback is gone; this records that condition explicitly so it appears in the trace rather than being inferred by the reader."
+    },
+    {
+      "rule_id": "R06-unmitigated",
+      "stratum": 1,
+      "basis": "literature",
+      "source_refs": [
+        "hse_pifs"
+      ],
+      "conclusion": "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+      "premises": [
+        "degradedFactor(ehs:ProceduresGuidanceAndInstructions)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "unmitigatedDegradation(?F) :- degradedFactor(?F), not mitigatedFactor(?F).",
+      "description": "A degraded factor with no claimed control is an unmitigated degradation."
+    },
+    {
+      "rule_id": "R06-unmitigated",
+      "stratum": 1,
+      "basis": "literature",
+      "source_refs": [
+        "hse_pifs"
+      ],
+      "conclusion": "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+      "premises": [
+        "degradedFactor(ehs:ScenarioFamiliarity)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "unmitigatedDegradation(?F) :- degradedFactor(?F), not mitigatedFactor(?F).",
+      "description": "A degraded factor with no claimed control is an unmitigated degradation."
+    },
+    {
+      "rule_id": "R06-unmitigated",
+      "stratum": 1,
+      "basis": "literature",
+      "source_refs": [
+        "hse_pifs"
+      ],
+      "conclusion": "unmitigatedDegradation(ehs:TimePressureAndStress)",
+      "premises": [
+        "degradedFactor(ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "unmitigatedDegradation(?F) :- degradedFactor(?F), not mitigatedFactor(?F).",
+      "description": "A degraded factor with no claimed control is an unmitigated degradation."
+    },
+    {
+      "rule_id": "R06-unmitigated",
+      "stratum": 1,
+      "basis": "literature",
+      "source_refs": [
+        "hse_pifs"
+      ],
+      "conclusion": "unmitigatedDegradation(ehs:Training)",
+      "premises": [
+        "degradedFactor(ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "unmitigatedDegradation(?F) :- degradedFactor(?F), not mitigatedFactor(?F).",
+      "description": "A degraded factor with no claimed control is an unmitigated degradation."
+    },
+    {
+      "rule_id": "R30-band-review",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(review)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "screeningBand(review) :- unmitigatedDegradation(?F).",
+      "description": "Any unmitigated degradation puts the scenario in the review band. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R30-band-review",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(review)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "screeningBand(review) :- unmitigatedDegradation(?F).",
+      "description": "Any unmitigated degradation puts the scenario in the review band. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R30-band-review",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(review)",
+      "premises": [
+        "unmitigatedDegradation(ehs:TimePressureAndStress)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "screeningBand(review) :- unmitigatedDegradation(?F).",
+      "description": "Any unmitigated degradation puts the scenario in the review band. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R30-band-review",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(review)",
+      "premises": [
+        "unmitigatedDegradation(ehs:Training)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(review) :- unmitigatedDegradation(?F).",
+      "description": "Any unmitigated degradation puts the scenario in the review band. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)",
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)",
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)",
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)",
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)",
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)",
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Decisionmaking)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:ActionExecution)",
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ProceduresGuidanceAndInstructions)",
+        "factorAppliesToFunction(ehs:ProceduresGuidanceAndInstructions, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ProceduresGuidanceAndInstructions",
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress",
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:ScenarioFamiliarity)",
+        "factorAppliesToFunction(ehs:ScenarioFamiliarity, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity",
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:TimePressureAndStress)",
+        "factorAppliesToFunction(ehs:TimePressureAndStress, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:TimePressureAndStress",
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R31-band-elevated-multi-function",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Decisionmaking)",
+        "unmitigatedDegradation(ehs:Training)",
+        "factorAppliesToFunction(ehs:Training, ehs:Understanding)"
+      ],
+      "premise_factors": [
+        "ehs:Training"
+      ],
+      "rule_text": "screeningBand(elevated) :- unmitigatedDegradation(?F), factorAppliesToFunction(?F, ?N), unmitigatedDegradation(?G), factorAppliesToFunction(?G, ?O), lt(?N, ?O).",
+      "description": "Unmitigated degradation bearing on two or more distinct macrocognitive functions raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R35-band-elevated-failure-mode-aggravated",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)"
+      ],
+      "premise_factors": [],
+      "rule_text": "screeningBand(elevated) :- failureModeAggravated(?N, ?K).",
+      "description": "An aggravated cognitive failure mode of any function raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R35-band-elevated-failure-mode-aggravated",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "failureModeAggravated(ehs:Understanding, ehs:FailureOfUnderstanding)"
+      ],
+      "premise_factors": [],
+      "rule_text": "screeningBand(elevated) :- failureModeAggravated(?N, ?K).",
+      "description": "An aggravated cognitive failure mode of any function raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R32-band-elevated-aggravated",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "aggravatedErrorMode(ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [],
+      "rule_text": "screeningBand(elevated) :- aggravatedErrorMode(?M).",
+      "description": "Any aggravated error mode raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R32-band-elevated-aggravated",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(elevated)",
+      "premises": [
+        "aggravatedErrorMode(ehs:RuleBasedMistake)"
+      ],
+      "premise_factors": [],
+      "rule_text": "screeningBand(elevated) :- aggravatedErrorMode(?M).",
+      "description": "Any aggravated error mode raises the band to elevated. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R33-band-stop-and-review",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(stop-and-review)",
+      "premises": [
+        "severelyDegradedFactor(ehs:ScenarioFamiliarity)",
+        "aggravatedErrorMode(ehs:KnowledgeBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "screeningBand(stop-and-review) :- severelyDegradedFactor(?F), not mitigatedFactor(?F), aggravatedErrorMode(?M).",
+      "description": "A severely degraded factor occurring alongside an aggravated error mode puts the scenario in the stop-and-review band. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R33-band-stop-and-review",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(stop-and-review)",
+      "premises": [
+        "severelyDegradedFactor(ehs:ScenarioFamiliarity)",
+        "aggravatedErrorMode(ehs:RuleBasedMistake)"
+      ],
+      "premise_factors": [
+        "ehs:ScenarioFamiliarity"
+      ],
+      "rule_text": "screeningBand(stop-and-review) :- severelyDegradedFactor(?F), not mitigatedFactor(?F), aggravatedErrorMode(?M).",
+      "description": "A severely degraded factor occurring alongside an aggravated error mode puts the scenario in the stop-and-review band. Threshold chosen by the author; no source supports it."
+    },
+    {
+      "rule_id": "R34-band-stop-and-review-no-fallback",
+      "stratum": 1,
+      "basis": "convention",
+      "source_refs": [],
+      "conclusion": "screeningBand(stop-and-review)",
+      "premises": [
+        "unsupportedControlDemand(ehs:KnowledgeBasedControl)",
+        "noRuleBasedFallback()"
+      ],
+      "premise_factors": [],
+      "rule_text": "screeningBand(stop-and-review) :- unsupportedControlDemand(ehs:KnowledgeBasedControl), noRuleBasedFallback().",
+      "description": "An unsupported knowledge-based demand with no rule-based fallback puts the scenario in the stop-and-review band. Threshold chosen by the author; no source supports it."
+    }
+  ],
+  "total_fired": 89,
+  "rules_fired_names": [
+    "R01-degraded",
+    "R02-severely-degraded",
+    "R06-unmitigated",
+    "R07-degraded-for-function",
+    "R08-function-challenged",
+    "R09-failure-mode-elevated",
+    "R10-control-demand",
+    "R11-unsupported-demand",
+    "R12-failure-mode-aggravated",
+    "R13-multi-function",
+    "R20-elevated-from-factor",
+    "R21-elevated-from-unsupported-demand",
+    "R22-aggravated-by-second-factor",
+    "R23-time-pressure-on-knowledge-based",
+    "R24-procedure-substitution",
+    "R30-band-review",
+    "R31-band-elevated-multi-function",
+    "R32-band-elevated-aggravated",
+    "R33-band-stop-and-review",
+    "R34-band-stop-and-review-no-fallback",
+    "R35-band-elevated-failure-mode-aggravated"
+  ],
+  "screening_band": "stop-and-review",
+  "plain_report": "EHS human-factors context screening\n------------------------------------------------------------------------------\nScenario:    reactor-startup-nonroutine\nDescription: Batch reactor restart after an unplanned trip. The assigned operator qualified three weeks ago and has not run this recovery before; the recovery sequence is not covered by an approved procedure; the outage window is fixed by a downstream commitment.\nProvenance:  Illustrative worked example written by hand for this repository. It is not a record of a real event at any site and contains no site data.\n\nAssessment coverage: 20 of 20 factors assessed\n\nContext dimensions\n------------------------------------------------------------------------------\nHuman context  [IDHEAS-G category: xw:idheas-Personnel]  5/5 assessed\n    degraded           Procedures, guidance and instructions\n    degraded           Training\nOperational context  [IDHEAS-G category: xw:idheas-EnvironmentAndSituation]  5/5 assessed\nSystem context  [IDHEAS-G category: xw:idheas-System]  3/3 assessed\nTask context  [IDHEAS-G category: xw:idheas-Task]  7/7 assessed\n    severely degraded  Scenario familiarity\n    degraded           Time pressure and stress\n\nMacrocognitive functions (IDHEAS-G)\n------------------------------------------------------------------------------\n  Challenged: action execution\n    elevated   failure of action execution  <- Procedures, guidance and instructions\n  Challenged: decisionmaking\n    aggravated failure of decisionmaking  <- Procedures, guidance and instructions\n    aggravated failure of decisionmaking  <- Scenario familiarity\n    aggravated failure of decisionmaking  <- Time pressure and stress\n    aggravated failure of decisionmaking  <- Training\n  Challenged: understanding\n    aggravated failure of understanding  <- Scenario familiarity\n    aggravated failure of understanding  <- Time pressure and stress\n    aggravated failure of understanding  <- Training\n\nFindings\n------------------------------------------------------------------------------\n  Unsupported control demand: ehs:KnowledgeBasedControl\n  Aggravated error mode:      knowledge-based mistake\n  Aggravated error mode:      rule-based mistake\n  Degraded with no control claimed: Procedures, guidance and instructions, Scenario familiarity, Time pressure and stress, Training\n\nScreening band: stop-and-review\n  Ordinal label only. Produced by rules marked 'convention'. Not a probability, not a rate.\n\nDerivation trace: screening band\n------------------------------------------------------------------------------\n  screeningBand(stop-and-review)  <- R33-band-stop-and-review [convention; no source]\n    rule: screeningBand(stop-and-review) :- severelyDegradedFactor(?F), not mitigatedFactor(?F), aggravatedErrorMode(?M).\n    because: A severely degraded factor occurring alongside an aggravated error mode puts the scenario in the stop-and-review band. Threshold chosen by the author; no source supports it.\n      severelyDegradedFactor(ehs:ScenarioFamiliarity)  <- R02-severely-degraded [literature; nureg2198]\n        rule: severelyDegradedFactor(?F) :- factorLevel(?F, ?L), levelSeverelyDegraded(?L).\n        because: A factor at the lowest assessed level is severely degraded.\n          factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)  [given]\n          levelSeverelyDegraded(ehs:LevelSeverelyDegraded)  [given]\n      aggravatedErrorMode(ehs:KnowledgeBasedMistake)  <- R22-aggravated-by-second-factor [literature; groth2012]\n        rule: aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).\n        because: An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim.\n          degradedFactor(ehs:ScenarioFamiliarity)  <- R01-degraded [literature; nureg2198]\n            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n              factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)  [given]\n              levelDegraded(ehs:LevelSeverelyDegraded)  [given]\n          factorPredisposesTo(ehs:ScenarioFamiliarity, ehs:KnowledgeBasedMistake)  [given]\n          degradedFactor(ehs:TimePressureAndStress)  <- R01-degraded [literature; nureg2198]\n            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n              factorLevel(ehs:TimePressureAndStress, ehs:LevelDegraded)  [given]\n              levelDegraded(ehs:LevelDegraded)  [given]\n          factorPredisposesTo(ehs:TimePressureAndStress, ehs:KnowledgeBasedMistake)  [given]\n        (3 further derivations recorded and not expanded here)\n    (2 further derivations recorded and not expanded here)\n\nDerivation trace: failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)\n  failureModeAggravated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking)  <- R12-failure-mode-aggravated [literature; nureg2198]\n    rule: failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).\n    because: Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made.\n      failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ProceduresGuidanceAndInstructions)  <- R09-failure-mode-elevated [literature; nureg2198]\n        rule: failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).\n        because: A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to.\n          degradedFactor(ehs:ProceduresGuidanceAndInstructions)  <- R01-degraded [literature; nureg2198]\n            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n              factorLevel(ehs:ProceduresGuidanceAndInstructions, ehs:LevelDegraded)  [given]\n              levelDegraded(ehs:LevelDegraded)  [given]\n          factorAffectsFailureMode(ehs:ProceduresGuidanceAndInstructions, ehs:FailureOfDecisionmaking)  [given]\n          failureModeOfFunction(ehs:FailureOfDecisionmaking, ehs:Decisionmaking)  [given]\n      failureModeElevated(ehs:Decisionmaking, ehs:FailureOfDecisionmaking, ehs:ScenarioFamiliarity)  <- R09-failure-mode-elevated [literature; nureg2198]\n        rule: failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).\n        because: A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to.\n          degradedFactor(ehs:ScenarioFamiliarity)  <- R01-degraded [literature; nureg2198]\n            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n              factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)  [given]\n              levelDegraded(ehs:LevelSeverelyDegraded)  [given]\n          factorAffectsFailureMode(ehs:ScenarioFamiliarity, ehs:FailureOfDecisionmaking)  [given]\n          failureModeOfFunction(ehs:FailureOfDecisionmaking, ehs:Decisionmaking)  [given]\n    (5 further derivations recorded and not expanded here)\n\nDerivation trace: failureModeAggravated(ehs:Understanding, ehs:FailureOfUnderstanding)\n  failureModeAggravated(ehs:Understanding, ehs:FailureOfUnderstanding)  <- R12-failure-mode-aggravated [literature; nureg2198]\n    rule: failureModeAggravated(?N, ?K) :- failureModeElevated(?N, ?K, ?F), failureModeElevated(?N, ?K, ?G), lt(?F, ?G).\n    because: Two distinct degraded factors raising the same failure mode of the same function. Two routes to one failure mode are open; no multiplicative claim is made.\n      failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:ScenarioFamiliarity)  <- R09-failure-mode-elevated [literature; nureg2198]\n        rule: failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).\n        because: A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to.\n          degradedFactor(ehs:ScenarioFamiliarity)  <- R01-degraded [literature; nureg2198]\n            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n              factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)  [given]\n              levelDegraded(ehs:LevelSeverelyDegraded)  [given]\n          factorAffectsFailureMode(ehs:ScenarioFamiliarity, ehs:FailureOfUnderstanding)  [given]\n          failureModeOfFunction(ehs:FailureOfUnderstanding, ehs:Understanding)  [given]\n      failureModeElevated(ehs:Understanding, ehs:FailureOfUnderstanding, ehs:TimePressureAndStress)  <- R09-failure-mode-elevated [literature; nureg2198]\n        rule: failureModeElevated(?N, ?K, ?F) :- degradedFactor(?F), factorAffectsFailureMode(?F, ?K), failureModeOfFunction(?K, ?N).\n        because: A degraded factor raises the cognitive failure mode of the function it affects. The function is carried in the conclusion so the trace shows which function and which failure mode the finding belongs to.\n          degradedFactor(ehs:TimePressureAndStress)  <- R01-degraded [literature; nureg2198]\n            rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n            because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n              factorLevel(ehs:TimePressureAndStress, ehs:LevelDegraded)  [given]\n              levelDegraded(ehs:LevelDegraded)  [given]\n          factorAffectsFailureMode(ehs:TimePressureAndStress, ehs:FailureOfUnderstanding)  [given]\n          failureModeOfFunction(ehs:FailureOfUnderstanding, ehs:Understanding)  [given]\n    (2 further derivations recorded and not expanded here)\n\nDerivation trace: aggravatedErrorMode(ehs:KnowledgeBasedMistake)\n------------------------------------------------------------------------------\n  aggravatedErrorMode(ehs:KnowledgeBasedMistake)  <- R22-aggravated-by-second-factor [literature; groth2012]\n    rule: aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).\n    because: An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim.\n      degradedFactor(ehs:ScenarioFamiliarity)  <- R01-degraded [literature; nureg2198]\n        rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n        because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n          factorLevel(ehs:ScenarioFamiliarity, ehs:LevelSeverelyDegraded)  [given]\n          levelDegraded(ehs:LevelSeverelyDegraded)  [given]\n      factorPredisposesTo(ehs:ScenarioFamiliarity, ehs:KnowledgeBasedMistake)  [given]\n      degradedFactor(ehs:TimePressureAndStress)  <- R01-degraded [literature; nureg2198]\n        rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n        because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n          factorLevel(ehs:TimePressureAndStress, ehs:LevelDegraded)  [given]\n          levelDegraded(ehs:LevelDegraded)  [given]\n      factorPredisposesTo(ehs:TimePressureAndStress, ehs:KnowledgeBasedMistake)  [given]\n    (3 further derivations recorded and not expanded here)\n\nDerivation trace: aggravatedErrorMode(ehs:RuleBasedMistake)\n------------------------------------------------------------------------------\n  aggravatedErrorMode(ehs:RuleBasedMistake)  <- R22-aggravated-by-second-factor [literature; groth2012]\n    rule: aggravatedErrorMode(?M) :- degradedFactor(?F), factorPredisposesTo(?F, ?M), degradedFactor(?G), factorPredisposesTo(?G, ?M), lt(?F, ?G).\n    because: An error mode flagged by one degraded factor and flagged again by a second, distinct degraded factor is recorded as aggravated. This says two independent routes to the same failure class are open. It does not say the risk has doubled; nothing here supports a multiplicative claim.\n      degradedFactor(ehs:ProceduresGuidanceAndInstructions)  <- R01-degraded [literature; nureg2198]\n        rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n        because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n          factorLevel(ehs:ProceduresGuidanceAndInstructions, ehs:LevelDegraded)  [given]\n          levelDegraded(ehs:LevelDegraded)  [given]\n      factorPredisposesTo(ehs:ProceduresGuidanceAndInstructions, ehs:RuleBasedMistake)  [given]\n      degradedFactor(ehs:Training)  <- R01-degraded [literature; nureg2198]\n        rule: degradedFactor(?F) :- factorLevel(?F, ?L), levelDegraded(?L).\n        because: A factor assessed below the nominal condition is a degraded factor. Levels and their ordinal ranks come from the ontology, not from here.\n          factorLevel(ehs:Training, ehs:LevelDegraded)  [given]\n          levelDegraded(ehs:LevelDegraded)  [given]\n      factorPredisposesTo(ehs:Training, ehs:RuleBasedMistake)  [given]\n\nRules that fired\n------------------------------------------------------------------------------\n  R01-degraded  [literature; nureg2198]\n  R02-severely-degraded  [literature; nureg2198]\n  R06-unmitigated  [literature; hse_pifs]\n  R07-degraded-for-function  [literature; nureg2198]\n  R08-function-challenged  [literature; nureg2198]\n  R09-failure-mode-elevated  [literature; nureg2198]\n  R10-control-demand  [literature; rasmussen1983]\n  R11-unsupported-demand  [literature; rasmussen1983, reason1990]\n  R12-failure-mode-aggravated  [literature; nureg2198]\n  R13-multi-function  [literature; nureg2198]\n  R20-elevated-from-factor  [literature; reason1990]\n  R21-elevated-from-unsupported-demand  [literature; rasmussen1983, reason1990]\n  R22-aggravated-by-second-factor  [literature; groth2012]\n  R23-time-pressure-on-knowledge-based  [literature; rasmussen1983, reason1990]\n  R24-procedure-substitution  [literature; rasmussen1983, hollnagel1998]\n  R30-band-review  [convention; no source]\n  R31-band-elevated-multi-function  [convention; no source]\n  R32-band-elevated-aggravated  [convention; no source]\n  R33-band-stop-and-review  [convention; no source]\n  R34-band-stop-and-review-no-fallback  [convention; no source]\n  R35-band-elevated-failure-mode-aggravated  [convention; no source]\n\nStanding caveats\n------------------------------------------------------------------------------\n - The four context dimensions are the four PIF context categories of IDHEAS-G (NUREG-2198, 2021), relabelled. They are not original to this tool.\n - No human error probability is computed. The screening band is an ordinal label produced by rules marked 'convention', not a rate and not a probability.\n - Factor levels are analyst judgements supplied as input. This tool does not derive them from data and does not check them.\n - The links from factors to error modes are theoretical propositions taken from the cited literature. No effect size is attached to any of them, and none has been validated against injury or incident outcomes.\n - SPAR-H multipliers are not used. They were estimated for at-power nuclear power plant operations, and NUREG-2198 states that existing methods are not necessarily adequate outside that context."
+}
