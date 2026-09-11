@@ -89,6 +89,20 @@ python3 tools/build_crosswalk.py --check             # crosswalk is current
 python3 synthetic/generate_scenarios.py --check      # corpus is reproducible
 ```
 
+
+## Exports
+
+The ontology can be exported in standard formats for use in other tools and systems:
+
+```
+PYTHONPATH=src python3 -m ehs_hfo export --format jsonld --out ontology/ehs-hfo.jsonld
+PYTHONPATH=src python3 -m ehs_hfo export --format owlxml --out ontology/ehs-hfo.owx
+```
+
+**JSON-LD** (`ontology/ehs-hfo.jsonld`): A JSON-LD 1.1 serialisation with a `@context` mapping all prefixes, one node per ontology subject, and typed literals preserved.
+
+**OWL/XML** (`ontology/ehs-hfo.owx`): The W3C OWL 2 XML serialisation, suitable for import into ontology editors like Protégé.
+
 ## The worked example
 
 `examples/reactor_startup_nonroutine.json` describes a batch reactor restart

@@ -1,0 +1,6084 @@
+{
+  "@context": {
+    "dcterms": "http://purl.org/dc/terms/",
+    "ehs": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "xw": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#"
+  },
+  "@graph": [
+    {
+      "@id": "<https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo>",
+      "dcterms:creator": "Priyatham Chimmani",
+      "dcterms:description": {
+        "@value": "A machine-readable encoding of the four-context performance-influencing-factor\nstructure of IDHEAS-G (NUREG-2198), relabelled for occupational and process EHS\nuse, together with an explicit crosswalk to SPAR-H, CREAM, HFACS and the HSE\nPIF list. The ontology asserts no human error probabilities and no calibrated\nrisk numbers.",
+        "@language": "en"
+      },
+      "dcterms:license": {
+        "@id": "<https://opensource.org/licenses/MIT>"
+      },
+      "dcterms:title": {
+        "@value": "EHS Human Factors Ontology (EHS-HFO)",
+        "@language": "en"
+      },
+      "rdf:type": {
+        "@id": "owl:Ontology"
+      },
+      "rdfs:comment": {
+        "@value": "Adoption, not invention. The four-category structure is the NRC's (NUREG-2198, 2021).",
+        "@language": "en"
+      },
+      "owl:versionInfo": "0.1.0"
+    },
+    {
+      "@id": "ehs:ActionExecution",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MacrocognitiveFunction"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "action execution",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Carrying out the selected response on the plant.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:Alignment",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "alignment",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "A reified, individually cited assertion that one local factor corresponds to one\nexternal factor with a stated strength of match.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:CognitiveFailureMode",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:comment": {
+        "@value": "IDHEAS-G enumerates several finer failure modes within each function. Only the function-level failure is modelled here; the finer modes are not reproduced, so nothing below this granularity is claimed.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "cognitive failure mode",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "The way a macrocognitive function can fail. IDHEAS-G defines failure modes relative to a function, and defines PIF effects relative to those failure modes.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:ContextDimension",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "context dimension",
+        "@language": "en"
+      },
+      "owl:disjointWith": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      },
+      "skos:definition": {
+        "@value": "One of the four categories of context into which performance-influencing factors are grouped.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:ControlLevel",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "cognitive control level",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "A level of cognitive control in the skill/rule/knowledge framework.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "rasmussen1983"
+    },
+    {
+      "@id": "ehs:CoverageGap",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:comment": {
+        "@value": "A gap is compatible with an ehs:MatchPartial alignment and only with that\nstrength. Partial overlap is not coverage: xw:cream-TimeOfDay overlaps\nehs:MentalFatigue at the edges and is still a gap, because neither factor\nrepresents circadian phase. A gap alongside a close, broader or narrower match\nwould be a contradiction, and tests/test_crosswalk.py fails on one.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "coverage gap",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "An external factor this ontology does not cover, or covers only at partial strength, recorded explicitly.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:Decisionmaking",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MacrocognitiveFunction"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "decisionmaking",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Selecting a response given the situation model.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:Detection",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MacrocognitiveFunction"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "detection",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Noticing and recognising cues, alarms and other information that a change in plant state has occurred.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:EquipmentAndTools",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Equipment and tools",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfActionExecution"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:ActionExecution"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:SystemContext"
+      },
+      "ehs:observableProxy": "CMMS overdue preventive-maintenance backlog for the asset named on the work order.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Equipment and tools"
+    },
+    {
+      "@id": "ehs:ErrorMode",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "error mode",
+        "@language": "en"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "ehs:CognitiveFailureMode"
+        },
+        {
+          "@id": "ehs:ControlLevel"
+        }
+      ],
+      "skos:definition": {
+        "@value": "A class of human failure distinguished by the level of cognitive control at which it arises.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": [
+        "rasmussen1983",
+        "reason1990"
+      ]
+    },
+    {
+      "@id": "ehs:ExternalFactor",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "external factor",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "A factor, PSF, PIF, CPC or category belonging to an external framework. The IRI is\nlocal to this repository: the cited bodies do not publish IRIs for these concepts.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:ExternalFramework",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "external framework",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "A published human-factors or human-reliability framework external to this ontology.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:FactorLevel",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "factor level",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "An ordinal state assigned to a factor for a specific scenario. Ordinal only; the ranks are not on a probability scale.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:FailureOfActionExecution",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CognitiveFailureMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "failure of action execution",
+        "@language": "en"
+      },
+      "ehs:failureOfFunction": {
+        "@id": "ehs:ActionExecution"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:FailureOfDecisionmaking",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CognitiveFailureMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "failure of decisionmaking",
+        "@language": "en"
+      },
+      "ehs:failureOfFunction": {
+        "@id": "ehs:Decisionmaking"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:FailureOfDetection",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CognitiveFailureMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "failure of detection",
+        "@language": "en"
+      },
+      "ehs:failureOfFunction": {
+        "@id": "ehs:Detection"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:FailureOfInterteamCoordination",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CognitiveFailureMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "failure of interteam coordination",
+        "@language": "en"
+      },
+      "ehs:failureOfFunction": {
+        "@id": "ehs:InterteamCoordination"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:FailureOfUnderstanding",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CognitiveFailureMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "failure of understanding",
+        "@language": "en"
+      },
+      "ehs:failureOfFunction": {
+        "@id": "ehs:Understanding"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:HumanContext",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ContextDimension"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Synonym for the IDHEAS-G category 'Personnel'.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Human context",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Attributes of the people, teams and organisational processes performing the work.",
+        "@language": "en"
+      },
+      "ehs:correspondsToIdheasCategory": {
+        "@id": "xw:idheas-Personnel"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:HumanSystemInterface",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Human-system interface",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfActionExecution"
+        },
+        {
+          "@id": "ehs:FailureOfDetection"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:ActionExecution"
+        },
+        {
+          "@id": "ehs:Detection"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:SystemContext"
+      },
+      "ehs:observableProxy": "DCS alarm-rate statistics; count of standing alarms per operator per hour.",
+      "ehs:predisposesTo": {
+        "@id": "ehs:SkillBasedSlipOrLapse"
+      },
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "HSI"
+    },
+    {
+      "@id": "ehs:InformationAvailabilityAndReliability",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Information availability and reliability",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfDetection"
+        },
+        {
+          "@id": "ehs:FailureOfUnderstanding"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:Detection"
+        },
+        {
+          "@id": "ehs:Understanding"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:TaskContext"
+      },
+      "ehs:observableProxy": "Instrument out-of-service list; count of failed or bypassed transmitters on the unit.",
+      "ehs:predisposesTo": [
+        {
+          "@id": "ehs:KnowledgeBasedMistake"
+        },
+        {
+          "@id": "ehs:RuleBasedMistake"
+        }
+      ],
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Information availability and reliability"
+    },
+    {
+      "@id": "ehs:InterteamCoordination",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MacrocognitiveFunction"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "interteam coordination",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Communication and coordination across teams and organisational units.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:KnowledgeBasedControl",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ControlLevel"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "knowledge-based control",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Performance in an unfamiliar situation for which no rule is available, requiring reasoning from a mental model of the system.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "rasmussen1983"
+    },
+    {
+      "@id": "ehs:KnowledgeBasedMistake",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ErrorMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "knowledge-based mistake",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Failure of reasoning in a novel situation handled without an applicable rule.",
+        "@language": "en"
+      },
+      "ehs:approximatesFailureMode": [
+        {
+          "@id": "ehs:FailureOfDecisionmaking"
+        },
+        {
+          "@id": "ehs:FailureOfUnderstanding"
+        }
+      ],
+      "ehs:arisesAt": {
+        "@id": "ehs:KnowledgeBasedControl"
+      },
+      "ehs:sourceRef": "reason1990"
+    },
+    {
+      "@id": "ehs:LevelDegraded",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:FactorLevel"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "degraded",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Worse than nominal in a way an analyst would record.",
+        "@language": "en"
+      },
+      "ehs:ordinalRank": {
+        "@value": "0",
+        "@type": "xsd:integer"
+      }
+    },
+    {
+      "@id": "ehs:LevelEnhanced",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:FactorLevel"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "SPAR-H is one of the few methods that admits beneficial PSF influence; the level is retained here for that reason.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "enhanced",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Better than the nominal condition assumed by the base assessment.",
+        "@language": "en"
+      },
+      "ehs:ordinalRank": {
+        "@value": "2",
+        "@type": "xsd:integer"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "ehs:LevelNominal",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:FactorLevel"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "nominal",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "The condition assumed by the base assessment; no adjustment warranted.",
+        "@language": "en"
+      },
+      "ehs:ordinalRank": {
+        "@value": "1",
+        "@type": "xsd:integer"
+      }
+    },
+    {
+      "@id": "ehs:LevelSeverelyDegraded",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:FactorLevel"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "severely degraded",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Worse than nominal to a degree that would ordinarily stop or re-plan the task.",
+        "@language": "en"
+      },
+      "ehs:ordinalRank": {
+        "@value": "-1",
+        "@type": "xsd:integer"
+      }
+    },
+    {
+      "@id": "ehs:LevelUnknown",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:FactorLevel"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Kept separate on purpose. Treating missing data as nominal is the single most common way a screening tool understates a hazard.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "unknown",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Not assessed. Distinct from nominal: an unassessed factor is not a satisfactory one.",
+        "@language": "en"
+      },
+      "ehs:ordinalRank": {
+        "@value": "-99",
+        "@type": "xsd:integer"
+      }
+    },
+    {
+      "@id": "ehs:MacrocognitiveFunction",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "macrocognitive function",
+        "@language": "en"
+      },
+      "owl:disjointWith": {
+        "@id": "ehs:ControlLevel"
+      },
+      "skos:definition": {
+        "@value": "One of the five high-level cognitive functions IDHEAS-G uses to model a human action: detection, understanding, decisionmaking, action execution, and interteam coordination.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:MatchBroader",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MatchStrength"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "broader",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "The external factor subsumes the local factor along with other content.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:MatchClose",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MatchStrength"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "close",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Same construct; wording or scope differs in ways unlikely to change an assessment.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:MatchExact",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MatchStrength"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "exact",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Same construct, same scope, wording effectively identical.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "groth2012"
+    },
+    {
+      "@id": "ehs:MatchNarrower",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MatchStrength"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "narrower",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "The external factor covers only part of the local factor.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:MatchPartial",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MatchStrength"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Groth and Mosleh (2012) report that PIFs across methods are not defined specifically enough for consistent interpretation. Rows marked partial are where that bites.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "partial",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Overlapping but non-nested constructs; the correspondence is interpretive.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:MatchStrength",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "match strength",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "How closely a local factor corresponds to an external factor.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:MentalFatigue",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Time-on-shift is the natural proxy here, and it is also where this ontology's claims stop: hour-of-shift injury counts are not risk rates without an exposure denominator (Hanecke et al. 1998; Folkard and Tucker 2003).",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Mental fatigue",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfActionExecution"
+        },
+        {
+          "@id": "ehs:FailureOfDetection"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:ActionExecution"
+        },
+        {
+          "@id": "ehs:Detection"
+        }
+      ],
+      "ehs:boundaryNote": [
+        "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+        "IDHEAS-G files mental fatigue under Task. An occupational-safety practitioner would ordinarily file it under Human or Operational. The disagreement is recorded rather than resolved."
+      ],
+      "ehs:inDimension": {
+        "@id": "ehs:TaskContext"
+      },
+      "ehs:observableProxy": "Hours elapsed since shift start; consecutive shifts worked; overtime hours in the trailing 7 days.",
+      "ehs:predisposesTo": {
+        "@id": "ehs:SkillBasedSlipOrLapse"
+      },
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Mental fatigue"
+    },
+    {
+      "@id": "ehs:MultitaskingInterruptionsAndDistractions",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Multitasking, interruptions and distractions",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfActionExecution"
+        },
+        {
+          "@id": "ehs:FailureOfDetection"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:ActionExecution"
+        },
+        {
+          "@id": "ehs:Detection"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:TaskContext"
+      },
+      "ehs:observableProxy": "Concurrent open permits per supervisor; radio or phone traffic volume during the task window.",
+      "ehs:predisposesTo": {
+        "@id": "ehs:SkillBasedSlipOrLapse"
+      },
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Multitasking, interruptions, and distractions"
+    },
+    {
+      "@id": "ehs:NoiseAndCommunicationPathways",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Noise and communication pathways",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfDetection"
+        },
+        {
+          "@id": "ehs:FailureOfInterteamCoordination"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:Detection"
+        },
+        {
+          "@id": "ehs:InterteamCoordination"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:OperationalContext"
+      },
+      "ehs:noCounterpartIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:observableProxy": "Area noise dosimetry; hearing-conservation programme enrolment by work area.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Noise in workplace and communication pathways"
+    },
+    {
+      "@id": "ehs:OperationalContext",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ContextDimension"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Synonym for the IDHEAS-G category 'Environment and situation'. The rename buys familiarity for an occupational-safety audience and nothing else.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Operational context",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Physical conditions of the place where the work occurs.",
+        "@language": "en"
+      },
+      "ehs:correspondsToIdheasCategory": {
+        "@id": "xw:idheas-EnvironmentAndSituation"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:PerformanceInfluencingFactor",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": {
+        "@value": "performance-influencing factor",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "A characteristic of the work context that is held to affect the reliability of human performance.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:PhysicalDemands",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Physical demands",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfActionExecution"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:ActionExecution"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:TaskContext"
+      },
+      "ehs:observableProxy": "Manual-handling assessment on the job safety analysis; required lift weight recorded on the work order.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Physical demands"
+    },
+    {
+      "@id": "ehs:ProceduresGuidanceAndInstructions",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Procedures, guidance and instructions",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfActionExecution"
+        },
+        {
+          "@id": "ehs:FailureOfDecisionmaking"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:ActionExecution"
+        },
+        {
+          "@id": "ehs:Decisionmaking"
+        }
+      ],
+      "ehs:boundaryNote": [
+        "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+        "IDHEAS-G files procedures under Personnel. Practitioners frequently file them under Task or System. The disagreement is recorded rather than resolved."
+      ],
+      "ehs:inDimension": {
+        "@id": "ehs:HumanContext"
+      },
+      "ehs:observableProxy": "Document-control system: procedure revision age, overdue periodic review flag, open change requests.",
+      "ehs:predisposesTo": {
+        "@id": "ehs:RuleBasedMistake"
+      },
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Procedures, guidance, and instructions"
+    },
+    {
+      "@id": "ehs:ResistanceToPhysicalMovement",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Resistance to physical movement",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfActionExecution"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:ActionExecution"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:OperationalContext"
+      },
+      "ehs:noCounterpartIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:observableProxy": "Required PPE ensemble recorded on the permit (encapsulating suit, SCBA, fall arrest).",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Resistance to physical movement"
+    },
+    {
+      "@id": "ehs:RuleBasedControl",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ControlLevel"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "rule-based control",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Performance governed by stored rules or procedures for a familiar situation.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "rasmussen1983"
+    },
+    {
+      "@id": "ehs:RuleBasedMistake",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ErrorMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "rule-based mistake",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Correct execution of a wrong rule, or misapplication of a normally good rule.",
+        "@language": "en"
+      },
+      "ehs:approximatesFailureMode": {
+        "@id": "ehs:FailureOfDecisionmaking"
+      },
+      "ehs:arisesAt": {
+        "@id": "ehs:RuleBasedControl"
+      },
+      "ehs:sourceRef": "reason1990"
+    },
+    {
+      "@id": "ehs:ScenarioFamiliarity",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "The demand claim is Rasmussen's: an unfamiliar situation for which no rule is stored must be handled at the knowledge-based level.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Scenario familiarity",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfDecisionmaking"
+        },
+        {
+          "@id": "ehs:FailureOfUnderstanding"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:Decisionmaking"
+        },
+        {
+          "@id": "ehs:Understanding"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:degradationRaisesDemandOn": {
+        "@id": "ehs:KnowledgeBasedControl"
+      },
+      "ehs:inDimension": {
+        "@id": "ehs:TaskContext"
+      },
+      "ehs:noCounterpartIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:observableProxy": "Work-order type (routine PM against corrective or first-of-a-kind); count of prior executions of the same procedure at the site.",
+      "ehs:predisposesTo": {
+        "@id": "ehs:KnowledgeBasedMistake"
+      },
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Scenario familiarity"
+    },
+    {
+      "@id": "ehs:SkillBasedControl",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ControlLevel"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "skill-based control",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Sensory-motor performance running automatically, without conscious control, once an intention is formed.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "rasmussen1983"
+    },
+    {
+      "@id": "ehs:SkillBasedSlipOrLapse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ErrorMode"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "skill-based slip or lapse",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Execution failure of a correct intention: attentional slip or memory lapse.",
+        "@language": "en"
+      },
+      "ehs:approximatesFailureMode": {
+        "@id": "ehs:FailureOfActionExecution"
+      },
+      "ehs:arisesAt": {
+        "@id": "ehs:SkillBasedControl"
+      },
+      "ehs:sourceRef": "reason1990"
+    },
+    {
+      "@id": "ehs:Staffing",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Staffing",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfInterteamCoordination"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:InterteamCoordination"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:HumanContext"
+      },
+      "ehs:observableProxy": "Roster headcount against the shift minimum-manning standard; vacancy rate.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Staffing"
+    },
+    {
+      "@id": "ehs:SystemContext",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ContextDimension"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Label identical to the IDHEAS-G category.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "System context",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Attributes of the plant, equipment, tools and interfaces the work is performed through.",
+        "@language": "en"
+      },
+      "ehs:correspondsToIdheasCategory": {
+        "@id": "xw:idheas-System"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:SystemTransparency",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "The link to knowledge-based mistakes is interpretive: an opaque system denies the operator the mental model that knowledge-based reasoning requires (Rasmussen 1983).",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "System transparency to personnel",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfUnderstanding"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:Understanding"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:SystemContext"
+      },
+      "ehs:observableProxy": "Count of unlabelled or mislabelled equipment findings from field walkdowns.",
+      "ehs:predisposesTo": {
+        "@id": "ehs:KnowledgeBasedMistake"
+      },
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "System and I&C transparency to personnel"
+    },
+    {
+      "@id": "ehs:TaskComplexity",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Interpretive. SPAR-H treats complexity as difficulty of performance; the step from difficulty to knowledge-based demand is this ontology's reading, not a finding.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Task complexity",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfDecisionmaking"
+        },
+        {
+          "@id": "ehs:FailureOfUnderstanding"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:Decisionmaking"
+        },
+        {
+          "@id": "ehs:Understanding"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:degradationRaisesDemandOn": {
+        "@id": "ehs:KnowledgeBasedControl"
+      },
+      "ehs:inDimension": {
+        "@id": "ehs:TaskContext"
+      },
+      "ehs:observableProxy": "Procedure step count; number of distinct systems or crafts named on the permit.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Task complexity"
+    },
+    {
+      "@id": "ehs:TaskContext",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ContextDimension"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Label identical to the IDHEAS-G category.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Task context",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Characteristics of the task being performed and of the information it requires.",
+        "@language": "en"
+      },
+      "ehs:correspondsToIdheasCategory": {
+        "@id": "xw:idheas-Task"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:TeamAndOrganizationFactors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Team and organisation factors",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfInterteamCoordination"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:InterteamCoordination"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:HumanContext"
+      },
+      "ehs:observableProxy": "Crew composition stability; proportion of contractor to employee hours on the job.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Team and organization factors"
+    },
+    {
+      "@id": "ehs:ThermalConditions",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Thermal conditions",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfActionExecution"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:ActionExecution"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:OperationalContext"
+      },
+      "ehs:noCounterpartIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:observableProxy": "WBGT readings or site weather records joined to the work order date and location.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Cold/heat/humidity"
+    },
+    {
+      "@id": "ehs:TimePressureAndStress",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Time pressure and stress",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfDecisionmaking"
+        },
+        {
+          "@id": "ehs:FailureOfUnderstanding"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:Decisionmaking"
+        },
+        {
+          "@id": "ehs:Understanding"
+        }
+      ],
+      "ehs:boundaryNote": [
+        "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+        "IDHEAS-G files time pressure and stress under Task. SPAR-H splits the same content across two separate PSFs (available time; stress and stressors)."
+      ],
+      "ehs:inDimension": {
+        "@id": "ehs:TaskContext"
+      },
+      "ehs:observableProxy": "Scheduled against actual outage duration; work orders flagged as expedited or emergency.",
+      "ehs:predisposesTo": {
+        "@id": "ehs:KnowledgeBasedMistake"
+      },
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Time pressure and stress"
+    },
+    {
+      "@id": "ehs:Training",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Training",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfDecisionmaking"
+        },
+        {
+          "@id": "ehs:FailureOfUnderstanding"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:Decisionmaking"
+        },
+        {
+          "@id": "ehs:Understanding"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:HumanContext"
+      },
+      "ehs:observableProxy": "LMS completion and recency for the qualification the task requires; months in role.",
+      "ehs:predisposesTo": [
+        {
+          "@id": "ehs:KnowledgeBasedMistake"
+        },
+        {
+          "@id": "ehs:RuleBasedMistake"
+        }
+      ],
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Training"
+    },
+    {
+      "@id": "ehs:Understanding",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:MacrocognitiveFunction"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "understanding",
+        "@language": "en"
+      },
+      "skos:definition": {
+        "@value": "Forming a situation model from the information detected.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:WorkProcesses",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Work processes",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": [
+        {
+          "@id": "ehs:FailureOfActionExecution"
+        },
+        {
+          "@id": "ehs:FailureOfInterteamCoordination"
+        }
+      ],
+      "ehs:appliesToFunction": [
+        {
+          "@id": "ehs:ActionExecution"
+        },
+        {
+          "@id": "ehs:InterteamCoordination"
+        }
+      ],
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:HumanContext"
+      },
+      "ehs:observableProxy": "Permit-to-work audit findings; management-of-change records open at the time of the task.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Work processes"
+    },
+    {
+      "@id": "ehs:WorkplaceAccessibilityAndHabitability",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Workplace accessibility and habitability",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfActionExecution"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:ActionExecution"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:OperationalContext"
+      },
+      "ehs:noCounterpartIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:observableProxy": "Confined-space and hot-work permit records; access-route length recorded on the permit.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Accessibility/habitability of workplace including travel paths"
+    },
+    {
+      "@id": "ehs:WorkplaceVisibility",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:PerformanceInfluencingFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Workplace visibility",
+        "@language": "en"
+      },
+      "ehs:affectsFailureMode": {
+        "@id": "ehs:FailureOfDetection"
+      },
+      "ehs:appliesToFunction": {
+        "@id": "ehs:Detection"
+      },
+      "ehs:boundaryNote": "Function assignment is the repository author's reading of NUREG-2198, not a table copied from it.",
+      "ehs:inDimension": {
+        "@id": "ehs:OperationalContext"
+      },
+      "ehs:noCounterpartIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:observableProxy": "Illuminance survey records; shift start time as a crude night-work indicator.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "Workplace visibility"
+    },
+    {
+      "@id": "ehs:affectsFailureMode",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:comment": {
+        "@value": "The failure mode, of a specific macrocognitive function, whose likelihood a degraded PIF is taken to raise. Every affectsFailureMode assertion must point to a failure mode of a function the PIF appliesToFunction.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      },
+      "rdfs:label": {
+        "@value": "affects cognitive failure mode",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:CognitiveFailureMode"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:appliesToFunction",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:comment": {
+        "@value": "A PIF is applicable only relative to the macrocognitive function whose task it affects. This property records that function-specific applicability instead of treating the PIF as a free-standing context variable.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      },
+      "rdfs:label": {
+        "@value": "applies to macrocognitive function",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:MacrocognitiveFunction"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:approximatesFailureMode",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:comment": {
+        "@value": "An SRK/GEMS error mode and the IDHEAS-G failure mode it most nearly corresponds to. This is a compatibility mapping made by the author of this repository, not a claim found in either source. See docs/COMPATIBILITY.md for where it is clean and where it is not.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:ErrorMode"
+      },
+      "rdfs:label": {
+        "@value": "approximates cognitive failure mode",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:CognitiveFailureMode"
+      }
+    },
+    {
+      "@id": "ehs:arisesAt",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:ErrorMode"
+      },
+      "rdfs:label": {
+        "@value": "arises at",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ControlLevel"
+      }
+    },
+    {
+      "@id": "ehs:boundaryNote",
+      "rdf:type": {
+        "@id": "owl:AnnotationProperty"
+      },
+      "rdfs:comment": {
+        "@value": "Records a known disagreement about which context a factor belongs to.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "boundary note",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:correspondsToIdheasCategory",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:ContextDimension"
+      },
+      "rdfs:label": {
+        "@value": "corresponds to IDHEAS-G category",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ExternalFactor"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:definedIn",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:ExternalFactor"
+      },
+      "rdfs:label": {
+        "@value": "defined in",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ExternalFramework"
+      }
+    },
+    {
+      "@id": "ehs:degradationRaisesDemandOn",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:comment": {
+        "@value": "Theoretical claim taken from the cited source: degrading this factor pushes\nperformance toward the named control level. Not an empirically estimated effect.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      },
+      "rdfs:label": {
+        "@value": "degradation raises demand on",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ControlLevel"
+      }
+    },
+    {
+      "@id": "ehs:externalFactor",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:Alignment"
+      },
+      "rdfs:label": {
+        "@value": "external factor",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ExternalFactor"
+      }
+    },
+    {
+      "@id": "ehs:externalParent",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:comment": {
+        "@value": "Position of the external factor within its own framework's hierarchy, where that framework has one.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:ExternalFactor"
+      },
+      "rdfs:label": {
+        "@value": "external parent",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ExternalFactor"
+      }
+    },
+    {
+      "@id": "ehs:failureOfFunction",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:CognitiveFailureMode"
+      },
+      "rdfs:label": {
+        "@value": "failure of function",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:MacrocognitiveFunction"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "ehs:hasMatchStrength",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:Alignment"
+      },
+      "rdfs:label": {
+        "@value": "has match strength",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:MatchStrength"
+      }
+    },
+    {
+      "@id": "ehs:inDimension",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      },
+      "rdfs:label": {
+        "@value": "in dimension",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ContextDimension"
+      }
+    },
+    {
+      "@id": "ehs:localFactor",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:Alignment"
+      },
+      "rdfs:label": {
+        "@value": "local factor",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      }
+    },
+    {
+      "@id": "ehs:noCounterpartIn",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:comment": {
+        "@value": "Asserts that the named framework has no factor corresponding to this one. A negative claim, recorded so that it can be argued with.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      },
+      "rdfs:label": {
+        "@value": "no counterpart in",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ExternalFramework"
+      }
+    },
+    {
+      "@id": "ehs:observableProxy",
+      "rdf:type": {
+        "@id": "owl:AnnotationProperty"
+      },
+      "rdfs:comment": {
+        "@value": "A routinely collected industrial data element that has been PROPOSED as an\nindicator of this factor. These proposals are unvalidated: no study cited in\nthis repository establishes that any of them measures the factor it is attached\nto. They exist to make the measurement question explicit, not to answer it.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "observable proxy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:ordinalRank",
+      "rdf:type": [
+        {
+          "@id": "owl:DatatypeProperty"
+        },
+        {
+          "@id": "owl:FunctionalProperty"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Order only. Differences and ratios between ranks carry no meaning.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:FactorLevel"
+      },
+      "rdfs:label": {
+        "@value": "ordinal rank",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "xsd:integer"
+      }
+    },
+    {
+      "@id": "ehs:outOfScopeNote",
+      "rdf:type": {
+        "@id": "owl:AnnotationProperty"
+      },
+      "rdfs:comment": {
+        "@value": "Marks an external factor deliberately not crosswalked, with the reason.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "out of scope note",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:predisposesTo",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:comment": {
+        "@value": "Theoretical claim taken from the cited source. No effect size, no probability,\nno empirical calibration is asserted or implied.",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "ehs:PerformanceInfluencingFactor"
+      },
+      "rdfs:label": {
+        "@value": "predisposes to",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ErrorMode"
+      }
+    },
+    {
+      "@id": "ehs:sourceRef",
+      "rdf:type": {
+        "@id": "owl:AnnotationProperty"
+      },
+      "rdfs:comment": {
+        "@value": "Citation key resolving to an entry in ../CITATIONS.md.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "source reference",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "ehs:uncoveredFactor",
+      "rdf:type": [
+        {
+          "@id": "owl:FunctionalProperty"
+        },
+        {
+          "@id": "owl:ObjectProperty"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "ehs:CoverageGap"
+      },
+      "rdfs:label": {
+        "@value": "uncovered factor",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "ehs:ExternalFactor"
+      }
+    },
+    {
+      "@id": "ehs:verbatimLabel",
+      "rdf:type": {
+        "@id": "owl:AnnotationProperty"
+      },
+      "rdfs:comment": {
+        "@value": "The wording used in the cited source document, transcribed without alteration.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "verbatim label",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "xw:al-Cplx-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-NumberOfSimultaneousGoals"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TaskComplexity"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Cplx-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Weak. HFACS has no task-complexity category; the nearest is a supervisory failure to match task to crew.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-PlannedInappropriateOperations"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TaskComplexity"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Cplx-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-DifficultyComplexityOfTask"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TaskComplexity"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Cplx-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-Complexity"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TaskComplexity"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Equip-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfMMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:EquipmentAndTools"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Equip-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-TechnologicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:EquipmentAndTools"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Equip-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-ToolsAppropriateForTask"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:EquipmentAndTools"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Equip-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "SPAR-H has no tools-and-parts PSF; the correspondence is to the ergonomics PSF only in so far as tools form part of the interface.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-ErgonomicsHMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:EquipmentAndTools"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Fam-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfTrainingAndExperience"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ScenarioFamiliarity"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Fam-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-RoutineOrUnusual"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ScenarioFamiliarity"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Fam-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "SPAR-H treats novelty as a property of the operator (experience) rather than of the scenario. The two are not the same construct.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-ExperienceAndTraining"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ScenarioFamiliarity"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Fatigue-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "CREAM's circadian CPC is the only explicit time-of-day factor in any of the five frameworks, and it is not the same construct as mental fatigue.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:cream-TimeOfDay"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MentalFatigue"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Fatigue-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-AdverseMentalStates"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MentalFatigue"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Fatigue-hfacs2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-AdversePhysiologicalStates"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MentalFatigue"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Fatigue-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-Fatigue"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MentalFatigue"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Fatigue-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-FitnessForDuty"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MentalFatigue"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-HSI-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfMMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:HumanSystemInterface"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-HSI-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-TechnologicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:HumanSystemInterface"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-HSI-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-SystemEquipmentInterface"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:HumanSystemInterface"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-HSI-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-ErgonomicsHMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:HumanSystemInterface"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Info-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfMMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:InformationAvailabilityAndReliability"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Info-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-TechnologicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:InformationAvailabilityAndReliability"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Info-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-ClarityOfSignsSignals"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:InformationAvailabilityAndReliability"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Info-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-ErgonomicsHMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:InformationAvailabilityAndReliability"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Multi-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-NumberOfSimultaneousGoals"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MultitaskingInterruptionsAndDistractions"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Multi-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "HFACS lists distraction among adverse mental states, which conflates an environmental demand with an operator state.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-AdverseMentalStates"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MultitaskingInterruptionsAndDistractions"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Multi-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-DividedAttention"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MultitaskingInterruptionsAndDistractions"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Multi-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-Complexity"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:MultitaskingInterruptionsAndDistractions"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Noise-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-WorkingConditions"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:NoiseAndCommunicationPathways"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Noise-cream2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Only the communication-pathway half of the local factor overlaps.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:cream-CrewCollaborationQuality"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:NoiseAndCommunicationPathways"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Noise-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-PhysicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:NoiseAndCommunicationPathways"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Noise-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkingEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:NoiseAndCommunicationPathways"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Noise-hse2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-CommunicationJob"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:NoiseAndCommunicationPathways"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Phys-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-WorkingConditions"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:PhysicalDemands"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Phys-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-PhysicalMentalLimitations"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:PhysicalDemands"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Phys-hfacs2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-AdversePhysiologicalStates"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:PhysicalDemands"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Phys-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-PhysicalCapability"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:PhysicalDemands"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Phys-hse2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkOverloadUnderload"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:PhysicalDemands"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Phys-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-FitnessForDuty"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:PhysicalDemands"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Proc-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AvailabilityOfProcedures"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ProceduresGuidanceAndInstructions"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Proc-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "HFACS has no procedures category at the precondition level; the nearest home is the organisational-level operational process.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-OperationalProcess"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ProceduresGuidanceAndInstructions"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Proc-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-ProceduresInadequate"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ProceduresGuidanceAndInstructions"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Proc-hse2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-PreparationForTask"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ProceduresGuidanceAndInstructions"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Proc-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-Procedures"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ProceduresGuidanceAndInstructions"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Resist-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-WorkingConditions"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ResistanceToPhysicalMovement"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Resist-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-PhysicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ResistanceToPhysicalMovement"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Resist-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkingEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ResistanceToPhysicalMovement"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Staff-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfOrganisation"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Staffing"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Staff-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Note the level shift: a precondition-level factor here maps to an organisational-level HFACS category.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-ResourceManagement"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Staffing"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Staff-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-ManningLevels"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Staffing"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Staff-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "SPAR-H has no staffing PSF. Staffing adequacy falls inside its work-processes PSF only by implication.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-WorkProcesses"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Staffing"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-SysTrans-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfMMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:SystemTransparency"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-SysTrans-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-TechnologicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:SystemTransparency"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-SysTrans-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-ClarityOfSignsSignals"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:SystemTransparency"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-SysTrans-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-ErgonomicsHMI"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:SystemTransparency"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Team-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfOrganisation"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Team-cream2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-CrewCollaborationQuality"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Team-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-CrewResourceManagement"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Team-hfacs2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-OrganizationalClimate"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Team-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-SupervisionLeadership"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Team-hse2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-ClarityOfRoles"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Team-hse3",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-SafetyCulture"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Team-hse4",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "One local factor absorbing four HSE organisation factors is a sign of coarseness, not of coverage.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:hse-CommunicationOrg"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Team-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-WorkProcesses"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TeamAndOrganizationFactors"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Thermal-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-WorkingConditions"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ThermalConditions"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Thermal-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-PhysicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ThermalConditions"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Thermal-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkingEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:ThermalConditions"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Time-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AvailableTime"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TimePressureAndStress"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Time-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-AdverseMentalStates"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TimePressureAndStress"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Time-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-TimeAvailableRequired"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TimePressureAndStress"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Time-hse2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-StressMorale"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TimePressureAndStress"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Time-hse3",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkPressures"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TimePressureAndStress"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Time-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-AvailableTime"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TimePressureAndStress"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Time-sparh2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "One IDHEAS-G factor spans two SPAR-H PSFs. Anyone porting SPAR-H multipliers across this boundary is double counting.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-StressAndStressors"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:TimePressureAndStress"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Train-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfTrainingAndExperience"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Training"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Train-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Interpretive. HFACS distributes training deficiency across organisational resource management and supervisory failure rather than giving it a precondition category.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-ResourceManagement"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Training"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Train-hfacs2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-InadequateSupervision"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Training"
+      },
+      "ehs:sourceRef": "shappell2000"
+    },
+    {
+      "@id": "xw:al-Train-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-Competence"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Training"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-Train-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-ExperienceAndTraining"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:Training"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:al-Vis-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-WorkingConditions"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkplaceVisibility"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-Vis-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-PhysicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkplaceVisibility"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-Vis-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkingEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkplaceVisibility"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-WAH-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-WorkingConditions"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkplaceAccessibilityAndHabitability"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-WAH-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-PhysicalEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkplaceAccessibilityAndHabitability"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-WAH-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "HSE bundles noise, heat, space, lighting and ventilation into one factor; IDHEAS-G splits them across four.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkingEnvironment"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkplaceAccessibilityAndHabitability"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-WP-cream",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:cream-AdequacyOfOrganisation"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchBroader"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkProcesses"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:al-WP-hfacs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hfacs-OperationalProcess"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkProcesses"
+      },
+      "ehs:sourceRef": "shappell2006"
+    },
+    {
+      "@id": "xw:al-WP-hse",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-WorkPressures"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkProcesses"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-WP-hse2",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "ehs:externalFactor": {
+        "@id": "xw:hse-ConsequencesOfFailure"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchPartial"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkProcesses"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:al-WP-sparh",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:Alignment"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Identical label in both frameworks; IDHEAS-G took the term from SPAR-H.",
+        "@language": "en"
+      },
+      "ehs:externalFactor": {
+        "@id": "xw:sparh-WorkProcesses"
+      },
+      "ehs:hasMatchStrength": {
+        "@id": "ehs:MatchClose"
+      },
+      "ehs:localFactor": {
+        "@id": "ehs:WorkProcesses"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:cream-AdequacyOfMMI",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Adequacy of MMI and operational support",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Adequacy of man-machine interface and operational support"
+    },
+    {
+      "@id": "xw:cream-AdequacyOfOrganisation",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Adequacy of organisation",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Adequacy of organization"
+    },
+    {
+      "@id": "xw:cream-AdequacyOfTrainingAndExperience",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Adequacy of training and experience",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Adequacy of training and experience"
+    },
+    {
+      "@id": "xw:cream-AvailabilityOfProcedures",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Availability of procedures and plans",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Availability of procedures and plans"
+    },
+    {
+      "@id": "xw:cream-AvailableTime",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Available time",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Available time"
+    },
+    {
+      "@id": "xw:cream-CrewCollaborationQuality",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Crew collaboration quality",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Crew collaboration quality"
+    },
+    {
+      "@id": "xw:cream-NumberOfSimultaneousGoals",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Number of simultaneous goals",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Number of simultaneous goals"
+    },
+    {
+      "@id": "xw:cream-TimeOfDay",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Time of day (circadian rhythm)",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Time of the day"
+    },
+    {
+      "@id": "xw:cream-WorkingConditions",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Working conditions",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-CREAM"
+      },
+      "ehs:sourceRef": [
+        "hollnagel1998",
+        "shirali2019"
+      ],
+      "ehs:verbatimLabel": "Working conditions"
+    },
+    {
+      "@id": "xw:fw-CREAM",
+      "dcterms:bibliographicCitation": "Hollnagel, E. (1998). Cognitive Reliability and Error Analysis Method (CREAM). Oxford: Elsevier Science.",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFramework"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "The nine CPC labels used here were transcribed from an open-access secondary source (Shirali et al. 2019, MethodsX) because the book text was not consulted directly. See ../docs/PROVENANCE.md.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "CREAM",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "hollnagel1998"
+    },
+    {
+      "@id": "xw:fw-HFACS",
+      "dcterms:bibliographicCitation": "Shappell, S.A. & Wiegmann, D.A. (2000). The Human Factors Analysis and Classification System--HFACS. DOT/FAA/AM-00/7. Revised taxonomy as figured in Shappell et al. (2006), DOT/FAA/AM-06/18.",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFramework"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Two versions matter here. The 2000 report subdivides Preconditions into Substandard Conditions and Substandard Practices of Operators. The revised taxonomy figured in the 2006 report uses Environmental Factors, Condition of Operators and Personnel Factors. The crosswalk maps to the revised taxonomy and says so.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "HFACS",
+        "@language": "en"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ]
+    },
+    {
+      "@id": "xw:fw-HSE-PIF",
+      "dcterms:bibliographicCitation": "Health and Safety Executive. Performance Influencing Factors (PIFs). HSE human factors guidance, https://www.hse.gov.uk/humanfactors/assets/docs/pifs.pdf",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFramework"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "HSE states of its own list: 'NB. This list is not exhaustive'.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "HSE Performance Influencing Factors",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "hse_pifs"
+    },
+    {
+      "@id": "xw:fw-IDHEAS-G",
+      "dcterms:bibliographicCitation": "U.S. Nuclear Regulatory Commission (2021). The General Methodology of an Integrated Human Event Analysis System (IDHEAS-G). NUREG-2198.",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFramework"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "IDHEAS-G",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "nureg2198"
+    },
+    {
+      "@id": "xw:fw-SPARH",
+      "dcterms:bibliographicCitation": "Gertman, D.I., Blackman, H.S., Marble, J.L., Byers, J.C. & Smith, C.L. (2005). The SPAR-H Human Reliability Analysis Method. NUREG/CR-6883, INL/EXT-05-00509.",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFramework"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "SPAR-H",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "gertman2005"
+    },
+    {
+      "@id": "xw:gap-cream-TimeOfDay",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CoverageGap"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "No local factor represents time of day or circadian phase. IDHEAS-G has no such\nPIF either, so the gap is inherited rather than introduced. This is the gap that\nmatters most for shift-based occupational settings, and closing it would require\nan exposure denominator by hour of shift that no public dataset currently\nsupplies (Hanecke et al. 1998; Folkard and Tucker 2003).",
+        "@language": "en"
+      },
+      "ehs:sourceRef": [
+        "folkard2003",
+        "hanecke1998",
+        "hollnagel1998"
+      ],
+      "ehs:uncoveredFactor": {
+        "@id": "xw:cream-TimeOfDay"
+      }
+    },
+    {
+      "@id": "xw:gap-hfacs-FailedToCorrectProblem",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CoverageGap"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "No local factor represents a supervisor's failure to correct a known deficiency.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "shappell2000",
+      "ehs:uncoveredFactor": {
+        "@id": "xw:hfacs-FailedToCorrectProblem"
+      }
+    },
+    {
+      "@id": "xw:gap-hfacs-PersonalReadiness",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CoverageGap"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "No local factor represents personal readiness in the HFACS sense: an\nindividual's off-duty preparation for work, including rest, diet and compliance\nwith alcohol and self-medication rules. The gap is inherited rather than\nintroduced. IDHEAS-G has no fitness-for-duty PIF, whereas SPAR-H does, and the\ntwenty factors here are IDHEAS-G's twenty adopted unchanged. ehs:MentalFatigue\nis the nearest local factor and is deliberately not aligned to this one: fatigue\nis a state during the task, personal readiness is conduct before it, and one\ncauses the other rather than being it.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": [
+        "gertman2005",
+        "nureg2198",
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:uncoveredFactor": {
+        "@id": "xw:hfacs-PersonalReadiness"
+      }
+    },
+    {
+      "@id": "xw:gap-hfacs-SupervisoryViolations",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CoverageGap"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "No local factor represents wilful supervisory disregard of rules.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "shappell2000",
+      "ehs:uncoveredFactor": {
+        "@id": "xw:hfacs-SupervisoryViolations"
+      }
+    },
+    {
+      "@id": "xw:gap-hse-Motivation",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CoverageGap"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "No local factor represents motivation or competing priorities as an attribute of the individual.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:uncoveredFactor": {
+        "@id": "xw:hse-Motivation"
+      }
+    },
+    {
+      "@id": "xw:gap-hse-OrganisationalLearning",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CoverageGap"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "No local factor represents the effectiveness of organisational learning.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:uncoveredFactor": {
+        "@id": "xw:hse-OrganisationalLearning"
+      }
+    },
+    {
+      "@id": "xw:gap-hse-PeerPressure",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:CoverageGap"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "No local factor represents peer pressure. Team and organisation factors is too coarse to stand in for it.",
+        "@language": "en"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:uncoveredFactor": {
+        "@id": "xw:hse-PeerPressure"
+      }
+    },
+    {
+      "@id": "xw:hfacs-AdverseMentalStates",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Adverse mental states",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-ConditionOfOperators"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Adverse Mental States"
+    },
+    {
+      "@id": "xw:hfacs-AdversePhysiologicalStates",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Adverse physiological states",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-ConditionOfOperators"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Adverse Physiological States"
+    },
+    {
+      "@id": "xw:hfacs-ConditionOfOperators",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Condition of operators",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Preconditions"
+      },
+      "ehs:outOfScopeNote": "Structural container; its children are crosswalked individually.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Condition of Operators"
+    },
+    {
+      "@id": "xw:hfacs-CrewResourceManagement",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Crew resource management",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-PersonnelFactors"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Crew Resource Management"
+    },
+    {
+      "@id": "xw:hfacs-DecisionErrors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Decision errors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Errors"
+      },
+      "ehs:outOfScopeNote": "Corresponds to the mistake classes in section 6, not to a factor.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Decision Errors"
+    },
+    {
+      "@id": "xw:hfacs-EnvironmentalFactors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Environmental factors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Preconditions"
+      },
+      "ehs:outOfScopeNote": "Structural container; its children are crosswalked individually.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Environmental Factors"
+    },
+    {
+      "@id": "xw:hfacs-Errors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Errors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-UnsafeActs"
+      },
+      "ehs:outOfScopeNote": "Outcome category, not context.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Errors"
+    },
+    {
+      "@id": "xw:hfacs-ExceptionalViolations",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Exceptional violations",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Violations"
+      },
+      "ehs:outOfScopeNote": "See parent.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Exceptional"
+    },
+    {
+      "@id": "xw:hfacs-FailedToCorrectProblem",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Failed to correct problem",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-UnsafeSupervision"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Failed to Correct Problem"
+    },
+    {
+      "@id": "xw:hfacs-InadequateSupervision",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Inadequate supervision",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-UnsafeSupervision"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Inadequate Supervision"
+    },
+    {
+      "@id": "xw:hfacs-OperationalProcess",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Operational process",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-OrganizationalInfluences"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Operational Process"
+    },
+    {
+      "@id": "xw:hfacs-OrganizationalClimate",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Organizational climate",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-OrganizationalInfluences"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Organizational Climate"
+    },
+    {
+      "@id": "xw:hfacs-OrganizationalInfluences",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Organizational influences",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:outOfScopeNote": "Structural container; its children are crosswalked individually.",
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "ORGANIZATIONAL INFLUENCES"
+    },
+    {
+      "@id": "xw:hfacs-PerceptualErrors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Perceptual errors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Errors"
+      },
+      "ehs:outOfScopeNote": "Outcome category, not context.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Perceptual Errors"
+    },
+    {
+      "@id": "xw:hfacs-PersonalReadiness",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Personal readiness",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-PersonnelFactors"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Personal Readiness"
+    },
+    {
+      "@id": "xw:hfacs-PersonnelFactors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Personnel factors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Preconditions"
+      },
+      "ehs:outOfScopeNote": "Structural container; its children are crosswalked individually.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Personnel Factors"
+    },
+    {
+      "@id": "xw:hfacs-PhysicalEnvironment",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Physical environment",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-EnvironmentalFactors"
+      },
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Physical Environment"
+    },
+    {
+      "@id": "xw:hfacs-PhysicalMentalLimitations",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Physical/mental limitations",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-ConditionOfOperators"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Physical/Mental Limitations"
+    },
+    {
+      "@id": "xw:hfacs-PlannedInappropriateOperations",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Planned inappropriate operations",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-UnsafeSupervision"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Planned Inappropriate Operations"
+    },
+    {
+      "@id": "xw:hfacs-Preconditions",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Preconditions for unsafe acts",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:outOfScopeNote": "Structural container; its children are crosswalked individually.",
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "PRECONDITIONS FOR UNSAFE ACTS"
+    },
+    {
+      "@id": "xw:hfacs-ResourceManagement",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Resource management",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-OrganizationalInfluences"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Resource Management"
+    },
+    {
+      "@id": "xw:hfacs-RoutineViolations",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Routine violations",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Violations"
+      },
+      "ehs:outOfScopeNote": "See parent.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Routine"
+    },
+    {
+      "@id": "xw:hfacs-SkillBasedErrors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Skill-based errors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-Errors"
+      },
+      "ehs:outOfScopeNote": "Corresponds to ehs:SkillBasedSlipOrLapse, not to a factor.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Skill-Based Errors"
+    },
+    {
+      "@id": "xw:hfacs-SupervisoryViolations",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Supervisory violations",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-UnsafeSupervision"
+      },
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "Supervisory Violations"
+    },
+    {
+      "@id": "xw:hfacs-TechnologicalEnvironment",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Technological environment",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-EnvironmentalFactors"
+      },
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Technological Environment"
+    },
+    {
+      "@id": "xw:hfacs-UnsafeActs",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Unsafe acts",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:outOfScopeNote": "Unsafe acts are outcomes, not context. Modelled here as error modes (section 6), not as performance-influencing factors.",
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "UNSAFE ACTS"
+    },
+    {
+      "@id": "xw:hfacs-UnsafeSupervision",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Unsafe supervision",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:outOfScopeNote": "Structural container; its children are crosswalked individually.",
+      "ehs:sourceRef": [
+        "shappell2000",
+        "shappell2006"
+      ],
+      "ehs:verbatimLabel": "UNSAFE SUPERVISION"
+    },
+    {
+      "@id": "xw:hfacs-Violations",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Violations",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HFACS"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hfacs-UnsafeActs"
+      },
+      "ehs:outOfScopeNote": "Violations are intentional deviations and are outside the error taxonomy this ontology encodes.",
+      "ehs:sourceRef": "shappell2006",
+      "ehs:verbatimLabel": "Violations"
+    },
+    {
+      "@id": "xw:hse-ClarityOfRoles",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Clarity of roles and responsibilities",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Clarity of roles and responsibilities"
+    },
+    {
+      "@id": "xw:hse-ClarityOfSignsSignals",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Clarity of signs, signals, instructions and other information",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Clarity of signs, signals, instructions and other information"
+    },
+    {
+      "@id": "xw:hse-CommunicationJob",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Communication (job)",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Communication, with colleagues, supervision, contractor, other"
+    },
+    {
+      "@id": "xw:hse-CommunicationOrg",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Communication (organisation)",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Communication"
+    },
+    {
+      "@id": "xw:hse-Competence",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Competence",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-PersonFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Competence to deal with circumstances"
+    },
+    {
+      "@id": "xw:hse-ConsequencesOfFailure",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Consequences of failure to follow rules/procedures",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Consequences of failure to follow rules/procedures"
+    },
+    {
+      "@id": "xw:hse-DifficultyComplexityOfTask",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Difficulty/complexity of task",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Difficulty/complexity of task"
+    },
+    {
+      "@id": "xw:hse-DividedAttention",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Divided attention",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Divided attention"
+    },
+    {
+      "@id": "xw:hse-Fatigue",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Fatigue",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-PersonFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Fatigue (acute from temporary situation, or chronic)"
+    },
+    {
+      "@id": "xw:hse-JobFactors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Job factors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:outOfScopeNote": "Heading, not a factor.",
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Job factors"
+    },
+    {
+      "@id": "xw:hse-ManningLevels",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Manning levels",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Manning levels"
+    },
+    {
+      "@id": "xw:hse-Motivation",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Motivation vs. other priorities",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-PersonFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Motivation vs. other priorities"
+    },
+    {
+      "@id": "xw:hse-OrganisationFactors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Organisation factors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:outOfScopeNote": "Heading, not a factor.",
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Organisation factors"
+    },
+    {
+      "@id": "xw:hse-OrganisationalLearning",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Effectiveness of organisational learning",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Effectiveness of organisational learning (learning from experiences)"
+    },
+    {
+      "@id": "xw:hse-PeerPressure",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Peer pressure",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Peer pressure"
+    },
+    {
+      "@id": "xw:hse-PersonFactors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Person factors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:outOfScopeNote": "Heading, not a factor.",
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Person factors"
+    },
+    {
+      "@id": "xw:hse-PhysicalCapability",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Physical capability and condition",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-PersonFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Physical capability and condition"
+    },
+    {
+      "@id": "xw:hse-PreparationForTask",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Preparation for task",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Preparation for task (e.g. permits, risk assessments, checking)"
+    },
+    {
+      "@id": "xw:hse-ProceduresInadequate",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Procedures inadequate or inappropriate",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Procedures inadequate or inappropriate"
+    },
+    {
+      "@id": "xw:hse-RoutineOrUnusual",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Routine or unusual",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Routine or unusual"
+    },
+    {
+      "@id": "xw:hse-SafetyCulture",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Organisational or safety culture",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Organisational or safety culture, e.g. everyone breaks the rules"
+    },
+    {
+      "@id": "xw:hse-StressMorale",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Stress/morale",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-PersonFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Stress/morale"
+    },
+    {
+      "@id": "xw:hse-SupervisionLeadership",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Level and nature of supervision/leadership",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Level and nature of supervision / leadership"
+    },
+    {
+      "@id": "xw:hse-SystemEquipmentInterface",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "System/equipment interface",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "System/equipment interface (labelling, alarms, error avoidance/ tolerance)"
+    },
+    {
+      "@id": "xw:hse-TimeAvailableRequired",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Time available/required",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Time available/required"
+    },
+    {
+      "@id": "xw:hse-ToolsAppropriateForTask",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Tools appropriate for task",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Tools appropriate for task"
+    },
+    {
+      "@id": "xw:hse-WorkOverloadUnderload",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Work overload/underload",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-PersonFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Work overload/underload"
+    },
+    {
+      "@id": "xw:hse-WorkPressures",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Work pressures",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-OrganisationFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Work pressures e.g. production vs. safety"
+    },
+    {
+      "@id": "xw:hse-WorkingEnvironment",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Working environment",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-HSE-PIF"
+      },
+      "ehs:externalParent": {
+        "@id": "xw:hse-JobFactors"
+      },
+      "ehs:sourceRef": "hse_pifs",
+      "ehs:verbatimLabel": "Working environment (noise, heat, space, lighting, ventilation)"
+    },
+    {
+      "@id": "xw:idheas-EnvironmentAndSituation",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Environment and situation",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-IDHEAS-G"
+      },
+      "ehs:outOfScopeNote": "Bound to a context dimension by ehs:correspondsToIdheasCategory, not by a factor-level alignment.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "environment and situation"
+    },
+    {
+      "@id": "xw:idheas-Personnel",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Personnel",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-IDHEAS-G"
+      },
+      "ehs:outOfScopeNote": "Bound to a context dimension by ehs:correspondsToIdheasCategory.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "personnel"
+    },
+    {
+      "@id": "xw:idheas-System",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "System",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-IDHEAS-G"
+      },
+      "ehs:outOfScopeNote": "Bound to a context dimension by ehs:correspondsToIdheasCategory.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "system"
+    },
+    {
+      "@id": "xw:idheas-Task",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Task",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-IDHEAS-G"
+      },
+      "ehs:outOfScopeNote": "Bound to a context dimension by ehs:correspondsToIdheasCategory.",
+      "ehs:sourceRef": "nureg2198",
+      "ehs:verbatimLabel": "task"
+    },
+    {
+      "@id": "xw:sparh-AvailableTime",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Available time",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Available time"
+    },
+    {
+      "@id": "xw:sparh-Complexity",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Complexity",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Complexity"
+    },
+    {
+      "@id": "xw:sparh-ErgonomicsHMI",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Ergonomics and human-machine interface",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Ergonomics (including the human-machine interface)"
+    },
+    {
+      "@id": "xw:sparh-ExperienceAndTraining",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Experience and training",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Experience and training"
+    },
+    {
+      "@id": "xw:sparh-FitnessForDuty",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Fitness for duty",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Fitness for duty"
+    },
+    {
+      "@id": "xw:sparh-Procedures",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Procedures",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Procedures (including job aids)"
+    },
+    {
+      "@id": "xw:sparh-StressAndStressors",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Stress and stressors",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Stress and stressors"
+    },
+    {
+      "@id": "xw:sparh-WorkProcesses",
+      "rdf:type": [
+        {
+          "@id": "owl:NamedIndividual"
+        },
+        {
+          "@id": "ehs:ExternalFactor"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Work processes",
+        "@language": "en"
+      },
+      "ehs:definedIn": {
+        "@id": "xw:fw-SPARH"
+      },
+      "ehs:sourceRef": "gertman2005",
+      "ehs:verbatimLabel": "Work processes"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import sys
 from typing import List, Optional, Sequence
 
 from .assessment import assess, render_text
+from .export import export
 from .facts import Scenario
 from .ontology import Ontology
 from .rules import RULES, build_program
@@ -120,6 +121,18 @@ def _cmd_rules(args: argparse.Namespace) -> int:
     return 0
 
 
+
+def _cmd_export(args: argparse.Namespace) -> int:
+    ontology = Ontology.load(args.ontology)
+    output = export(ontology, format=args.format)
+    if args.out:
+        with open(args.out, "w", encoding="utf-8") as f:
+            f.write(output)
+        print(f"Exported {args.format} to {args.out}")
+    else:
+        print(output)
+    return 0
+
 def build_parser() -> argparse.ArgumentParser:
     """Construct the argument parser."""
     parser = argparse.ArgumentParser(
@@ -162,6 +175,21 @@ def build_parser() -> argparse.ArgumentParser:
 
     rules_parser = sub.add_parser("rules", help="print the rule base and its strata")
     rules_parser.set_defaults(func=_cmd_rules)
+
+
+    export_parser = sub.add_parser("export", help="export ontology in standard formats")
+    export_parser.add_argument(
+        "--format",
+        choices=["jsonld", "owlxml"],
+        default="jsonld",
+        help="export format (default: jsonld)",
+    )
+    export_parser.add_argument(
+        "--out",
+        default=None,
+        help="output file path (default: print to stdout)",
+    )
+    export_parser.set_defaults(func=_cmd_export)
 
     return parser
 
