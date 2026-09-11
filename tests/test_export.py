@@ -19,7 +19,6 @@ import xml.etree.ElementTree as ET
 from tests import context
 
 from ehs_hfo.export import export
-from ehs_hfo.ontology import Ontology
 
 
 OWL_NS = "{http://www.w3.org/2002/07/owl#}"
