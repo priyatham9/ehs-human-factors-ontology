@@ -14,8 +14,8 @@ consistent under OWL 2 Direct Semantics.
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Sequence, Tuple
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Tuple
 
 from .turtle import Graph, IRI, Literal, parse_file
 

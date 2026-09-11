@@ -12,13 +12,13 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from typing import List, Optional, Sequence
+from typing import Optional, Sequence
 
 from .assessment import assess, render_text
 from .export import export
 from .facts import Scenario
 from .ontology import Ontology
-from .rules import RULES, build_program
+from .rules import build_program
 
 
 def _cmd_assess(args: argparse.Namespace) -> int:

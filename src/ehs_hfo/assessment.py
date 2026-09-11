@@ -9,7 +9,7 @@ calibrated against outcome data and a number would imply otherwise.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Sequence, Tuple
+from typing import List, Optional, Tuple
 
 from .engine import Program, Result
 from .facts import Fact, Scenario

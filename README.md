@@ -332,6 +332,10 @@ docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency policy, and testing. Reports of errors in alignments or security issues can be filed as [issues](https://github.com/priyatham9/ehs-human-factors-ontology/issues). See [SECURITY.md](SECURITY.md) for reporting details.
+
 ## Tests
 
 ```

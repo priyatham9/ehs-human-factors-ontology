@@ -50,10 +50,10 @@ not buy you".
 
 from __future__ import annotations
 
-from typing import Dict, List, Sequence, Tuple
+from typing import List, Tuple
 
 from .engine import Program
-from .facts import Fact, Pattern, Rule, Scenario, ScenarioError, UNKNOWN_LEVEL, Var
+from .facts import Fact, Pattern, Rule, Scenario, ScenarioError, Var
 from .ontology import Ontology
 
 __all__ = [
