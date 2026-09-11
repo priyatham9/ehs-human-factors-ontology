@@ -1,0 +1,1255 @@
+{
+ "dimensions": [
+  "Human context",
+  "Operational context",
+  "System context",
+  "Task context"
+ ],
+ "frameworks": [
+  "SPAR-H",
+  "CREAM",
+  "HFACS",
+  "HSE Performance Influencing Factors"
+ ],
+ "factors": [
+  {
+   "curie": "ehs:ProceduresGuidanceAndInstructions",
+   "label": "Procedures, guidance and instructions",
+   "dimension": "Human context"
+  },
+  {
+   "curie": "ehs:Staffing",
+   "label": "Staffing",
+   "dimension": "Human context"
+  },
+  {
+   "curie": "ehs:TeamAndOrganizationFactors",
+   "label": "Team and organisation factors",
+   "dimension": "Human context"
+  },
+  {
+   "curie": "ehs:Training",
+   "label": "Training",
+   "dimension": "Human context"
+  },
+  {
+   "curie": "ehs:WorkProcesses",
+   "label": "Work processes",
+   "dimension": "Human context"
+  },
+  {
+   "curie": "ehs:NoiseAndCommunicationPathways",
+   "label": "Noise and communication pathways",
+   "dimension": "Operational context"
+  },
+  {
+   "curie": "ehs:ResistanceToPhysicalMovement",
+   "label": "Resistance to physical movement",
+   "dimension": "Operational context"
+  },
+  {
+   "curie": "ehs:ThermalConditions",
+   "label": "Thermal conditions",
+   "dimension": "Operational context"
+  },
+  {
+   "curie": "ehs:WorkplaceAccessibilityAndHabitability",
+   "label": "Workplace accessibility and habitability",
+   "dimension": "Operational context"
+  },
+  {
+   "curie": "ehs:WorkplaceVisibility",
+   "label": "Workplace visibility",
+   "dimension": "Operational context"
+  },
+  {
+   "curie": "ehs:EquipmentAndTools",
+   "label": "Equipment and tools",
+   "dimension": "System context"
+  },
+  {
+   "curie": "ehs:HumanSystemInterface",
+   "label": "Human-system interface",
+   "dimension": "System context"
+  },
+  {
+   "curie": "ehs:SystemTransparency",
+   "label": "System transparency to personnel",
+   "dimension": "System context"
+  },
+  {
+   "curie": "ehs:InformationAvailabilityAndReliability",
+   "label": "Information availability and reliability",
+   "dimension": "Task context"
+  },
+  {
+   "curie": "ehs:MentalFatigue",
+   "label": "Mental fatigue",
+   "dimension": "Task context"
+  },
+  {
+   "curie": "ehs:MultitaskingInterruptionsAndDistractions",
+   "label": "Multitasking, interruptions and distractions",
+   "dimension": "Task context"
+  },
+  {
+   "curie": "ehs:PhysicalDemands",
+   "label": "Physical demands",
+   "dimension": "Task context"
+  },
+  {
+   "curie": "ehs:ScenarioFamiliarity",
+   "label": "Scenario familiarity",
+   "dimension": "Task context"
+  },
+  {
+   "curie": "ehs:TaskComplexity",
+   "label": "Task complexity",
+   "dimension": "Task context"
+  },
+  {
+   "curie": "ehs:TimePressureAndStress",
+   "label": "Time pressure and stress",
+   "dimension": "Task context"
+  }
+ ],
+ "cells": [
+  {
+   "factor": "ehs:ProceduresGuidanceAndInstructions",
+   "framework": "CREAM",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Availability of procedures and plans",
+     "strength": "close",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ProceduresGuidanceAndInstructions",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Operational process",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": "HFACS has no procedures category at the precondition level; the nearest home is the organisational-level operational process."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ProceduresGuidanceAndInstructions",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Preparation for task",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Procedures inadequate or inappropriate",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ProceduresGuidanceAndInstructions",
+   "framework": "SPAR-H",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Procedures",
+     "strength": "close",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Staffing",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Adequacy of organisation",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Staffing",
+   "framework": "HFACS",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Resource management",
+     "strength": "close",
+     "refs": "shappell2006",
+     "note": "Note the level shift: a precondition-level factor here maps to an organisational-level HFACS category."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Staffing",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Manning levels",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Staffing",
+   "framework": "SPAR-H",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Work processes",
+     "strength": "partial",
+     "refs": "gertman2005",
+     "note": "SPAR-H has no staffing PSF. Staffing adequacy falls inside its work-processes PSF only by implication."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TeamAndOrganizationFactors",
+   "framework": "CREAM",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Adequacy of organisation",
+     "strength": "close",
+     "refs": "hollnagel1998",
+     "note": ""
+    },
+    {
+     "external_label": "Crew collaboration quality",
+     "strength": "close",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TeamAndOrganizationFactors",
+   "framework": "HFACS",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Crew resource management",
+     "strength": "close",
+     "refs": "shappell2000",
+     "note": ""
+    },
+    {
+     "external_label": "Organizational climate",
+     "strength": "partial",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TeamAndOrganizationFactors",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Clarity of roles and responsibilities",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Communication (organisation)",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": "One local factor absorbing four HSE organisation factors is a sign of coarseness, not of coverage."
+    },
+    {
+     "external_label": "Level and nature of supervision/leadership",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Organisational or safety culture",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TeamAndOrganizationFactors",
+   "framework": "SPAR-H",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Work processes",
+     "strength": "partial",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Training",
+   "framework": "CREAM",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Adequacy of training and experience",
+     "strength": "close",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Training",
+   "framework": "HFACS",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Inadequate supervision",
+     "strength": "partial",
+     "refs": "shappell2000",
+     "note": ""
+    },
+    {
+     "external_label": "Resource management",
+     "strength": "partial",
+     "refs": "shappell2006",
+     "note": "Interpretive. HFACS distributes training deficiency across organisational resource management and supervisory failure rather than giving it a precondition category."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Training",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Competence",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:Training",
+   "framework": "SPAR-H",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Experience and training",
+     "strength": "close",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkProcesses",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Adequacy of organisation",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkProcesses",
+   "framework": "HFACS",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Operational process",
+     "strength": "close",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkProcesses",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Consequences of failure to follow rules/procedures",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Work pressures",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkProcesses",
+   "framework": "SPAR-H",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Work processes",
+     "strength": "close",
+     "refs": "gertman2005",
+     "note": "Identical label in both frameworks; IDHEAS-G took the term from SPAR-H."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:NoiseAndCommunicationPathways",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Crew collaboration quality",
+     "strength": "partial",
+     "refs": "hollnagel1998",
+     "note": "Only the communication-pathway half of the local factor overlaps."
+    },
+    {
+     "external_label": "Working conditions",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:NoiseAndCommunicationPathways",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Physical environment",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:NoiseAndCommunicationPathways",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Communication (job)",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Working environment",
+     "strength": "broader",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:NoiseAndCommunicationPathways",
+   "framework": "SPAR-H",
+   "strength": "none",
+   "matches": [
+    {
+     "external_label": "",
+     "strength": "none",
+     "refs": "",
+     "note": "Asserted absence: no counterpart in this framework."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ResistanceToPhysicalMovement",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working conditions",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ResistanceToPhysicalMovement",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Physical environment",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ResistanceToPhysicalMovement",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working environment",
+     "strength": "broader",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ResistanceToPhysicalMovement",
+   "framework": "SPAR-H",
+   "strength": "none",
+   "matches": [
+    {
+     "external_label": "",
+     "strength": "none",
+     "refs": "",
+     "note": "Asserted absence: no counterpart in this framework."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ThermalConditions",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working conditions",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ThermalConditions",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Physical environment",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ThermalConditions",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working environment",
+     "strength": "broader",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ThermalConditions",
+   "framework": "SPAR-H",
+   "strength": "none",
+   "matches": [
+    {
+     "external_label": "",
+     "strength": "none",
+     "refs": "",
+     "note": "Asserted absence: no counterpart in this framework."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceAccessibilityAndHabitability",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working conditions",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceAccessibilityAndHabitability",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Physical environment",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceAccessibilityAndHabitability",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working environment",
+     "strength": "broader",
+     "refs": "hse_pifs",
+     "note": "HSE bundles noise, heat, space, lighting and ventilation into one factor; IDHEAS-G splits them across four."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceAccessibilityAndHabitability",
+   "framework": "SPAR-H",
+   "strength": "none",
+   "matches": [
+    {
+     "external_label": "",
+     "strength": "none",
+     "refs": "",
+     "note": "Asserted absence: no counterpart in this framework."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceVisibility",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working conditions",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceVisibility",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Physical environment",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceVisibility",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Working environment",
+     "strength": "broader",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:WorkplaceVisibility",
+   "framework": "SPAR-H",
+   "strength": "none",
+   "matches": [
+    {
+     "external_label": "",
+     "strength": "none",
+     "refs": "",
+     "note": "Asserted absence: no counterpart in this framework."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:EquipmentAndTools",
+   "framework": "CREAM",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Adequacy of MMI and operational support",
+     "strength": "partial",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:EquipmentAndTools",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Technological environment",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:EquipmentAndTools",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Tools appropriate for task",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:EquipmentAndTools",
+   "framework": "SPAR-H",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Ergonomics and human-machine interface",
+     "strength": "partial",
+     "refs": "gertman2005",
+     "note": "SPAR-H has no tools-and-parts PSF; the correspondence is to the ergonomics PSF only in so far as tools form part of the interface."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:HumanSystemInterface",
+   "framework": "CREAM",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Adequacy of MMI and operational support",
+     "strength": "close",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:HumanSystemInterface",
+   "framework": "HFACS",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Technological environment",
+     "strength": "close",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:HumanSystemInterface",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "System/equipment interface",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:HumanSystemInterface",
+   "framework": "SPAR-H",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Ergonomics and human-machine interface",
+     "strength": "close",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:SystemTransparency",
+   "framework": "CREAM",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Adequacy of MMI and operational support",
+     "strength": "broader",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:SystemTransparency",
+   "framework": "HFACS",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Technological environment",
+     "strength": "broader",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:SystemTransparency",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Clarity of signs, signals, instructions and other information",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:SystemTransparency",
+   "framework": "SPAR-H",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Ergonomics and human-machine interface",
+     "strength": "broader",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:InformationAvailabilityAndReliability",
+   "framework": "CREAM",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Adequacy of MMI and operational support",
+     "strength": "partial",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:InformationAvailabilityAndReliability",
+   "framework": "HFACS",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Technological environment",
+     "strength": "partial",
+     "refs": "shappell2006",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:InformationAvailabilityAndReliability",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Clarity of signs, signals, instructions and other information",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:InformationAvailabilityAndReliability",
+   "framework": "SPAR-H",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Ergonomics and human-machine interface",
+     "strength": "partial",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MentalFatigue",
+   "framework": "CREAM",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Time of day (circadian rhythm)",
+     "strength": "partial",
+     "refs": "hollnagel1998",
+     "note": "CREAM's circadian CPC is the only explicit time-of-day factor in any of the five frameworks, and it is not the same construct as mental fatigue."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MentalFatigue",
+   "framework": "HFACS",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Adverse mental states",
+     "strength": "close",
+     "refs": "shappell2000",
+     "note": ""
+    },
+    {
+     "external_label": "Adverse physiological states",
+     "strength": "partial",
+     "refs": "shappell2000",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MentalFatigue",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Fatigue",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MentalFatigue",
+   "framework": "SPAR-H",
+   "strength": "broader",
+   "matches": [
+    {
+     "external_label": "Fitness for duty",
+     "strength": "broader",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MultitaskingInterruptionsAndDistractions",
+   "framework": "CREAM",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Number of simultaneous goals",
+     "strength": "close",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MultitaskingInterruptionsAndDistractions",
+   "framework": "HFACS",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Adverse mental states",
+     "strength": "partial",
+     "refs": "shappell2000",
+     "note": "HFACS lists distraction among adverse mental states, which conflates an environmental demand with an operator state."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MultitaskingInterruptionsAndDistractions",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Divided attention",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:MultitaskingInterruptionsAndDistractions",
+   "framework": "SPAR-H",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Complexity",
+     "strength": "partial",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:PhysicalDemands",
+   "framework": "CREAM",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Working conditions",
+     "strength": "partial",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:PhysicalDemands",
+   "framework": "HFACS",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Adverse physiological states",
+     "strength": "partial",
+     "refs": "shappell2000",
+     "note": ""
+    },
+    {
+     "external_label": "Physical/mental limitations",
+     "strength": "close",
+     "refs": "shappell2000",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:PhysicalDemands",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Physical capability and condition",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Work overload/underload",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:PhysicalDemands",
+   "framework": "SPAR-H",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Fitness for duty",
+     "strength": "partial",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ScenarioFamiliarity",
+   "framework": "CREAM",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Adequacy of training and experience",
+     "strength": "partial",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ScenarioFamiliarity",
+   "framework": "HFACS",
+   "strength": "none",
+   "matches": [
+    {
+     "external_label": "",
+     "strength": "none",
+     "refs": "",
+     "note": "Asserted absence: no counterpart in this framework."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ScenarioFamiliarity",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Routine or unusual",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:ScenarioFamiliarity",
+   "framework": "SPAR-H",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Experience and training",
+     "strength": "partial",
+     "refs": "gertman2005",
+     "note": "SPAR-H treats novelty as a property of the operator (experience) rather than of the scenario. The two are not the same construct."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TaskComplexity",
+   "framework": "CREAM",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Number of simultaneous goals",
+     "strength": "partial",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TaskComplexity",
+   "framework": "HFACS",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Planned inappropriate operations",
+     "strength": "partial",
+     "refs": "shappell2000",
+     "note": "Weak. HFACS has no task-complexity category; the nearest is a supervisory failure to match task to crew."
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TaskComplexity",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Difficulty/complexity of task",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TaskComplexity",
+   "framework": "SPAR-H",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Complexity",
+     "strength": "close",
+     "refs": "gertman2005",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TimePressureAndStress",
+   "framework": "CREAM",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Available time",
+     "strength": "close",
+     "refs": "hollnagel1998",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TimePressureAndStress",
+   "framework": "HFACS",
+   "strength": "partial",
+   "matches": [
+    {
+     "external_label": "Adverse mental states",
+     "strength": "partial",
+     "refs": "shappell2000",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TimePressureAndStress",
+   "framework": "HSE Performance Influencing Factors",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Stress/morale",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Time available/required",
+     "strength": "close",
+     "refs": "hse_pifs",
+     "note": ""
+    },
+    {
+     "external_label": "Work pressures",
+     "strength": "partial",
+     "refs": "hse_pifs",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "factor": "ehs:TimePressureAndStress",
+   "framework": "SPAR-H",
+   "strength": "close",
+   "matches": [
+    {
+     "external_label": "Available time",
+     "strength": "close",
+     "refs": "gertman2005",
+     "note": ""
+    },
+    {
+     "external_label": "Stress and stressors",
+     "strength": "close",
+     "refs": "gertman2005",
+     "note": "One IDHEAS-G factor spans two SPAR-H PSFs. Anyone porting SPAR-H multipliers across this boundary is double counting."
+    }
+   ]
+  }
+ ],
+ "row_count": 96
+}
