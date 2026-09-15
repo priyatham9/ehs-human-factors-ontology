@@ -1,10 +1,24 @@
 # ehs-human-factors-ontology
 
-[![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml)
+[![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml) [![site](https://img.shields.io/badge/site-github.io-blue)](https://priyatham9.github.io/ehs-human-factors-ontology/)
 
-A machine-readable encoding of the four-context performance-influencing-factor structure used in human reliability analysis. It provides 20 PIFs, 90 alignments to SPAR-H, CREAM, HFACS and the HSE PIF list, and a rule engine for scenario assessment. The four context dimensions are not new; they are adopted from IDHEAS-G (NUREG-2198, 2021).
+Part of the Grounded research programme: https://priyatham9.github.io/grounded/
+
+A machine-readable encoding of the four-context performance-influencing-factor structure used in human reliability analysis. It provides 20 PIFs, 90 alignments to SPAR-H, CREAM, HFACS and the HSE PIF list, and a rule engine for scenario assessment.
+
+The four context dimensions are not new; they are adopted from IDHEAS-G (NUREG-2198, 2021).
 
 Python 3.9+, standard library only. No pip installs, no build step.
+
+## At a glance
+
+| | |
+| --- | --- |
+| Status | v0.1.0 |
+| Data | Real ontology and crosswalk data; the scenario corpus in `synthetic/` is fabricated and labelled as such |
+| Tests | 189 tests, `python3 -m unittest discover -s tests -t .` |
+| Quickstart | `PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json` |
+| Licence | MIT |
 
 ## The claim, stated up front
 
