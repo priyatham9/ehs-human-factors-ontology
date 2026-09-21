@@ -894,9 +894,10 @@ html{scroll-padding-top:16px}
 .st-scene .st-stage,.st-scene[data-side="left"] .st-stage{justify-content:flex-start;top:102px;height:calc(100vh - 102px);height:calc(100svh - 102px);padding-top:14px}
 .st-scene .st-companion{top:6px;--st-comp:84px}
 }
-.stage-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 10px;padding-left:114px;min-height:116px}
+.stage-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 10px;padding-left:0;padding-right:104px;min-height:0}
 .stage-head h4{margin:5px 0 0;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:700}
-.stage-num{text-align:right;line-height:1}
+.stage-num{text-align:left;line-height:1}
+@media(min-width:801px){body.st-story .st-stage-inner svg{max-height:calc(100svh - 300px)!important}body.st-story .st-scene .st-stage{justify-content:flex-start!important;padding-top:22px!important}body.st-story .st-stage-inner{min-height:0!important;justify-content:flex-start!important}}
 .stage-num .st-bignum{font-size:clamp(2.6rem,4.6vw,4.4rem)}
 .stage-num small{display:block;margin-top:6px;font-family:var(--font-mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .st-stage-inner > .st-chart{max-height:72vh}
@@ -3593,7 +3594,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   }
   function autoFindings() {
     var ch = els(".st-chapter");
-    if (/story\.html$/.test(location.pathname)) document.body.classList.add("st-story");
+    // story pages and the hub (itself a story) keep one fixed bar only: the wayfinder
+    if (/story\.html$/.test(location.pathname) || /\/grounded\/(docs\/)?(index\.html)?$/.test(location.pathname)) document.body.classList.add("st-story");
     if (ch.length < 2 || document.querySelector(".st-findings")) return;
     var nav = html("nav", "st-findings");
     nav.setAttribute("aria-label", "Findings in this story");
