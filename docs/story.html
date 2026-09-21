@@ -684,7 +684,8 @@ body{overflow-x:clip}
 /* ---------- charts ---------- */
 .st-chart{display:block;width:100%;overflow:visible;font-family:var(--font-sans)}
 .st-chart.st-in-stage{height:min(66vh,720px);max-height:66vh}
-.st-chart text{font-family:var(--font-mono);fill:var(--muted);font-variant-numeric:tabular-nums}
+.st-chart text{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.st-chart text:not([fill]){fill:var(--muted)}
 .st-chart text:not([font-size]){font-size:14px}
 .st-chart .st-axis-line{stroke:var(--rule-soft);stroke-width:1.5}
 .st-chart .st-grid{stroke:var(--rule-soft);stroke-width:1;stroke-dasharray:2 4}
@@ -878,6 +879,20 @@ html{scroll-padding-top:16px}
 }
 .st-presenting .rs-header,.st-presenting .footer,.st-presenting .st-chapter,.st-presenting .st-findings{display:none!important}
 .st-presenting nav.pgm,.st-presenting .story-nav,.st-presenting .story-hero{display:none!important}
+
+/* forced reduced motion (testing hook ?reduced=1) mirrors the media query */
+.st-reduced *,.st-reduced *::before,.st-reduced *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+/* v1.2.5 phone: cap any stage figure, however deeply nested, so it fits the pinned half-screen stage; presenter on phones falls back to normal reading */
+@media(max-width:800px){
+  .st-stage-inner svg,.st-stage-inner canvas:not(.st-orb){max-height:40vh;max-height:40svh}
+  .st-presenting .st-step{min-height:80vh}
+}
+/* forced reduced motion gets the same end states as the media query */
+.st-reduced .st-reveal{opacity:1!important;transform:none!important;transition:none!important}
+.st-reduced .st-step{opacity:1!important;transition:none!important}
+.st-reduced .st-scene.st-flow .st-step > *{opacity:1!important;transform:none!important;transition:none!important}
+.st-reduced .st-stage-inner.st-layers > [data-show]{transition:none!important}
+.st-reduced .st-companion .st-companion-cap{transition:none!important}
 /*STORY_CSS_END*/</style>
 <style>
 /* ============ story page ============ */
@@ -896,10 +911,6 @@ html{scroll-padding-top:16px}
 .hero-copy h1{font-size:clamp(2.1rem,5.2vw,4.4rem);max-width:15ch;line-height:.98}
 .hero-copy .status{max-width:760px}
 .hero-copy .src{margin-top:22px}
-
-/* chapter card copy */
-.st-chapter .st-chapter-num{color:var(--rule-soft)}
-.chapline{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
 
 /* stage */
 .scene-wrap{border-bottom:2px solid var(--rule)}
@@ -937,28 +948,26 @@ details.data .scrollx{max-height:360px;overflow:auto}
 
 /* next card */
 .nextwrap{border-top:2px solid var(--rule);padding:74px 0 84px}
-.nextcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,300px);gap:34px;align-items:center;border:2px solid var(--rule);background:var(--surface);padding:38px 38px;text-decoration:none;color:var(--ink);transition:background .18s}
+.nextcard{display:block;border:2px solid var(--rule);background:var(--surface);padding:38px 38px;text-decoration:none;color:var(--ink);transition:background .18s}
 .nextcard:hover{background:var(--accent-wash)}
 .nextcard h2{font-size:clamp(1.9rem,4vw,3.2rem);margin:12px 0 14px;line-height:1}
 .nextcard p{color:var(--ink-2);max-width:48ch;margin:0;font-size:1.05rem}
 .nextcard-go{display:inline-block;margin-top:22px;font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.nextcard-orb{width:100%;aspect-ratio:1;justify-self:center;line-height:0}
 .nextalt{margin:20px 0 0;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .nextalt button{font:inherit;color:var(--accent);background:none;border:0;border-bottom:2px solid var(--accent);padding:0 0 2px;cursor:pointer;text-transform:uppercase;min-height:32px}
-@media(max-width:820px){.nextcard{grid-template-columns:1fr;padding:26px 20px}.nextcard-orb{width:min(58vw,240px);justify-self:start}}
+@media(max-width:820px){.nextcard{padding:26px 20px}}
 
 @media(max-width:800px){
-  .st-scene .st-stage{height:56vh;height:56svh}
-  .st-stage-inner > .st-chart{max-height:46vh}
-  .stage-head{padding-left:76px;margin-bottom:6px;min-height:72px}
-  .stage-head h4{font-size:.625rem}
-  .stage-num .st-bignum{font-size:1.9rem}
-  .stage-num small{font-size:.5rem;margin-top:3px}
-  .lgd{font-size:.5625rem;gap:5px 12px;margin-top:8px}
-  .lgd i{width:9px;height:9px}
-  .src{font-size:.5625rem;margin-top:8px}
+  .st-scene .st-stage{height:62vh;height:62svh}
+  .st-stage-inner > .st-chart{max-height:41vh}
+  .stage-head{padding-left:0;padding-right:84px;margin:0 0 8px;flex:none;align-items:flex-start;flex-wrap:nowrap;gap:10px}
+  .stage-head h4{font-size:.625rem;line-height:1.35;flex:1 1 auto;max-width:none}
+  .stage-num{text-align:right;flex:0 0 96px}
+  .stage-num .st-bignum{font-size:2rem}
+  .stage-num small{font-size:.5rem;margin-top:3px;line-height:1.3}
+  .lgd{display:none}
+  .src{font-size:.625rem;margin-top:8px}
 }
-@media(max-width:420px){.stage-head{padding-left:64px;min-height:64px}}
 </style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
@@ -1068,7 +1077,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 @media print{.rs-header{display:none!important}}
 </style></head>
 <body>
-<a class="skip" href="#main">Skip to content</a><header class="rs-header" id="rs-header"><div class="rs-bar"><div class="rs-row"><a class="rs-brand" href="https://priyatham9.github.io/grounded/" aria-label="Grounded research hub"><span class="rs-mark" aria-hidden="true"></span>Grounded</a><a class="rs-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a><nav class="rs-nav" aria-label="Research site"><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><details class="rs-menu" data-current="true"><summary class="rs-item" aria-haspopup="true">Projects<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a></div></details><details class="rs-menu"><summary class="rs-item" aria-haspopup="true">Papers<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a></div></details></nav><span class="rs-sep" aria-hidden="true"></span><button class="rs-btn" id="rs-theme" type="button" aria-label="Toggle colour theme"><svg class="rs-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="rs-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button><button class="rs-btn rs-burger" id="rs-menu-btn" type="button" aria-expanded="false" aria-controls="rs-sheet" aria-label="Open menu"><i></i></button></div></div><div class="rs-sub"><div class="rs-row rs-subrow"><span class="rs-sublabel">On this page</span><nav class="rs-sections" id="rs-sections" aria-label="On this page"><a class="rs-sec" href="#scene1">Four contexts, twenty factors</a><a class="rs-sec" href="#scene2">Factors and functions</a><a class="rs-sec" href="#scene3">A derivation trace</a><a class="rs-sec" href="#scene4">Crosswalk to prior work</a><a class="rs-sec" href="#honesty">What this does not establish</a><a class="rs-sec" href="#monday">What a leader does Monday</a></nav><button class="rs-subbtn" id="rs-subbtn" type="button" aria-expanded="false" aria-controls="rs-sublist">On this page:<b id="rs-now">Four contexts, twenty factors</b><span class="rs-caret" aria-hidden="true"></span></button></div><nav class="rs-sublist" id="rs-sublist" aria-label="On this page (list)" hidden><a class="rs-sec" href="#scene1">Four contexts, twenty factors</a><a class="rs-sec" href="#scene2">Factors and functions</a><a class="rs-sec" href="#scene3">A derivation trace</a><a class="rs-sec" href="#scene4">Crosswalk to prior work</a><a class="rs-sec" href="#honesty">What this does not establish</a><a class="rs-sec" href="#monday">What a leader does Monday</a></nav></div><div class="rs-sheet" id="rs-sheet" hidden><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><span class="rs-group">Projects</span><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a><span class="rs-group">Papers</span><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a><a class="rs-sheet-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a></div><span class="rs-progress" aria-hidden="true"></span></header>
+<a class="skip" href="#main">Skip to content</a><header class="rs-header" id="rs-header"><div class="rs-bar"><div class="rs-row"><a class="rs-brand" href="https://priyatham9.github.io/grounded/" aria-label="Grounded research hub"><span class="rs-mark" aria-hidden="true"></span>Grounded</a><a class="rs-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a><nav class="rs-nav" aria-label="Research site"><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><details class="rs-menu" data-current="true"><summary class="rs-item" aria-haspopup="true">Projects<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a></div></details><details class="rs-menu"><summary class="rs-item" aria-haspopup="true">Papers<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a></div></details></nav><span class="rs-sep" aria-hidden="true"></span><button class="rs-btn" id="rs-theme" type="button" aria-label="Toggle colour theme"><svg class="rs-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="rs-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button><button class="rs-btn rs-burger" id="rs-menu-btn" type="button" aria-expanded="false" aria-controls="rs-sheet" aria-label="Open menu"><i></i></button></div></div><div class="rs-sub"><div class="rs-row rs-subrow"><span class="rs-sublabel">On this page</span><nav class="rs-sections" id="rs-sections" aria-label="On this page"><a class="rs-sec" href="#scene1">20 checkable conditions</a><a class="rs-sec" href="#scene2">31 links to 5 functions</a><a class="rs-sec" href="#scene3">21 rules, 89 inferences</a><a class="rs-sec" href="#scene4">31 of 80 cells close</a><a class="rs-sec" href="#honesty">What this does not establish</a><a class="rs-sec" href="#monday">What a leader does Monday</a></nav><button class="rs-subbtn" id="rs-subbtn" type="button" aria-expanded="false" aria-controls="rs-sublist">On this page:<b id="rs-now">20 checkable conditions</b><span class="rs-caret" aria-hidden="true"></span></button></div><nav class="rs-sublist" id="rs-sublist" aria-label="On this page (list)" hidden><a class="rs-sec" href="#scene1">20 checkable conditions</a><a class="rs-sec" href="#scene2">31 links to 5 functions</a><a class="rs-sec" href="#scene3">21 rules, 89 inferences</a><a class="rs-sec" href="#scene4">31 of 80 cells close</a><a class="rs-sec" href="#honesty">What this does not establish</a><a class="rs-sec" href="#monday">What a leader does Monday</a></nav></div><div class="rs-sheet" id="rs-sheet" hidden><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><span class="rs-group">Projects</span><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a><span class="rs-group">Papers</span><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a><a class="rs-sheet-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a></div><span class="rs-progress" aria-hidden="true"></span></header>
 <main id="main">
 
 <section class="hero-wrap">
@@ -1099,9 +1108,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 1 ===================== -->
 <section class="st-chapter" data-num="01" data-orb="connecting" data-orb-label="Connecting">
-  <p class="chapline">Chapter one</p>
-  <h2>Four contexts, twenty factors</h2>
-  <p>The factor set is adopted from published human reliability work, not invented here. Each factor sits in one context dimension and carries a level, an observable proxy and a citation.</p>
+  <h2>All 20 risk factors are conditions you can check before the job</h2>
+  <p>Each factor sits in one of four context dimensions and carries a level, an observable proxy and a citation, so a claim about it can be evidenced from records a site already keeps.</p>
 </section>
 
 <!-- ===================== SCENE 1 ===================== -->
@@ -1120,28 +1128,28 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
       <div class="st-step" data-step="0" data-orb="searching" data-dim="all">
         <span class="label">The shape</span>
-        <h3>Twenty conditions, not one operator</h3>
-        <p>Every node is a condition that can be assessed before an event, from a work order, a roster, a permit record or a lighting survey. None of them is a judgement about a person.</p>
+        <h3>All 20 factors are conditions, not judgements about a person</h3>
+        <p>Every node can be assessed before the job from a work order, a roster, a permit record or a lighting survey.</p>
       </div>
       <div class="st-step" data-step="1" data-orb="connecting" data-dim="Human context">
         <span class="label">Human context</span>
-        <h3><span class="mono big" data-n="human">5</span>Procedures, staffing, team, training, work processes</h3>
-        <p>These are the conditions an organisation sets. They are the ones most often written up as root causes after the fact, and the ones easiest to evidence before it.</p>
+        <h3><span class="mono big" data-n="human">5</span>human-context factors are the ones the organisation sets</h3>
+        <p>Procedures, staffing, team and organisation, training, work processes. These are the conditions most often written up as root causes after the fact, and the easiest to evidence before it.</p>
       </div>
       <div class="st-step" data-step="2" data-orb="connecting" data-dim="Operational context">
         <span class="label">Operational context</span>
-        <h3><span class="mono big" data-n="operational">5</span>Noise, movement, heat, access, visibility</h3>
-        <p>Physical conditions of the place. Each has a measurable proxy already collected on most sites: dosimetry, WBGT, illuminance surveys, permit records.</p>
+        <h3><span class="mono big" data-n="operational">5</span>operational factors already have a measured proxy on most sites</h3>
+        <p>Noise, resistance to movement, thermal conditions, access and visibility. Dosimetry, WBGT, illuminance surveys and permit records cover all five.</p>
       </div>
       <div class="st-step" data-step="3" data-orb="connecting" data-dim="System context">
         <span class="label">System context</span>
-        <h3><span class="mono big" data-n="system">3</span>Equipment, interface, transparency</h3>
-        <p>What the plant tells the person. Transparency is the smallest group and the one with the weakest evidence base outside nuclear work.</p>
+        <h3><span class="mono big" data-n="system">3</span>system factors cover what the plant tells the person</h3>
+        <p>Equipment and tools, human-system interface, system transparency. It is the smallest group, and transparency has the weakest evidence base outside nuclear work.</p>
       </div>
       <div class="st-step" data-step="4" data-orb="connecting" data-dim="Task context">
         <span class="label">Task context</span>
-        <h3><span class="mono big" data-n="task">7</span>Familiarity, complexity, time pressure, fatigue and more</h3>
-        <p>The largest group. Task context is where a single non-routine job can move several factors at once, which is exactly the case the rules are written to catch.</p>
+        <h3><span class="mono big" data-n="task">7</span>task factors make the largest group of the four</h3>
+        <p>Familiarity, complexity, time pressure, mental fatigue, multitasking, physical demands and information availability. One non-routine job can move several of the seven at once, and that combination is what the rule set exists to catch.</p>
       </div>
     </div>
   </section>
@@ -1150,9 +1158,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 2 ===================== -->
 <section class="st-chapter" data-num="02" data-orb="connecting" data-orb-label="Connecting">
-  <p class="chapline">Chapter two</p>
-  <h2>Factors are not the point. Functions are.</h2>
-  <p>A degraded condition only matters through the cognitive work it makes harder. Each factor is attached to the macrocognitive functions it bears on.</p>
+  <h2>31 links tie those 20 factors to 5 cognitive functions</h2>
+  <p>A degraded condition matters through the work it makes harder, and 11 of the 20 factors bear on more than one function, so a single bad condition rarely stays in one place.</p>
 </section>
 
 <!-- ===================== SCENE 2 ===================== -->
@@ -1171,28 +1178,28 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
       <div class="st-step" data-step="0" data-orb="connecting" data-fn="all">
         <span class="label">Five functions</span>
-        <h3>Detection, understanding, decision making, action execution, coordination</h3>
-        <p>Eleven of the twenty factors attach to more than one function. That is why a single degraded condition rarely stays in one place.</p>
+        <h3>31 links spread the 20 factors across 5 functions</h3>
+        <p>Detection, understanding, decision making, action execution and coordination. Eleven factors attach to more than one of them.</p>
       </div>
       <div class="st-step" data-step="1" data-orb="listening" data-fn="Detection">
         <span class="label">Detection</span>
-        <h3>Seeing the signal at all</h3>
-        <p>Visibility, noise and information availability decide whether the cue reaches the person. Nothing downstream can recover a cue that never arrived.</p>
+        <h3>6 factors decide whether the cue reaches the person at all</h3>
+        <p>Visibility, noise, interface, information availability, mental fatigue and multitasking. Nothing downstream recovers a cue that never arrived.</p>
       </div>
       <div class="st-step" data-step="2" data-orb="working" data-fn="Understanding">
         <span class="label">Understanding</span>
-        <h3>Building the right picture</h3>
-        <p>Training, scenario familiarity and system transparency sit here. A plant that does not show its state forces the person to infer it.</p>
+        <h3>6 factors decide whether the picture the person builds is right</h3>
+        <p>Training, system transparency, information availability, scenario familiarity, task complexity and time pressure. A plant that does not show its state forces the person to infer it.</p>
       </div>
       <div class="st-step" data-step="3" data-orb="solving" data-fn="Decisionmaking">
         <span class="label">Decision making</span>
-        <h3>Where the worked example converges</h3>
-        <p>Five factors attach here: procedures, training, scenario familiarity, task complexity and time pressure. In the scenario in the next scene, four of those five are assessed below nominal.</p>
+        <h3>5 factors reach decision making, and 4 of them fail in the next scene</h3>
+        <p>Procedures, training, scenario familiarity, task complexity and time pressure. Four of those five are assessed below nominal in the worked scenario.</p>
       </div>
       <div class="st-step" data-step="4" data-orb="connecting" data-fn="ActionExecution">
         <span class="label">Action execution and coordination</span>
-        <h3>Ten factors on one function, four on another</h3>
-        <p>Action execution carries the most attached factors of the five, mostly physical and access conditions. Inter-team coordination carries the fewest, and has the thinnest literature support of the five.</p>
+        <h3>Action execution carries 10 factors, coordination only 4</h3>
+        <p>Action execution has the most attached factors, mostly physical and access conditions. Coordination has the fewest and the thinnest literature support of the five, which is written on the page rather than hidden.</p>
       </div>
     </div>
   </section>
@@ -1201,9 +1208,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 3 ===================== -->
 <section class="st-chapter" data-num="03" data-orb="solving" data-orb-label="Solving">
-  <p class="chapline">Chapter three</p>
-  <h2>A derivation that shows its work</h2>
-  <p>One worked scenario, assessed once, run through the rule set. Every step is a rule that fired, with its premises and the source it is written from.</p>
+  <h2>One scenario fires 21 rules and 89 inferences to a stop-and-review band</h2>
+  <p>Every step names the rule that produced it and the premises it used, so a screening decision can be argued with instead of taken on trust.</p>
 </section>
 
 <!-- ===================== SCENE 3 ===================== -->
@@ -1221,33 +1227,28 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
       <div class="st-step" data-step="0" data-orb="listening" data-edge="0">
         <span class="label">The input</span>
-        <h3>A batch reactor restart after an unplanned trip</h3>
-        <p>The operator qualified three weeks ago and has not run this recovery. The recovery sequence is not covered by an approved procedure. The outage window is fixed by a downstream commitment. Four factors are assessed below nominal; the rest are nominal.</p>
+        <h3>4 of the 20 factors are assessed below nominal</h3>
+        <p>A batch reactor restart after an unplanned trip. The operator qualified three weeks ago and has not run the recovery, the sequence has no approved procedure, and the outage window is fixed by a downstream commitment. The other sixteen factors are nominal.</p>
       </div>
       <div class="st-step" data-step="1" data-orb="solving" data-edge="1">
         <span class="label">Rules R01 and R02</span>
-        <h3>Levels become degraded and severely degraded facts</h3>
+        <h3>Rules R01 and R02 turn those 4 levels into facts</h3>
         <p>Scenario familiarity is severely degraded. Procedures, training and time pressure are degraded. The ordinal ranks come from the ontology, not from the rule.</p>
       </div>
       <div class="st-step" data-step="2" data-orb="solving" data-edge="2">
         <span class="label">Rules R07 and R08</span>
-        <h3>Degraded factors challenge the functions they attach to</h3>
-        <p>Understanding, decision making and action execution are all challenged. Three of five functions, from four conditions.</p>
+        <h3>Rules R07 and R08 challenge 3 of the 5 functions</h3>
+        <p>Understanding, decision making and action execution are all challenged. Three functions, from four conditions.</p>
       </div>
-      <div class="st-step" data-step="3" data-orb="solving" data-edge="3">
-        <span class="label">Rules R10 and R11</span>
-        <h3>Unfamiliar work raises a knowledge-based demand that training does not support</h3>
-        <p>Low familiarity pushes the operator out of rule-based control. Degraded training means that demand is unsupported.</p>
+      <div class="st-step" data-step="3" data-orb="solving" data-edge="4">
+        <span class="label">Rules R10, R11 and R23</span>
+        <h3>3 rules turn unfamiliar work into an aggravated error mode</h3>
+        <p>Low familiarity pushes the operator out of rule-based control, and degraded training leaves that demand unsupported. R23 names the combination: an unsupported knowledge-based demand under time pressure. This is where two ordinary-looking conditions stop being independent.</p>
       </div>
-      <div class="st-step" data-step="4" data-orb="solving" data-edge="4">
-        <span class="label">Rule R23</span>
-        <h3>Time pressure aggravates the knowledge-based error mode</h3>
-        <p>An unsupported knowledge-based demand under time pressure is the combination the rule names. This is where the two ordinary-looking conditions stop being independent.</p>
-      </div>
-      <div class="st-step" data-step="5" data-orb="grounded" data-edge="5">
-        <span class="label">Rule R33</span>
-        <h3>Screening band: stop and review</h3>
-        <p>A severely degraded factor with no mitigation, plus an aggravated error mode. The band is a screening output, not a probability. Rule R24 also fires: with familiarity and procedures both degraded, there is no rule-based fallback.</p>
+      <div class="st-step" data-step="4" data-orb="grounded" data-edge="5">
+        <span class="label">Rules R33 and R24</span>
+        <h3>Rule R33 returns a screening band of stop and review</h3>
+        <p>A severely degraded factor with no mitigation, plus an aggravated error mode. R24 also fires: with familiarity and procedures both degraded there is no rule-based fallback. The band is a screening output, not a probability, and the trace above is the whole argument for it.</p>
       </div>
     </div>
   </section>
@@ -1256,9 +1257,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 4 ===================== -->
 <section class="st-chapter" data-num="04" data-orb="searching" data-orb-label="Searching">
-  <p class="chapline">Chapter four</p>
-  <h2>Other people already named these</h2>
-  <p>Ninety-six crosswalk rows record how each factor lines up with SPAR-H, CREAM, HFACS and the HSE list. Where there is no counterpart, the row says so.</p>
+  <h2>Only 31 of 80 crosswalk cells are close matches to prior frameworks</h2>
+  <p>Twenty-three map to a broader parent term, twenty are partial and six have no counterpart, so an assessment carried between frameworks can change meaning without anyone noticing.</p>
 </section>
 
 <!-- ===================== SCENE 4 ===================== -->
@@ -1277,28 +1277,28 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
       <div class="st-step" data-step="0" data-orb="searching" data-fw="all">
         <span class="label">All four</span>
-        <h3>Eighty factor-framework cells</h3>
-        <p>Thirty-one are close matches, twenty-three map to a broader parent term, twenty are partial, and six have no counterpart at all.</p>
+        <h3>31 of 80 cells are close matches</h3>
+        <p>Twenty-three map to a broader parent term, twenty are partial, and six have no counterpart at all.</p>
       </div>
       <div class="st-step" data-step="1" data-orb="searching" data-fw="HSE Performance Influencing Factors">
         <span class="label">HSE</span>
-        <h3>The closest neighbour</h3>
-        <p>Thirteen of twenty factors match the HSE list closely. That is the expected result: both are written for industrial work rather than for a control room.</p>
+        <h3>13 of 20 factors match the HSE list closely</h3>
+        <p>The highest count of the four frameworks. Both lists are written for industrial work rather than for a control room.</p>
       </div>
       <div class="st-step" data-step="2" data-orb="searching" data-fw="SPAR-H">
         <span class="label">SPAR-H</span>
-        <h3>Where the gaps are</h3>
-        <p>Five factors have no SPAR-H counterpart. SPAR-H carries eight performance shaping factors for a control room; a chemical plant floor has conditions it never had to name.</p>
+        <h3>5 factors have no SPAR-H counterpart at all</h3>
+        <p>SPAR-H carries eight performance shaping factors written for a control room. A chemical plant floor has conditions it never had to name.</p>
       </div>
       <div class="st-step" data-step="3" data-orb="searching" data-fw="HFACS">
         <span class="label">HFACS</span>
-        <h3>Different level of the system</h3>
-        <p>Eight cells map to a broader HFACS term. HFACS has no procedures category at the precondition level; the nearest home is the organisational operational process.</p>
+        <h3>8 HFACS cells map only to a broader term</h3>
+        <p>HFACS has no procedures category at the precondition level, so the nearest home is the organisational operational process. It describes a different level of the system.</p>
       </div>
       <div class="st-step" data-step="4" data-orb="connecting" data-fw="CREAM">
         <span class="label">CREAM</span>
-        <h3>Why the mapping is recorded, not hidden</h3>
-        <p>A close match means a reader can carry an existing assessment across. A broader or partial match is a warning that the two terms are not interchangeable. Silence would have been the unsafe option.</p>
+        <h3>CREAM covers every factor, but only 6 of 20 closely</h3>
+        <p>Eight cells map to a broader CREAM term and six are partial. A close match lets a reader carry an existing assessment across; a broader or partial one warns that the two terms are not interchangeable. Recording the weak rows is what makes the strong ones usable.</p>
       </div>
     </div>
   </section>
@@ -1353,7 +1353,6 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
         <p>A structural model recovers the right coefficients until the model itself is wrong. Then it keeps fitting, and the fit test says nothing.</p>
         <span class="nextcard-go">Read it &rarr;</span>
       </div>
-      <div class="nextcard-orb"><canvas id="orb-next" class="st-orb" aria-hidden="true"></canvas></div>
     </a>
     <p class="nextalt">or <button type="button" id="open-map">open the map</button> to see every project and its three doors</p>
   </div>
@@ -1389,7 +1388,10 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
      0. small utilities
      --------------------------------------------------------- */
   var mqReduce = global.matchMedia ? matchMedia("(prefers-reduced-motion: reduce)") : null;
-  function reduced() { return !!(mqReduce && mqReduce.matches); }
+  // ?reduced=1 forces the reduced-motion path so it can be tested without changing OS settings
+  var forceReduced = /[?&]reduced=1/.test(location.search);
+  if (forceReduced) document.documentElement.classList.add("st-reduced");
+  function reduced() { return forceReduced || !!(mqReduce && mqReduce.matches); }
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function lerp(a, b, t) { return a + (b - a) * t; }
   function isEl(x) { return x && x.nodeType === 1; }
@@ -3677,25 +3679,20 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 "use strict";
 var NS="http://www.w3.org/2000/svg";
 var D=JSON.parse(document.getElementById("hfo-data").textContent);
-var RM=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var RM=window.matchMedia("(prefers-reduced-motion: reduce)").matches||/[?&]reduced=1/.test(location.search);
 function el(t,a,p){var n=document.createElementNS(NS,t);for(var k in a)n.setAttribute(k,a[k]);if(p)p.appendChild(n);return n;}
 function txt(p,x,y,s,a,cls){var t=el("text",{x:x,y:y,"text-anchor":a||"start"},p);if(cls)t.setAttribute("class",cls);t.textContent=s;return t;}
 function clear(n){while(n.firstChild)n.removeChild(n.firstChild);}
 var DIMC={"Human context":"var(--s1)","Operational context":"var(--s2)","System context":"var(--s3)","Task context":"var(--s4)"};
 var DIMK={"Human context":"human","Operational context":"operational","System context":"system","Task context":"task"};
+var DIMSUB={"Human context":"Procedures, staffing, training","Operational context":"Noise, heat, access, light","System context":"Equipment, interface, display","Task context":"Familiarity, time, fatigue"};
 
-/* ---------- orbs ---------- */
-var orbs={};
-function mkOrb(id,state){
-  var c=document.getElementById(id); if(!c) return null;
-  if(window.Story&&Story.orb){try{return Story.orb(c,{state:state||"breathing"});}catch(e){}}
-  return null;
-}
-function setOrb(k,s){var o=orbs[k];if(o&&o.setState)o.setState(s);}
+var PQ=window.matchMedia("(max-width:800px)");
+function phone(){return PQ.matches;}
 
 var SHORT={
  ProceduresGuidanceAndInstructions:"Procedures",Staffing:"Staffing",
- TeamAndOrganizationFactors:"Team and organisation",Training:"Training",
+ TeamAndOrganizationFactors:"Team and org",Training:"Training",
  WorkProcesses:"Work processes",NoiseAndCommunicationPathways:"Noise",
  ResistanceToPhysicalMovement:"Movement resistance",ThermalConditions:"Thermal conditions",
  WorkplaceAccessibilityAndHabitability:"Access",WorkplaceVisibility:"Visibility",
@@ -3706,19 +3703,29 @@ var SHORT={
  TaskComplexity:"Task complexity",TimePressureAndStress:"Time pressure"
 };
 function shortOf(f){return SHORT[f.id]||f.label;}
-function narrow(){return innerWidth<800;}
 function setNum(i,v,lab){
   var n=document.getElementById("num-"+i),l=document.getElementById("numlab-"+i);
   if(n)n.textContent=v; if(l&&lab)l.textContent=lab;
 }
+function vis(n){if(!n)return false;var r=n.getBoundingClientRect();return r.bottom>-120&&r.top<innerHeight+120;}
 
-/* ---------- scene 1: four context rings ---------- */
-var net={hubs:[],nodes:[],run:false,t0:0,active:"all"};
+/* =========================================================
+   scene 1: performance influencing factors by context
+   desktop = four rings, phone = four stacked bands
+   ========================================================= */
+var net={mode:null,hubs:[],nodes:[],rows:[],run:false,t0:0,active:"all"};
 function buildNet(){
   var svg=document.getElementById("fig-net"); if(!svg) return; clear(svg);
-  var HUB=[[235,200],[765,200],[235,508],[765,508]];
+  net={mode:phone()?"phone":"wide",hubs:[],nodes:[],rows:[],run:false,t0:performance.now(),active:net.active||"all"};
+  if(net.mode==="phone")buildNetPhone(svg); else buildNetWide(svg);
+  var l=document.getElementById("lgd-net");
+  if(l)l.innerHTML=D.dims.map(function(d){return '<span><i style="background:'+DIMC[d]+'"></i>'+d+'</span>';}).join("");
+  netHighlight(net.active,true);
+}
+function buildNetWide(svg){
+  svg.setAttribute("viewBox","0 0 1000 700");
+  var HUB=[[290,200],[710,200],[290,508],[710,508]];
   var g=el("g",{},svg),lg=el("g",{},g),ng=el("g",{},g),tg=el("g",{},g);
-  var hubs=[],nodes=[];
   D.dims.forEach(function(d,i){
     var list=D.factors.filter(function(f){return f.dim===d;});
     var hx=HUB[i][0],hy=HUB[i][1];
@@ -3729,7 +3736,7 @@ function buildNet(){
     H.num.setAttribute("fill","var(--paper)");
     H.t=txt(tg,hx,hy+56,d.replace(" context","").toUpperCase(),"middle","st-label-direct");
     H.t.setAttribute("font-size","15");H.t.setAttribute("letter-spacing","0.1em");
-    hubs.push(H);
+    net.hubs.push(H);
     list.forEach(function(f,j){
       var a=-Math.PI/2+(j+(list.length===3?0.5:0))/list.length*Math.PI*2;
       var N={f:f,dim:d,H:H,a:a,rx:128,ry:150,ph:j*1.7+i};
@@ -3741,15 +3748,29 @@ function buildNet(){
       N.t=txt(tg,0,0,shortOf(f),N.anchor);
       N.t.setAttribute("font-size","13.5");
       N.t.setAttribute("fill","var(--ink-2)");
-      nodes.push(N);
+      net.nodes.push(N);
     });
   });
-  net={hubs:hubs,nodes:nodes,run:false,t0:performance.now(),active:"all"};
   placeNet(0);
-  netHighlight("all",true);
   if(!RM) netRun();
-  var l=document.getElementById("lgd-net");
-  if(l)l.innerHTML=D.dims.map(function(d){return '<span><i style="background:'+DIMC[d]+'"></i>'+d+'</span>';}).join("");
+}
+function buildNetPhone(svg){
+  svg.setAttribute("viewBox","0 0 380 394");
+  var g=el("g",{},svg);
+  D.dims.forEach(function(d,i){
+    var list=D.factors.filter(function(f){return f.dim===d;});
+    var y=8+i*96,gg=el("g",{},g);
+    el("rect",{x:0,y:y,width:380,height:82,fill:"var(--surface-2)",stroke:"var(--rule-soft)","stroke-width":1.5},gg);
+    el("rect",{x:0,y:y,width:8,height:82,fill:DIMC[d]},gg);
+    var num=txt(gg,24,y+50,String(list.length),"start");
+    num.setAttribute("font-size","36");num.setAttribute("font-weight","700");num.setAttribute("fill",DIMC[d]);
+    var lab=txt(gg,74,y+34,d.replace(" context","").toUpperCase(),"start","st-label-direct");
+    lab.setAttribute("font-size","17");lab.setAttribute("letter-spacing",".06em");
+    var sub=txt(gg,74,y+60,DIMSUB[d],"start");
+    sub.setAttribute("font-size","13.5");sub.setAttribute("fill","var(--ink-2)");
+    var ti=el("title",{},gg); ti.textContent=d+": "+list.length+" factors";
+    net.rows.push({dim:d,g:gg,num:num,lab:lab});
+  });
 }
 function placeNet(t){
   net.hubs.forEach(function(H){H.k+=(H.kT-H.k)*0.12;});
@@ -3767,48 +3788,63 @@ function placeNet(t){
   });
 }
 function netRun(){
-  if(net.run||RM)return; net.run=true;
+  if(net.run||RM||net.mode!=="wide")return; net.run=true;
   (function loop(){
+    if(net.mode!=="wide"){net.run=false;return;}
     if(!vis(document.getElementById("fig-net"))){net.run=false;return;}
     placeNet(performance.now()-net.t0); requestAnimationFrame(loop);
   })();
 }
 function netHighlight(dim,instant){
-  net.active=dim;
+  net.active=dim||"all";
+  net.rows.forEach(function(R){
+    var on=(net.active==="all"||R.dim===net.active);
+    R.g.setAttribute("opacity",on?1:.2);
+    R.lab.setAttribute("fill",on&&net.active!=="all"?"var(--accent)":"var(--ink)");
+  });
   net.hubs.forEach(function(H){
-    var on=(dim==="all"||H.dim===dim);
-    H.kT=(dim==="all")?1:(on?1.18:0.82);
+    var on=(net.active==="all"||H.dim===net.active);
+    H.kT=(net.active==="all")?1:(on?1.18:0.82);
     if(instant)H.k=H.kT;
     H.c.setAttribute("opacity",on?1:.2);
     H.num.setAttribute("opacity",on?1:.2);
     H.t.setAttribute("opacity",on?1:.28);
-    H.t.setAttribute("fill",on&&dim!=="all"?"var(--accent)":"var(--ink)");
+    H.t.setAttribute("fill",on&&net.active!=="all"?"var(--accent)":"var(--ink)");
   });
   net.nodes.forEach(function(N){
-    var on=(dim==="all"||N.dim===dim);
+    var on=(net.active==="all"||N.dim===net.active);
     N.c.setAttribute("opacity",on?1:.16);
-    N.c.setAttribute("r",on&&dim!=="all"?13:10);
+    N.c.setAttribute("r",on&&net.active!=="all"?13:10);
     N.line.setAttribute("opacity",on?1:.12);
     N.t.setAttribute("opacity",on?1:.14);
-    N.t.setAttribute("font-weight",on&&dim!=="all"?"700":"400");
-    N.t.setAttribute("fill",on&&dim!=="all"?"var(--ink)":"var(--ink-2)");
+    N.t.setAttribute("font-weight",on&&net.active!=="all"?"700":"400");
+    N.t.setAttribute("fill",on&&net.active!=="all"?"var(--ink)":"var(--ink-2)");
   });
-  placeNet(performance.now()-net.t0);
-  netRun();
+  if(net.mode==="wide"){placeNet(performance.now()-net.t0);netRun();}
 }
 
-/* ---------- scene 2: function columns ---------- */
+/* =========================================================
+   scene 2: factors per macrocognitive function
+   desktop = five chip columns, phone = five labelled bars
+   ========================================================= */
 var FNS=[["Detection","Detection"],["Understanding","Understanding"],["Decisionmaking","Decision making"],["ActionExecution","Action execution"],["InterteamCoordination","Coordination"]];
-var fnChips=[];
+var fn={mode:null,chips:[],rows:[],active:"all"};
+function fnCount(k){return D.factors.filter(function(f){return f.fn.indexOf(k)>=0;}).length;}
 function buildFn(){
   var svg=document.getElementById("fig-fn"); if(!svg) return; clear(svg);
+  fn={mode:phone()?"phone":"wide",chips:[],rows:[],active:fn.active||"all"};
+  if(fn.mode==="phone")buildFnPhone(svg); else buildFnWide(svg);
+  var l=document.getElementById("lgd-fn");
+  if(l)l.innerHTML=D.dims.map(function(d){return '<span><i style="background:'+DIMC[d]+'"></i>'+d+'</span>';}).join("")+'<span>Numbers are factor counts per function</span>';
+  fnHighlight(fn.active);
+}
+function buildFnWide(svg){
+  svg.setAttribute("viewBox","0 0 1000 660");
   var W=1000,pad=8,colw=(W-pad*2)/FNS.length,cw=colw-16,ch=46,gap=8,top=120;
   var g=el("g",{},svg);
-  fnChips=[];
   FNS.forEach(function(F,i){
     var x=pad+colw*i,cx=x+colw/2;
     var list=D.factors.filter(function(f){return f.fn.indexOf(F[0])>=0;});
-    F.n=list.length;
     var num=txt(g,cx,52,String(list.length),"middle");
     num.setAttribute("font-size","40");num.setAttribute("font-weight","700");
     num.setAttribute("fill","var(--accent)");num.setAttribute("letter-spacing","-.03em");
@@ -3826,28 +3862,45 @@ function buildFn(){
       var t=txt(gg,x+22,y+28,shortOf(f),"start");
       t.setAttribute("font-size","15");t.setAttribute("fill","var(--ink)");
       var ti=el("title",{},gg); ti.textContent=f.label+" ("+f.dim+")";
-      fnChips.push({g:gg,fn:F[0],f:f});
+      fn.chips.push({g:gg,fn:F[0],f:f});
     });
-    F.lab=lab;F.lab2=lab2;F.num=num;
+    fn.rows.push({fn:F[0],lab:lab,lab2:lab2,num:num});
   });
-  var l=document.getElementById("lgd-fn");
-  if(l)l.innerHTML=D.dims.map(function(d){return '<span><i style="background:'+DIMC[d]+'"></i>'+d+'</span>';}).join("")+'<span>Numbers are factor counts per function</span>';
-  fnHighlight("all");
 }
-function fnHighlight(fn){
-  fnChips.forEach(function(d,i){
-    var on=(fn==="all"||d.fn===fn);
+function buildFnPhone(svg){
+  svg.setAttribute("viewBox","0 0 380 340");
+  var g=el("g",{},svg),max=10;
+  FNS.forEach(function(F,i){
+    var n=fnCount(F[0]),y=10+i*64,gg=el("g",{},g);
+    var num=txt(gg,0,y+26,String(n),"start");
+    num.setAttribute("font-size","30");num.setAttribute("font-weight","700");num.setAttribute("fill","var(--accent)");
+    var lab=txt(gg,50,y+24,F[1].toUpperCase(),"start","st-label-direct");
+    lab.setAttribute("font-size","16");lab.setAttribute("letter-spacing",".06em");
+    el("rect",{x:50,y:y+36,width:330,height:12,fill:"var(--surface-2)"},gg);
+    el("rect",{x:50,y:y+36,width:(330*n/max).toFixed(1),height:12,fill:"var(--accent)"},gg);
+    var ti=el("title",{},gg); ti.textContent=F[1]+": "+n+" factors attached";
+    fn.rows.push({fn:F[0],lab:lab,lab2:null,num:num,g:gg});
+  });
+}
+function fnHighlight(f){
+  fn.active=f||"all";
+  fn.chips.forEach(function(d,i){
+    var on=(fn.active==="all"||d.fn===fn.active);
     if(!RM)d.g.style.transition="opacity .45s ease "+(on?(i%12)*24:0)+"ms";
     d.g.setAttribute("opacity",on?1:.13);
   });
-  FNS.forEach(function(F){
-    var on=(fn==="all"||F[0]===fn),o=on?1:.22;
-    F.lab.setAttribute("opacity",o);if(F.lab2)F.lab2.setAttribute("opacity",o);
-    F.num.setAttribute("opacity",o);
+  fn.rows.forEach(function(R){
+    var on=(fn.active==="all"||R.fn===fn.active),o=on?1:.22;
+    R.lab.setAttribute("opacity",o);if(R.lab2)R.lab2.setAttribute("opacity",o);
+    R.num.setAttribute("opacity",o);
+    if(R.g)R.g.setAttribute("opacity",o);
   });
 }
 
-/* ---------- scene 3: derivation ---------- */
+/* =========================================================
+   scene 3: derivation trace
+   desktop = two-column graph, phone = one vertical chain
+   ========================================================= */
 var DER={
  nodes:[
   {id:"f1",L:1,y:96,t:"Scenario familiarity",u:"severely degraded",s:0},
@@ -3868,15 +3921,29 @@ var DER={
   {a:"d1",b:"k1",s:3},{a:"k1",b:"k2",s:3},{a:"d2",b:"k2",s:3},
   {a:"k2",b:"a1",s:4},{a:"d2",b:"a1",s:4},
   {a:"d1",b:"b1",s:5},{a:"a1",b:"b1",s:5}
+ ],
+ phone:[
+  {s:0,r:"INPUT",t:"4 factors below nominal"},
+  {s:1,r:"R01 / R02",t:"4 levels become facts"},
+  {s:2,r:"R07 / R08",t:"3 of 5 functions hit"},
+  {s:3,r:"R10 / R11",t:"Demand unsupported"},
+  {s:4,r:"R23",t:"Aggravated error mode"},
+  {s:5,r:"R33 / R24",t:"Band: stop and review"}
  ]
 };
-var derEls={n:{},e:[]};
+var derEls={mode:null,n:{},e:[],p:[],at:0};
 function buildDer(){
   var svg=document.getElementById("fig-derive"); if(!svg) return; clear(svg);
+  var at=derEls.at||0;
+  derEls={mode:phone()?"phone":"wide",n:{},e:[],p:[],at:at};
+  if(derEls.mode==="phone")buildDerPhone(svg); else buildDerWide(svg);
+  derStep(at);
+}
+function buildDerWide(svg){
+  svg.setAttribute("viewBox","0 0 1000 700");
   var LX=0,LW=272,RX=360,RW=640,LH=56,RH=46;
   var g=el("g",{},svg),eg=el("g",{},g),ng=el("g",{},g);
   var idx={}; DER.nodes.forEach(function(n){idx[n.id]=n;});
-  derEls={n:{},e:[]};
   var c1=txt(g,LX,26,"Assessed levels","start","st-caption"); c1.setAttribute("font-size","13");
   var c2=txt(g,RX,26,"Derived facts, with the rule that produced them","start","st-caption"); c2.setAttribute("font-size","13");
   DER.edges.forEach(function(E){
@@ -3906,9 +3973,32 @@ function buildDer(){
     var ti=el("title",{},gg); ti.textContent=n.t+(n.u?": "+n.u:"");
     derEls.n[n.id]={g:gg,r:r,t:t,s:n.s};
   });
-  derStep(0);
+}
+function buildDerPhone(svg){
+  var rows=[],i,step=null;
+  for(i=0;i<DER.phone.length;i++){
+    if(DER.phone[i].r!==""){step={s:DER.phone[i].s,r:DER.phone[i].r,lines:[DER.phone[i].t]};rows.push(step);}
+    else step.lines.push(DER.phone[i].t);
+  }
+  var H=52,GAP=9,top=4;
+  svg.setAttribute("viewBox","0 0 380 "+(top+rows.length*(H+GAP)));
+  var g=el("g",{},svg);
+  rows.forEach(function(R,k){
+    var y=top+k*(H+GAP),gg=el("g",{},g);
+    if(k)el("path",{d:"M190,"+(y-GAP)+" L190,"+y,"class":"st-link"},g);
+    var rc=el("rect",{x:0,y:y,width:380,height:H,fill:"var(--surface-2)",stroke:"var(--rule-soft)","stroke-width":2},gg);
+    var rl=txt(gg,12,y+19,R.r,"start");
+    rl.setAttribute("font-size","12.5");rl.setAttribute("fill","var(--accent)");
+    rl.setAttribute("letter-spacing",".12em");rl.setAttribute("font-weight","700");
+    R.lines.forEach(function(L,j){
+      var t=txt(gg,12,y+39+j*18,L,"start");
+      t.setAttribute("font-size","15");t.setAttribute("fill","var(--ink)");
+    });
+    derEls.p.push({g:gg,r:rc,s:R.s});
+  });
 }
 function derStep(k){
+  derEls.at=k;
   for(var id in derEls.n){var o=derEls.n[id];
     var on=o.s<=k;
     o.r.setAttribute("stroke",on?(o.s===5?"var(--warn)":"var(--accent)"):"var(--rule-soft)");
@@ -3917,6 +4007,13 @@ function derStep(k){
     o.g.setAttribute("opacity",on?1:.26);
     if(!RM)o.g.style.transition="opacity .4s ease";
   }
+  derEls.p.forEach(function(o){
+    var on=o.s<=k;
+    o.r.setAttribute("stroke",on?(o.s===5?"var(--warn)":"var(--accent)"):"var(--rule-soft)");
+    o.r.setAttribute("stroke-width",on&&o.s===k?3:2);
+    o.r.setAttribute("fill",on&&o.s===k?"var(--accent-wash)":"var(--surface-2)");
+    o.g.setAttribute("opacity",on?1:.26);
+  });
   derEls.e.forEach(function(E){
     var on=E.s<=k;
     E.p.setAttribute("class",on?"st-link is-hot":"st-link");
@@ -3926,55 +4023,26 @@ function derStep(k){
   setNum(3,String(seen),seen===1?"fact on the board":"facts on the board");
 }
 
-/* ---------- scene 4: crosswalk grid ---------- */
+/* =========================================================
+   scene 4: crosswalk to prior frameworks
+   desktop = 20x4 label grid, phone = four stacked strength bars
+   ========================================================= */
 var SOP={close:1,broader:.58,partial:.3,none:.9};
 var SLAB={close:"close",broader:"broader",partial:"partial",none:"none"};
-var xwCells=[],xwHeads=[],xwWasNarrow=null;
+var SHORTFW={"HSE Performance Influencing Factors":"HSE PIF"};
+var STR=["close","broader","partial","none"];
+var xw={mode:null,cells:[],heads:[],rows:[],active:"all"};
+function fwCounts(fw){
+  var c={close:0,broader:0,partial:0,none:0};
+  D.cells.forEach(function(x){if(x.fw===fw)c[x.s]++;});
+  return c;
+}
 function buildXw(){
   var svg=document.getElementById("fig-xw"); if(!svg) return; clear(svg);
-  var nw=narrow(); xwWasNarrow=nw;
-  var W=1000,left=nw?190:330,top=96,ch=nw?28:30,cw=(W-left)/D.frameworks.length;
-  var g=el("g",{},svg);
-  xwCells=[];xwHeads=[];
-  var SHORTFW={"HSE Performance Influencing Factors":"HSE PIF"};
-  D.frameworks.forEach(function(fw,i){
-    var cx=left+cw*i+cw/2;
-    var n=D.cells.filter(function(c){return c.fw===fw&&c.s==="close";}).length;
-    var num=txt(g,cx,44,String(n),"middle");
-    num.setAttribute("font-size","30");num.setAttribute("font-weight","700");
-    num.setAttribute("fill","var(--accent)");
-    var sub=txt(g,cx,62,"CLOSE","middle"); sub.setAttribute("font-size","11");
-    sub.setAttribute("letter-spacing",".14em");sub.setAttribute("fill","var(--muted)");
-    var h=txt(g,cx,84,SHORTFW[fw]||fw,"middle","st-label-direct");
-    h.setAttribute("font-size",nw?"12":"15");
-    xwHeads.push({fw:fw,h:h,num:num,sub:sub});
-  });
-  el("line",{x1:left,y1:top-10,x2:W,y2:top-10,"class":"st-axis-line"},g);
-  D.factors.forEach(function(f,r){
-    var y=top+r*ch;
-    var t=txt(g,left-12,y+ch/2+5,nw?shortOf(f):f.label,"end");
-    t.setAttribute("font-size",nw?"11":"13.5");
-    t.setAttribute("fill","var(--ink)");
-    var ti=el("title",{},t); ti.textContent=f.label+" - "+f.dim;
-    D.frameworks.forEach(function(fw,i){
-      var cell=null;
-      for(var k=0;k<D.cells.length;k++){if(D.cells[k].f===f.id&&D.cells[k].fw===fw){cell=D.cells[k];break;}}
-      var st=cell?cell.s:"none";
-      var gg=el("g",{},g);
-      el("rect",{x:left+cw*i+2,y:y+1.5,width:cw-4,height:ch-3,
-        fill:st==="none"?"var(--warn)":"var(--accent)",opacity:SOP[st]},gg);
-      if(!nw){
-        var lt=txt(gg,left+cw*i+cw/2,y+ch/2+4.5,st==="none"?"no counterpart":SLAB[st],"middle");
-        lt.setAttribute("font-size","11.5");
-        lt.setAttribute("letter-spacing",".08em");
-        lt.setAttribute("fill",(st==="close"||st==="none")?"var(--accent-ink)":"var(--ink)");
-      }
-      var tl=el("title",{},gg); tl.textContent=f.label+" / "+fw+": "+st+" - "+(cell?cell.m:"no counterpart");
-      xwCells.push({g:gg,fw:fw,st:st,row:r,col:i,label:t});
-    });
-  });
+  xw={mode:phone()?"phone":"wide",cells:[],heads:[],rows:[],active:xw.active||"all"};
+  if(xw.mode==="phone")buildXwPhone(svg); else buildXwWide(svg);
   var tb=document.querySelector("#tbl-xw tbody");
-  if(tb)tb.innerHTML=D.cells.map(function(c){
+  if(tb&&!tb.firstChild)tb.innerHTML=D.cells.map(function(c){
     var f=D.factors.filter(function(x){return x.id===c.f;})[0];
     return "<tr><td>"+(f?f.label:c.f)+"</td><td>"+c.fw+"</td><td>"+c.s+"</td><td>"+c.m+"</td></tr>";
   }).join("");
@@ -3984,35 +4052,104 @@ function buildXw(){
     '<span><i style="background:var(--accent);opacity:.58"></i>broader parent term</span>'+
     '<span><i style="background:var(--accent);opacity:.3"></i>partial</span>'+
     '<span><i style="background:var(--warn)"></i>no counterpart</span>';
-  xwShow(xwActive);
+  xwShow(xw.active);
 }
-var xwActive="all";
+function buildXwWide(svg){
+  svg.setAttribute("viewBox","0 0 1000 740");
+  var W=1000,left=330,top=96,ch=30,cw=(W-left)/D.frameworks.length;
+  var g=el("g",{},svg);
+  D.frameworks.forEach(function(fw,i){
+    var cx=left+cw*i+cw/2;
+    var n=fwCounts(fw).close;
+    var num=txt(g,cx,44,String(n),"middle");
+    num.setAttribute("font-size","30");num.setAttribute("font-weight","700");
+    num.setAttribute("fill","var(--accent)");
+    var sub=txt(g,cx,62,"CLOSE","middle"); sub.setAttribute("font-size","11");
+    sub.setAttribute("letter-spacing",".14em");sub.setAttribute("fill","var(--muted)");
+    var h=txt(g,cx,84,SHORTFW[fw]||fw,"middle","st-label-direct");
+    h.setAttribute("font-size","15");
+    xw.heads.push({fw:fw,h:h,num:num,sub:sub});
+  });
+  el("line",{x1:left,y1:top-10,x2:W,y2:top-10,"class":"st-axis-line"},g);
+  D.factors.forEach(function(f,r){
+    var y=top+r*ch;
+    var t=txt(g,left-12,y+ch/2+5,f.label,"end");
+    t.setAttribute("font-size","13.5");
+    t.setAttribute("fill","var(--ink)");
+    var ti=el("title",{},t); ti.textContent=f.label+" - "+f.dim;
+    D.frameworks.forEach(function(fw,i){
+      var cell=null;
+      for(var k=0;k<D.cells.length;k++){if(D.cells[k].f===f.id&&D.cells[k].fw===fw){cell=D.cells[k];break;}}
+      var st=cell?cell.s:"none";
+      var gg=el("g",{},g);
+      el("rect",{x:left+cw*i+2,y:y+1.5,width:cw-4,height:ch-3,
+        fill:st==="none"?"var(--warn)":"var(--accent)",opacity:SOP[st]},gg);
+      var lt=txt(gg,left+cw*i+cw/2,y+ch/2+4.5,st==="none"?"no counterpart":SLAB[st],"middle");
+      lt.setAttribute("font-size","11.5");
+      lt.setAttribute("letter-spacing",".08em");
+      lt.setAttribute("fill",(st==="close"||st==="none")?"var(--accent-ink)":"var(--ink)");
+      var tl=el("title",{},gg); tl.textContent=f.label+" / "+fw+": "+st+" - "+(cell?cell.m:"no counterpart");
+      xw.cells.push({g:gg,fw:fw,st:st,row:r,col:i,label:t});
+    });
+  });
+}
+function buildXwPhone(svg){
+  svg.setAttribute("viewBox","0 0 380 352");
+  var g=el("g",{},svg),W=380;
+  D.frameworks.forEach(function(fw,i){
+    var c=fwCounts(fw),y=14+i*86,gg=el("g",{},g),x=0;
+    var h=txt(gg,0,y,SHORTFW[fw]||fw,"start","st-label-direct");
+    h.setAttribute("font-size","17");h.setAttribute("letter-spacing",".04em");
+    STR.forEach(function(s){
+      var n=c[s]; if(!n)return;
+      var w=W*n/20;
+      el("rect",{x:x.toFixed(1),y:y+14,width:w.toFixed(1),height:30,
+        fill:s==="none"?"var(--warn)":"var(--accent)",opacity:SOP[s],
+        stroke:"var(--paper)","stroke-width":1.5},gg);
+      if(n>=3){
+        var lt=txt(gg,(x+w/2).toFixed(1),y+34,String(n),"middle");
+        lt.setAttribute("font-size","15");lt.setAttribute("font-weight","700");
+        lt.setAttribute("fill",(s==="close"||s==="none")?"var(--accent-ink)":"var(--ink)");
+      }
+      x+=w;
+    });
+    var cap=txt(gg,0,y+62,c.close+" close, "+c.broader+" broader, "+c.partial+" partial, "+c.none+" none","start");
+    cap.setAttribute("font-size","13.5");cap.setAttribute("fill","var(--ink-2)");
+    var ti=el("title",{},gg); ti.textContent=fw+": "+c.close+" close of 20";
+    xw.rows.push({fw:fw,g:gg,h:h});
+  });
+}
 function xwShow(fw){
-  xwActive=fw||"all";
+  xw.active=fw||"all";
   var counts={close:0,broader:0,partial:0,none:0},total=0;
-  xwCells.forEach(function(c,i){
-    var on=(xwActive==="all"||c.fw===xwActive);
+  xw.cells.forEach(function(c){
+    var on=(xw.active==="all"||c.fw===xw.active);
     if(on){counts[c.st]++;total++;}
-    var o=on?SOP[c.st]:SOP[c.st]*.12;
     if(!RM)c.g.style.transition="opacity .45s ease "+((c.row*5+c.col*4)%300)+"ms";
     c.g.setAttribute("opacity",on?1:.12);
-    c.g.setAttribute("data-on",on?"1":"0");
     c.label.setAttribute("opacity",1);
   });
-  xwHeads.forEach(function(h){
-    var on=(xwActive==="all"||h.fw===xwActive),o=on?1:.22;
+  xw.heads.forEach(function(h){
+    var on=(xw.active==="all"||h.fw===xw.active),o=on?1:.22;
     h.h.setAttribute("opacity",o);h.num.setAttribute("opacity",o);h.sub.setAttribute("opacity",o);
   });
-  if(xwActive==="all")setNum(4,"80","factor to framework cells");
+  xw.rows.forEach(function(R){
+    var on=(xw.active==="all"||R.fw===xw.active);
+    R.g.setAttribute("opacity",on?1:.2);
+    R.h.setAttribute("fill",on&&xw.active!=="all"?"var(--accent)":"var(--ink)");
+    if(on&&xw.active!=="all"){var c=fwCounts(R.fw);counts=c;total=20;}
+  });
+  if(xw.active==="all")setNum(4,"80","factor to framework cells");
   else setNum(4,String(counts.close),"close matches of "+total);
 }
 
-/* ---------- wiring ---------- */
-function vis(n){if(!n)return false;var r=n.getBoundingClientRect();return r.bottom>-120&&r.top<innerHeight+120;}
+/* =========================================================
+   wiring
+   ========================================================= */
 var FNLAB={Detection:"factors reach detection",Understanding:"factors reach understanding",Decisionmaking:"factors reach decision making",ActionExecution:"factors reach action execution",InterteamCoordination:"factors reach coordination"};
 function ready(){
-  orbs["orb-hero"]=mkOrb("orb-hero","breathing");
-  orbs["orb-next"]=mkOrb("orb-next","grounded");
+  var heroOrb=null,c=document.getElementById("orb-hero");
+  if(c&&window.Story&&Story.orb){try{heroOrb=Story.orb(c,{state:"breathing"});}catch(e){}}
   if(window.Story&&Story.field){var hv=document.getElementById("hero");if(hv)try{Story.field(hv,{density:1.0});}catch(e){}}
   buildNet(); buildFn(); buildDer(); buildXw();
 
@@ -4026,71 +4163,40 @@ function ready(){
         else setNum(1,String(counts[DIMK[d]]),"factors in "+d.replace(" context","").toLowerCase()+" context");},
     "2":function(i,e){var f=e.getAttribute("data-fn");fnHighlight(f);
         if(f==="all")setNum(2,"31","factor to function links");
-        else setNum(2,String(D.factors.filter(function(x){return x.fn.indexOf(f)>=0;}).length),FNLAB[f]||"factors");},
+        else setNum(2,String(fnCount(f)),FNLAB[f]||"factors");},
     "3":function(i,e){derStep(+e.getAttribute("data-edge"));},
     "4":function(i,e){xwShow(e.getAttribute("data-fw"));}
   };
   Array.prototype.forEach.call(document.querySelectorAll(".st-scene"),function(sc){
     var id=sc.getAttribute("data-scene"),h=handlers[id];
-    function step(i,e){ if(!e)return; h(i,e); setOrb("orb-hero",e.getAttribute("data-orb")||"idle"); }
     if(window.Story&&Story.scenes){
-      Story.scenes(sc,{onStep:function(i,e){step(i,e);}});
-    }else{
-      var steps=[].slice.call(sc.querySelectorAll(".st-step"));
-      var io=new IntersectionObserver(function(es){
-        es.forEach(function(en){ if(en.isIntersecting){
-          steps.forEach(function(s){s.classList.remove("is-active");});
-          en.target.classList.add("is-active");
-          step(steps.indexOf(en.target),en.target);
-          sc.style.setProperty("--p",(steps.indexOf(en.target)+1)/steps.length);
-        }});
-      },{rootMargin:"-45% 0px -45% 0px"});
-      steps.forEach(function(s){io.observe(s);});
-      steps[0].classList.add("is-active");
+      Story.scenes(sc,{onStep:function(i,e){
+        if(!e)return; h(i,e);
+        if(heroOrb&&heroOrb.setState)heroOrb.setState(e.getAttribute("data-orb")||"idle");
+      }});
     }
   });
 
-  if(window.Story&&Story.reveal){Story.reveal(document.body,{selector:".st-reveal"});}
-  else{
-    var ro=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("is-in");ro.unobserve(en.target);}});},{rootMargin:"-10% 0px"});
-    Array.prototype.forEach.call(document.querySelectorAll(".st-reveal"),function(e){ro.observe(e);});
-  }
+  if(window.Story&&Story.reveal)Story.reveal(document.body,{selector:".st-reveal"});
   if(window.Story&&Story.progressBar)Story.progressBar();
   if(window.Story&&Story.countUp)Array.prototype.forEach.call(document.querySelectorAll("[data-count]"),function(e){Story.countUp(e);});
 
-  /* presenter mode fallback */
-  if(!(window.Story&&Story.present)){
-    var on=false, secs=[].slice.call(document.querySelectorAll(".scene-wrap, .section, .hero")), at=0, dots=null;
-    function toggle(){
-      on=!on; document.documentElement.classList.toggle("st-presenting",on);
-      document.body.classList.toggle("st-presenting",on);
-      if(on){ dots=document.createElement("div"); dots.className="st-present-dots";
-        dots.innerHTML=secs.map(function(){return "<b></b>";}).join("");
-        var hint=document.createElement("div"); hint.className="st-present-hint"; hint.id="st-hint";
-        hint.textContent="arrows to step, P to exit"; document.body.appendChild(dots); document.body.appendChild(hint); mark();
-      }else{ if(dots)dots.remove(); var h=document.getElementById("st-hint"); if(h)h.remove(); }
-    }
-    function mark(){ if(!dots)return; [].forEach.call(dots.children,function(b,i){b.classList.toggle("is-on",i===at);}); }
-    function go(d){ at=Math.max(0,Math.min(secs.length-1,at+d)); secs[at].scrollIntoView({behavior:RM?"auto":"smooth"}); mark(); }
-    document.addEventListener("keydown",function(e){
-      if(e.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))return;
-      if(e.key==="p"||e.key==="P"){toggle();}
-      else if(on&&(e.key==="ArrowRight"||e.key==="ArrowDown"||e.key===" ")){e.preventDefault();go(1);}
-      else if(on&&(e.key==="ArrowLeft"||e.key==="ArrowUp")){e.preventDefault();go(-1);}
-      else if(on&&e.key==="Escape"){toggle();}
-    });
-    try{ if(new URLSearchParams(location.search).get("present")==="1") toggle(); }catch(err){}
-  }
   var mapBtn=document.getElementById("open-map");
   if(mapBtn)mapBtn.addEventListener("click",function(){
     try{var w=Story.wayfinder();if(w&&w.open)w.open();}catch(e){}
   });
 
+  function relayout(){
+    var want=phone()?"phone":"wide";
+    if(net.mode!==want)buildNet();
+    if(fn.mode!==want)buildFn();
+    if(derEls.mode!==want)buildDer();
+    if(xw.mode!==want)buildXw();
+  }
+  if(PQ.addEventListener)PQ.addEventListener("change",relayout);
+  else if(PQ.addListener)PQ.addListener(relayout);
   var rt=null;
-  addEventListener("resize",function(){
-    clearTimeout(rt);
-    rt=setTimeout(function(){ if(narrow()!==xwWasNarrow) buildXw(); },220);
-  });
+  addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(relayout,220);});
   document.addEventListener("visibilitychange",function(){ if(!document.hidden) netRun(); });
 }
 if(document.readyState!=="loading")ready();else document.addEventListener("DOMContentLoaded",ready);
