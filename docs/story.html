@@ -893,11 +893,324 @@ html{scroll-padding-top:16px}
 .st-reduced .st-scene.st-flow .st-step > *{opacity:1!important;transform:none!important;transition:none!important}
 .st-reduced .st-stage-inner.st-layers > [data-show]{transition:none!important}
 .st-reduced .st-companion .st-companion-cap{transition:none!important}
+
+
+/* ---------- v1.3 print handout ---------- */
+.st-print-foot,.st-print-terms{display:none}
+@media print{
+  @page{size:A4;margin:14mm}
+:root{--paper:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--ink-2:#1a1a1a;--muted:#444;--rule:#000;--rule-soft:#b8b8b8;--accent:#000;--accent-2:#000;--accent-ink:#fff;--accent-wash:#fff;--warn:#000;--warn-wash:#fff;background:#fff;color:#000}
+  body{background:#fff!important;color:#000!important;padding-bottom:0!important;font-size:11pt}
+  .st-way,  .st-way-map,  .st-progress,  .st-present-dots,  .st-present-hint,  .st-notes,  .st-gloss-tip,  .st-companion,  .st-field,  .st-hero-orb,  .st-orb-wrap,  canvas.st-orb,  .st-orb,  .presbtn,  .skip,  header.banner,  .rs-header,  .footer,  nav.pgm,  .story-nav,  .st-scene-rail,  details{display:none!important}
+  *{box-shadow:none!important;text-shadow:none!important;transition:none!important;animation:none!important;filter:none!important}
+  .st-scene,  .st-scene[data-side="left"]{display:block!important;grid-template-columns:none!important;gap:0!important}
+  .st-stage,  .st-scene .st-stage,  .st-scene[data-side="left"] .st-stage{position:static!important;height:auto!important;min-height:0!important;max-height:none!important;order:0!important;padding:0!important;border:0!important;background:transparent!important;display:block!important}
+  .st-steps,  .st-scene[data-side="left"] .st-steps{order:0!important}
+  .st-stage-inner{position:static!important;min-height:0!important;display:block!important;height:auto!important}
+  .st-stage-inner.st-layers > [data-show]{display:none!important}
+  .st-stage-inner.st-layers > [data-show].is-shown{display:block!important;opacity:1!important;transform:none!important;pointer-events:auto}
+  .st-stage-inner svg,  .st-stage-inner canvas:not(.st-orb),  .st-stage-inner .st-figure{max-height:9cm!important;height:auto!important;width:100%!important;max-width:100%!important;margin:0 auto 8pt;break-inside:avoid;page-break-inside:avoid}
+  .st-chart.st-in-stage{height:auto!important;max-height:9cm!important}
+  .st-step{min-height:0!important;opacity:1!important;padding:0 0 9pt!important;display:block!important;break-inside:avoid;page-break-inside:avoid}
+  .st-step > *{opacity:1!important;transform:none!important}
+  .st-step h3{font-size:12.5pt!important;margin:0 0 3pt!important;color:#000}
+  .st-step p{font-size:10.5pt!important;color:#000!important;max-width:none!important;line-height:1.36}
+  .st-step .label,  .st-bignum small{color:#444!important}
+  .st-bignum{font-size:20pt!important;color:#000!important}
+  .st-chapter{min-height:0!important;padding:11pt 0 5pt!important;border-top:1pt solid #000!important;margin:0!important;max-width:none!important;break-after:avoid;page-break-after:avoid;break-inside:avoid}
+  .st-chapter h2,  .st-chapter .st-chapter-title{font-size:15pt!important;max-width:none!important;margin:0 0 3pt!important}
+  .st-chapter p{font-size:10.5pt!important;color:#000!important;max-width:none!important}
+  .st-chapter .st-chapter-num{color:#000!important;font-size:8.5pt!important;margin:0 0 4pt!important}
+  .st-hero{min-height:0!important;display:block!important;padding:0!important}
+  .st-hero h1{font-size:20pt!important;margin:0 0 6pt}
+  .st-hero p,  .hero-lede{font-size:11pt!important;color:#000!important;max-width:none!important}
+  .st-findings{padding:6pt 0 4pt!important;max-width:none!important;break-inside:avoid}
+  .st-findings ol{display:block!important;border:0!important;counter-reset:f}
+  .st-findings li{border:0!important;background:none!important;break-inside:avoid;page-break-inside:avoid}
+  .st-findings a{padding:0 0 4pt!important;color:#000!important;display:block!important}
+  .st-findings a::before{display:inline!important;margin:0 6pt 0 0!important;color:#000!important;font-size:9pt!important}
+  .st-findings b{display:inline!important;font-size:10.5pt!important}
+  .st-findings span{display:block!important;color:#222!important;font-size:9.5pt!important;padding-left:26pt}
+  .st-chart text,  svg text,  .st-chart .st-label-direct,  .st-chart .st-anno-text{fill:#000!important}
+  .st-chart .st-caption,  .st-chart .st-ref-text,  .st-figure figcaption{fill:#333!important;color:#333!important}
+  .st-chart .st-grid,  .st-chart .st-axis-line{stroke:#888!important}
+  .st-gloss{border-bottom:0!important;text-decoration:none!important}
+  a{color:#000!important;text-decoration:none!important}
+  a[href]::after{content:""!important}
+  .st-print-next a[href]::after,  a[rel="next"]::after,  figcaption a[href]::after{content:" (" attr(href) ")"!important;font-size:8pt;color:#333}
+  .st-print-terms{display:block!important;padding:9pt 0 0;margin-top:10pt;border-top:1pt solid #000;break-inside:auto}
+  .st-print-terms h2{font-size:12pt;margin:0 0 5pt}
+  .st-print-terms dl{margin:0;columns:2;column-gap:16pt}
+  .st-print-terms dt{font-weight:700;font-size:9pt;margin-top:4pt;break-after:avoid}
+  .st-print-terms dd{margin:0;font-size:9pt;color:#222;break-inside:avoid}
+  .st-print-foot{display:block!important;margin-top:9pt;padding-top:4pt;border-top:.5pt solid #777;font-size:8pt;color:#333;font-family:var(--font-mono)}
+}
+/* screen mirror of the handout rules, for previewing with ?print=1 */
+html.st-printing{--paper:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--ink-2:#1a1a1a;--muted:#444;--rule:#000;--rule-soft:#b8b8b8;--accent:#000;--accent-2:#000;--accent-ink:#fff;--accent-wash:#fff;--warn:#000;--warn-wash:#fff;background:#fff;color:#000}
+html.st-printing body{background:#fff!important;color:#000!important;padding-bottom:0!important;font-size:11pt}
+html.st-printing .st-way,html.st-printing .st-way-map,html.st-printing .st-progress,html.st-printing .st-present-dots,html.st-printing .st-present-hint,html.st-printing .st-notes,html.st-printing .st-gloss-tip,html.st-printing .st-companion,html.st-printing .st-field,html.st-printing .st-hero-orb,html.st-printing .st-orb-wrap,html.st-printing canvas.st-orb,html.st-printing .st-orb,html.st-printing .presbtn,html.st-printing .skip,html.st-printing header.banner,html.st-printing .rs-header,html.st-printing .footer,html.st-printing nav.pgm,html.st-printing .story-nav,html.st-printing .st-scene-rail,html.st-printing details{display:none!important}
+html.st-printing *{box-shadow:none!important;text-shadow:none!important;transition:none!important;animation:none!important;filter:none!important}
+html.st-printing .st-scene,html.st-printing .st-scene[data-side="left"]{display:block!important;grid-template-columns:none!important;gap:0!important}
+html.st-printing .st-stage,html.st-printing .st-scene .st-stage,html.st-printing .st-scene[data-side="left"] .st-stage{position:static!important;height:auto!important;min-height:0!important;max-height:none!important;order:0!important;padding:0!important;border:0!important;background:transparent!important;display:block!important}
+html.st-printing .st-steps,html.st-printing .st-scene[data-side="left"] .st-steps{order:0!important}
+html.st-printing .st-stage-inner{position:static!important;min-height:0!important;display:block!important;height:auto!important}
+html.st-printing .st-stage-inner.st-layers > [data-show]{display:none!important}
+html.st-printing .st-stage-inner.st-layers > [data-show].is-shown{display:block!important;opacity:1!important;transform:none!important;pointer-events:auto}
+html.st-printing .st-stage-inner svg,html.st-printing .st-stage-inner canvas:not(.st-orb),html.st-printing .st-stage-inner .st-figure{max-height:9cm!important;height:auto!important;width:100%!important;max-width:100%!important;margin:0 auto 8pt;break-inside:avoid;page-break-inside:avoid}
+html.st-printing .st-chart.st-in-stage{height:auto!important;max-height:9cm!important}
+html.st-printing .st-step{min-height:0!important;opacity:1!important;padding:0 0 9pt!important;display:block!important;break-inside:avoid;page-break-inside:avoid}
+html.st-printing .st-step > *{opacity:1!important;transform:none!important}
+html.st-printing .st-step h3{font-size:12.5pt!important;margin:0 0 3pt!important;color:#000}
+html.st-printing .st-step p{font-size:10.5pt!important;color:#000!important;max-width:none!important;line-height:1.36}
+html.st-printing .st-step .label,html.st-printing .st-bignum small{color:#444!important}
+html.st-printing .st-bignum{font-size:20pt!important;color:#000!important}
+html.st-printing .st-chapter{min-height:0!important;padding:11pt 0 5pt!important;border-top:1pt solid #000!important;margin:0!important;max-width:none!important;break-after:avoid;page-break-after:avoid;break-inside:avoid}
+html.st-printing .st-chapter h2,html.st-printing .st-chapter .st-chapter-title{font-size:15pt!important;max-width:none!important;margin:0 0 3pt!important}
+html.st-printing .st-chapter p{font-size:10.5pt!important;color:#000!important;max-width:none!important}
+html.st-printing .st-chapter .st-chapter-num{color:#000!important;font-size:8.5pt!important;margin:0 0 4pt!important}
+html.st-printing .st-hero{min-height:0!important;display:block!important;padding:0!important}
+html.st-printing .st-hero h1{font-size:20pt!important;margin:0 0 6pt}
+html.st-printing .st-hero p,html.st-printing .hero-lede{font-size:11pt!important;color:#000!important;max-width:none!important}
+html.st-printing .st-findings{padding:6pt 0 4pt!important;max-width:none!important;break-inside:avoid}
+html.st-printing .st-findings ol{display:block!important;border:0!important;counter-reset:f}
+html.st-printing .st-findings li{border:0!important;background:none!important;break-inside:avoid;page-break-inside:avoid}
+html.st-printing .st-findings a{padding:0 0 4pt!important;color:#000!important;display:block!important}
+html.st-printing .st-findings a::before{display:inline!important;margin:0 6pt 0 0!important;color:#000!important;font-size:9pt!important}
+html.st-printing .st-findings b{display:inline!important;font-size:10.5pt!important}
+html.st-printing .st-findings span{display:block!important;color:#222!important;font-size:9.5pt!important;padding-left:26pt}
+html.st-printing .st-chart text,html.st-printing svg text,html.st-printing .st-chart .st-label-direct,html.st-printing .st-chart .st-anno-text{fill:#000!important}
+html.st-printing .st-chart .st-caption,html.st-printing .st-chart .st-ref-text,html.st-printing .st-figure figcaption{fill:#333!important;color:#333!important}
+html.st-printing .st-chart .st-grid,html.st-printing .st-chart .st-axis-line{stroke:#888!important}
+html.st-printing .st-gloss{border-bottom:0!important;text-decoration:none!important}
+html.st-printing a{color:#000!important;text-decoration:none!important}
+html.st-printing a[href]::after{content:""!important}
+html.st-printing .st-print-next a[href]::after,html.st-printing a[rel="next"]::after,html.st-printing figcaption a[href]::after{content:" (" attr(href) ")"!important;font-size:8pt;color:#333}
+html.st-printing .st-print-terms{display:block!important;padding:9pt 0 0;margin-top:10pt;border-top:1pt solid #000;break-inside:auto}
+html.st-printing .st-print-terms h2{font-size:12pt;margin:0 0 5pt}
+html.st-printing .st-print-terms dl{margin:0;columns:2;column-gap:16pt}
+html.st-printing .st-print-terms dt{font-weight:700;font-size:9pt;margin-top:4pt;break-after:avoid}
+html.st-printing .st-print-terms dd{margin:0;font-size:9pt;color:#222;break-inside:avoid}
+html.st-printing .st-print-foot{display:block!important;margin-top:9pt;padding-top:4pt;border-top:.5pt solid #777;font-size:8pt;color:#333;font-family:var(--font-mono)}
+
+/* ---------- v1.3 speaker notes (presenter mode only) ---------- */
+.st-notes{position:fixed;left:22px;bottom:22px;z-index:78;max-width:46ch;padding:12px 15px 13px;background:var(--surface);border:2px solid var(--ink);color:var(--ink)}
+.st-notes.st-notes-right{left:auto;right:22px;bottom:54px}
+.st-notes-lab{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;font-weight:700;color:var(--accent);margin-bottom:7px}
+.st-notes-body{font-size:1rem;line-height:1.45;color:var(--ink)}
+html:not(.st-presenting) .st-notes{display:none!important}
+@media(max-width:800px){.st-notes{max-width:calc(100vw - 32px);left:16px;right:16px;bottom:16px}.st-notes.st-notes-right{left:16px;right:16px;bottom:16px}}
+
+/* ---------- v1.3 glossary ---------- */
+abbr.st-gloss{border-bottom:1px dotted var(--muted);text-decoration:none;cursor:help;color:inherit}
+abbr.st-gloss:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.st-gloss-tip{position:absolute;left:0;top:0;z-index:95;max-width:34ch;padding:9px 11px;background:var(--surface);border:2px solid var(--rule);color:var(--ink);font-size:.8125rem;line-height:1.4;pointer-events:none}
+.st-gloss-tip[hidden]{display:none}
+.st-presenting abbr.st-gloss{border-bottom-color:transparent}
+
+/* print handout, second pass */
+@media print{
+  /* only the layout boxes go static; figures keep their own absolutely placed parts */
+  .st-stage,.st-stage-inner,.st-frame,.st-steps,.st-step,.st-hero,.st-hero > *{position:static!important}
+  .st-figure figcaption{margin:4pt 0 0!important;padding:0!important}
+  .st-steps{padding-top:8pt!important;min-height:0!important}
+  .st-scene,  .st-scene .st-steps,  .st-scene .st-stage{min-height:0!important}
+  button,  .btn,  [class*="btn"],  [class*="cta"]{background:none!important;background-color:transparent!important;color:#000!important;border-color:#000!important}
+  [style*="position:fixed"],  [style*="position: fixed"]{display:none!important}
+}
+html.st-printing .st-stage,html.st-printing .st-stage-inner,html.st-printing .st-frame,html.st-printing .st-steps,html.st-printing .st-step,html.st-printing .st-hero,html.st-printing .st-hero > *{position:static!important}
+html.st-printing .st-figure figcaption{margin:4pt 0 0!important;padding:0!important}
+html.st-printing .st-steps{padding-top:8pt!important;min-height:0!important}
+html.st-printing .st-scene,html.st-printing .st-scene .st-steps,html.st-printing .st-scene .st-stage{min-height:0!important}
+html.st-printing button,html.st-printing .btn,html.st-printing [class*="btn"],html.st-printing [class*="cta"]{background:none!important;background-color:transparent!important;color:#000!important;border-color:#000!important}
+html.st-printing [style*="position:fixed"],html.st-printing [style*="position: fixed"]{display:none!important}
+
+/* ============================================================
+   v1.3 UI refresh: surface system, dock, bento, step card,
+   spotlight, stage frame, word reveal, beam, ticker
+   ============================================================ */
+:root{
+  --st-radius:14px;--st-radius-sm:10px;
+  --st-hair-c:rgba(90,90,90,.22);
+  --st-glass:var(--surface);
+  --st-shadow:0 10px 40px -12px rgba(16,19,17,.18);
+  --st-ease:cubic-bezier(.2,.8,.2,1);
+  --st-hair:1px solid var(--st-hair-c);
+}
+@supports (color: color-mix(in srgb, red, blue)){
+  :root{--st-hair-c:color-mix(in srgb, var(--ink) 14%, transparent);--st-glass:color-mix(in srgb, var(--surface) 78%, transparent)}
+}
+html[data-theme="dark"]{--st-shadow:0 10px 40px -12px rgba(0,0,0,.45)}
+@media (prefers-color-scheme: dark){html:not([data-theme="light"]){--st-shadow:0 10px 40px -12px rgba(0,0,0,.45)}}
+
+/* ---------- 1. dock ---------- */
+body.st-has-way{padding-bottom:calc(var(--st-way-h,64px) + 22px)}
+.st-way{position:fixed;left:50%;right:auto;bottom:12px;transform:translateX(-50%);
+  width:min(720px,calc(100vw - 24px));border:var(--st-hair);border-top:var(--st-hair);border-radius:999px;
+  background:var(--st-glass);box-shadow:var(--st-shadow);overflow:hidden;z-index:75}
+@supports (backdrop-filter: blur(4px)){.st-way{backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2)}}
+.st-way-seg{position:absolute;top:0;left:16px;right:16px;height:3px;display:flex;gap:3px;padding:0;z-index:1}
+.st-way-seg i{height:3px;border-radius:2px;background:var(--rule-soft);opacity:.55}
+.st-way-seg i.is-done{background:var(--accent);opacity:.4}
+.st-way-seg i.is-now{background:transparent}
+.st-way-lamp{position:absolute;top:0;height:3px;border-radius:2px;background:var(--accent);z-index:2;
+  transition:left .5s var(--st-ease),width .5s var(--st-ease);box-shadow:0 0 12px 1px var(--accent)}
+.st-way-lamp::after{content:"";position:absolute;left:50%;top:2px;width:150%;height:26px;transform:translateX(-50%);
+  background:radial-gradient(60% 100% at 50% 0%,var(--accent),transparent 72%);opacity:.20;pointer-events:none}
+.st-way-row{padding:10px 8px 9px 18px;gap:10px;min-height:44px}
+.st-way-crumb{font-size:.6875rem;letter-spacing:.1em}
+.st-way-btns{gap:4px}
+.st-way a.st-way-btn,.st-way button.st-way-btn{display:inline-flex;align-items:center;gap:6px;border-radius:999px;
+  border:var(--st-hair);background:transparent;padding:7px 12px;transition:transform .18s var(--st-ease),border-color .18s,color .18s,background .18s}
+.st-way a.st-way-btn:hover,.st-way button.st-way-btn:hover{transform:translateY(-1px);border-color:var(--accent);background:var(--accent-wash)}
+.st-way .st-way-btn svg{width:13px;height:13px;flex:0 0 auto;display:block}
+.st-way .st-way-btn .st-way-lab{display:inline}
+@media(max-width:520px){.st-way .st-way-btn .st-way-lab{display:none}.st-way a.st-way-btn,.st-way button.st-way-btn{padding:8px 10px}.st-way-row{padding-left:14px}}
+.st-presenting .st-way,.st-presenting .st-way-lamp{display:none!important}
+
+/* ---------- 2. spotlight ---------- */
+.st-spot{position:relative;isolation:isolate}
+.st-spot::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:0;
+  transition:opacity .3s var(--st-ease);
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,0%),var(--accent-wash),transparent 72%)}
+@supports (color: color-mix(in srgb, red, blue)){
+  .st-spot::before{background:radial-gradient(220px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent) 12%,transparent),transparent 72%)}
+}
+.st-spot.is-spot::before{opacity:1}
+.st-spot.is-spot{border-color:var(--accent)}
+.st-spot > *{position:relative;z-index:1}
+
+/* ---------- 3. findings bento ---------- */
+.st-findings ol{border:0!important;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.st-findings li{border:var(--st-hair)!important;border-radius:var(--st-radius);background:var(--surface);overflow:hidden;
+  transition:transform .22s var(--st-ease),box-shadow .22s var(--st-ease),border-color .22s}
+.st-findings li:hover{box-shadow:var(--st-shadow)}
+.st-findings li.st-bento-lead{grid-column:span 2}
+@media(max-width:900px){.st-findings li.st-bento-lead{grid-column:span 1}}
+.st-findings a{padding:18px 20px 20px;position:relative}
+.st-findings a:hover{background:transparent}
+.st-findings a::before{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:22px;
+  border:var(--st-hair);border-radius:999px;font-size:.6875rem;color:var(--accent);margin-bottom:12px}
+.st-findings b{font-size:1.2rem}
+.st-find-key{position:absolute;top:16px;right:18px;font-family:var(--font-mono);font-style:normal;font-weight:700;
+  font-size:1.35rem;letter-spacing:-.02em;color:var(--accent);opacity:.9}
+
+/* ---------- 5. stage frame ---------- */
+@media(min-width:801px){
+  .st-stage-inner.st-frame{--fp:min(calc(var(--p,0) * 4),1);
+    border:var(--st-hair);border-radius:var(--st-radius);background:var(--surface);padding:16px 18px;
+    box-shadow:var(--st-shadow);transform-origin:50% 0;will-change:transform;
+    transform:perspective(1200px) rotateX(calc((1 - var(--fp)) * 10deg)) scale(calc(.96 + .04 * var(--fp))) translateY(calc((1 - var(--fp)) * 24px))}
+  .st-stage-inner.st-frame::before{content:"";position:absolute;left:1px;right:1px;top:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--st-hair-c),transparent);pointer-events:none}
+}
+.st-presenting .st-stage-inner.st-frame,.st-reduced .st-stage-inner.st-frame{transform:none!important;box-shadow:none}
+@media (prefers-reduced-motion: reduce){.st-stage-inner.st-frame{transform:none!important}}
+
+/* ---------- 6. active step card ---------- */
+.st-step{border:1px solid transparent;border-radius:var(--st-radius);padding:22px 24px;
+  transition:opacity .45s ease,background .35s var(--st-ease),border-color .35s var(--st-ease)}
+.st-step.is-active{background:var(--st-glass);border:var(--st-hair)}
+@supports (backdrop-filter: blur(4px)){.st-step.is-active{backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15)}}
+.st-presenting .st-step.is-active{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:28px 30px;background:var(--surface)}
+
+/* ---------- 4. word reveal ---------- */
+.st-w{display:inline-block;opacity:0;transform:translateY(.36em);transition:opacity .5s var(--st-ease),transform .5s var(--st-ease),color .3s linear}
+.st-words.is-in .st-w{opacity:1;transform:none}
+.st-chapter h2.st-words .st-w{opacity:1;transform:none;color:var(--muted)}
+.st-chapter h2.st-words .st-w.is-lit{color:var(--ink)}
+.st-reduced .st-w,.st-printing .st-w{opacity:1!important;transform:none!important;color:inherit!important;transition:none!important}
+@media (prefers-reduced-motion: reduce){.st-w{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* ---------- 7. beam ---------- */
+.st-beam-base{fill:none;stroke:var(--rule-soft);stroke-width:1.5}
+.st-beam-run{fill:none;stroke-width:2.4;stroke-linecap:round}
+
+/* ---------- 8. number ticker ---------- */
+.st-tick{display:inline-flex;align-items:baseline;overflow:hidden;vertical-align:baseline}
+.st-tick-col{display:inline-block;overflow:hidden;height:1em;line-height:1}
+.st-tick-col i{display:block;font-style:normal;transition:transform .9s var(--st-ease)}
+
+/* ---------- 9. surfaces ---------- */
+.st-way-map{background:var(--paper)}
+.st-map-card{border:var(--st-hair);border-radius:var(--st-radius);background:var(--surface)}
+.st-map-card.is-now{border-color:var(--accent)}
+.st-map-card a{border-left:2px solid var(--st-hair-c);border-radius:0 var(--st-radius-sm) var(--st-radius-sm) 0}
+.st-way-map .st-way-btn,.st-map-extra .st-way-btn{border:var(--st-hair);border-radius:999px;transition:transform .18s var(--st-ease),border-color .18s}
+.st-way-map .st-way-btn:hover,.st-map-extra .st-way-btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.st-gloss-tip{border:var(--st-hair);border-radius:var(--st-radius-sm);background:var(--st-glass);box-shadow:var(--st-shadow)}
+@supports (backdrop-filter: blur(4px)){.st-gloss-tip,.st-notes,.st-present-dots{backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2)}}
+.st-notes{border:var(--st-hair);border-radius:var(--st-radius);background:var(--st-glass);box-shadow:var(--st-shadow)}
+.st-present-dots{border:var(--st-hair);border-radius:999px;background:var(--st-glass);box-shadow:var(--st-shadow);padding:10px 14px}
+.st-present-dots b{transition:background .3s var(--st-ease),transform .3s var(--st-ease)}
+.st-present-dots b.is-on{transform:scale(1.25)}
+.st-present-hint{opacity:.8}
+
+/* ---------- 10. hero background ---------- */
+.st-hero{isolation:isolate}
+.st-hero::before{content:"";position:absolute;inset:-10% -4%;z-index:-2;pointer-events:none;
+  background-image:radial-gradient(var(--st-hair-c) 1px,transparent 1px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 40%,#000,transparent 75%);
+  mask-image:radial-gradient(70% 60% at 50% 40%,#000,transparent 75%)}
+.st-hero::after{content:"";position:absolute;right:6%;top:18%;width:46%;height:56%;z-index:-3;pointer-events:none;
+  background:radial-gradient(closest-side,var(--accent),transparent 70%);opacity:.12;filter:blur(28px);
+  animation:st-aurora 18s ease-in-out infinite alternate}
+@keyframes st-aurora{from{transform:translate3d(-3%,2%,0) scale(1)}to{transform:translate3d(4%,-3%,0) scale(1.08)}}
+.st-reduced .st-hero::after{animation:none}
+@media (prefers-reduced-motion: reduce){.st-hero::after{animation:none}}
+@keyframes st-beam-run{from{stroke-dashoffset:calc(var(--len,200) * 1px)}to{stroke-dashoffset:0}}
+.st-tick-col i span{display:block;height:1em;line-height:1}
+.st-reduced .st-tick-col i{transition:none!important}
+@media (prefers-reduced-motion: reduce){.st-tick-col i{transition:none!important}.st-way-lamp{transition:none}}
+
+/* print handout: neutralise the v1.3 surfaces */
+@media print{
+  .st-hero::before,  .st-hero::after,  .st-way-lamp,  .st-spot::before{display:none!important;content:none!important}
+  .st-stage-inner.st-frame{border:0!important;box-shadow:none!important;padding:0!important;transform:none!important;background:none!important}
+  .st-step,  .st-step.is-active{background:none!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:0!important;padding:0 0 9pt!important}
+  .st-findings li{border:.5pt solid #999!important;border-radius:0!important;box-shadow:none!important;background:none!important}
+  .st-findings a::before{border:0!important;min-width:0!important;height:auto!important}
+  .st-find-key{position:static!important;color:#000!important;font-size:10pt!important}
+  .st-w{opacity:1!important;transform:none!important;color:#000!important}
+  .st-beam-run{display:none!important}
+  .st-tick-col{height:auto!important;overflow:visible!important}
+}
+html.st-printing .st-hero::before,html.st-printing .st-hero::after,html.st-printing .st-way-lamp,html.st-printing .st-spot::before{display:none!important;content:none!important}
+html.st-printing .st-stage-inner.st-frame{border:0!important;box-shadow:none!important;padding:0!important;transform:none!important;background:none!important}
+html.st-printing .st-step,html.st-printing .st-step.is-active{background:none!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:0!important;padding:0 0 9pt!important}
+html.st-printing .st-findings li{border:.5pt solid #999!important;border-radius:0!important;box-shadow:none!important;background:none!important}
+html.st-printing .st-findings a::before{border:0!important;min-width:0!important;height:auto!important}
+html.st-printing .st-find-key{position:static!important;color:#000!important;font-size:10pt!important}
+html.st-printing .st-w{opacity:1!important;transform:none!important;color:#000!important}
+html.st-printing .st-beam-run{display:none!important}
+html.st-printing .st-tick-col{height:auto!important;overflow:visible!important}
+@media print{.st-tick-col{height:1em!important;overflow:hidden!important}}
+html.st-printing .st-tick-col{height:1em!important;overflow:hidden!important}
+.st-presenting .st-stage-inner.st-frame{border:0!important;background:none!important;padding:0!important;box-shadow:none!important}
+.st-way-map .st-way-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer;line-height:1.1}
+.st-way-map .st-way-btn:hover,.st-way-map .st-way-btn:focus-visible{color:var(--accent);border-color:var(--accent)}
+
+@media print{
+  [class*="stat"],  [class*="kpi"],  [class*="metric"],  [class*="tile"]{background:none!important;background-color:transparent!important;color:#000!important;border-color:#999!important}
+}
+html.st-printing [class*="stat"],html.st-printing [class*="kpi"],html.st-printing [class*="metric"],html.st-printing [class*="tile"]{background:none!important;background-color:transparent!important;color:#000!important;border-color:#999!important}
+
+/* print tokens must beat page theme blocks (:root[data-theme], prefers-color-scheme) */
+html.st-printing:root,html.st-printing:root[data-theme="dark"],html.st-printing:root[data-theme="light"],html.st-printing:root:not([data-theme="light"]){--paper:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--ink-2:#1a1a1a;--muted:#444;--rule:#000;--rule-soft:#b8b8b8;--accent:#000;--accent-2:#000;--accent-ink:#fff;--accent-wash:#fff;--warn:#000;--warn-wash:#fff;background:#fff;color:#000}
+@media print{:root,:root[data-theme="dark"],:root[data-theme="light"],:root:not([data-theme="light"]){--paper:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--ink-2:#1a1a1a;--muted:#444;--rule:#000;--rule-soft:#b8b8b8;--accent:#000;--accent-2:#000;--accent-ink:#fff;--accent-wash:#fff;--warn:#000;--warn-wash:#fff;background:#fff;color:#000}}
 /*STORY_CSS_END*/</style>
 <style>
 /* ============ story page ============ */
 .wide{max-width:min(1640px,96vw);margin:0 auto;padding:0 clamp(20px,2.4vw,36px)}
 .thesis{font-size:clamp(1.12rem,1.5vw,1.45rem);color:var(--ink-2);max-width:52ch;margin-top:22px}
+
+/* page surfaces adopt the engine's radius + hairline language */
+.hero-links .btn{border:var(--st-hair);border-radius:999px;margin:0 8px 8px 0;background:var(--surface);transition:transform .18s var(--st-ease),border-color .18s,background .18s}
+.hero-links .btn:hover{transform:translateY(-1px);border-color:var(--accent);background:var(--accent-wash)}
+.hero-links .btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.hero-links .btn-primary:hover{background:var(--accent-2);color:var(--accent-ink)}
+.hero-copy .status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border:0;background:transparent}
+.hero-copy .status .st-cell{border:var(--st-hair);border-left:var(--st-hair);border-radius:var(--st-radius-sm);background:var(--surface);padding:14px 16px}
+@media(max-width:760px){.hero-copy .status{grid-template-columns:1fr 1fr}.hero-copy .status .st-cell:nth-child(n+3){border-top:var(--st-hair)}}
 
 /* crumb */
 .crumb{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0;padding:26px 0 0;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -906,14 +1219,14 @@ html{scroll-padding-top:16px}
 .crumb b{color:var(--ink);font-weight:700}
 
 /* hero */
-.hero-wrap{border-bottom:2px solid var(--rule);padding-bottom:26px}
+.hero-wrap{border-bottom:var(--st-hair);padding-bottom:26px}
 .hero-copy{min-width:0}
 .hero-copy h1{font-size:clamp(2.1rem,5.2vw,4.4rem);max-width:15ch;line-height:.98}
 .hero-copy .status{max-width:760px}
 .hero-copy .src{margin-top:22px}
 
 /* stage */
-.scene-wrap{border-bottom:2px solid var(--rule)}
+.scene-wrap{border-bottom:var(--st-hair)}
 @media(min-width:801px){
 .st-scene{grid-template-columns:minmax(0,1.88fr) minmax(0,1fr);gap:0 44px}
 .st-scene[data-side="left"]{grid-template-columns:minmax(0,1fr) minmax(0,1.88fr)}
@@ -932,24 +1245,27 @@ html{scroll-padding-top:16px}
 .lgd i{display:inline-block;width:12px;height:12px;margin-right:7px;vertical-align:-2px}
 .st-step .mono.big{display:block;font-family:var(--font-mono);font-size:clamp(2.4rem,4vw,3.4rem);font-weight:700;color:var(--accent);margin-bottom:4px;line-height:1;letter-spacing:-.03em}
 
-details.data{margin:26px 0 40px;max-width:96ch;border:2px solid var(--rule-soft)}
+details.data{margin:26px 0 40px;max-width:96ch;border:var(--st-hair);border-radius:var(--st-radius-sm);overflow:hidden}
 details.data summary{cursor:pointer;padding:11px 14px;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 details.data table{width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:.75rem}
 details.data th,details.data td{text-align:left;padding:7px 14px;border-top:1px solid var(--rule-soft)}
 details.data .scrollx{max-height:360px;overflow:auto}
-.panel{border:2px solid var(--rule);background:var(--surface);padding:30px 30px 26px;max-width:80ch}
+.panel{border:var(--st-hair);border-radius:var(--st-radius);background:var(--surface);box-shadow:var(--st-shadow);padding:30px 32px 28px;max-width:80ch}
 .panel h3{font-size:1.25rem;margin-bottom:14px}
 .panel ul{margin:0;padding-left:20px;color:var(--ink-2);font-size:1.02rem}
 .panel li{margin-bottom:11px}
-.monday{border:2px solid var(--accent);background:var(--accent-wash);padding:30px;max-width:80ch}
+.monday{border:var(--st-hair);border-color:var(--accent);border-radius:var(--st-radius);background:var(--accent-wash);padding:30px 32px;max-width:80ch}
 .monday h3{font-size:1.25rem;margin-bottom:12px}
 .monday p{color:var(--ink-2);margin-bottom:0;font-size:1.05rem}
 .nextlinks{display:flex;flex-wrap:wrap;margin-top:30px}
+.nextlinks .btn{border:var(--st-hair);border-radius:999px;margin:0 8px 8px 0;background:var(--surface);transition:transform .18s var(--st-ease),border-color .18s,background .18s}
+.nextlinks .btn:hover{transform:translateY(-1px);border-color:var(--accent);background:var(--accent-wash)}
+main > .section{border-bottom:var(--st-hair)}
 
 /* next card */
-.nextwrap{border-top:2px solid var(--rule);padding:74px 0 84px}
-.nextcard{display:block;border:2px solid var(--rule);background:var(--surface);padding:38px 38px;text-decoration:none;color:var(--ink);transition:background .18s}
-.nextcard:hover{background:var(--accent-wash)}
+.nextwrap{border-top:var(--st-hair);padding:74px 0 84px}
+.nextcard{display:block;border:var(--st-hair);border-radius:var(--st-radius);background:var(--surface);padding:38px 38px;text-decoration:none;color:var(--ink);transition:transform .2s var(--st-ease),box-shadow .2s var(--st-ease),border-color .2s}
+.nextcard:hover{transform:translateY(-2px);box-shadow:var(--st-shadow);border-color:var(--accent)}
 .nextcard h2{font-size:clamp(1.9rem,4vw,3.2rem);margin:12px 0 14px;line-height:1}
 .nextcard p{color:var(--ink-2);max-width:48ch;margin:0;font-size:1.05rem}
 .nextcard-go{display:inline-block;margin-top:22px;font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
@@ -967,6 +1283,72 @@ details.data .scrollx{max-height:360px;overflow:auto}
   .stage-num small{font-size:.5rem;margin-top:3px;line-height:1.3}
   .lgd{display:none}
   .src{font-size:.625rem;margin-top:8px}
+}
+
+/* ---- print handout ----
+   The engine neutralises its own tokens on html.st-printing, but the page's dark
+   tokens live on :root[data-theme="dark"] and on a prefers-color-scheme block,
+   both of which outrank a single class on <html>. Restate them here at a higher
+   specificity so the handout is genuinely black on white in either theme. */
+html.st-printing:root,html.st-printing:root[data-theme="dark"],html.st-printing:root[data-theme="light"]{
+ color-scheme:light;
+ --paper:#fff;--surface:#fff;--surface-2:#fff;
+ --ink:#000;--ink-2:#1a1a1a;--muted:#444;
+ --rule:#000;--rule-soft:#b8b8b8;
+ --accent:#000;--accent-2:#000;--accent-ink:#fff;--accent-wash:#fff;
+ --warn:#000;--warn-wash:#fff;
+ --grid-dot:transparent;--shadow:transparent;
+ --fig-paper:#fff;--fig-grid:#bdbdbd;--fig-axis:#000;--fig-mute:#444;
+ --s1:#000;--s2:#555;--s3:#777;--s4:#999;
+ --st-hair:1px solid #999;--st-hair-c:#999;--st-glass:#fff;--st-shadow:none;
+ background:#fff;color:#000}
+@media print{
+ :root,:root[data-theme="dark"],:root[data-theme="light"]{
+  --paper:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--ink-2:#1a1a1a;--muted:#444;
+  --rule:#000;--rule-soft:#b8b8b8;--accent:#000;--accent-2:#000;--accent-ink:#fff;--accent-wash:#fff;
+  --warn:#000;--warn-wash:#fff;--grid-dot:transparent;--shadow:transparent;
+  --fig-paper:#fff;--fig-grid:#bdbdbd;--fig-axis:#000;--fig-mute:#444;
+  --s1:#000;--s2:#555;--s3:#777;--s4:#999;
+  --st-hair:1px solid #999;--st-hair-c:#999;--st-glass:#fff;--st-shadow:none}
+}
+html.st-printing .status,html.st-printing .status .st-cell,html.st-printing .panel,
+html.st-printing .monday,html.st-printing .nextcard,html.st-printing details.data,
+html.st-printing .hero,html.st-printing .hero-wrap,html.st-printing .st-hero{background:#fff!important;background-image:none!important;color:#000!important;box-shadow:none!important}
+html.st-printing .status .st-v,html.st-printing .status .st-v.accent,html.st-printing .st-step .mono.big{color:#000!important}
+html.st-printing .status .st-k,html.st-printing .src,html.st-printing .crumb{color:#444!important}
+html.st-printing .status{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important;border:1px solid #999!important;border-radius:0!important;margin-top:10pt!important}
+html.st-printing .status .st-cell{border:0!important;border-left:1px solid #999!important;border-radius:0!important;padding:6pt 8pt!important}
+html.st-printing .status .st-cell:first-child{border-left:0!important}
+html.st-printing .status .st-v{font-size:13pt!important}
+html.st-printing .panel,html.st-printing .monday{border:1px solid #999!important;border-radius:0!important;padding:8pt 10pt!important;max-width:none!important;break-inside:avoid}
+html.st-printing .panel h3,html.st-printing .monday h3{font-size:11.5pt!important;margin-bottom:5pt}
+html.st-printing .panel li,html.st-printing .panel ul,html.st-printing .monday p{font-size:9.5pt!important;line-height:1.4;color:#000!important}
+html.st-printing .section{padding:12pt 0!important;border-bottom:0!important;break-inside:avoid}
+html.st-printing .section h2.display{font-size:13pt!important;margin:4pt 0 7pt!important}
+html.st-printing .hero-wrap{padding-bottom:8pt!important;border-bottom:1px solid #999!important}
+html.st-printing .scene-wrap{border-bottom:0!important}
+html.st-printing .stage-head{padding-right:0!important;margin-bottom:6pt!important}
+html.st-printing .stage-head h4{font-size:9.5pt!important;color:#000!important}
+html.st-printing .lgd{color:#333!important;margin-top:6pt!important;font-size:8pt!important}
+html.st-printing .lgd i{border:.5pt solid #999}
+html.st-printing .nextwrap,html.st-printing .nextlinks,html.st-printing .hero-links,
+html.st-printing .crumb,html.st-printing .footer,html.st-printing .st-hero-orb{display:none!important}
+html.st-printing .wide{max-width:none!important;padding:0!important}
+html.st-printing .thesis{font-size:11pt!important;color:#000!important;max-width:none!important}
+/* the scenes dim non-selected marks to opacity .12-.26 while reading. On paper that
+   reads as an empty box, so the handout prints every figure at full strength. */
+html.st-printing #fig-net g,html.st-printing #fig-net circle,html.st-printing #fig-net line,
+html.st-printing #fig-net text,html.st-printing #fig-fn g,html.st-printing #fig-fn text,
+html.st-printing #fig-derive g,html.st-printing #fig-derive path,html.st-printing #fig-derive text,
+html.st-printing #fig-xw g,html.st-printing #fig-xw text{opacity:1!important;transition:none!important}
+html.st-printing #fig-net text,html.st-printing #fig-fn text,
+html.st-printing #fig-derive text,html.st-printing #fig-xw text{fill:#000!important}
+/* labels that sit inside a solid cell must stay reversed out on paper */
+html.st-printing #fig-xw text[fill="var(--accent-ink)"]{fill:#fff!important}
+@media print{#fig-xw text[fill="var(--accent-ink)"]{fill:#fff!important}}
+@media print{
+ #fig-net g,#fig-net circle,#fig-net line,#fig-net text,#fig-fn g,#fig-fn text,
+ #fig-derive g,#fig-derive path,#fig-derive text,#fig-xw g,#fig-xw text{opacity:1!important}
 }
 </style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
@@ -1089,10 +1471,10 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
         <h1 class="display">Why people err, as a graph</h1>
         <p class="thesis">An investigation says the operator made a mistake. That is a label, not a cause. This repository writes the conditions people work under as a graph, so the reasoning from condition to consequence can be read back line by line.</p>
         <div class="status" role="group" aria-label="Key counts">
-          <div class="st-cell"><span class="st-k">Factors</span><span class="st-v accent" data-count="20">20</span></div>
-          <div class="st-cell"><span class="st-k">Contexts</span><span class="st-v" data-count="4">4</span></div>
-          <div class="st-cell"><span class="st-k">Crosswalk rows</span><span class="st-v" data-count="96">96</span></div>
-          <div class="st-cell"><span class="st-k">Inferences</span><span class="st-v" data-count="89">89</span></div>
+          <div class="st-cell" data-st-spotlight><span class="st-k">Factors</span><span class="st-v accent" data-count="20">20</span></div>
+          <div class="st-cell" data-st-spotlight><span class="st-k">Contexts</span><span class="st-v" data-count="4">4</span></div>
+          <div class="st-cell" data-st-spotlight><span class="st-k">Crosswalk rows</span><span class="st-v" data-count="96">96</span></div>
+          <div class="st-cell" data-st-spotlight><span class="st-k">Inferences</span><span class="st-v" data-count="89">89</span></div>
         </div>
         <div class="hero-links st-hide-on-present">
           <a class="btn btn-primary" href="#scene1">Start the story</a>
@@ -1107,7 +1489,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 </section>
 
 <!-- ===================== CHAPTER 1 ===================== -->
-<section class="st-chapter" data-num="01" data-orb="connecting" data-orb-label="Connecting">
+<section class="st-chapter" data-key="20" data-num="01" data-orb="connecting" data-orb-label="Connecting">
   <h2>All 20 risk factors are conditions you can check before the job</h2>
   <p>Each factor sits in one of four context dimensions and carries a level, an observable proxy and a citation, so a claim about it can be evidenced from records a site already keeps.</p>
 </section>
@@ -1126,27 +1508,27 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       <span class="src">Source: docs/crosswalk-data.json, ontology/ehs-hfo.ttl</span>
     </div></div>
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
-      <div class="st-step" data-step="0" data-orb="searching" data-dim="all">
+      <div class="st-step" data-note="Every box on this screen is a condition, not a person. If you cannot check it from a record before the job, it does not belong in the graph. Ask the room which of these they could pull today." data-step="0" data-orb="searching" data-dim="all">
         <span class="label">The shape</span>
         <h3>All 20 factors are conditions, not judgements about a person</h3>
         <p>Every node can be assessed before the job from a work order, a roster, a permit record or a lighting survey.</p>
       </div>
-      <div class="st-step" data-step="1" data-orb="connecting" data-dim="Human context">
+      <div class="st-step" data-note="These are the ones your organisation sets, which means they are the ones you can change. They also turn up as root causes after the fact more often than any other group." data-step="1" data-orb="connecting" data-dim="Human context">
         <span class="label">Human context</span>
         <h3><span class="mono big" data-n="human">5</span>human-context factors are the ones the organisation sets</h3>
         <p>Procedures, staffing, team and organisation, training, work processes. These are the conditions most often written up as root causes after the fact, and the easiest to evidence before it.</p>
       </div>
-      <div class="st-step" data-step="2" data-orb="connecting" data-dim="Operational context">
+      <div class="st-step" data-note="You are already measuring most of these for other reasons. Nobody has to buy an instrument to start." data-step="2" data-orb="connecting" data-dim="Operational context">
         <span class="label">Operational context</span>
         <h3><span class="mono big" data-n="operational">5</span>operational factors already have a measured proxy on most sites</h3>
         <p>Noise, resistance to movement, thermal conditions, access and visibility. Dosimetry, WBGT, illuminance surveys and permit records cover all five.</p>
       </div>
-      <div class="st-step" data-step="3" data-orb="connecting" data-dim="System context">
+      <div class="st-step" data-note="This is the smallest group and the one plants tend to ignore. Ask what your control system actually tells the operator when something goes wrong." data-step="3" data-orb="connecting" data-dim="System context">
         <span class="label">System context</span>
         <h3><span class="mono big" data-n="system">3</span>system factors cover what the plant tells the person</h3>
         <p>Equipment and tools, human-system interface, system transparency. It is the smallest group, and transparency has the weakest evidence base outside nuclear work.</p>
       </div>
-      <div class="st-step" data-step="4" data-orb="connecting" data-dim="Task context">
+      <div class="st-step" data-note="Task conditions move together. One non-routine job can push several of them at once, and that pile-up is what the next scene is about." data-step="4" data-orb="connecting" data-dim="Task context">
         <span class="label">Task context</span>
         <h3><span class="mono big" data-n="task">7</span>task factors make the largest group of the four</h3>
         <p>Familiarity, complexity, time pressure, mental fatigue, multitasking, physical demands and information availability. One non-routine job can move several of the seven at once, and that combination is what the rule set exists to catch.</p>
@@ -1157,7 +1539,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 </div>
 
 <!-- ===================== CHAPTER 2 ===================== -->
-<section class="st-chapter" data-num="02" data-orb="connecting" data-orb-label="Connecting">
+<section class="st-chapter" data-key="31" data-num="02" data-orb="connecting" data-orb-label="Connecting">
   <h2>31 links tie those 20 factors to 5 cognitive functions</h2>
   <p>A degraded condition matters through the work it makes harder, and 11 of the 20 factors bear on more than one function, so a single bad condition rarely stays in one place.</p>
 </section>
@@ -1176,27 +1558,27 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       <span class="src">Source: ontology/ehs-hfo.ttl, property ehs:appliesToFunction</span>
     </div></div>
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
-      <div class="st-step" data-step="0" data-orb="connecting" data-fn="all">
+      <div class="st-step" data-note="The links matter more than the count. A bad condition only hurts through the work it makes harder." data-step="0" data-orb="connecting" data-fn="all">
         <span class="label">Five functions</span>
         <h3>31 links spread the 20 factors across 5 functions</h3>
         <p>Detection, understanding, decision making, action execution and coordination. Eleven factors attach to more than one of them.</p>
       </div>
-      <div class="st-step" data-step="1" data-orb="listening" data-fn="Detection">
+      <div class="st-step" data-note="If the cue never reaches the person, nothing later in the chain recovers it. This is where to start when you read an investigation." data-step="1" data-orb="listening" data-fn="Detection">
         <span class="label">Detection</span>
         <h3>6 factors decide whether the cue reaches the person at all</h3>
         <p>Visibility, noise, interface, information availability, mental fatigue and multitasking. Nothing downstream recovers a cue that never arrived.</p>
       </div>
-      <div class="st-step" data-step="2" data-orb="working" data-fn="Understanding">
+      <div class="st-step" data-note="A plant that hides its own state makes the operator guess. That guess gets written up later as human error." data-step="2" data-orb="working" data-fn="Understanding">
         <span class="label">Understanding</span>
         <h3>6 factors decide whether the picture the person builds is right</h3>
         <p>Training, system transparency, information availability, scenario familiarity, task complexity and time pressure. A plant that does not show its state forces the person to infer it.</p>
       </div>
-      <div class="st-step" data-step="3" data-orb="solving" data-fn="Decisionmaking">
+      <div class="st-step" data-note="Hold on to this one. Most of these are the conditions that go wrong in the worked scenario on the next screen." data-step="3" data-orb="solving" data-fn="Decisionmaking">
         <span class="label">Decision making</span>
         <h3>5 factors reach decision making, and 4 of them fail in the next scene</h3>
         <p>Procedures, training, scenario familiarity, task complexity and time pressure. Four of those five are assessed below nominal in the worked scenario.</p>
       </div>
-      <div class="st-step" data-step="4" data-orb="connecting" data-fn="ActionExecution">
+      <div class="st-step" data-note="Coordination has the fewest links and the weakest evidence behind it. We say so on the page rather than quietly padding it out." data-step="4" data-orb="connecting" data-fn="ActionExecution">
         <span class="label">Action execution and coordination</span>
         <h3>Action execution carries 10 factors, coordination only 4</h3>
         <p>Action execution has the most attached factors, mostly physical and access conditions. Coordination has the fewest and the thinnest literature support of the five, which is written on the page rather than hidden.</p>
@@ -1207,7 +1589,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 </div>
 
 <!-- ===================== CHAPTER 3 ===================== -->
-<section class="st-chapter" data-num="03" data-orb="solving" data-orb-label="Solving">
+<section class="st-chapter" data-key="89" data-num="03" data-orb="solving" data-orb-label="Solving">
   <h2>One scenario fires 21 rules and 89 inferences to a stop-and-review band</h2>
   <p>Every step names the rule that produced it and the premises it used, so a screening decision can be argued with instead of taken on trust.</p>
 </section>
@@ -1225,27 +1607,27 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       <span class="src">Source: docs/walkthrough-data.json (89 inferences, 21 distinct rules)</span>
     </div></div>
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
-      <div class="st-step" data-step="0" data-orb="listening" data-edge="0">
+      <div class="st-step" data-note="This is an ordinary restart, not a disaster scenario. Everything else on the job is nominal." data-step="0" data-orb="listening" data-edge="0">
         <span class="label">The input</span>
         <h3>4 of the 20 factors are assessed below nominal</h3>
         <p>A batch reactor restart after an unplanned trip. The operator qualified three weeks ago and has not run the recovery, the sequence has no approved procedure, and the outage window is fixed by a downstream commitment. The other sixteen factors are nominal.</p>
       </div>
-      <div class="st-step" data-step="1" data-orb="solving" data-edge="1">
+      <div class="st-step" data-note="The rule does not invent the severity. The ranking comes from the ontology, so two assessors reading the same record land in the same place." data-step="1" data-orb="solving" data-edge="1">
         <span class="label">Rules R01 and R02</span>
         <h3>Rules R01 and R02 turn those 4 levels into facts</h3>
         <p>Scenario familiarity is severely degraded. Procedures, training and time pressure are degraded. The ordinal ranks come from the ontology, not from the rule.</p>
       </div>
-      <div class="st-step" data-step="2" data-orb="solving" data-edge="2">
+      <div class="st-step" data-note="A handful of conditions, and already most of the functions are challenged. Notice how fast it spreads." data-step="2" data-orb="solving" data-edge="2">
         <span class="label">Rules R07 and R08</span>
         <h3>Rules R07 and R08 challenge 3 of the 5 functions</h3>
         <p>Understanding, decision making and action execution are all challenged. Three functions, from four conditions.</p>
       </div>
-      <div class="st-step" data-step="3" data-orb="solving" data-edge="4">
+      <div class="st-step" data-note="This is the point of the whole exercise. Two conditions that look acceptable on their own stop being independent here." data-step="3" data-orb="solving" data-edge="4">
         <span class="label">Rules R10, R11 and R23</span>
         <h3>3 rules turn unfamiliar work into an aggravated error mode</h3>
         <p>Low familiarity pushes the operator out of rule-based control, and degraded training leaves that demand unsupported. R23 names the combination: an unsupported knowledge-based demand under time pressure. This is where two ordinary-looking conditions stop being independent.</p>
       </div>
-      <div class="st-step" data-step="4" data-orb="grounded" data-edge="5">
+      <div class="st-step" data-note="The band is a screening output, not a probability. The value is that you can argue with every line above it. Ask the room whether they could argue with their current screening tool." data-step="4" data-orb="grounded" data-edge="5">
         <span class="label">Rules R33 and R24</span>
         <h3>Rule R33 returns a screening band of stop and review</h3>
         <p>A severely degraded factor with no mitigation, plus an aggravated error mode. R24 also fires: with familiarity and procedures both degraded there is no rule-based fallback. The band is a screening output, not a probability, and the trace above is the whole argument for it.</p>
@@ -1256,7 +1638,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 </div>
 
 <!-- ===================== CHAPTER 4 ===================== -->
-<section class="st-chapter" data-num="04" data-orb="searching" data-orb-label="Searching">
+<section class="st-chapter" data-key="80" data-num="04" data-orb="searching" data-orb-label="Searching">
   <h2>Only 31 of 80 crosswalk cells are close matches to prior frameworks</h2>
   <p>Twenty-three map to a broader parent term, twenty are partial and six have no counterpart, so an assessment carried between frameworks can change meaning without anyone noticing.</p>
 </section>
@@ -1275,27 +1657,27 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       <span class="src">Source: docs/crosswalk-data.json (96 rows, 80 factor-framework cells)</span>
     </div></div>
     <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
-      <div class="st-step" data-step="0" data-orb="searching" data-fw="all">
+      <div class="st-step" data-note="Now the uncomfortable part. Most cells are not close matches, and that is printed on the page rather than buried." data-step="0" data-orb="searching" data-fw="all">
         <span class="label">All four</span>
         <h3>31 of 80 cells are close matches</h3>
         <p>Twenty-three map to a broader parent term, twenty are partial, and six have no counterpart at all.</p>
       </div>
-      <div class="st-step" data-step="1" data-orb="searching" data-fw="HSE Performance Influencing Factors">
+      <div class="st-step" data-note="The closest fit of the four, because both lists were written for industrial work rather than for a control room." data-step="1" data-orb="searching" data-fw="HSE Performance Influencing Factors">
         <span class="label">HSE</span>
         <h3>13 of 20 factors match the HSE list closely</h3>
         <p>The highest count of the four frameworks. Both lists are written for industrial work rather than for a control room.</p>
       </div>
-      <div class="st-step" data-step="2" data-orb="searching" data-fw="SPAR-H">
+      <div class="st-step" data-note="SPAR-H came out of nuclear control rooms. A plant floor has conditions it never had to name." data-step="2" data-orb="searching" data-fw="SPAR-H">
         <span class="label">SPAR-H</span>
         <h3>5 factors have no SPAR-H counterpart at all</h3>
         <p>SPAR-H carries eight performance shaping factors written for a control room. A chemical plant floor has conditions it never had to name.</p>
       </div>
-      <div class="st-step" data-step="3" data-orb="searching" data-fw="HFACS">
+      <div class="st-step" data-note="HFACS describes a different level of the system, so the nearest home is often a broader box. Carrying an assessment across without checking changes what it means." data-step="3" data-orb="searching" data-fw="HFACS">
         <span class="label">HFACS</span>
         <h3>8 HFACS cells map only to a broader term</h3>
         <p>HFACS has no procedures category at the precondition level, so the nearest home is the organisational operational process. It describes a different level of the system.</p>
       </div>
-      <div class="st-step" data-step="4" data-orb="connecting" data-fw="CREAM">
+      <div class="st-step" data-note="Recording the weak rows is what makes the strong ones usable. If a supplier's mapping has no weak rows, ask to see the working." data-step="4" data-orb="connecting" data-fw="CREAM">
         <span class="label">CREAM</span>
         <h3>CREAM covers every factor, but only 6 of 20 closely</h3>
         <p>Eight cells map to a broader CREAM term and six are partial. A close match lets a reader carry an existing assessment across; a broader or partial one warns that the two terms are not interchangeable. Recording the weak rows is what makes the strong ones usable.</p>
@@ -1311,7 +1693,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   <div class="wrap">
     <span class="label">Scene 05</span>
     <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px">What this does not establish</h2>
-    <div class="panel" data-st-reveal>
+    <div class="panel" data-st-reveal data-st-spotlight>
       <h3>Read this before quoting anything above</h3>
       <ul>
         <li>The worked scenario is an illustrative example written by hand for this repository. It is not a record of a real event at any site and contains no site data.</li>
@@ -1330,7 +1712,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   <div class="wrap">
     <span class="label">What a leader does Monday</span>
     <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px">Ask which condition, not who</h2>
-    <div class="monday" data-st-reveal>
+    <div class="monday" data-st-reveal data-st-spotlight>
       <h3>Take your last three serious investigations and re-read the conclusions.</h3>
       <p>For each one that ends in a label about a person, name the conditions instead: was the task covered by a procedure, had the operator run it before, was the window fixed by someone downstream. Those three questions are factors in this graph, and each has a record on your site that can be pulled. If two or more come back degraded on the same job, that job was a stop-and-review before anyone touched it.</p>
     </div>
@@ -1346,7 +1728,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 <!-- ===================== NEXT ===================== -->
 <section class="nextwrap st-hide-on-present">
   <div class="wide">
-    <a class="nextcard" href="https://priyatham9.github.io/ehs-risk-sem/story.html">
+    <a class="nextcard" data-st-spotlight href="https://priyatham9.github.io/ehs-risk-sem/story.html">
       <div>
         <span class="label">Next in the path &middot; 5 of 7</span>
         <h2 class="display">Where the method breaks</h2>
@@ -1391,7 +1773,10 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   // ?reduced=1 forces the reduced-motion path so it can be tested without changing OS settings
   var forceReduced = /[?&]reduced=1/.test(location.search);
   if (forceReduced) document.documentElement.classList.add("st-reduced");
-  function reduced() { return forceReduced || !!(mqReduce && mqReduce.matches); }
+  // while a handout is being prepared every tween and spring lands immediately,
+  // so the paper shows the final state of each figure
+  var printing = false;
+  function reduced() { return forceReduced || printing || !!(mqReduce && mqReduce.matches); }
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function lerp(a, b, t) { return a + (b - a) * t; }
   function isEl(x) { return x && x.nodeType === 1; }
@@ -1626,7 +2011,15 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
         if (grp) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         n.textContent = pre + s + post;
       }
-      var run = function () { tween(opts.from == null ? 0 : opts.from, target, function (v) { paint(v); }, { duration: opts.duration || 1100 }); };
+      // data-st-ticker: digits roll into place instead of counting by value
+      var isTick = opts.ticker || (n.hasAttribute && n.hasAttribute("data-st-ticker"));
+      var run = isTick
+        ? function () {
+          var s = Math.abs(target) >= 1000 && dec === 0 ? Math.round(target).toString() : target.toFixed(dec);
+          if (grp) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          tickerPaint(n, pre + s + post, !reduced());
+        }
+        : function () { tween(opts.from == null ? 0 : opts.from, target, function (v) { paint(v); }, { duration: opts.duration || 1100 }); };
       if (opts.now) run(); else inView(n, run, { once: true });
     });
   }
@@ -2053,10 +2446,16 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       }
     }
 
-    // reduced motion: one static, representative frame, no loop
+    // reduced motion: one calm, static frame. Most states have a moment in their
+    // cycle that reads as broken glass when frozen, so only wrong and the two
+    // lattice states keep their own shape; everything else rests as breathing.
     function renderStatic() {
       blend = 1;
-      paint(state === "solving" ? 1.05 : 1.2);
+      var realState = state, realFrom = fromState;
+      if (state !== "wrong" && state !== "grounded" && state !== "resolved") { state = "breathing"; }
+      fromState = state;
+      paint(1.2);
+      state = realState; fromState = realFrom;
     }
 
     function step(dt) {
@@ -2358,6 +2757,19 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       });
     }
 
+    /* stage frame: the figure sits on a lifted card that eases flat as the
+       scene enters. Skipped when the page already draws its own box. */
+    if (inner && stage && opts.frame !== false && stage.getAttribute("data-st-frame") !== "off"
+      && inner.getAttribute("data-st-frame") !== "off" && !reduced()
+      && !(global.matchMedia && matchMedia("(max-width:800px)").matches)) {
+      var boxed = Array.prototype.slice.call(inner.children).some(function (n) {
+        if (n.classList && (n.classList.contains("st-field") || n.classList.contains("st-companion"))) return false;
+        var cs = getComputedStyle(n);
+        return cs.borderTopStyle !== "none" && parseFloat(cs.borderTopWidth) > 0;
+      });
+      if (!boxed) inner.classList.add("st-frame");
+    }
+
     // layered stage children driven by [data-show="0 1 2"]
     var layers = inner ? els("[data-show]", inner).filter(function (n) { return n.parentNode === inner; }) : [];
     if (layers.length && inner) inner.classList.add("st-layers");
@@ -2396,7 +2808,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
         // pick the entry closest to the middle band of the viewport
         var best = null, bestD = Infinity;
         es.forEach(function (e) { if (e.isIntersecting) { var d = Math.abs(e.boundingClientRect.top + e.boundingClientRect.height / 2 - innerHeight * bandMid); if (d < bestD) { bestD = d; best = e; } } });
-        if (best && !presentState) setActive(steps.indexOf(best.target));
+        // presenter mode and the print handout drive steps directly; scroll must not fight them
+        if (best && !presentState && !printing) setActive(steps.indexOf(best.target));
       }, { rootMargin: narrow ? "-56% 0px -24% 0px" : "-45% 0px -45% 0px", threshold: 0 });
       steps.forEach(function (s) { ioStep.observe(s); });
     } else { steps.forEach(function (s) { s.classList.add("is-entered"); }); setActive(0); }
@@ -3261,19 +3674,58 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       document.body.appendChild(dots);
     }
     var hint = html("div", "st-present-hint");
-    hint.textContent = "arrows step  ·  esc exits";
+    hint.textContent = "arrows step  ·  N notes  ·  esc exits";
     document.body.appendChild(hint);
+
+    /* ---- speaker notes: data-note on a step (or its chapter) ---- */
+    var notesOn = false;
+    try { notesOn = sessionStorage.getItem("st-notes") === "1"; } catch (e) { }
+    if (/[?&]notes=1/.test(location.search)) notesOn = true;
+    var noteBox = html("div", "st-notes");
+    noteBox.setAttribute("aria-live", "polite");
+    var noteLab = html("div", "st-notes-lab", noteBox);
+    noteLab.textContent = "SAY";
+    var noteBody = html("div", "st-notes-body", noteBox);
+    noteBox.hidden = true;
+    document.body.appendChild(noteBox);
+    function noteText(node) {
+      if (!node || !node.getAttribute) return "";
+      var n = node.getAttribute("data-note");
+      if (!n && node.closest) { var c = node.closest("[data-note]"); if (c) n = c.getAttribute("data-note"); }
+      return (n || "").trim();
+    }
+    function paintNote() {
+      var node = steps[i], txt = noteText(node);
+      noteBody.textContent = txt;
+      noteBox.hidden = !(notesOn && txt);
+      // keep the card off the figure: it sits on the steps column side
+      var sc = node && node.closest ? node.closest(".st-scene") : null;
+      var figureRight = !!(sc && sc.getAttribute("data-side") === "left");
+      noteBox.classList.toggle("st-notes-right", !figureRight);
+    }
+    function toggleNotes() {
+      notesOn = !notesOn;
+      try { sessionStorage.setItem("st-notes", notesOn ? "1" : "0"); } catch (e) { }
+      paintNote();
+    }
     function go(n) {
       i = clamp(n, 0, steps.length - 1);
       if (dots) Array.prototype.forEach.call(dots.children, function (b, j) { b.classList.toggle("is-on", j === i); });
       // instant jump: the figure still animates, and a smooth scroll can stall between steps on some displays
       if (steps[i]) { var r = steps[i].getBoundingClientRect(); global.scrollTo({ top: r.top + global.pageYOffset - (global.innerHeight - r.height) / 2, behavior: "instant" }); }
       if (steps[i] && steps[i].__stActivate) { var cur = steps[i]; cur.__stActivate(); setTimeout(function () { if (steps[i] === cur) cur.__stActivate(); }, 150); }
+      paintNote();
       if (opts.onStep) opts.onStep(i, steps[i]);
     }
     function key(e) {
       // capture phase + stop: pages may carry their own arrow handlers, the presenter must be the only one acting
       if (e.key === "Escape") { e.stopImmediatePropagation(); exit(); return; }
+      if (e.key === "n" || e.key === "N") {
+        var t = e.target;
+        if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        e.preventDefault(); e.stopImmediatePropagation(); toggleNotes(); return;
+      }
       if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " " || e.key === "PageDown") { e.preventDefault(); e.stopImmediatePropagation(); go(i + 1); }
       else if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); e.stopImmediatePropagation(); go(i - 1); }
     }
@@ -3283,12 +3735,17 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       removeEventListener("keydown", key, true);
       if (dots) dots.remove();
       hint.remove();
+      noteBox.remove();
       presentState = null;
       if (opts.onExit) opts.onExit();
     }
     addEventListener("keydown", key, true);
     go(0);
-    presentState = { go: go, exit: exit, get index() { return i; }, steps: steps };
+    paintNote();
+    presentState = {
+      go: go, exit: exit, get index() { return i; }, steps: steps,
+      get notes() { return notesOn; }, toggleNotes: toggleNotes
+    };
     return presentState;
   }
   function autoPresent(opts) {
@@ -3446,36 +3903,81 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     ttl.textContent = " · " + here.title + (door !== "story" ? " · " + DOOR_LABEL[door] : "");
 
     var btns = html("div", "st-way-btns", row);
-    function link(text, target, rel) {
+    // inline icons, drawn once per button (no icon font, no sprite sheet)
+    var ICON = {
+      prev: "M14.5 5 L8 12 L14.5 19",
+      next: "M9.5 5 L16 12 L9.5 19",
+      map: "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z",
+      play: "M7 4.5 L19 12 L7 19.5 Z"
+    };
+    function deco(node, name, text) {
+      var svg = mk("svg", { viewBox: "0 0 24 24", "aria-hidden": "true", fill: "none" });
+      mk("path", {
+        d: ICON[name], stroke: "currentColor", "stroke-width": 2,
+        "stroke-linecap": "round", "stroke-linejoin": "round",
+        fill: name === "play" || name === "map" ? "currentColor" : "none"
+      }, svg);
+      var lab = html("span", "st-way-lab");
+      lab.textContent = text;
+      if (name === "next") { node.appendChild(lab); node.appendChild(svg); }
+      else { node.appendChild(svg); node.appendChild(lab); }
+      if (!node.getAttribute("aria-label")) node.setAttribute("aria-label", text);
+      return node;
+    }
+    function link(text, target, rel, icon) {
       var a = document.createElement("a");
       a.className = "st-way-btn";
-      a.textContent = text;
+      deco(a, icon, text);
       if (target) { a.href = U(target.url); a.title = target.title; if (rel) a.rel = rel; }
       else a.setAttribute("aria-disabled", "true");
       btns.appendChild(a);
       return a;
     }
-    link("← Prev", idx > 0 ? WAY.path[idx - 1] : null, "prev");
+    var prevBtn = link("Prev", idx > 0 ? WAY.path[idx - 1] : null, "prev", "prev");
     var mapBtn = document.createElement("button");
     mapBtn.type = "button"; mapBtn.className = "st-way-btn";
-    mapBtn.textContent = "Map (M)";
+    deco(mapBtn, "map", "Map");
+    mapBtn.title = "Site map (M)";
     mapBtn.setAttribute("aria-expanded", "false");
     btns.appendChild(mapBtn);
     if (document.querySelector(".st-step")) {
       var prBtn = document.createElement("button");
-      prBtn.type = "button"; prBtn.className = "st-way-btn st-way-present"; prBtn.textContent = "Present (P)";
+      prBtn.type = "button"; prBtn.className = "st-way-btn st-way-present";
+      deco(prBtn, "play", "Present");
+      prBtn.title = "Presenter mode (P)";
       prBtn.addEventListener("click", function () { if (presentState) presentState.exit(); else present(); });
       btns.appendChild(prBtn);
     }
-    link("Next →", idx < WAY.path.length - 1 ? WAY.path[idx + 1] : WAY.end, "next");
+    var nextBtn = link("Next", idx < WAY.path.length - 1 ? WAY.path[idx + 1] : WAY.end, "next", "next");
     document.body.appendChild(bar);
     document.body.classList.add("st-has-way");
 
+    /* the lit segment: a short glowing bar that slides along the progress row */
+    var lamp = html("i", "st-way-lamp", bar);
+    function lampTo(n) {
+      var s = seg.children[clamp(n, 0, seg.children.length - 1)];
+      if (!s) return;
+      var br = bar.getBoundingClientRect(), r = s.getBoundingClientRect();
+      if (!br.width) return;
+      lamp.style.left = (r.left - br.left).toFixed(1) + "px";
+      lamp.style.width = r.width.toFixed(1) + "px";
+    }
     function measure() {
-      document.documentElement.style.setProperty("--st-way-h", Math.round(bar.getBoundingClientRect().height || 60) + "px");
+      document.documentElement.style.setProperty("--st-way-h", Math.round(bar.getBoundingClientRect().height || 64) + "px");
+      lampTo(idx);
     }
     measure();
     addEventListener("resize", measure);
+    // hovering Prev or Next previews where the light would move
+    function peek(btn, to) {
+      if (!btn) return;
+      btn.addEventListener("pointerenter", function () { lampTo(to); });
+      btn.addEventListener("focus", function () { lampTo(to); });
+      btn.addEventListener("pointerleave", function () { lampTo(idx); });
+      btn.addEventListener("blur", function () { lampTo(idx); });
+    }
+    peek(prevBtn, idx - 1);
+    peek(nextBtn, idx + 1);
 
     /* ---- map overlay ---- */
     var map = html("div", "st-way-map");
@@ -3546,6 +4048,11 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     card(WAY.hub);
     WAY.projects.forEach(card);
     var extra = html("div", "st-map-extra", map);
+    var printBtn = document.createElement("button");
+    printBtn.type = "button"; printBtn.className = "st-way-btn st-way-print";
+    printBtn.textContent = "Print handout";
+    printBtn.addEventListener("click", function () { close(); setTimeout(printHandout, 120); });
+    extra.appendChild(printBtn);
     WAY.extras.forEach(function (e) {
       var a = document.createElement("a");
       a.className = "st-way-btn"; a.href = U(e.url); a.textContent = e.label;
@@ -3626,16 +4133,444 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     nav.setAttribute("aria-label", "Findings in this story");
     var h = html("div", "st-findings-h", nav); h.textContent = "The findings, in order";
     var ol = html("ol", "", nav);
-    ch.forEach(function (c) {
+    ch.forEach(function (c, i) {
       var t = c.querySelector("h2,.st-chapter-title"), p = c.querySelector("p");
       var li = html("li", "", ol), a = html("a", "", li);
       a.href = "#" + c.id;
       var b = html("b", "", a); b.textContent = t ? t.textContent : "";
       if (p) { var sp = html("span", "", a); sp.textContent = p.textContent; }
+      // optional headline number for the card, e.g. data-key="249x"
+      var kk = c.getAttribute("data-key");
+      if (kk) { var em = html("em", "st-find-key", a); em.textContent = kk; }
+      // bento: the first card is wide when there are five or six findings
+      if (i === 0 && ch.length >= 5 && ch.length <= 6) li.classList.add("st-bento-lead");
     });
     ch[0].parentNode.insertBefore(nav, ch[0]);
   }
-  function boot() { autoChapters(); autoFindings(); autoWayfinder(); }
+  /* ---------------------------------------------------------
+     8b2. surface components: spotlight, word reveal, beam, ticker
+     --------------------------------------------------------- */
+
+  /* Story.spotlight(rootOrSelector, selector?)
+     Pointer-following accent wash inside cards. One listener per root. */
+  var SPOT_SEL = ".st-findings li,.st-card,[data-st-spotlight],.doors > *,.st-map-card";
+  function spotlight(root, sel) {
+    var host = root == null ? document : (isEl(root) || root.nodeType === 9 ? root : el(root));
+    if (!host) return;
+    sel = sel || SPOT_SEL;
+    els(sel, host.nodeType === 9 ? document : host).forEach(function (n) { n.classList.add("st-spot"); });
+    if (host.__stSpot) return;
+    host.__stSpot = 1;
+    if (reduced()) return;                       // static hairline only
+    var pending = 0, cur = null;
+    host.addEventListener("pointermove", function (e) {
+      if (e.pointerType === "touch") return;
+      var c = e.target && e.target.closest ? e.target.closest(".st-spot") : null;
+      if (cur && cur !== c) { cur.classList.remove("is-spot"); cur = null; }
+      if (!c) return;
+      cur = c;
+      if (pending) return;
+      var cx = e.clientX, cy = e.clientY;
+      pending = requestAnimationFrame(function () {
+        pending = 0;
+        var r = c.getBoundingClientRect();
+        if (!r.width) return;
+        c.style.setProperty("--mx", ((cx - r.left) / r.width * 100).toFixed(1) + "%");
+        c.style.setProperty("--my", ((cy - r.top) / r.height * 100).toFixed(1) + "%");
+        c.classList.add("is-spot");
+      });
+    }, { passive: true });
+    host.addEventListener("pointerleave", function () { if (cur) { cur.classList.remove("is-spot"); cur = null; } }, { passive: true });
+  }
+
+  /* Story.words(el) - split into word spans that fade in on entry.
+     Element children (an annotated term, say) travel as one word. */
+  function words(node) {
+    node = isEl(node) ? node : el(node);
+    if (!node || node.__stWords) return null;
+    var full = (node.textContent || "").replace(/\s+/g, " ").trim();
+    if (!full || full.length > 400) return null;
+    node.__stWords = 1;
+    var kids = Array.prototype.slice.call(node.childNodes);
+    var frag = document.createDocumentFragment(), k = 0;
+    function wordSpan() {
+      var s = document.createElement("span");
+      s.className = "st-w";
+      s.setAttribute("aria-hidden", "true");
+      s.style.transitionDelay = Math.min(k * 28, 700) + "ms";   // long paragraphs never crawl
+      s.style.setProperty("--i", k);
+      k++;
+      return s;
+    }
+    kids.forEach(function (n) {
+      if (n.nodeType === 3) {
+        n.nodeValue.split(/(\s+)/).forEach(function (p) {
+          if (!p) return;
+          if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(" ")); return; }
+          var s = wordSpan(); s.textContent = p; frag.appendChild(s);
+        });
+      } else {
+        var w = wordSpan(); w.appendChild(n); frag.appendChild(w);
+      }
+    });
+    while (node.firstChild) node.removeChild(node.firstChild);
+    node.appendChild(frag);
+    node.classList.add("st-words");
+    if (!node.getAttribute("aria-label")) node.setAttribute("aria-label", full);
+    var ws = els(".st-w", node);
+    inView(node, function () { node.classList.add("is-in"); }, { once: true, margin: "0px 0px -8% 0px" });
+    if (/^H[1-3]$/.test(node.tagName) && node.closest(".st-chapter") && !reduced()) litOnScroll(node, ws);
+    return ws;
+  }
+  // heading words brighten as the heading crosses the middle of the viewport
+  function litOnScroll(node, ws) {
+    var on = false, queued = 0;
+    function paint() {
+      queued = 0;
+      var r = node.getBoundingClientRect();
+      var p = clamp((innerHeight * 0.88 - r.top) / (innerHeight * 0.42), 0, 1);
+      var kk = Math.round(p * ws.length);
+      for (var i = 0; i < ws.length; i++) ws[i].classList.toggle("is-lit", i < kk);
+    }
+    function onScroll() { if (on && !queued) queued = requestAnimationFrame(paint); }
+    if (global.IntersectionObserver) {
+      new IntersectionObserver(function (es) { on = es[0].isIntersecting; if (on) paint(); }, { rootMargin: "20% 0px" }).observe(node);
+    } else { on = true; }
+    addEventListener("scroll", onScroll, { passive: true });
+    paint();
+  }
+  function autoWords() {
+    els(".st-hero h1 + p, .st-hero .st-thesis, .st-chapter h2, [data-st-words]").forEach(function (n) {
+      try { words(n); } catch (e) { if (global.console) console.error(e); }
+    });
+  }
+
+  /* Story.beam(svg, [{from:[x,y], to:[x,y], curve?}|{d}], {color, baseColor})
+     Connector paths with one short light segment travelling along each. */
+  function beam(svgNode, segs, opts) {
+    opts = opts || {};
+    var svg = isEl(svgNode) ? svgNode : el(svgNode);
+    if (!svg) return { destroy: function () { } };
+    var g = mk("g", { class: "st-beam" }, svg), runs = [];
+    (segs || []).forEach(function (s, i) {
+      var d = s.d;
+      if (!d && s.from && s.to) {
+        var x0 = s.from[0], y0 = s.from[1], x1 = s.to[0], y1 = s.to[1];
+        var c = s.curve == null ? 0.18 : s.curve;
+        var mx = (x0 + x1) / 2, my = (y0 + y1) / 2, dx = x1 - x0, dy = y1 - y0;
+        d = "M" + x0 + "," + y0 + "Q" + (mx - dy * c) + "," + (my + dx * c) + " " + x1 + "," + y1;
+      }
+      if (!d) return;
+      mk("path", { class: "st-beam-base", d: d, stroke: opts.baseColor ? (tok(opts.baseColor) || opts.baseColor) : null }, g);
+      if (reduced()) return;
+      var p = mk("path", { class: "st-beam-run", d: d, stroke: opts.color ? (tok(opts.color) || opts.color) : tok("accent") }, g);
+      var len = p.getTotalLength ? p.getTotalLength() : 240;
+      var seg = Math.max(14, len * 0.16);
+      p.setAttribute("stroke-dasharray", seg.toFixed(1) + " " + (len + seg).toFixed(1));
+      p.style.setProperty("--len", (len + seg).toFixed(1));
+      p.style.animation = "st-beam-run 2.4s linear infinite";
+      p.style.animationDelay = (i * 0.35).toFixed(2) + "s";
+      runs.push(p);
+    });
+    return {
+      el: g,
+      destroy: function () { if (g.parentNode) g.parentNode.removeChild(g); runs.length = 0; }
+    };
+  }
+
+  /* per-digit roll used by countUp when the node carries data-st-ticker */
+  function tickerPaint(node, text, animate) {
+    while (node.firstChild) node.removeChild(node.firstChild);
+    var box = html("span", "st-tick", node), di = 0, cols = [];
+    text.split("").forEach(function (ch) {
+      if (/\d/.test(ch)) {
+        var col = html("span", "st-tick-col", box);
+        var strip = document.createElement("i");
+        for (var d = 0; d <= 9; d++) { var s = document.createElement("span"); s.textContent = String(d); strip.appendChild(s); }
+        col.appendChild(strip);
+        strip.style.transform = "translateY(" + (animate ? 0 : -parseInt(ch, 10)) + "em)";
+        strip.style.transitionDelay = (di * 55) + "ms";
+        cols.push([strip, parseInt(ch, 10)]);
+        di++;
+      } else {
+        var t = document.createElement("span");
+        t.textContent = ch; box.appendChild(t);
+      }
+    });
+    node.setAttribute("aria-label", text);
+    if (animate) requestAnimationFrame(function () {
+      cols.forEach(function (c) { c[0].style.transform = "translateY(-" + c[1] + "em)"; });
+    });
+  }
+
+  /* ---------------------------------------------------------
+     8c. glossary  -  plain-language definitions, annotated in place
+     --------------------------------------------------------- */
+  var glossary = {
+    "TRIR": "Recordable injuries per 200,000 hours worked. The standard yearly injury rate, so sites of different sizes can be compared.",
+    "DART": "Rate of injuries that cost days away from work, restricted duty, or a job transfer. A severity-weighted cousin of TRIR.",
+    "LTIR": "Rate of injuries that kept someone away from work at least one full day. Narrower than DART.",
+    "NAICS": "The federal industry code. It says what a site makes or does, and decides which peers it is compared against.",
+    "OSHA Form 300A": "The yearly summary of injury counts and hours that larger employers post and file. One row per site.",
+    "ITA": "The federal portal where employers submit their yearly injury summary. The public file of those submissions is the data used here.",
+    "establishment": "One physical site, not the whole company. Rates are calculated per site because hazards are local.",
+    "plausibility screen": "A rule that drops records whose hours or counts cannot be true, such as more hours than workers could have worked.",
+    "odds ratio": "How much more likely an outcome is in one group than another. One means no difference.",
+    "permutation test": "Shuffle the labels thousands of times to see how often chance alone produces the result you observed.",
+    "kappa": "Agreement between two raters after removing the agreement you would expect by luck. One is perfect, zero is chance.",
+    "Poisson": "A count model that assumes the average and the spread of the counts are the same.",
+    "negative binomial (NB2)": "A count model for data more spread out than a Poisson allows. Used when a few sites carry many injuries.",
+    "ZINB": "A count model with two parts: whether a site can report any injury at all, and how many it then reports.",
+    "TF-IDF": "A way to score words by how often they appear here and how rare they are elsewhere. Used to match text.",
+    "BM25": "A text ranking formula that scores documents against a query. A strong search baseline with no machine learning.",
+    "co-hyponym": "A sibling term under the same parent, such as two clauses in the same section. Easy for a system to confuse.",
+    "grounding": "Tying an answer to the exact source passage it came from, so a reader can check it.",
+    "retrieval": "Finding the passages most likely to answer a question before anything is written.",
+    "oracle baseline": "A score computed with the right answer handed over. It shows the ceiling a real system could reach.",
+    "PIF (performance influencing factor)": "A condition that makes error more or less likely, such as time pressure, poor labels, or fatigue.",
+    "IDHEAS-G": "A federal human-reliability framework built around how people take in and act on information.",
+    "SPAR-H": "A simple human-error method from the nuclear industry that adjusts a base error rate by a few conditions.",
+    "CREAM": "A human-error method that scores the working context first and predicts likely control of the task.",
+    "HFACS": "A classification of accident causes in four layers, from the act itself up to management decisions.",
+    "macrocognitive function": "A broad mental task such as noticing, understanding, deciding, or acting. Errors are sorted by which one failed.",
+    "ontology": "A written structure of terms and how they relate, so the same word means the same thing everywhere.",
+    "crosswalk": "A mapping that says which term in one framework corresponds to which term in another.",
+    "SEM (structural equation model)": "A model that estimates relations among things you cannot measure directly, such as safety climate, from things you can.",
+    "latent variable": "Something you cannot measure directly, estimated from several questions or indicators that stand in for it.",
+    "CFI": "A fit score for a model. Above about .95 means the model reproduces the data pattern well.",
+    "RMSEA": "A fit score where lower is better. Below about .06 is usually treated as close fit.",
+    "coverage (of an interval)": "How often a stated 95 percent interval really contains the true value when the method is repeated.",
+    "bootstrap": "Resample your own data many times to see how much an estimate would move if the sample changed.",
+    "confounder": "A third factor that drives both things you are comparing, and can fake a relation between them.",
+    "AUC": "How well a score separates two groups. One is perfect, .5 is a coin flip.",
+    "base rate": "How common the outcome is to begin with. A rare outcome makes most positive flags wrong.",
+    "Monte Carlo": "Run the model thousands of times with random inputs to see the range of outcomes, not one number.",
+    "tornado chart": "A sorted bar chart showing which assumption moves the result most. The widest bar matters most.",
+    "payback period": "How long until the savings from an investment equal what it cost.",
+    "percentile (p76 style)": "Your position in a ranked list. At the 76th percentile, 76 out of 100 peers are below you.",
+    "peer group": "The set of sites you are compared against, chosen by industry code and size band."
+  };
+  // extra surface forms; the key stays the display term
+  var GLOSS_ALT = {
+    "OSHA Form 300A": ["OSHA Form 300A", "Form 300A", "300A"],
+    "negative binomial (NB2)": ["negative binomial", "NB2"],
+    "PIF (performance influencing factor)": ["performance influencing factor", "PIFs", "PIF"],
+    "SEM (structural equation model)": ["structural equation model", "SEM"],
+    "coverage (of an interval)": ["coverage"],
+    "percentile (p76 style)": ["percentile"],
+    "odds ratio": ["odds ratio", "odds ratios"],
+    "permutation test": ["permutation test", "permutation tests"],
+    "co-hyponym": ["co-hyponym", "co-hyponyms"],
+    "establishment": ["establishment", "establishments"],
+    "confounder": ["confounder", "confounders"],
+    "plausibility screen": ["plausibility screen", "plausibility screens"],
+    "latent variable": ["latent variable", "latent variables"],
+    "tornado chart": ["tornado chart", "tornado charts"],
+    "macrocognitive function": ["macrocognitive function", "macrocognitive functions"],
+    "peer group": ["peer group", "peer groups"],
+    "oracle baseline": ["oracle baseline"],
+    "ontology": ["ontology", "ontologies"]
+  };
+  var GLOSS_SKIP = "a,abbr,code,pre,kbd,samp,button,svg,canvas,figure,figcaption,script,style,textarea,input,select,label,h1,h2,h3,h4,h5,h6,[data-no-gloss],.st-way,.st-way-map,.st-gloss-tip,.st-print-terms";
+  var glossUsed = [];
+  function reEsc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function glossEntries() {
+    var out = [];
+    Object.keys(glossary).forEach(function (key) {
+      (GLOSS_ALT[key] || [key]).forEach(function (form) {
+        var acronym = /^[A-Z0-9][A-Z0-9-]*$/.test(form);
+        out.push({
+          key: key, form: form, len: form.length,
+          re: new RegExp("\\b" + reEsc(form) + "\\b", acronym ? "g" : "gi")
+        });
+      });
+    });
+    out.sort(function (a, b) { return b.len - a.len; });
+    return out;
+  }
+  function glossSkip(node) {
+    var p = node.parentElement;
+    while (p && p !== document.body) {
+      if (p.matches && p.matches(GLOSS_SKIP)) return true;
+      // never touch an element that carries its own inline handler
+      var at = p.attributes;
+      for (var i = 0; i < at.length; i++) if (at[i].name.indexOf("on") === 0 && at[i].name.length > 2) return true;
+      p = p.parentElement;
+    }
+    return false;
+  }
+  function autoGloss() {
+    if (global.STORY_NO_GLOSSARY) return;
+    if (document.querySelector("abbr.st-gloss")) return;
+    var entries = glossEntries();
+    var conts = els(".st-step p, .st-chapter p, .st-hero p, .hero-lede, .st-findings span, main p");
+    if (!conts.length) return;
+    var seen = new Map();                     // section element -> {term:true}
+    var usedKeys = {};
+    conts.forEach(function (cont) {
+      var sect = (cont.closest && cont.closest(".st-scene,.st-chapter,.st-hero,.st-findings,main")) || document.body;
+      if (!seen.has(sect)) seen.set(sect, {});
+      var done = seen.get(sect);
+      var nodes = [], tw = document.createTreeWalker(cont, NodeFilter.SHOW_TEXT, null);
+      var n; while ((n = tw.nextNode())) nodes.push(n);
+      nodes.forEach(function (tn) {
+        if (!tn.nodeValue || tn.nodeValue.length < 3) return;
+        if (glossSkip(tn)) return;
+        var text = tn.nodeValue, hits = [];
+        entries.forEach(function (en) {
+          if (done[en.key]) return;
+          en.re.lastIndex = 0;
+          var m = en.re.exec(text);
+          if (!m) return;
+          hits.push({ key: en.key, start: m.index, end: m.index + m[0].length });
+        });
+        if (!hits.length) return;
+        hits.sort(function (a, b) { return a.start - b.start || (b.end - b.start) - (a.end - a.start); });
+        var frag = document.createDocumentFragment(), pos = 0, any = false;
+        hits.forEach(function (h) {
+          if (h.start < pos || done[h.key]) return;
+          done[h.key] = true; any = true;
+          if (usedKeys[h.key] == null) { usedKeys[h.key] = 1; glossUsed.push(h.key); }
+          if (h.start > pos) frag.appendChild(document.createTextNode(text.slice(pos, h.start)));
+          var ab = document.createElement("abbr");
+          ab.className = "st-gloss";
+          ab.setAttribute("tabindex", "0");
+          ab.setAttribute("data-gloss", glossary[h.key]);
+          ab.setAttribute("title", "");
+          ab.textContent = text.slice(h.start, h.end);
+          frag.appendChild(ab);
+          pos = h.end;
+        });
+        if (!any) return;
+        if (pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+    });
+    if (glossUsed.length) glossTipWire();
+  }
+  /* one shared tooltip for every annotated term */
+  var glossTip = null, glossCur = null;
+  function glossTipEl() {
+    if (glossTip) return glossTip;
+    glossTip = html("div", "st-gloss-tip");
+    glossTip.id = "st-gloss-tip";
+    glossTip.setAttribute("role", "tooltip");
+    glossTip.hidden = true;
+    document.body.appendChild(glossTip);
+    return glossTip;
+  }
+  function glossShow(ab) {
+    if (!ab || printing) return;
+    var t = glossTipEl();
+    t.textContent = ab.getAttribute("data-gloss") || "";
+    t.hidden = false;
+    t.style.left = "0px"; t.style.top = "0px";
+    var r = ab.getBoundingClientRect(), tr = t.getBoundingClientRect();
+    var sx = global.pageXOffset || 0, sy = global.pageYOffset || 0;
+    var left = clamp(r.left + r.width / 2 - tr.width / 2, 8, Math.max(8, innerWidth - tr.width - 8));
+    var top = r.top - tr.height - 10;
+    if (top < 4) top = r.bottom + 10;                 // no room above: sit under the term
+    t.style.left = (left + sx).toFixed(0) + "px";
+    t.style.top = (top + sy).toFixed(0) + "px";
+    if (glossCur && glossCur !== ab) glossCur.removeAttribute("aria-describedby");
+    ab.setAttribute("aria-describedby", "st-gloss-tip");
+    glossCur = ab;
+  }
+  function glossHide() {
+    if (glossTip) glossTip.hidden = true;
+    if (glossCur) { glossCur.removeAttribute("aria-describedby"); glossCur = null; }
+  }
+  function glossTipWire() {
+    function target(e) { var t = e.target; return t && t.closest ? t.closest("abbr.st-gloss") : null; }
+    document.addEventListener("pointerover", function (e) { var a = target(e); if (a && e.pointerType !== "touch") glossShow(a); });
+    document.addEventListener("pointerout", function (e) { if (target(e) && e.pointerType !== "touch") glossHide(); });
+    document.addEventListener("focusin", function (e) { var a = target(e); if (a) glossShow(a); else glossHide(); });
+    document.addEventListener("focusout", function (e) { if (target(e)) glossHide(); });
+    document.addEventListener("click", function (e) {
+      var a = target(e);
+      if (!a) { glossHide(); return; }
+      e.preventDefault();
+      if (glossCur === a && glossTip && !glossTip.hidden) glossHide(); else glossShow(a);
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") glossHide(); });
+    addEventListener("scroll", glossHide, { passive: true });
+    addEventListener("resize", glossHide);
+  }
+
+  /* ---------------------------------------------------------
+     8d. print handout
+     --------------------------------------------------------- */
+  var printSaved = null, printExtra = [];
+  function printPrepare() {
+    if (printSaved) return;
+    if (presentState) presentState.exit(); // presenter layout and handout layout must never combine
+    printing = true;
+    glossHide();
+    document.documentElement.classList.add("st-printing");
+    printSaved = [];
+    els(".st-scene").forEach(function (sc) {
+      var list = els(".st-step", sc);
+      if (!list.length) return;
+      var at = -1;
+      list.forEach(function (s, j) { if (s.classList.contains("is-active")) at = j; });
+      printSaved.push({ steps: list, idx: at });
+      var lastStep = list[list.length - 1];
+      if (lastStep.__stActivate) lastStep.__stActivate();
+    });
+    // pages register their scenes after the engine boots: re-assert the final steps a few times
+    // so every figure prints in its last state
+    [0, 150, 600, 1500].forEach(function (ms) {
+      setTimeout(function () {
+        if (!printSaved) return;
+        els(".st-scene").forEach(function (sc) {
+          var list = els(".st-step", sc), lastStep = list[list.length - 1];
+          if (lastStep && lastStep.__stActivate) lastStep.__stActivate();
+        });
+      }, ms);
+    });
+    if (glossUsed.length) {
+      var box = html("div", "st-print-terms");
+      var h = document.createElement("h2"); h.textContent = "Terms used on this page"; box.appendChild(h);
+      var dl = document.createElement("dl"); box.appendChild(dl);
+      glossUsed.slice().sort().forEach(function (k) {
+        var dt = document.createElement("dt"); dt.textContent = k;
+        var dd = document.createElement("dd"); dd.textContent = glossary[k] || "";
+        dl.appendChild(dt); dl.appendChild(dd);
+      });
+      document.body.appendChild(box); printExtra.push(box);
+    }
+    var foot = html("div", "st-print-foot");
+    foot.textContent = (document.title || "") + "  ·  " + location.origin + location.pathname;
+    document.body.appendChild(foot); printExtra.push(foot);
+  }
+  function printRestore() {
+    if (!printSaved) return;
+    printExtra.forEach(function (n) { n.remove(); }); printExtra = [];
+    printSaved.forEach(function (s) {
+      if (s.idx >= 0 && s.steps[s.idx] && s.steps[s.idx].__stActivate) s.steps[s.idx].__stActivate();
+    });
+    printSaved = null; printing = false;
+    document.documentElement.classList.remove("st-printing");
+  }
+  function printHandout() {
+    printPrepare();
+    setTimeout(function () {
+      try { global.print(); } catch (e) { }
+      setTimeout(printRestore, 300);
+    }, 80);
+  }
+  addEventListener("beforeprint", printPrepare);
+  addEventListener("afterprint", printRestore);
+
+  function boot() {
+    autoChapters(); autoFindings();
+    try { autoGloss(); } catch (e) { if (global.console) console.error(e); }
+    try { autoWords(); } catch (e) { if (global.console) console.error(e); }
+    autoWayfinder();
+    try { spotlight(document); } catch (e) { if (global.console) console.error(e); }
+    // ?print=1 previews the handout layout on screen; reload or call Story._printRestore() to leave it
+    if (/[?&]print=1/.test(location.search)) printPrepare();
+  }
   if (document.readyState === "loading") addEventListener("DOMContentLoaded", boot);
   else boot();
 
@@ -3643,7 +4578,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
      9. export
      --------------------------------------------------------- */
   var Story = {
-    version: "1.1.0",
+    version: "1.3.0",
     orb: orb,
     orbInline: orbInline,
     companion: companion,
@@ -3662,6 +4597,15 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     progressBar: progressBar,
     present: present,
     autoPresent: autoPresent,
+    glossary: glossary,
+    annotate: autoGloss,
+    spotlight: spotlight,
+    words: words,
+    beam: beam,
+    print: printHandout,
+    _printPrepare: printPrepare,
+    _printRestore: printRestore,
+    get printing() { return printing; },
     theme: Theme,
     reduced: reduced,
     tick: tick,
