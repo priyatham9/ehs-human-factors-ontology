@@ -294,6 +294,19 @@ kbd{font-family:var(--font-mono);font-size:.625rem;border:1px solid var(--rule-s
 .why-band p{font-size:.875rem;color:var(--ink-2);margin:0}
 .report-wrap>summary{cursor:pointer;font-family:var(--font-mono);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding:10px 0;min-height:44px}
 @media(max-width:979px){.panel-inner{padding:0 20px}.wrap{padding:0 20px}}
+
+/* motion: state changes ease between states; reduced motion gets the final state */
+.hero{position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-10%;top:-30%;width:55%;height:160%;background:radial-gradient(closest-side,color-mix(in oklab,var(--accent) 15%,transparent),transparent);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.rule-card.swap{animation:rcIn .45s cubic-bezier(.65,0,.35,1)}
+@keyframes rcIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stage-note.swap{animation:rcIn .5s cubic-bezier(.65,0,.35,1)}
+.progress-fill{transition:width .45s cubic-bezier(.65,0,.35,1)}
+.tile{transition:box-shadow .3s,border-color .3s,transform .3s,background .3s,opacity .3s}
+.derived-list li:first-child{animation:dIn .5s ease-in-out}
+@keyframes dIn{from{background:var(--accent);color:var(--accent-ink)}to{background:var(--accent-wash)}}
+.stage{transition:border-color .4s,background .4s,box-shadow .4s}
 </style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
@@ -956,12 +969,15 @@ Standing caveats
       if (k === step._stage) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
     });
     var within = st.idx.indexOf(idx) + 1;
+    if (!reduceMotion && stageNote.dataset.k !== String(step._stage)) { stageNote.classList.remove('swap'); void stageNote.offsetWidth; stageNote.classList.add('swap'); }
+    stageNote.dataset.k = String(step._stage);
     stageNote.innerHTML = '<span class="label">Stage ' + (step._stage + 1) + ' of ' + STAGES.length + ' &middot; firing ' + within + ' of ' + st.idx.length + ' in this stage</span><p><b>' + esc(st.title) + '.</b> ' + esc(st.note) + '</p>';
 
     var basisTag = '<span class="tag' + (step.basis === 'convention' ? ' basis-convention' : '') + '">' + esc(step.basis) + (step.source_refs.length ? ': ' + esc(step.source_refs.join(', ')) : '') + '</span>';
     var strataTag = '<span class="tag stratum">stratum ' + step.stratum + '</span>';
     var premisesHtml = (step.premises || []).map(function (p) { return '<li class="premise-chip">' + esc(p) + '</li>'; }).join('');
 
+    if (!reduceMotion) { ruleCard.classList.remove('swap'); void ruleCard.offsetWidth; ruleCard.classList.add('swap'); }
     ruleCard.innerHTML =
       '<div class="rule-id-row"><span class="rule-id">' + esc(step.rule_id) + '</span>' + basisTag + strataTag + '</div>' +
       '<p class="rule-plain">' + esc(plain(step)) + '</p>' +
@@ -1070,6 +1086,19 @@ Standing caveats
   runFinder();
 
   goTo(0);
+
+  /* headline numbers roll into place once, when the strip is first seen */
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var nums = [].slice.call(document.querySelectorAll('.wt-v')).filter(function (v) { return /^\d+$/.test((v.firstChild && v.firstChild.nodeValue || '').trim()); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return; io.unobserve(e.target);
+        var node = e.target.firstChild, to = +node.nodeValue, t0 = performance.now();
+        (function f(now) { var k = Math.min(1, (now - t0) / 900); k = 1 - Math.pow(1 - k, 3); node.nodeValue = String(Math.round(to * k)); if (k < 1) requestAnimationFrame(f); })(t0);
+      });
+    }, { threshold: .4 });
+    nums.forEach(function (n) { io.observe(n); });
+  }
 })();
 </script>
 </html>
