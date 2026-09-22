@@ -877,7 +877,7 @@ Standing caveats
       tile.setAttribute('aria-label', f.label + ', ' + (f.level_label || 'unknown') + (uses ? ', used by ' + uses + ' firings. Select to trace it.' : ', used by no firing.'));
       tile.innerHTML = '<span class="t-label">' + esc(f.label) + '</span>' +
         '<span class="t-foot"><span class="t-level"><span aria-hidden="true">' + LEVEL_MARK[lvlC] + '</span> ' + esc(f.level_label || 'unknown') + '</span>' +
-        '<span class="t-uses mono">' + (uses ? uses + ' firings' : '&mdash;') + '</span></span>';
+        '<span class="t-uses mono">' + (uses ? uses + ' firings' : 'no firings') + '</span></span>';
       tile.addEventListener('click', function () { setTrace(trace === f.curie ? null : f.curie); });
       grid.appendChild(tile);
       tileByFactor[f.curie] = tile;
@@ -981,7 +981,7 @@ Standing caveats
     ruleCard.innerHTML =
       '<div class="rule-id-row"><span class="rule-id">' + esc(step.rule_id) + '</span>' + basisTag + strataTag + '</div>' +
       '<p class="rule-plain">' + esc(plain(step)) + '</p>' +
-      '<div class="edge"><div class="premises-row"><p class="label">Because of these premises</p><ul class="chips">' + (premisesHtml || '<li class="premise-chip">(none &mdash; base fact)</li>') + '</ul></div>' +
+      '<div class="edge"><div class="premises-row"><p class="label">Because of these premises</p><ul class="chips">' + (premisesHtml || '<li class="premise-chip">(none: base fact)</li>') + '</ul></div>' +
       '<div class="conclusion-row"><span class="arrow" aria-hidden="true">&darr;</span><span class="label">the rule concludes</span><span class="conclusion-fact">' + esc(step.conclusion) + '</span></div></div>' +
       '<details class="rule-more"><summary>The rule as written, and why it holds</summary>' +
       '<pre class="rule-text">' + esc(step.rule_text) + '</pre>' +
