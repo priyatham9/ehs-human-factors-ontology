@@ -1445,7 +1445,8 @@ html.st-printing #fig-xw text[fill="var(--accent-ink)"]{fill:#fff!important}
 .inc-fig .inc-fn.is-on.is-shown .inc-box{stroke:var(--accent);stroke-width:2;fill:var(--accent-wash)}
 .inc-fig .inc-fn.is-off .inc-box{stroke-dasharray:4 4;fill:var(--paper)}
 .inc-fig .inc-fn.is-off text.inc-t{fill:var(--muted);font-weight:500}
-.inc-fig .inc-fn.is-off.is-shown{opacity:.7}
+.inc-fig .inc-fn .inc-halo{fill:var(--paper);stroke:none}
+.inc-fig .inc-fn.is-off .inc-box{stroke:var(--muted)}
 .inc-fig .inc-mech .inc-box{stroke:var(--accent);stroke-width:1.5}
 .inc-fig .inc-mech.is-key .inc-box{fill:var(--accent-wash);stroke-width:2.5}
 .inc-fig .inc-node.is-now .inc-box{stroke-width:3}
@@ -5842,7 +5843,8 @@ function incLayout(ph){
   }else{
     L.vb=[360,470];
     INC.cond.forEach(function(c,i){L[c.id]={x:(i%2)*182+2,y:2+Math.floor(i/2)*70,w:174,h:62};});
-    INC.fn.forEach(function(f,i){L[f.id]={x:2+i*71.4,y:168,w:66,h:34};});
+    /* chip widths follow label length so "Understand" and "Coordinate" are not cramped */
+    var fw=[58,104,62,38,86],fx=2;INC.fn.forEach(function(f,i){L[f.id]={x:fx,y:162,w:fw[i]-1,h:42};fx+=fw[i]+2.5;});
     L.kbd={x:2,y:238,w:174,h:44};L.uns={x:184,y:238,w:174,h:44};
     L.nofb={x:2,y:290,w:174,h:44};L.rbm={x:184,y:290,w:174,h:44};
     L.kbm={x:2,y:342,w:356,h:40};
@@ -5903,7 +5905,8 @@ function buildInc(){
   });
   INC.fn.forEach(function(f){
     var g=box(f.id,"inc-fn"+(f.on?" is-on":" is-off")),R=L[f.id];
-    var t=txt(g,R.w/2,R.h/2+(ph?4:5),ph?f.p:f.t,"middle","inc-t");t.setAttribute("font-size",ph?"10":"14");
+    if(!ph){var hb=el("rect",{x:-6,y:-6,width:R.w+12,height:R.h+12,rx:12,"class":"inc-halo"},g);g.insertBefore(hb,g.firstChild);}
+    var t=txt(g,R.w/2,R.h/2+(ph?5:5),ph?f.p:f.t,"middle","inc-t");t.setAttribute("font-size",ph?"14":"14");
     if(!f.on&&!ph){var s=txt(g,R.w/2,R.h-6,"not reached","middle","inc-sub");s.setAttribute("font-size","10");t.setAttribute("y",R.h/2);}
   });
   INC.mech.forEach(function(m){
