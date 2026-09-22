@@ -5882,7 +5882,7 @@ function buildInc(){
   /* column captions (wide only) */
   if(!ph){
     [["Conditions",10],["Thinking functions",318],["What it does to the work",560],["Screening band",848]].forEach(function(c){
-      var t=txt(ng,c[1],20,c[0].toUpperCase(),"start","inc-col");t.setAttribute("font-size","11");});
+      var t=txt(ng,c[1],20,c[0].toUpperCase(),"start","inc-col");t.setAttribute("font-size","14.5");});
   }
   INC.edges.forEach(function(e,i){
     var p=el("path",{d:incPath(L[e[0]],L[e[1]],ph),"class":"inc-edge",pathLength:"1","data-s":e[2]},eg);
@@ -5898,8 +5898,8 @@ function buildInc(){
     var g=box(c.id,"inc-cond"+(c.sev?" is-sev":" is-deg")),R=L[c.id];
     el("rect",{x:0,y:0,width:ph?5:6,height:R.h,"class":"inc-bar"},g);
     var t=txt(g,ph?12:16,ph?22:30,c.t,"start","inc-t");t.setAttribute("font-size",ph?"12.5":"16");
-    var l=txt(g,ph?12:16,ph?40:54,(c.sev?"↓↓ ":"↓ ")+c.lvl,"start","inc-lvl");l.setAttribute("font-size",ph?"10.5":"12.5");
-    if(!ph){var s=txt(g,16,76,c.sub,"start","inc-sub");s.setAttribute("font-size","12.5");}
+    var l=txt(g,ph?12:16,ph?40:54,(c.sev?"↓↓ ":"↓ ")+c.lvl,"start","inc-lvl");l.setAttribute("font-size",ph?"10.5":"14.5");
+    if(!ph){var s=txt(g,16,76,c.sub,"start","inc-sub");s.setAttribute("font-size","14.5");}
     else{var s2=txt(g,12,55,c.sub,"start","inc-sub");s2.setAttribute("font-size","9.5");}
     g.__k=i;
   });
@@ -5907,7 +5907,7 @@ function buildInc(){
     var g=box(f.id,"inc-fn"+(f.on?" is-on":" is-off")),R=L[f.id];
     if(!ph){var hb=el("rect",{x:-6,y:-6,width:R.w+12,height:R.h+12,rx:12,"class":"inc-halo"},g);g.insertBefore(hb,g.firstChild);}
     var t=txt(g,R.w/2,R.h/2+(ph?5:5),ph?f.p:f.t,"middle","inc-t");t.setAttribute("font-size",ph?"14":"14");
-    if(!f.on&&!ph){var s=txt(g,R.w/2,R.h-6,"not reached","middle","inc-sub");s.setAttribute("font-size","10");t.setAttribute("y",R.h/2);}
+    if(!f.on&&!ph){var s=txt(g,R.w/2,R.h-6,"not reached","middle","inc-sub");s.setAttribute("font-size","14.5");t.setAttribute("y",R.h/2-4);}
   });
   INC.mech.forEach(function(m){
     var g=box(m.id,"inc-mech"+(m.id==="kbm"?" is-key":"")),R=L[m.id];
@@ -5916,16 +5916,16 @@ function buildInc(){
     if(!ph&&m.t.length>24){ /* wrap long labels on two lines */
       var k=m.t.indexOf(":");if(k>0){t.textContent=m.t.slice(0,k+1);var t2=txt(g,14,48,m.t.slice(k+2),"start","inc-t");t2.setAttribute("font-size","14.5");}
     }
-    var r=txt(g,ph?10:14,ph?35:(m.t.length>24?66:54),m.r,"start","inc-rule");r.setAttribute("font-size",ph?"9.5":"11.5");
+    var r=txt(g,ph?10:14,ph?35:(m.t.length>24?69:54),m.r,"start","inc-rule");r.setAttribute("font-size",ph?"9.5":"14.5");
   });
   INC.band.forEach(function(b){
     var g=box(b.id,"inc-band inc-band-"+b.id),R=L[b.id];
     var t=txt(g,R.w/2,ph?22:(b.id==="stop"?36:28),b.t,"middle","inc-t");t.setAttribute("font-size",ph?"11":(b.id==="stop"?"15":"14"));
-    var r=txt(g,R.w/2,ph?40:(b.id==="stop"?60:48),b.r,"middle","inc-rule");r.setAttribute("font-size",ph?"9.5":"11");
+    var r=txt(g,R.w/2,ph?40:(b.id==="stop"?60:48),b.r,"middle","inc-rule");r.setAttribute("font-size",ph?"9.5":"14.5");
   });
   /* the label the report would write, drawn over the four condition boxes */
   var lb=el("g",{"class":"inc-label"},ng),B=L.blame;
-  var cap=txt(lb,B.x+B.w/2,B.y-14,"THE WRITE-UP SAYS","middle","inc-cap");cap.setAttribute("font-size",ph?"10":"12");
+  var cap=txt(lb,B.x+B.w/2,B.y-14,"THE WRITE-UP SAYS","middle","inc-cap");cap.setAttribute("font-size",ph?"10":"14.5");
   var big=txt(lb,B.x+B.w/2,B.y+B.h/2+(ph?10:16),"OPERATOR ERROR","middle","inc-big");big.setAttribute("font-size",ph?"30":"50");
   var crack=el("path",{"class":"inc-crack",pathLength:"1",d:(function(){var s="",n=4;for(var k=1;k<n;k++){var x=B.x+B.w*k/n;s+="M"+x+","+B.y+" l"+(ph?4:7)+","+B.h*0.3+" l-"+(ph?7:12)+","+B.h*0.25+" l"+(ph?5:9)+","+B.h*0.45+" ";}return s;})()},lb);
   inc.label=lb;inc.crack=crack;
