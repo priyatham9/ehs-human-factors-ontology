@@ -1350,6 +1350,108 @@ html.st-printing #fig-xw text[fill="var(--accent-ink)"]{fill:#fff!important}
  #fig-net g,#fig-net circle,#fig-net line,#fig-net text,#fig-fn g,#fig-fn text,
  #fig-derive g,#fig-derive path,#fig-derive text,#fig-xw g,#fig-xw text{opacity:1!important}
 }
+.st-cell-link{display:block;text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s}
+.st-cell-link:hover{border-color:var(--accent)!important;transform:translateY(-1px)}
+/* ============ scene 0: the worked incident ============ */
+:root{--inc-sev:#A5301F;--inc-sev-wash:#FAE3DF;--inc-deg:#8A5A00;--inc-deg-wash:#FBF0DC}
+:root[data-theme="dark"]{--inc-sev:#F2897A;--inc-sev-wash:#2A1512;--inc-deg:#E3B25F;--inc-deg-wash:#241C0C}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--inc-sev:#F2897A;--inc-sev-wash:#2A1512;--inc-deg:#E3B25F;--inc-deg-wash:#241C0C}}
+.inc-frame{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 8px}
+.inc-frame-k{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.inc-seg{display:inline-flex;border:var(--st-hair);border-radius:999px;padding:3px;background:var(--surface)}
+.inc-seg button{font:600 .6875rem/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:none;border:0;border-radius:999px;padding:0 14px;min-height:36px;cursor:pointer;transition:background .4s cubic-bezier(.65,0,.35,1),color .4s}
+.inc-seg button[aria-checked="true"]{background:var(--accent);color:var(--accent-ink)}
+.inc-fig{overflow:visible}
+.inc-fig text.inc-col{fill:var(--muted);letter-spacing:.14em;font-weight:600;transition:opacity .6s}
+.inc-fig.is-blame .inc-col{opacity:0}
+.inc-fig .inc-box{fill:var(--surface);stroke:var(--rule-soft);stroke-width:1.5}
+.inc-fig text.inc-t{fill:var(--ink);font-family:var(--font-sans);font-weight:700}
+.inc-fig text.inc-sub{fill:var(--muted)}
+.inc-fig text.inc-rule{fill:var(--accent);font-weight:600;letter-spacing:.04em}
+.inc-fig text.inc-lvl{font-weight:600}
+.inc-fig .inc-node{transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .9s cubic-bezier(.65,0,.35,1);opacity:0}
+.inc-fig .inc-node.is-shown{opacity:1}
+.inc-fig .inc-cond{opacity:1}
+.inc-fig .inc-cond.is-sev .inc-box{fill:var(--inc-sev-wash);stroke:var(--inc-sev)}
+.inc-fig .inc-cond.is-deg .inc-box{fill:var(--inc-deg-wash);stroke:var(--inc-deg)}
+.inc-fig .inc-cond.is-sev .inc-bar,.inc-fig .inc-cond.is-sev text.inc-lvl{fill:var(--inc-sev)}
+.inc-fig .inc-cond.is-deg .inc-bar,.inc-fig .inc-cond.is-deg text.inc-lvl{fill:var(--inc-deg)}
+.inc-fig .inc-cond text{transition:opacity .5s .35s}
+.inc-fig.is-blame .inc-cond text,.inc-fig.is-blame .inc-cond .inc-bar{opacity:0;transition-delay:0s}
+.inc-fig.is-blame .inc-cond .inc-box{fill:var(--ink);stroke:var(--ink)}
+.inc-fig .inc-cond .inc-box{transition:fill .7s,stroke .7s}
+.inc-fig .inc-label{pointer-events:none;transition:opacity .45s}
+.inc-fig text.inc-big{fill:var(--paper);font-family:var(--font-sans);font-weight:900;font-stretch:125%;letter-spacing:.02em}
+.inc-fig text.inc-cap{fill:var(--muted);letter-spacing:.16em;font-weight:600}
+.inc-fig .inc-crack{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .6s cubic-bezier(.65,0,.35,1)}
+.inc-fig:not(.is-blame) .inc-label{opacity:0}
+.inc-fig.is-blame.is-cracking .inc-crack{stroke-dashoffset:0}
+.inc-fig .inc-fn.is-on.is-shown .inc-box{stroke:var(--accent);stroke-width:2;fill:var(--accent-wash)}
+.inc-fig .inc-fn.is-off .inc-box{stroke-dasharray:4 4;fill:var(--paper)}
+.inc-fig .inc-fn.is-off text.inc-t{fill:var(--muted);font-weight:500}
+.inc-fig .inc-fn.is-off.is-shown{opacity:.7}
+.inc-fig .inc-mech .inc-box{stroke:var(--accent);stroke-width:1.5}
+.inc-fig .inc-mech.is-key .inc-box{fill:var(--accent-wash);stroke-width:2.5}
+.inc-fig .inc-node.is-now .inc-box{stroke-width:3}
+.inc-fig .inc-band .inc-box{transition:fill .6s,stroke .6s}
+.inc-fig .inc-band.is-lit .inc-box{fill:var(--accent-wash);stroke:var(--accent);stroke-width:2}
+.inc-fig .inc-band-stop.is-lit .inc-box{fill:var(--inc-sev-wash);stroke:var(--inc-sev);stroke-width:3}
+.inc-fig .inc-band-stop.is-lit text.inc-t{fill:var(--inc-sev)}
+.inc-fig .inc-edge{fill:none;stroke:var(--muted);stroke-width:1.6;opacity:.55;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s cubic-bezier(.65,0,.35,1),stroke .5s,opacity .5s}
+.inc-fig .inc-edge.is-drawn{stroke-dashoffset:0}
+.inc-fig .inc-edge.is-now{stroke:var(--accent);stroke-width:2.4;opacity:1}
+.inc-fig .inc-glow{opacity:0;transition:opacity 1.2s}
+.inc-fig[data-step="6"] .inc-glow{opacity:1}
+.inc-fig.inc-instant .inc-node,.inc-fig.inc-instant .inc-edge,.inc-fig.inc-instant text,.inc-fig.inc-instant .inc-box,.inc-fig.inc-instant .inc-crack,.inc-fig.inc-instant .inc-label{transition:none!important}
+.inc-sw{border-radius:3px}
+.inc-sw-sev{background:var(--inc-sev)}.inc-sw-deg{background:var(--inc-deg)}
+.inc-sw-on{background:var(--accent)}.inc-sw-off{border:1.5px dashed var(--muted);box-sizing:border-box}
+.inc-aside{font-size:.95rem!important;color:var(--muted)!important;border-left:2px solid var(--rule-soft);padding-left:12px}
+@media(max-width:800px){
+  .inc-scene .st-stage-inner > #fig-inc{max-height:50vh;max-height:50svh}
+  .inc-frame{margin:0 0 4px}.inc-seg button{min-height:34px;padding:0 11px}
+  .inc-lgd{display:none}
+  .inc-scene .st-stage .src,.inc-scene .st-companion{display:none}
+}
+/* leader boxes under each scene */
+.leadbox{max-width:980px;margin:18px 0 56px}
+.leadbox-row{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);border:var(--st-hair);border-color:var(--accent);border-radius:var(--st-radius);background:var(--accent-wash);overflow:hidden}
+.leadbox-row>div{padding:20px 24px}
+.leadbox-row>div+div{border-left:1px solid var(--accent)}
+.leadbox-k{display:block;font-family:var(--font-mono);font-size:.625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.leadbox p{margin:0;color:var(--ink-2);font-size:1.02rem;line-height:1.5}
+.leadbox .ask{color:var(--ink);font-style:italic}
+@media(max-width:760px){.leadbox-row{grid-template-columns:1fr}.leadbox-row>div+div{border-left:0;border-top:1px solid var(--accent)}.leadbox-row>div{padding:16px 18px}}
+.inc-owners{margin-top:14px;border:var(--st-hair);border-radius:var(--st-radius-sm);background:var(--surface);overflow:hidden}
+.inc-owners summary{cursor:pointer;padding:12px 16px;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);min-height:44px;display:flex;align-items:center;gap:6px}
+.inc-owners table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:620px}
+.inc-owners th,.inc-owners td{text-align:left;vertical-align:top;padding:10px 16px;border-top:1px solid var(--rule-soft)}
+.inc-owners thead th{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.inc-owners tbody th{font-weight:700}
+.inc-owners td{color:var(--ink-2)}
+.inc-owners .scrollx{overflow-x:auto}
+.inc-owners .src{padding:0 16px 14px}
+.lvl{font-family:var(--font-mono);font-size:.6875rem;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.lvl-sev{color:var(--inc-sev)}.lvl-deg{color:var(--inc-deg)}
+/* Monday actions */
+.actions{list-style:none;margin:22px 0 0;padding:0;counter-reset:a;max-width:80ch;display:grid;gap:12px}
+.actions li{counter-increment:a;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;border:var(--st-hair);border-radius:var(--st-radius-sm);background:var(--surface);padding:16px 18px}
+.actions li::before{content:counter(a,decimal-leading-zero);grid-row:span 2;font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:var(--accent)}
+.actions b{font-size:1.05rem;color:var(--ink)}
+.actions span{color:var(--ink-2);font-size:.98rem}
+.asks{margin:26px 0 0;max-width:80ch;border-left:2px solid var(--accent);padding-left:18px}
+.asks h3{font-size:1.05rem;margin-bottom:10px}
+.asks ul{margin:0;padding-left:18px;color:var(--ink);font-style:italic}
+.asks li{margin-bottom:8px}
+/* hero glow and kinetic emphasis */
+.hero-wrap{position:relative;overflow:hidden}
+.hero-wrap::before{content:"";position:absolute;right:-8%;top:-20%;width:62%;height:140%;background:radial-gradient(closest-side,color-mix(in oklab,var(--accent) 14%,transparent),transparent);pointer-events:none}
+.hero-wrap>.wide{position:relative}
+.thesis em{font-style:normal;background:linear-gradient(var(--accent-wash),var(--accent-wash)) no-repeat 0 88%/100% .42em;animation:emIn 1.1s .5s cubic-bezier(.65,0,.35,1) both}
+@keyframes emIn{from{background-size:0 .42em}to{background-size:100% .42em}}
+@media (prefers-reduced-motion:reduce){.thesis em{animation:none}}
+html.st-printing .leadbox-row,html.st-printing .actions li{background:#fff!important;border:1px solid #999!important}
+html.st-printing .inc-frame{display:none!important}
 </style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
@@ -1469,27 +1571,121 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       <div class="hero-copy">
         <div class="hero-eyebrow"><span class="pulse" aria-hidden="true"></span><span class="label">Story &middot; 4 of 7 in the path</span></div>
         <h1 class="display">Why people err, as a graph</h1>
-        <p class="thesis">An investigation says the operator made a mistake. That is a label, not a cause. This repository writes the conditions people work under as a graph, so the reasoning from condition to consequence can be read back line by line.</p>
-        <div class="status" role="group" aria-label="Key counts">
-          <div class="st-cell" data-st-spotlight><span class="st-k">Factors</span><span class="st-v accent" data-count="20">20</span></div>
-          <div class="st-cell" data-st-spotlight><span class="st-k">Contexts</span><span class="st-v" data-count="4">4</span></div>
-          <div class="st-cell" data-st-spotlight><span class="st-k">Crosswalk rows</span><span class="st-v" data-count="96">96</span></div>
-          <div class="st-cell" data-st-spotlight><span class="st-k">Inferences</span><span class="st-v" data-count="89">89</span></div>
+        <p class="thesis">An investigation says the operator made a mistake. That is a label, not a cause. Take one restart apart and <em>four conditions set before the shift</em> carry it to stop-and-review, every step a rule you can read back line by line.</p>
+        <div class="status" role="group" aria-label="The story in four numbers">
+          <a class="st-cell st-cell-link" href="#incident" data-st-spotlight><span class="st-k">Conditions below nominal</span><span class="st-v accent" data-count="4">4</span></a>
+          <a class="st-cell st-cell-link" href="#incident" data-st-spotlight><span class="st-k">Thinking functions loaded</span><span class="st-v" data-count="3">3</span></a>
+          <a class="st-cell st-cell-link" href="#scene3" data-st-spotlight><span class="st-k">Inferences, all readable</span><span class="st-v" data-count="89">89</span></a>
+          <a class="st-cell st-cell-link" href="#scene4" data-st-spotlight><span class="st-k">Close crosswalk cells of 80</span><span class="st-v" data-count="31">31</span></a>
         </div>
         <div class="hero-links st-hide-on-present">
-          <a class="btn btn-primary" href="#scene1">Start the story</a>
+          <a class="btn btn-primary" href="#incident">Start with the incident</a>
           <a class="btn" href="index.html">Project page</a>
           <a class="btn" href="walkthrough.html">Derivation tool</a>
         </div>
-        <p class="src">Counts read from docs/crosswalk-data.json and docs/walkthrough-data.json. Press P for presenter mode, M for the site map.</p>
+        <p class="src">Counts read from docs/walkthrough-data.json and docs/crosswalk-data.json. The worked scenario is illustrative, written by hand for this repository. Press P for presenter mode, M for the site map.</p>
       </div>
       <div class="st-hero-orb"><canvas id="orb-hero" class="st-orb" role="img" aria-label="Animated dotted orb standing for the reasoning system under review"></canvas></div>
     </div>
   </div>
 </section>
 
+<!-- ===================== CHAPTER 1: THE WORKED INCIDENT ===================== -->
+<section class="st-chapter" data-key="4" data-num="01" data-orb="solving" data-orb-label="Solving">
+  <h2>Four conditions set before the shift, not one person, put this restart at stop-and-review</h2>
+  <p>Take one job apart the way the graph does. A label that would have ended the investigation turns into a chain of conditions, and every link in it is a rule you can read.</p>
+</section>
+
+<!-- ===================== SCENE 0: THE WORKED INCIDENT ===================== -->
+<div class="scene-wrap" id="incident">
+<div class="wide">
+  <section class="st-scene inc-scene" data-scene="0" aria-label="The worked incident: from a human error label to the conditions behind it">
+    <div class="st-stage"><div class="st-stage-inner" data-st-frame="off">
+      <div class="stage-head">
+        <h4>Reactor restart after a trip, step by step</h4>
+        <div class="stage-num"><span class="st-bignum" id="num-0">4</span><small id="numlab-0">of 20 conditions below nominal</small></div>
+      </div>
+      <div class="inc-frame" role="group" aria-label="How to read the job">
+        <span class="inc-frame-k" id="inc-frame-k">Read it as</span>
+        <div class="inc-seg" role="radiogroup" aria-labelledby="inc-frame-k">
+          <button type="button" role="radio" aria-checked="false" data-frame="blame" id="inc-blame">Who erred</button>
+          <button type="button" role="radio" aria-checked="true" data-frame="system" id="inc-system">What set it up</button>
+        </div>
+      </div>
+      <svg id="fig-inc" class="st-chart inc-fig" viewBox="0 0 1000 560" role="img" aria-labelledby="fig-inc-t fig-inc-d"><title id="fig-inc-t">From a human error label to the conditions behind it</title><desc id="fig-inc-d">Four degraded conditions (scenario familiarity severely degraded; procedures, training and time pressure degraded) link to three of five thinking functions, to a demand for reasoning from first principles that training cannot support, to no rule-based fallback, to two aggravated error modes, and to a stop-and-review screening band.</desc></svg>
+      <div class="lgd inc-lgd" aria-hidden="true">
+        <span><i class="inc-sw inc-sw-sev"></i>severely degraded</span>
+        <span><i class="inc-sw inc-sw-deg"></i>degraded</span>
+        <span><i class="inc-sw inc-sw-on"></i>reached by the chain</span>
+        <span><i class="inc-sw inc-sw-off"></i>not reached</span>
+      </div>
+      <span class="src">Source: examples/reactor_startup_nonroutine.json and its trace in docs/walkthrough-data.json. Illustrative scenario, not a real event.</span>
+    </div></div>
+    <div class="st-steps"><span class="st-scene-rail" aria-hidden="true"></span>
+      <div class="st-step" data-step="0" data-orb="listening" data-note="Start with the sentence everyone has read in an investigation. It sounds like a finding and it is not one. Ask the room what they would change on Monday if this were the whole report.">
+        <span class="label">Step 1 &middot; The write-up</span>
+        <h3>&ldquo;Operator error&rdquo; names a person and no cause</h3>
+        <p>Suppose this batch reactor restart goes wrong. A report that stops at the person has one line to offer, and nothing in it tells a manager what to change. The rest of this scene takes the same job apart with the repository&rsquo;s worked example.</p>
+        <p class="inc-aside">This scenario is written by hand for the repository. Nothing went wrong on a real site; the &ldquo;operator error&rdquo; line is the framing this story argues against, not a quotation.</p>
+      </div>
+      <div class="st-step" data-step="1" data-orb="searching" data-note="Four records, four conditions. None of them is about the operator's character, and all of them existed before the shift started.">
+        <span class="label">Step 2 &middot; The conditions</span>
+        <h3>4 of 20 conditions were below nominal before anyone touched a valve</h3>
+        <p>The operator qualified three weeks ago and had never run this recovery. The sequence had no approved procedure. The outage window was fixed by a downstream commitment. Scenario familiarity is assessed severely degraded; procedures, training and time pressure are degraded. The other sixteen are nominal.</p>
+      </div>
+      <div class="st-step" data-step="2" data-orb="connecting" data-note="Detection and coordination are untouched. This is not a sloppy operator missing an alarm; it is the thinking part of the job that is loaded.">
+        <span class="label">Step 3 &middot; Rules R07 and R08</span>
+        <h3>Those 4 conditions load 3 of the 5 thinking functions</h3>
+        <p>Eight links from the ontology carry them to understanding, decision making and action execution. Detection and coordination are not reached: the cue arrives and the crew can talk. What is loaded is working out what the plant is doing and what to do about it.</p>
+      </div>
+      <div class="st-step" data-step="3" data-orb="solving" data-note="This is the hinge. Unfamiliar work is not dangerous by itself. It becomes dangerous when the training that should support it is also thin.">
+        <span class="label">Step 4 &middot; Rules R10 and R11</span>
+        <h3>Unfamiliar work demanded reasoning from scratch, and training could not support it</h3>
+        <p>With no stored routine for this recovery, the operator has to work it out from a model of the plant: knowledge-based control. Rule R11 records that demand as unsupported, because training is degraded too.</p>
+      </div>
+      <div class="st-step" data-step="4" data-orb="solving" data-note="A good procedure lets a newcomer do unfamiliar work safely. Here it did not exist, and that is a document-control fact, not a personal failing.">
+        <span class="label">Step 5 &middot; Rules R24 and R22</span>
+        <h3>With no approved procedure, there was no rule to fall back on</h3>
+        <p>An adequate procedure can carry unfamiliar work at the rule-based level. Familiarity and procedures are both degraded, so R24 records that the fallback is gone. Procedures and training together open a second route to a rule-based mistake.</p>
+      </div>
+      <div class="st-step" data-step="5" data-orb="solving" data-note="Aggravated means two separate routes are open. It does not mean the risk doubled, and the page says so.">
+        <span class="label">Step 6 &middot; Rules R22 and R23</span>
+        <h3>Time pressure landed on the slowest kind of thinking</h3>
+        <p>Reasoning from first principles is slow and effortful, so a fixed outage window bears on it hardest. Three degraded conditions point at the same knowledge-based mistake, and R23 adds time pressure on top. Two error modes end up aggravated: two routes open, not a doubled risk.</p>
+      </div>
+      <div class="st-step" data-step="6" data-orb="grounded" data-note="Stop-and-review is a screening label, not a probability. The value is that every line above it can be argued with before the job, not after it.">
+        <span class="label">Step 7 &middot; Rules R30 to R35</span>
+        <h3>The job was stop-and-review before the shift began</h3>
+        <p>The band climbs from review to elevated to stop-and-review. R33 fires on a severely degraded condition with an aggravated error mode; R34 on an unsupported demand with no fallback. 89 inferences from 21 rules, all of them readable, none of them about the operator&rsquo;s character. The band thresholds are the author&rsquo;s convention, not a calibrated probability.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="leadbox st-hide-on-present">
+    <div class="leadbox-row">
+      <div><span class="leadbox-k">What it means for a leader</span><p>Every link in the chain above starts at a record your site already keeps. The four conditions were visible before the shift, which makes them the place to act, and the operator the last person to find out.</p></div>
+      <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;For the last job we called human error, which of these four records did we pull before the work started?&rdquo;</p></div>
+    </div>
+    <details class="inc-owners">
+      <summary>Where each condition shows up in the records <span class="mono">(4)</span></summary>
+      <div class="scrollx"><table>
+        <caption class="sr-only">The four degraded conditions and the record that would show each one</caption>
+        <thead><tr><th scope="col">Condition</th><th scope="col">Level</th><th scope="col">In this job</th><th scope="col">Record that would show it</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Scenario familiarity</th><td><span class="lvl lvl-sev">severely degraded</span></td><td>Operator has not run this recovery before</td><td>Work-order type (routine PM against corrective or first-of-a-kind); count of prior executions of the same procedure at the site</td></tr>
+          <tr><th scope="row">Procedures, guidance and instructions</th><td><span class="lvl lvl-deg">degraded</span></td><td>Recovery sequence not covered by an approved procedure</td><td>Document-control system: procedure revision age, overdue periodic review flag, open change requests</td></tr>
+          <tr><th scope="row">Training</th><td><span class="lvl lvl-deg">degraded</span></td><td>Operator qualified three weeks ago</td><td>LMS completion and recency for the qualification the task requires; months in role</td></tr>
+          <tr><th scope="row">Time pressure and stress</th><td><span class="lvl lvl-deg">degraded</span></td><td>Outage window fixed by a downstream commitment</td><td>Scheduled against actual outage duration; work orders flagged as expedited or emergency</td></tr>
+        </tbody>
+      </table></div>
+      <span class="src">Records: the ehs:observableProxy annotation on each factor in ontology/ehs-hfo.ttl. The ontology marks these proxies as proposals, not validated measures.</span>
+    </details>
+  </div>
+</div>
+</div>
+
 <!-- ===================== CHAPTER 1 ===================== -->
-<section class="st-chapter" data-key="20" data-num="01" data-orb="connecting" data-orb-label="Connecting">
+<section class="st-chapter" data-key="20" data-num="02" data-orb="connecting" data-orb-label="Connecting">
   <h2>All 20 risk factors are conditions you can check before the job</h2>
   <p>Each factor sits in one of four context dimensions and carries a level, an observable proxy and a citation, so a claim about it can be evidenced from records a site already keeps.</p>
 </section>
@@ -1535,11 +1731,15 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <div class="leadbox st-hide-on-present"><div class="leadbox-row">
+      <div><span class="leadbox-k">What it means for a leader</span><p>None of the 20 is a trait of a person. Each is a condition the organisation sets or already measures, which makes every one of them a place to act before the job instead of a finding after it.</p></div>
+      <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;For our next non-routine job, which of these 20 conditions could we evidence from a record today, and which would be a guess?&rdquo;</p></div>
+    </div></div>
 </div>
 </div>
 
 <!-- ===================== CHAPTER 2 ===================== -->
-<section class="st-chapter" data-key="31" data-num="02" data-orb="connecting" data-orb-label="Connecting">
+<section class="st-chapter" data-key="31" data-num="03" data-orb="connecting" data-orb-label="Connecting">
   <h2>31 links tie those 20 factors to 5 cognitive functions</h2>
   <p>A degraded condition matters through the work it makes harder, and 11 of the 20 factors bear on more than one function, so a single bad condition rarely stays in one place.</p>
 </section>
@@ -1585,12 +1785,16 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <div class="leadbox st-hide-on-present"><div class="leadbox-row">
+      <div><span class="leadbox-k">What it means for a leader</span><p>A bad condition rarely stays in one place: 11 of the 20 factors bear on more than one function. Fixing the condition protects several kinds of work at once, where coaching one person protects one.</p></div>
+      <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;When a report says someone failed to notice or made the wrong call, which condition was bearing on that function at the time?&rdquo;</p></div>
+    </div></div>
 </div>
 </div>
 
 <!-- ===================== CHAPTER 3 ===================== -->
-<section class="st-chapter" data-key="89" data-num="03" data-orb="solving" data-orb-label="Solving">
-  <h2>One scenario fires 21 rules and 89 inferences to a stop-and-review band</h2>
+<section class="st-chapter" data-key="89" data-num="04" data-orb="solving" data-orb-label="Solving">
+  <h2>The same restart, as the engine records it: 21 rules, 89 inferences, one stop-and-review band</h2>
   <p>Every step names the rule that produced it and the premises it used, so a screening decision can be argued with instead of taken on trust.</p>
 </section>
 
@@ -1634,11 +1838,15 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <div class="leadbox st-hide-on-present"><div class="leadbox-row">
+      <div><span class="leadbox-k">What it means for a leader</span><p>The screening result comes with its whole argument attached. A supervisor can challenge any line of it before the job, which a score from a black box does not allow.</p></div>
+      <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;Can the screening tool we use today show which condition drove its answer?&rdquo;</p></div>
+    </div></div>
 </div>
 </div>
 
 <!-- ===================== CHAPTER 4 ===================== -->
-<section class="st-chapter" data-key="80" data-num="04" data-orb="searching" data-orb-label="Searching">
+<section class="st-chapter" data-key="80" data-num="05" data-orb="searching" data-orb-label="Searching">
   <h2>Only 31 of 80 crosswalk cells are close matches to prior frameworks</h2>
   <p>Twenty-three map to a broader parent term, twenty are partial and six have no counterpart, so an assessment carried between frameworks can change meaning without anyone noticing.</p>
 </section>
@@ -1685,6 +1893,10 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     </div>
   </section>
   <details class="data st-hide-on-present"><summary>All 80 crosswalk cells as a table</summary><div class="scrollx"><table id="tbl-xw"><thead><tr><th>Factor</th><th>Framework</th><th>Strength</th><th>Nearest term</th></tr></thead><tbody></tbody></table></div></details>
+  <div class="leadbox st-hide-on-present"><div class="leadbox-row">
+      <div><span class="leadbox-k">What it means for a leader</span><p>Only 31 of 80 cells are close matches. A finding carried between SPAR-H, CREAM, HFACS and the HSE list can change meaning without anyone noticing, unless the mapping is written down and checked.</p></div>
+      <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;When we move an investigation finding into another framework, which cells are we relying on, and are any of them only partial?&rdquo;</p></div>
+    </div></div>
 </div>
 </div>
 
@@ -1696,7 +1908,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="panel" data-st-reveal data-st-spotlight>
       <h3>Read this before quoting anything above</h3>
       <ul>
-        <li>The worked scenario is an illustrative example written by hand for this repository. It is not a record of a real event at any site and contains no site data.</li>
+        <li>The worked scenario is an illustrative example written by hand for this repository. It is not a record of a real event at any site and contains no site data. Nothing went wrong in it; the &ldquo;operator error&rdquo; write-up in the first scene is a framing this story argues against, not a quotation from a report.</li>
         <li>The screening band is a screening output. It is not a human error probability and it is not calibrated against outcomes.</li>
         <li>The rule set encodes relationships stated in published human reliability work. Encoding them does not validate them. No prospective study has been run against incident data.</li>
         <li>Factor levels are assessed by a person. The graph reasons faithfully from whatever levels it is given, including wrong ones.</li>
@@ -1715,6 +1927,20 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="monday" data-st-reveal data-st-spotlight>
       <h3>Take your last three serious investigations and re-read the conclusions.</h3>
       <p>For each one that ends in a label about a person, name the conditions instead: was the task covered by a procedure, had the operator run it before, was the window fixed by someone downstream. Those three questions are factors in this graph, and each has a record on your site that can be pulled. If two or more come back degraded on the same job, that job was a stop-and-review before anyone touched it.</p>
+    </div>
+    <ol class="actions" aria-label="What to do on Monday">
+      <li><b>Re-read three investigations.</b><span>Wherever the conclusion is a label about a person, rewrite it as conditions. Use the four in the worked restart as the first questions: familiarity, procedure, training, time.</span></li>
+      <li><b>Pull four records before the next non-routine job.</b><span>Work-order type and prior executions, the procedure register, the qualification record, and any expedite flag on the schedule. Each is the observable proxy the ontology proposes for one of the four conditions.</span></li>
+      <li><b>Hold the conversation before the work, not after it.</b><span>If familiarity and procedures both come back degraded on one job, the rules record that there is no rule-based fallback. Decide who reviews that job before it starts. The band thresholds here are the author&rsquo;s convention, so set your own trigger, and write it down.</span></li>
+      <li><b>Ask every screening tool for its trace.</b><span>Any score your team relies on should show which condition drove it. If it cannot, it cannot be argued with, and it will not survive the first serious incident.</span></li>
+    </ol>
+    <div class="asks">
+      <h3>Ask your team this week</h3>
+      <ul>
+        <li>&ldquo;What was the last job we ran with no approved procedure, and who knew before it started?&rdquo;</li>
+        <li>&ldquo;How many times had the person on shift done this task before, and where would we look that up?&rdquo;</li>
+        <li>&ldquo;Which of our deadlines are fixed by someone downstream, and which of those land on unfamiliar work?&rdquo;</li>
+      </ul>
     </div>
     <div class="nextlinks st-hide-on-present">
       <a class="btn" href="index.html">This project page</a>
@@ -5091,17 +5317,215 @@ function xwShow(fw){
    wiring
    ========================================================= */
 var FNLAB={Detection:"factors reach detection",Understanding:"factors reach understanding",Decisionmaking:"factors reach decision making",ActionExecution:"factors reach action execution",InterteamCoordination:"factors reach coordination"};
+/* =========================================================
+   scene 0: the worked incident. A "human error" label fractures
+   into the four degraded conditions, and the causal chain
+   assembles edge by edge. Every node and edge is a fact or a rule
+   firing in docs/walkthrough-data.json for
+   examples/reactor_startup_nonroutine.json.
+   ========================================================= */
+var INC={
+  cond:[
+    {id:"fam",t:"Scenario familiarity",lvl:"severely degraded",sev:1,sub:"never run this recovery"},
+    {id:"proc",t:"Procedures",lvl:"degraded",sub:"no approved procedure"},
+    {id:"train",t:"Training",lvl:"degraded",sub:"qualified 3 weeks ago"},
+    {id:"time",t:"Time pressure",lvl:"degraded",sub:"window fixed downstream"}
+  ],
+  fn:[
+    {id:"det",t:"Detection",p:"Detect",on:0},
+    {id:"und",t:"Understanding",p:"Understand",on:1},
+    {id:"dec",t:"Decision making",p:"Decide",on:1},
+    {id:"act",t:"Action execution",p:"Act",on:1},
+    {id:"coo",t:"Coordination",p:"Coordinate",on:0}
+  ],
+  mech:[
+    {id:"kbd",t:"Must reason it out",r:"R10",s:3},
+    {id:"uns",t:"Demand unsupported",r:"R11",s:3},
+    {id:"nofb",t:"No rule-based fallback",r:"R24",s:4},
+    {id:"rbm",t:"Rule-based mistake: aggravated",p:"Rule-based: aggravated",r:"R22",s:4},
+    {id:"kbm",t:"Knowledge-based mistake: aggravated",p:"Knowledge-based mistake: aggravated",r:"R22 R23",s:5}
+  ],
+  band:[
+    {id:"rev",t:"Review",r:"R30"},
+    {id:"ele",t:"Elevated",r:"R31 R32 R35"},
+    {id:"stop",t:"Stop and review",r:"R33 R34"}
+  ],
+  /* [from, to, step it appears at, rule] */
+  edges:[
+    ["proc","dec",2,"R07"],["proc","act",2,"R07"],["fam","dec",2,"R07"],["fam","und",2,"R07"],
+    ["time","dec",2,"R07"],["time","und",2,"R07"],["train","dec",2,"R07"],["train","und",2,"R07"],
+    ["fam","kbd",3,"R10"],["kbd","uns",3,"R11"],["train","uns",3,"R11"],
+    ["fam","nofb",4,"R24"],["proc","nofb",4,"R24"],["proc","rbm",4,"R22"],["train","rbm",4,"R22"],
+    ["fam","kbm",5,"R22"],["train","kbm",5,"R22"],["time","kbm",5,"R22 R23"],["uns","kbm",5,"R23"],
+    ["kbm","ele",6,"R32"],["rbm","ele",6,"R32"],["kbm","stop",6,"R33"],["uns","stop",6,"R34"],["nofb","stop",6,"R34"]
+  ],
+  nums:[["1","label, and no cause"],["4","of 20 conditions below nominal"],["3","of 5 thinking functions loaded"],
+        ["0","prior runs of this recovery"],["0","approved procedures for the sequence"],["2","error modes aggravated"],
+        ["89","inferences from 21 rules"]]
+};
+var inc={mode:null,step:0,override:null,nodes:{},edges:[],label:null,svg:null};
+function incLayout(ph){
+  var L={};
+  if(!ph){
+    L.vb=[1000,560];
+    INC.cond.forEach(function(c,i){L[c.id]={x:10,y:40+i*122,w:236,h:96};});
+    INC.fn.forEach(function(f,i){L[f.id]={x:318,y:52+i*96,w:176,h:52};});
+    var my=[36,138,240,342,444];
+    INC.mech.forEach(function(m,i){L[m.id]={x:560,y:my[i],w:254,h:74};});
+    L.rev={x:848,y:382,w:148,h:64};L.ele={x:848,y:276,w:148,h:64};L.stop={x:848,y:150,w:148,h:84};
+    L.blame={x:220,y:228,w:560,h:104};
+  }else{
+    L.vb=[360,470];
+    INC.cond.forEach(function(c,i){L[c.id]={x:(i%2)*182+2,y:2+Math.floor(i/2)*70,w:174,h:62};});
+    INC.fn.forEach(function(f,i){L[f.id]={x:2+i*71.4,y:168,w:66,h:34};});
+    L.kbd={x:2,y:238,w:174,h:44};L.uns={x:184,y:238,w:174,h:44};
+    L.nofb={x:2,y:290,w:174,h:44};L.rbm={x:184,y:290,w:174,h:44};
+    L.kbm={x:2,y:342,w:356,h:40};
+    L.rev={x:2,y:414,w:112,h:52};L.ele={x:124,y:414,w:112,h:52};L.stop={x:246,y:414,w:112,h:52};
+    L.blame={x:20,y:150,w:320,h:96};
+  }
+  return L;
+}
+function incPath(a,b,ph){
+  var x1,y1,x2,y2;
+  if(!ph){
+    x1=a.x+a.w;y1=a.y+a.h/2;x2=b.x;y2=b.y+b.h/2;
+    if(b.x<a.x+a.w){x1=a.x+a.w/2;y1=a.y+(b.y>a.y?a.h:0);x2=b.x+b.w/2;y2=b.y+(b.y>a.y?0:b.h);
+      return "M"+x1+","+y1+" C"+x1+","+(y1+y2)/2+" "+x2+","+(y1+y2)/2+" "+x2+","+y2;}
+    var mx=(x1+x2)/2;return "M"+x1+","+y1+" C"+mx+","+y1+" "+mx+","+y2+" "+x2+","+y2;
+  }
+  x1=a.x+a.w/2;y1=a.y+a.h;x2=b.x+b.w/2;y2=b.y;
+  if(y2<y1){y1=a.y+a.h/2;x1=a.x+(b.x>a.x?a.w:0);}
+  var my=(y1+y2)/2;return "M"+x1+","+y1+" C"+x1+","+my+" "+x2+","+my+" "+x2+","+y2;
+}
+function buildInc(){
+  var svg=document.getElementById("fig-inc");if(!svg)return;
+  var keep=[];Array.prototype.forEach.call(svg.childNodes,function(n){if(n.nodeName==="title"||n.nodeName==="desc")keep.push(n);});
+  clear(svg);keep.forEach(function(n){svg.appendChild(n);});
+  var ph=phone(),L=incLayout(ph);
+  inc.mode=ph?"phone":"wide";inc.svg=svg;inc.nodes={};inc.edges=[];inc.L=L;
+  svg.setAttribute("viewBox","0 0 "+L.vb[0]+" "+L.vb[1]);
+  var defs=el("defs",{},svg);
+  var gl=el("radialGradient",{id:"inc-glow"},defs);
+  el("stop",{offset:"0%","stop-color":"var(--accent)","stop-opacity":"0.22"},gl);
+  el("stop",{offset:"100%","stop-color":"var(--accent)","stop-opacity":"0"},gl);
+  var glow=el("ellipse",{"class":"inc-glow",cx:L.stop.x+L.stop.w/2,cy:L.stop.y+L.stop.h/2,rx:ph?120:220,ry:ph?90:200,fill:"url(#inc-glow)"},svg);
+  inc.glow=glow;
+  var eg=el("g",{"class":"inc-edges"},svg),ng=el("g",{"class":"inc-nodes"},svg);
+  /* column captions (wide only) */
+  if(!ph){
+    [["Conditions",10],["Thinking functions",318],["What it does to the work",560],["Screening band",848]].forEach(function(c){
+      var t=txt(ng,c[1],20,c[0].toUpperCase(),"start","inc-col");t.setAttribute("font-size","11");});
+  }
+  INC.edges.forEach(function(e,i){
+    var p=el("path",{d:incPath(L[e[0]],L[e[1]],ph),"class":"inc-edge",pathLength:"1","data-s":e[2]},eg);
+    var ti=el("title",{},p);ti.textContent=e[3];
+    inc.edges.push({p:p,s:e[2],i:i});
+  });
+  function box(id,cls,r){var g=el("g",{"class":"inc-node "+cls,"data-id":id},ng);
+    var R=L[id];g.__L=R;
+    el("rect",{x:0,y:0,width:R.w,height:R.h,rx:ph?6:8,"class":"inc-box"},g);
+    g.setAttribute("transform","translate("+R.x+" "+R.y+")");g.style.transform="translate("+R.x+"px,"+R.y+"px)";
+    inc.nodes[id]=g;return g;}
+  INC.cond.forEach(function(c,i){
+    var g=box(c.id,"inc-cond"+(c.sev?" is-sev":" is-deg")),R=L[c.id];
+    el("rect",{x:0,y:0,width:ph?5:6,height:R.h,"class":"inc-bar"},g);
+    var t=txt(g,ph?12:16,ph?22:30,c.t,"start","inc-t");t.setAttribute("font-size",ph?"12.5":"16");
+    var l=txt(g,ph?12:16,ph?40:54,(c.sev?"↓↓ ":"↓ ")+c.lvl,"start","inc-lvl");l.setAttribute("font-size",ph?"10.5":"12.5");
+    if(!ph){var s=txt(g,16,76,c.sub,"start","inc-sub");s.setAttribute("font-size","12.5");}
+    else{var s2=txt(g,12,55,c.sub,"start","inc-sub");s2.setAttribute("font-size","9.5");}
+    g.__k=i;
+  });
+  INC.fn.forEach(function(f){
+    var g=box(f.id,"inc-fn"+(f.on?" is-on":" is-off")),R=L[f.id];
+    var t=txt(g,R.w/2,R.h/2+(ph?4:5),ph?f.p:f.t,"middle","inc-t");t.setAttribute("font-size",ph?"10":"14");
+    if(!f.on&&!ph){var s=txt(g,R.w/2,R.h-6,"not reached","middle","inc-sub");s.setAttribute("font-size","10");t.setAttribute("y",R.h/2);}
+  });
+  INC.mech.forEach(function(m){
+    var g=box(m.id,"inc-mech"+(m.id==="kbm"?" is-key":"")),R=L[m.id];
+    g.setAttribute("data-s",m.s);
+    var t=txt(g,ph?10:14,ph?19:30,ph&&m.p?m.p:m.t,"start","inc-t");t.setAttribute("font-size",ph?"11":"14.5");
+    if(!ph&&m.t.length>24){ /* wrap long labels on two lines */
+      var k=m.t.indexOf(":");if(k>0){t.textContent=m.t.slice(0,k+1);var t2=txt(g,14,48,m.t.slice(k+2),"start","inc-t");t2.setAttribute("font-size","14.5");}
+    }
+    var r=txt(g,ph?10:14,ph?35:(m.t.length>24?66:54),m.r,"start","inc-rule");r.setAttribute("font-size",ph?"9.5":"11.5");
+  });
+  INC.band.forEach(function(b){
+    var g=box(b.id,"inc-band inc-band-"+b.id),R=L[b.id];
+    var t=txt(g,R.w/2,ph?22:(b.id==="stop"?36:28),b.t,"middle","inc-t");t.setAttribute("font-size",ph?"11":(b.id==="stop"?"15":"14"));
+    var r=txt(g,R.w/2,ph?40:(b.id==="stop"?60:48),b.r,"middle","inc-rule");r.setAttribute("font-size",ph?"9.5":"11");
+  });
+  /* the label the report would write, drawn over the four condition boxes */
+  var lb=el("g",{"class":"inc-label"},ng),B=L.blame;
+  var cap=txt(lb,B.x+B.w/2,B.y-14,"THE WRITE-UP SAYS","middle","inc-cap");cap.setAttribute("font-size",ph?"10":"12");
+  var big=txt(lb,B.x+B.w/2,B.y+B.h/2+(ph?10:16),"OPERATOR ERROR","middle","inc-big");big.setAttribute("font-size",ph?"30":"50");
+  var crack=el("path",{"class":"inc-crack",pathLength:"1",d:(function(){var s="",n=4;for(var k=1;k<n;k++){var x=B.x+B.w*k/n;s+="M"+x+","+B.y+" l"+(ph?4:7)+","+B.h*0.3+" l-"+(ph?7:12)+","+B.h*0.25+" l"+(ph?5:9)+","+B.h*0.45+" ";}return s;})()},lb);
+  inc.label=lb;inc.crack=crack;
+  incApply(true);
+}
+function incBlameTransform(g){
+  var B=inc.L.blame,k=g.__k,R=g.__L,gap=inc.mode==="phone"?3:5,w=(B.w-gap*3)/4;
+  return "translate("+(B.x+k*(w+gap))+"px,"+B.y+"px) scale("+(w/R.w)+","+(B.h/R.h)+")";
+}
+function incApply(instant){
+  var svg=inc.svg;if(!svg)return;
+  var s=inc.override==="blame"?0:(inc.override==="system"&&inc.step===0?6:inc.step),blame=s===0;
+  if(!blame&&svg.classList.contains("is-blame")&&!instant&&!RM&&!inc.cracked){inc.cracked=true;svg.classList.add("is-cracking");
+    setTimeout(function(){svg.classList.remove("is-cracking");incApply(false);inc.cracked=false;},450);return;}
+  svg.classList.toggle("inc-instant",!!instant||RM);
+  svg.setAttribute("data-step",String(s));
+  svg.classList.toggle("is-blame",blame);
+  ["blame","system"].forEach(function(k){var b=document.getElementById("inc-"+k);if(b)b.setAttribute("aria-checked",(k==="blame")===blame?"true":"false");});
+  INC.cond.forEach(function(c){var g=inc.nodes[c.id],R=g.__L;
+    g.style.transform=blame?incBlameTransform(g):"translate("+R.x+"px,"+R.y+"px)";});
+  inc.edges.forEach(function(e){
+    var on=s>=e.s;e.p.classList.toggle("is-drawn",on);e.p.classList.toggle("is-now",on&&s===e.s);
+    e.p.style.transitionDelay=(on&&!instant&&!RM&&s===e.s)?(e.i%8)*70+"ms":"0ms";
+  });
+  Object.keys(inc.nodes).forEach(function(id){var g=inc.nodes[id];
+    var st=+(g.getAttribute("data-s")||0);
+    if(g.classList.contains("inc-fn"))st=2;
+    if(g.classList.contains("inc-band"))st=6;
+    if(g.classList.contains("inc-cond"))st=1;
+    g.classList.toggle("is-shown",s>=st);g.classList.toggle("is-now",s===st);});
+  ["rev","ele","stop"].forEach(function(b,k){var g=inc.nodes[b];if(g){g.classList.toggle("is-lit",s>=6);
+    g.style.transitionDelay=(s>=6&&!instant&&!RM)?(200+k*380)+"ms":"0ms";}});
+  var n=INC.nums[s];incNum(n[0],n[1],instant);
+}
+var incNumT=null;
+function incNum(v,lab,instant){
+  var n=document.getElementById("num-0"),l=document.getElementById("numlab-0");if(!n)return;
+  if(l)l.textContent=lab;
+  var to=+v,from=parseFloat(n.textContent)||0;
+  if(incNumT)cancelAnimationFrame(incNumT);
+  if(instant||RM||from===to||isNaN(to)){n.textContent=v;return;}
+  var t0=performance.now();
+  (function f(now){var k=Math.min(1,(now-t0)/650);k=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    n.textContent=String(Math.round(from+(to-from)*k));if(k<1)incNumT=requestAnimationFrame(f);})(t0);
+}
+function incSetFrame(f){inc.override=f;incApply(false);}
+function incStep(i){inc.step=i;inc.override=null;incApply(false);}
+function incBindFrame(){
+  var btns=[document.getElementById("inc-blame"),document.getElementById("inc-system")];
+  btns.forEach(function(b,k){if(!b)return;
+    b.addEventListener("click",function(){incSetFrame(b.getAttribute("data-frame"));});
+    b.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"||e.key==="ArrowRight"||e.key==="ArrowUp"||e.key==="ArrowDown"){
+      e.preventDefault();e.stopPropagation();var o=btns[1-k];o.focus();incSetFrame(o.getAttribute("data-frame"));}});
+  });
+}
+
 function ready(){
   var heroOrb=null,c=document.getElementById("orb-hero");
   if(c&&window.Story&&Story.orb){try{heroOrb=Story.orb(c,{state:"breathing"});}catch(e){}}
   if(window.Story&&Story.field){var hv=document.getElementById("hero");if(hv)try{Story.field(hv,{density:1.0});}catch(e){}}
-  buildNet(); buildFn(); buildDer(); buildXw();
+  buildInc(); incBindFrame(); buildNet(); buildFn(); buildDer(); buildXw();
 
   var counts={human:0,operational:0,system:0,task:0};
   D.factors.forEach(function(f){counts[DIMK[f.dim]]++;});
   Array.prototype.forEach.call(document.querySelectorAll("[data-n]"),function(e){e.textContent=counts[e.getAttribute("data-n")];});
 
   var handlers={
+    "0":function(i,e){incStep(+e.getAttribute("data-step"));},
     "1":function(i,e){var d=e.getAttribute("data-dim");netHighlight(d);
         if(d==="all")setNum(1,"20","factors in the graph");
         else setNum(1,String(counts[DIMK[d]]),"factors in "+d.replace(" context","").toLowerCase()+" context");},
@@ -5132,6 +5556,7 @@ function ready(){
 
   function relayout(){
     var want=phone()?"phone":"wide";
+    if(inc.mode!==want)buildInc();
     if(net.mode!==want)buildNet();
     if(fn.mode!==want)buildFn();
     if(derEls.mode!==want)buildDer();
