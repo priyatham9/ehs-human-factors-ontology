@@ -171,6 +171,77 @@ table.datatbl{border-collapse:separate;border-spacing:0;width:100%;font-family:v
 .pn .pn-t{font-family:var(--font-mono);font-weight:700;font-size:.95rem}
 .pn-wrap{padding:0 30px 48px}
 @media(max-width:640px){.pn{grid-template-columns:1fr}.pn a+a{border-left:0;border-top:2px solid var(--rule-soft);text-align:left;align-items:flex-start}}
+
+/* ============ reader tools ============ */
+.xw-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:2px solid var(--rule);background:var(--surface);margin-top:26px;max-width:880px}
+.xw-cell{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;font:inherit;color:var(--ink);background:none;border:0;border-left:2px solid var(--rule-soft);padding:14px 16px;cursor:pointer;min-width:0;transition:background .15s}
+.xw-cell:first-child{border-left:0}
+.xw-cell:hover{background:var(--accent-wash)}
+.xw-cell[aria-pressed="true"]{background:var(--accent-wash);box-shadow:inset 0 -4px 0 var(--accent)}
+.xw-k{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.625rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.xw-k .legend-sw{width:14px;height:12px}
+.xw-v{font-family:var(--font-mono);font-size:2rem;font-weight:700;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.xw-d{font-size:.8125rem;color:var(--ink-2);line-height:1.3}
+.xw-strip-cap{margin:8px 0 0;font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:700px){.xw-strip{grid-template-columns:1fr 1fr}.xw-cell:nth-child(3){border-left:0}.xw-cell:nth-child(n+3){border-top:2px solid var(--rule-soft)}}
+.leader{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:0;border:2px solid var(--accent);background:var(--accent-wash);margin-top:22px;max-width:880px}
+.leader>div{padding:16px 20px}
+.leader>div+div{border-left:2px solid var(--accent)}
+.leader-k{display:block;font-family:var(--font-mono);font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.leader p{margin:0;color:var(--ink-2);font-size:.95rem}
+.leader .ask{color:var(--ink);font-style:italic}
+@media(max-width:700px){.leader{grid-template-columns:1fr}.leader>div+div{border-left:0;border-top:2px solid var(--accent)}}
+.fw-bars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:0 0 22px}
+@media(max-width:700px){.fw-bars{grid-template-columns:1fr 1fr}}
+.fw{min-width:0}
+.fw-h{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.6875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.fw-h span:last-child{color:var(--accent)}
+.fw-bar{display:flex;height:14px;border:1px solid var(--rule-soft)}
+.fw-bar i{display:block;height:100%}
+.fw-cap{font-size:.75rem;color:var(--muted);margin-top:5px}
+.xw-tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 18px;align-items:end;margin-bottom:10px}
+.xw-tools-tbl{grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);margin-top:4px}
+@media(max-width:760px){.xw-tools,.xw-tools-tbl{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fld input,.fld select{font:inherit;font-size:.9rem;color:var(--ink);background:var(--surface);border:2px solid var(--rule-soft);padding:8px 10px;min-height:44px;width:100%}
+.fld input:focus,.fld select:focus{border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 .6875rem/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--surface);border:2px solid var(--rule-soft);padding:0 12px;min-height:44px;cursor:pointer}
+.chip .legend-sw{width:14px;height:12px}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-wash);box-shadow:inset 0 -3px 0 var(--accent)}
+.xw-count{font-size:.6875rem;letter-spacing:.06em;color:var(--muted);margin:4px 0 12px}
+.heatgrid.is-filtering .cell-td.dim .cell{opacity:.18}
+.heatgrid .cell-td.is-picked .cell{box-shadow:inset 0 0 0 3px var(--ink)}
+.heatgrid tr.is-hidden{display:none}
+.cell-detail{margin-top:16px;border:2px solid var(--rule);background:var(--surface);padding:16px 18px;max-width:880px}
+.cell-detail:focus{outline:none}
+.cd-empty{margin:0;color:var(--muted);font-size:.9rem}
+.cd-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px}
+.cd-head h3{font-size:1.05rem}
+.cd-tag{font-family:var(--font-mono);font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule-soft)}
+.cd-row{border-top:1px solid var(--rule-soft);padding:8px 0}
+.cd-ext{font-weight:700}
+.cd-ref{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);margin-left:8px}
+.cd-note{color:var(--ink-2);font-size:.9rem;margin:4px 0 0}
+.cd-mean{margin:10px 0 0;font-size:.875rem;color:var(--ink-2);border-left:2px solid var(--accent);padding-left:10px}
+/* the inline detail row replaces the hover tooltip, which the scroll container clipped */
+.cell:hover+.pop,.cell:focus-visible+.pop,.cell:focus+.pop{display:none}
+.heatgrid .cell{transition:opacity .45s ease-in-out,transform .45s ease-in-out,box-shadow .2s}
+.heatgrid tr.detail-row td{padding:0;box-shadow:inset 0 -1px 0 var(--rule-soft)}
+.detail-row .cell-detail{position:sticky;left:0;margin:6px 0 10px;width:min(880px,calc(100vw - 44px));animation:cdIn .45s ease-in-out}
+@keyframes cdIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.cd-close{margin-left:auto;font:600 .6875rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:none;border:2px solid var(--rule-soft);padding:0 12px;min-height:36px;cursor:pointer}
+.fw-bar i{transform-origin:left center;transition:transform .8s cubic-bezier(.65,0,.35,1)}
+.js-motion .fw-bars:not(.in) .fw-bar i{transform:scaleX(0)}
+.js-motion .heatgrid:not(.in) .cell{opacity:0;transform:scale(.86)}
+.js-motion .xw-strip:not(.in) .xw-v{opacity:0}
+.xw-v{transition:opacity .4s}
+.pagehead{position:relative;overflow:hidden}
+.pagehead::after{content:"";position:absolute;right:-12%;top:-40%;width:60%;height:180%;background:radial-gradient(closest-side,color-mix(in oklab,var(--accent) 16%,transparent),transparent);pointer-events:none}
+.pagehead .wrap{position:relative;z-index:1}
+@media (prefers-reduced-motion: reduce){.js-motion .fw-bars:not(.in) .fw-bar i,.js-motion .heatgrid:not(.in) .cell,.js-motion .xw-strip:not(.in) .xw-v{opacity:1;transform:none}}
+@media(max-width:760px){.grid-factor{white-space:normal;min-width:130px;max-width:150px;font-size:.78rem}table.heatgrid{min-width:520px}.cell-td{min-width:88px}.wrap{padding:0 18px}}
+.datatbl tr.is-hidden{display:none}
 </style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
@@ -282,6 +353,17 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <span class="label">Crosswalk &middot; heat grid</span>
     <h1 class="display">Match strength, factor by framework</h1>
     <p class="lede">Every one of the 20 adopted context factors against SPAR-H, CREAM, HFACS and the HSE performance-influencing-factor list &mdash; 80 factor&times;framework cells, 96 cited correspondences. Read <a href="index.html#crosswalk">the full crosswalk narrative</a> or the underlying <a href="https://github.com/priyatham9/ehs-human-factors-ontology/blob/main/crosswalk/crosswalk.csv">crosswalk.csv</a>.</p>
+    <div class="xw-strip" role="group" aria-label="The 80 cells by match strength. Select one to highlight those cells in the grid.">
+      <button type="button" class="xw-cell" data-s="close" aria-pressed="false"><span class="xw-k"><span class="legend-sw cell-r3" aria-hidden="true"></span>Close</span><span class="xw-v" data-n="close">31</span><span class="xw-d">carry an assessment across</span></button>
+      <button type="button" class="xw-cell" data-s="broader" aria-pressed="false"><span class="xw-k"><span class="legend-sw cell-r2" aria-hidden="true"></span>Broader</span><span class="xw-v" data-n="broader">23</span><span class="xw-d">lands in a wider box</span></button>
+      <button type="button" class="xw-cell" data-s="partial" aria-pressed="false"><span class="xw-k"><span class="legend-sw cell-r1" aria-hidden="true"></span>Partial</span><span class="xw-v" data-n="partial">20</span><span class="xw-d">overlaps, not the same</span></button>
+      <button type="button" class="xw-cell" data-s="none" aria-pressed="false"><span class="xw-k"><span class="legend-sw cell-r0" aria-hidden="true"></span>None</span><span class="xw-v" data-n="none">6</span><span class="xw-d">no counterpart at all</span></button>
+    </div>
+    <p class="xw-strip-cap mono">of <span data-n="all">80</span> factor &times; framework cells</p>
+    <div class="leader">
+      <div><span class="leader-k">What it means for a leader</span><p>Only <b data-n="close">31</b> of <b data-n="all">80</b> cells are close matches. A finding written in SPAR-H, CREAM, HFACS or the HSE list can change meaning when it is carried into another framework, and nobody notices unless the mapping is written down, as it is here.</p></div>
+      <div><span class="leader-k">Ask your team</span><p class="ask">&ldquo;When we move an investigation finding from one framework to another, which cells are we relying on, and are any of them only partial?&rdquo;</p></div>
+    </div>
   </div>
 </section>
 <main id="main">
@@ -291,6 +373,20 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       <p><strong>What a crosswalk match does and does not mean.</strong> A match strength here is <q>one person's judgement, no second coder, no inter-rater reliability, no adjudication</q>, recorded so a reader can check and argue with it rather than trust it silently. The strength <code>exact</code> is declared in the ontology and deliberately never used, because <q>asserting exact identity between factors written decades apart for different industries would claim more than the sources support</q>. A cell marked none is not a blank: it is <q>an assertion that a framework has no counterpart at all, which is a claim someone can argue with rather than a silence</q>.</p>
     </div>
     <div class="rail-head"><span class="rail-num">Grid</span><h2 class="display">20 factors &times; 4 frameworks</h2></div>
+    <div class="fw-bars" id="fwBars" aria-label="Match strength by framework"></div>
+    <div class="xw-tools" role="search">
+      <label class="fld"><span class="label">Find a factor</span><input type="search" id="xwQ" placeholder="e.g. fatigue, procedures, noise" autocomplete="off" /></label>
+      <div class="fld"><span class="label" id="xwShowLab">Highlight</span>
+        <div class="chips" role="group" aria-labelledby="xwShowLab">
+          <button type="button" class="chip" data-s="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-s="close" aria-pressed="false"><span class="legend-sw cell-r3" aria-hidden="true"></span>Close</button>
+          <button type="button" class="chip" data-s="broader" aria-pressed="false"><span class="legend-sw cell-r2" aria-hidden="true"></span>Broader</button>
+          <button type="button" class="chip" data-s="partial" aria-pressed="false"><span class="legend-sw cell-r1" aria-hidden="true"></span>Partial</button>
+          <button type="button" class="chip" data-s="none" aria-pressed="false"><span class="legend-sw cell-r0" aria-hidden="true"></span>None</button>
+        </div>
+      </div>
+    </div>
+    <p class="xw-count mono" id="xwCount" aria-live="polite"></p>
     <div class="grid-frame">
       <div class="grid-scroll">
         <table class="heatgrid">
@@ -307,7 +403,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       <span class="legend-item"><span class="legend-sw cell-r1"></span>Partial</span>
       <span class="legend-item"><span class="legend-sw cell-r0"></span>None (no counterpart)</span>
     </div>
-    <p class="tbl-cap" style="margin-top:16px">Hover or tab to a cell for the external factor's exact wording, the citation and, where the correspondence is imperfect, the note explaining why. <span class="src">Source artifact: crosswalk/crosswalk.csv</span></p>
+    <div class="cell-detail" id="cellDetail" aria-live="polite" tabindex="-1" hidden></div>
+    <p class="tbl-cap" style="margin-top:16px">Select a cell (click, tap, or Tab then Enter) for the external factor's exact wording, the citation and, where the correspondence is imperfect, the note explaining why. <span class="src">Source artifact: crosswalk/crosswalk.csv</span></p>
   </div>
 </section>
 <section class="section" id="data">
@@ -315,6 +412,12 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="rail-head"><span class="rail-num">Data</span><h2 class="display">All 96 correspondences</h2></div>
     <details class="datatable">
       <summary>Open the full data table</summary>
+      <div class="xw-tools xw-tools-tbl">
+        <label class="fld"><span class="label">Search the rows</span><input type="search" id="tblQ" placeholder="factor, external term, citation or note" autocomplete="off" /></label>
+        <label class="fld"><span class="label">Framework</span><select id="tblFw"><option value="">All frameworks</option><option>SPAR-H</option><option>CREAM</option><option>HFACS</option><option>HSE PIF</option></select></label>
+        <label class="fld"><span class="label">Strength</span><select id="tblS"><option value="">Any strength</option><option>Close</option><option>Broader</option><option>Partial</option><option>None</option></select></label>
+      </div>
+      <p class="xw-count mono" id="tblCount" aria-live="polite"></p>
       <div class="tbl-wrap">
         <table class="datatbl">
           <thead><tr><th>Dimension</th><th>Local factor</th><th>Framework</th><th>External counterpart</th><th>Strength</th><th>Citation</th><th>Note</th></tr></thead>
@@ -344,6 +447,112 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   </div>
 </footer>
 
+<script>
+(function(){
+ 'use strict';
+ var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var grid=document.querySelector('table.heatgrid');if(!grid)return;
+ var FW=[].slice.call(grid.querySelectorAll('thead th')).slice(1).map(function(th){return th.textContent.trim();});
+ var MEAN={close:'Close: an assessment made in one framework can be carried to the other with little change in meaning.',
+  broader:'Broader: the nearest external term is a wider category, so carrying a finding across loses detail.',
+  partial:'Partial: the terms overlap but are not interchangeable. Read the note before carrying a finding across.',
+  none:'None: an asserted absence. The framework has no counterpart, so a finding here has nowhere to go.'};
+ var LAB={close:'Close',broader:'Broader',partial:'Partial',none:'None'};
+ var CV={close:'cell-r3',broader:'cell-r2',partial:'cell-r1',none:'cell-r0'};
+ var cells=[],rows=[],counts={close:0,broader:0,partial:0,none:0};
+ var byFw=FW.map(function(){return {close:0,broader:0,partial:0,none:0,n:0};});
+ [].slice.call(grid.tBodies[0].rows).forEach(function(tr){
+  var th=tr.querySelector('th.grid-factor');if(!th)return;
+  var dimRow=tr.previousElementSibling;
+  while(dimRow&&!dimRow.classList.contains('grid-dim-row'))dimRow=dimRow.previousElementSibling;
+  var r={tr:tr,name:th.textContent.trim(),dim:dimRow?dimRow.textContent.trim():'',dimRow:dimRow,ok:true};rows.push(r);
+  [].slice.call(tr.querySelectorAll('td.cell-td')).forEach(function(td,k){
+   var b=td.querySelector('.cell');if(!b)return;var s=b.getAttribute('data-strength');
+   if(!(s in counts))return;
+   counts[s]++;byFw[k][s]++;byFw[k].n++;
+   b.setAttribute('aria-label',r.name+' against '+FW[k]+': '+LAB[s]+'. Select for details.');
+   cells.push({td:td,b:b,s:s,fw:FW[k],row:r,pop:td.querySelector('.pop')});
+  });
+ });
+ var all=cells.length;
+ [].forEach.call(document.querySelectorAll('[data-n]'),function(n){var k=n.getAttribute('data-n');n.textContent=k==='all'?all:counts[k];});
+
+ /* entrance motion: numbers roll up, bars grow, the grid settles in. Final state is the static HTML. */
+ var root=document.documentElement;
+ if(!RM&&'IntersectionObserver' in window){
+  root.classList.add('js-motion');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target;
+   if(el.classList.contains('heatgrid')){[].forEach.call(el.querySelectorAll('.cell'),function(b,i){var r=Math.floor(i/4),c=i%4;b.style.transitionDelay=Math.min(900,(r*28+c*40))+'ms';});
+    requestAnimationFrame(function(){el.classList.add('in');setTimeout(function(){[].forEach.call(el.querySelectorAll('.cell'),function(b){b.style.transitionDelay='';});},1800);});}
+   else{el.classList.add('in');}
+   if(el.classList.contains('xw-strip'))[].forEach.call(el.querySelectorAll('.xw-v'),function(v){roll(v,+v.textContent);});});},{threshold:.15});
+  setTimeout(function(){[document.querySelector('.xw-strip'),document.getElementById('fwBars'),grid].forEach(function(n){if(n)io.observe(n);});},0);
+ }
+ function roll(el,to){var t0=performance.now(),d=900;function f(now){var k=Math.min(1,(now-t0)/d);k=1-Math.pow(1-k,3);el.textContent=Math.round(to*k);if(k<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
+
+ /* framework bars, computed from the grid itself */
+ var bars=document.getElementById('fwBars');
+ bars.innerHTML=FW.map(function(f,k){var c=byFw[k];
+  return '<div class="fw"><div class="fw-h"><span>'+f+'</span><span>'+c.close+' of '+c.n+' close</span></div>'+
+   '<div class="fw-bar" role="img" aria-label="'+f+': '+c.close+' close, '+c.broader+' broader, '+c.partial+' partial, '+c.none+' none">'+
+   ['close','broader','partial','none'].map(function(s){return c[s]?'<i class="'+CV[s]+'" style="width:'+(c[s]/c.n*100)+'%"></i>':'';}).join('')+'</div>'+
+   '<p class="fw-cap">'+c.broader+' broader &middot; '+c.partial+' partial &middot; '+c.none+' none</p></div>';}).join('');
+
+ /* grid filters */
+ var q=document.getElementById('xwQ'),countEl=document.getElementById('xwCount'),strength='all';
+ var chips=[].slice.call(document.querySelectorAll('.chip[data-s]')),tiles=[].slice.call(document.querySelectorAll('.xw-cell[data-s]'));
+ function apply(){
+  var dr=grid.querySelector('tr.detail-row');if(dr)dr.hidden=true;[].forEach.call(grid.querySelectorAll('.is-picked'),function(x){x.classList.remove('is-picked');});
+  var terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),shownRows=0,lit=0,dims={};
+  rows.forEach(function(r){var hay=(r.name+' '+r.dim).toLowerCase();
+   r.ok=terms.every(function(t){return hay.indexOf(t)>=0;});r.tr.classList.toggle('is-hidden',!r.ok);if(r.ok)shownRows++;
+   if(r.dimRow){dims[r.dim]=dims[r.dim]||{row:r.dimRow,any:false};if(r.ok)dims[r.dim].any=true;}});
+  Object.keys(dims).forEach(function(d){dims[d].row.classList.toggle('is-hidden',!dims[d].any);});
+  grid.classList.toggle('is-filtering',strength!=='all');
+  cells.forEach(function(c){var on=strength==='all'||c.s===strength;c.td.classList.toggle('dim',!on);if(on&&c.row.ok)lit++;});
+  chips.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===strength?'true':'false');});
+  tiles.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===strength?'true':'false');});
+  countEl.textContent=shownRows+' of '+rows.length+' factors shown'+(strength==='all'?'':' · '+lit+' '+LAB[strength].toLowerCase()+' cells highlighted');
+ }
+ q.addEventListener('input',apply);
+ chips.forEach(function(b){b.addEventListener('click',function(){strength=b.getAttribute('data-s');apply();});});
+ tiles.forEach(function(b){b.addEventListener('click',function(){var s=b.getAttribute('data-s');strength=strength===s?'all':s;apply();
+  if(strength!=='all')document.getElementById('grid').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});});});
+ apply();
+
+ /* select a cell for its detail */
+ var det=document.getElementById('cellDetail'),picked=null,dRow=null;
+ function detRow(){if(!dRow){dRow=document.createElement('tr');dRow.className='detail-row';var td=document.createElement('td');td.colSpan=FW.length+1;dRow.appendChild(td);td.appendChild(det);}return dRow;}
+ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+ cells.forEach(function(c){c.b.addEventListener('click',function(){
+  if(picked)picked.td.classList.remove('is-picked');picked=c;c.td.classList.add('is-picked');
+  var rowsH='';
+  if(c.pop){
+   [].forEach.call(c.pop.querySelectorAll('.pop-row'),function(pr){
+    var ext=pr.querySelector('.pop-ext'),ref=pr.querySelector('.pop-ref');
+    var nt=pr.nextElementSibling&&pr.nextElementSibling.classList.contains('pop-note')?pr.nextElementSibling:null;
+    rowsH+='<div class="cd-row"><span class="cd-ext">'+esc(ext?ext.textContent:'')+'</span>'+(ref&&ref.textContent?'<span class="cd-ref">'+esc(ref.textContent)+'</span>':'')+(nt?'<p class="cd-note">'+esc(nt.textContent)+'</p>':'')+'</div>';});
+   if(!rowsH)rowsH='<div class="cd-row"><p class="cd-note">'+esc(c.pop.textContent.trim())+'</p></div>';
+  }
+  det.hidden=false;det.innerHTML='<div class="cd-head"><span class="cd-tag '+CV[c.s]+'">'+LAB[c.s]+'</span><h3>'+esc(c.row.name)+' &rarr; '+esc(c.fw)+'</h3><button type="button" class="cd-close">Close</button></div>'+rowsH+'<p class="cd-mean">'+MEAN[c.s]+'</p>';
+  var tr=detRow();c.row.tr.parentNode.insertBefore(tr,c.row.tr.nextSibling);tr.hidden=false;
+  det.style.animation='none';void det.offsetWidth;det.style.animation='';
+  det.querySelector('.cd-close').addEventListener('click',function(){tr.hidden=true;c.td.classList.remove('is-picked');picked=null;c.b.focus();});
+  det.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'});
+ });});
+
+ /* data table filters */
+ var tq=document.getElementById('tblQ'),tf=document.getElementById('tblFw'),ts=document.getElementById('tblS'),tc=document.getElementById('tblCount');
+ var trs=[].slice.call(document.querySelectorAll('table.datatbl tbody tr'));
+ trs.forEach(function(tr){tr._c=[].map.call(tr.cells,function(td){return td.textContent.trim();});tr._h=tr._c.join(' ').toLowerCase();});
+ function tbl(){var terms=tq.value.trim().toLowerCase().split(/\s+/).filter(Boolean),n=0;
+  trs.forEach(function(tr){var ok=(!tf.value||tr._c[2]===tf.value)&&(!ts.value||tr._c[4]===ts.value)&&terms.every(function(t){return tr._h.indexOf(t)>=0;});
+   tr.classList.toggle('is-hidden',!ok);if(ok)n++;});
+  tc.textContent=n+' of '+trs.length+' correspondences shown';}
+ [tq,tf,ts].forEach(function(e){e.addEventListener(e.tagName==='INPUT'?'input':'change',tbl);});
+ tbl();
+})();
+</script>
 <script id="rs-header-js">
 (function(){
  var h=document.getElementById('rs-header');if(!h)return;
