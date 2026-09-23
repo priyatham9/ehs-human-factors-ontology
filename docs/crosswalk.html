@@ -691,7 +691,6 @@ var TM = (function () {
       var at = i * 0.7;
       tl.fromTo(c, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power3.out' }, at);
       tl.fromTo(c.querySelectorAll('.fw-bar i'), { scaleX: 0 }, { scaleX: 1, transformOrigin: '0 50%', duration: 0.5, stagger: 0.12, ease: 'power2.out' }, at + 0.2);
-      if (i) tl.to(cols[i - 1], { opacity: 0.55, duration: 0.3 }, at);
     });
     tl.to(cols, { opacity: 1, duration: 0.3 }, cols.length * 0.7);
     tl.fromTo(take, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, cols.length * 0.7 + 0.1);
