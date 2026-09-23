@@ -3,6 +3,17 @@
 All notable changes to this project are documented here. The format follows
 Keep a Changelog and this project uses semantic versioning.
 
+## [Unreleased]
+
+### Added
+- `docs/crosswalk.html`: legend doubles as a strength filter, a coverage-by-framework bar chart counted from the grid, and a floating detail tip that is not clipped by the scrolling grid and closes on Escape
+- `docs/walkthrough.html`: factor tiles jump to the first rule firing that uses them and show how many firings consume them, a step scrubber, and `#step=N` deep links
+- `docs/story.html`: derivation edges draw from premise to conclusion as each stratum lights up
+
+### Fixed
+- `docs/walkthrough.html`: the site header sat before `<!doctype html>` (quirks mode) and the page had no `<body>`; arrow keys fired inside the site menu and with modifier keys; the "latest fact" highlight marked the newest list item even when the step re-derived an older fact; Play at the last step did nothing
+- `docs/walkthrough.html`: title now names the repository
+
 ## [0.1.0] - 2026-09-09
 
 ### Added
