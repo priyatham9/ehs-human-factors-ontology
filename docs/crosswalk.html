@@ -242,6 +242,20 @@ table.datatbl{border-collapse:separate;border-spacing:0;width:100%;font-family:v
 @media (prefers-reduced-motion: reduce){.js-motion .fw-bars:not(.in) .fw-bar i,.js-motion .heatgrid:not(.in) .cell,.js-motion .xw-strip:not(.in) .xw-v{opacity:1;transform:none}}
 @media(max-width:760px){.grid-factor{white-space:normal;min-width:130px;max-width:150px;font-size:.78rem}table.heatgrid{min-width:520px}.cell-td{min-width:88px}.wrap{padding:0 18px}}
 .datatbl tr.is-hidden{display:none}
+
+/* round 7B: pinned framework-fit chapter + GSAP motion layer */
+.fit-lede{max-width:64ch;color:var(--ink-2);margin:0 0 22px}
+.fit .fw-bars{gap:20px;margin-bottom:26px}
+.fit .fw-bar{height:30px}
+.fit .fw-h{font-size:.9rem}
+.fit-take{border-left:4px solid var(--accent);background:var(--accent-wash);padding:14px 18px;max-width:72ch;margin:0;color:var(--ink-2)}
+.fit-take b{color:var(--ink)}
+.tm-on .fit.is-pinned{min-height:100vh;display:flex;flex-direction:column;justify-content:center;border-bottom:0}
+.tm-on .fit.is-pinned>.wrap{width:100%}
+.tm-on .heatgrid .cell{transition:opacity .45s ease-in-out,box-shadow .2s}
+.tm-enter .cell{transition:none!important}
+.tm-on .chip,.tm-on .xw-cell,.tm-on .btn{transition-property:border-color,color,background,box-shadow}
+@media print{.fit .fw,.fit-take,.fw-bar i,.heatgrid .cell{opacity:1!important;transform:none!important}}
 </style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
@@ -352,7 +366,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   <div class="wrap">
     <span class="label">Crosswalk &middot; heat grid</span>
     <h1 class="display">Match strength, factor by framework</h1>
-    <p class="lede">Every one of the 20 adopted context factors against SPAR-H, CREAM, HFACS and the HSE performance-influencing-factor list &mdash; 80 factor&times;framework cells, 96 cited correspondences. Read <a href="index.html#crosswalk">the full crosswalk narrative</a> or the underlying <a href="https://github.com/priyatham9/ehs-human-factors-ontology/blob/main/crosswalk/crosswalk.csv">crosswalk.csv</a>.</p>
+    <p class="lede">Every one of the 20 adopted context factors against SPAR-H, CREAM, HFACS and the HSE performance-influencing-factor list: 80 factor&times;framework cells, 96 cited correspondences. Read <a href="index.html#crosswalk">the full crosswalk narrative</a> or the underlying <a href="https://github.com/priyatham9/ehs-human-factors-ontology/blob/main/crosswalk/crosswalk.csv">crosswalk.csv</a>.</p>
     <div class="xw-strip" role="group" aria-label="The 80 cells by match strength. Select one to highlight those cells in the grid.">
       <button type="button" class="xw-cell" data-s="close" aria-pressed="false"><span class="xw-k"><span class="legend-sw cell-r3" aria-hidden="true"></span>Close</span><span class="xw-v" data-n="close">31</span><span class="xw-d">carry an assessment across</span></button>
       <button type="button" class="xw-cell" data-s="broader" aria-pressed="false"><span class="xw-k"><span class="legend-sw cell-r2" aria-hidden="true"></span>Broader</span><span class="xw-v" data-n="broader">23</span><span class="xw-d">lands in a wider box</span></button>
@@ -367,13 +381,20 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   </div>
 </section>
 <main id="main">
+<section class="section fit" id="fit" aria-labelledby="fit-h">
+  <div class="wrap">
+    <div class="rail-head"><span class="rail-num">Fit</span><h2 class="display" id="fit-h">Four frameworks, four different fits</h2></div>
+    <p class="fit-lede">Each bar is one framework's 20 cells, coloured by how closely its nearest term matches ours. Close is the only colour you can carry across unchanged.</p>
+    <div class="fw-bars" id="fwBars" aria-label="Match strength by framework"></div>
+    <p class="fit-take"><b>None of the four is a drop-in replacement.</b> Before a finding moves between frameworks, read the broader and partial cells it relies on.</p>
+  </div>
+</section>
 <section class="section" id="grid">
   <div class="wrap">
     <div class="explainer">
       <p><strong>What a crosswalk match does and does not mean.</strong> A match strength here is <q>one person's judgement, no second coder, no inter-rater reliability, no adjudication</q>, recorded so a reader can check and argue with it rather than trust it silently. The strength <code>exact</code> is declared in the ontology and deliberately never used, because <q>asserting exact identity between factors written decades apart for different industries would claim more than the sources support</q>. A cell marked none is not a blank: it is <q>an assertion that a framework has no counterpart at all, which is a claim someone can argue with rather than a silence</q>.</p>
     </div>
     <div class="rail-head"><span class="rail-num">Grid</span><h2 class="display">20 factors &times; 4 frameworks</h2></div>
-    <div class="fw-bars" id="fwBars" aria-label="Match strength by framework"></div>
     <div class="xw-tools" role="search">
       <label class="fld"><span class="label">Find a factor</span><input type="search" id="xwQ" placeholder="e.g. fatigue, procedures, noise" autocomplete="off" /></label>
       <div class="fld"><span class="label" id="xwShowLab">Highlight</span>
@@ -447,6 +468,10 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/SplitText.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/Flip.min.js"></script>
 <script>
 (function(){
  'use strict';
@@ -479,7 +504,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
  /* entrance motion: numbers roll up, bars grow, the grid settles in. Final state is the static HTML. */
  var root=document.documentElement;
- if(!RM&&'IntersectionObserver' in window){
+ if(!RM&&'IntersectionObserver' in window&&!(window.gsap&&window.ScrollTrigger)){
   root.classList.add('js-motion');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target;
    if(el.classList.contains('heatgrid')){[].forEach.call(el.querySelectorAll('.cell'),function(b,i){var r=Math.floor(i/4),c=i%4;b.style.transitionDelay=Math.min(900,(r*28+c*40))+'ms';});
@@ -551,6 +576,152 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   tc.textContent=n+' of '+trs.length+' correspondences shown';}
  [tq,tf,ts].forEach(function(e){e.addEventListener(e.tagName==='INPUT'?'input':'change',tbl);});
  tbl();
+})();
+</script>
+<script id="tm-motion-js">
+/* Page motion layer (round 7B). GSAP 3.15 core + ScrollTrigger + SplitText + Flip from cdnjs.
+   Without GSAP, under reduced motion (OS or ?reduced=1) or in print, nothing here runs and
+   the page shows its final static state. Desktop (>= 900px) gets pins and scrub; phones get
+   one-shot reveals. Only transform, opacity and clip-path are animated. */
+var TM = (function () {
+  'use strict';
+  var g = window.gsap, ST = window.ScrollTrigger;
+  var RM = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || /[?&]reduced=1/.test(location.search);
+  var ok = !!(g && ST) && !RM && !/[?&]print=1/.test(location.search);
+  var api = { ok: ok, desk: false };
+  if (!ok) return api;
+  var plugins = [ST]; if (window.SplitText) plugins.push(window.SplitText); if (window.Flip) plugins.push(window.Flip);
+  g.registerPlugin.apply(g, plugins);
+  document.documentElement.classList.add('tm-on');
+  api.desk = matchMedia('(min-width: 900px)').matches;
+  var EASE = 'expo.out';
+
+  // masked word reveal; keeps the heading's text readable to assistive tech (SplitText sets aria)
+  api.split = function (el, delay, trigger) {
+    if (!el || !window.SplitText) return null;
+    var st = window.SplitText.create(el, { type: 'words', mask: 'words' });
+    g.from(st.words, { yPercent: 115, duration: 0.95, ease: EASE, stagger: 0.055, delay: delay || 0,
+      scrollTrigger: trigger ? { trigger: el, start: 'top 88%', once: true } : null });
+    return st;
+  };
+  // one-shot fade-up of a list of nodes when the first enters
+  api.reveal = function (nodes, opts) {
+    nodes = Array.prototype.slice.call(nodes || []).filter(Boolean);
+    if (!nodes.length) return;
+    opts = opts || {};
+    g.from(nodes, { autoAlpha: 0, y: opts.y == null ? 32 : opts.y, x: opts.x || 0, duration: 0.8, ease: EASE, stagger: opts.stagger || 0.08, delay: opts.delay || 0,
+      scrollTrigger: opts.now ? null : { trigger: nodes[0], start: opts.start || 'top 88%', once: true } });
+  };
+  // spring hover lift and press squash, delegated so rebuilt nodes keep it
+  api.spring = function (sel) {
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.addEventListener('pointerdown', function (e) { var t = e.target.closest(sel); if (t) g.fromTo(t, { scale: 0.95 }, { scale: 1, duration: 0.6, ease: 'elastic.out(1.1,0.45)', overwrite: 'auto' }); }, { passive: true });
+      return;
+    }
+    var last = null;
+    document.addEventListener('pointerover', function (e) {
+      var t = e.target.closest(sel); if (t === last) return;
+      if (last) g.to(last, { y: 0, scale: 1, duration: 0.7, ease: 'elastic.out(1,0.45)', overwrite: 'auto' });
+      last = t; if (t && !t.disabled) g.to(t, { y: -2, duration: 0.3, ease: 'power3.out', overwrite: 'auto' });
+    }, { passive: true });
+    document.addEventListener('pointerdown', function (e) { var t = e.target.closest(sel); if (t && !t.disabled) g.to(t, { scale: 0.95, duration: 0.12, ease: 'power2.out', overwrite: 'auto' }); }, { passive: true });
+    document.addEventListener('pointerup', function (e) { var t = e.target.closest(sel); if (t) g.to(t, { scale: 1, duration: 0.65, ease: 'elastic.out(1.1,0.4)', overwrite: 'auto' }); }, { passive: true });
+  };
+  // Flip layout transition around a DOM change
+  api.flip = function (targets, mutate, opts) {
+    if (!window.Flip) { mutate(); return; }
+    var state = window.Flip.getState(targets);
+    mutate();
+    window.Flip.from(state, Object.assign({ duration: 0.6, ease: EASE, nested: true, prune: true,
+      onEnter: function (els) { return g.fromTo(els, { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: EASE }); },
+      onLeave: function (els) { return g.to(els, { autoAlpha: 0, scale: 0.9, duration: 0.25 }); } }, opts || {}));
+  };
+  // pinned, scrubbed chapter on desktop when it fits the screen; phones and tall chapters get build(null)
+  api.pin = function (sec, len, build) {
+    if (!sec) return null;
+    if (!api.desk) { build(null); return null; }
+    sec.classList.add('is-pinned');
+    if (sec.getBoundingClientRect().height > innerHeight * 1.02) { sec.classList.remove('is-pinned'); build(null); return null; }
+    var tl = g.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: sec, start: 'top top', end: '+=' + len, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+    build(tl);
+    return tl;
+  };
+  // number roll from 0 to the node's own text (keeps prefix/suffix and decimals)
+  api.count = function (n, tl, at) {
+    var m = /(-?[\d,]*\.?\d+)/.exec(n.textContent); if (!m) return;
+    var raw = m[1], to = parseFloat(raw.replace(/,/g, '')), dec = (raw.split('.')[1] || '').length, pre = n.textContent.slice(0, m.index), post = n.textContent.slice(m.index + raw.length);
+    var o = { v: 0 }, fmt = function () { n.textContent = pre + o.v.toFixed(dec) + post; };
+    var vars = { v: to, duration: tl ? 0.8 : 1.4, ease: tl ? 'none' : 'power3.out', onUpdate: fmt, onComplete: fmt };
+    if (tl) tl.fromTo(o, { v: 0 }, vars, at || 0);
+    else { vars.scrollTrigger = { trigger: n, start: 'top 90%', once: true }; g.fromTo(o, { v: 0 }, vars); }
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
+  addEventListener('load', function () { ST.refresh(); });
+  return api;
+})();
+(function () {
+  'use strict';
+  if (!TM.ok) return;
+  var g = window.gsap, root = document.documentElement;
+  // GSAP takes over the page's own IntersectionObserver entrance
+  root.classList.remove('js-motion');
+  var head = document.getElementById('top');
+  if (head) {
+    TM.split(head.querySelector('h1'), 0.1);
+    TM.reveal([head.querySelector('.label'), head.querySelector('.lede')], { now: true, delay: 0.2, stagger: 0.1, y: 22 });
+    var tiles = head.querySelectorAll('.xw-cell');
+    g.from(tiles, { autoAlpha: 0, y: 46, rotateX: -35, transformPerspective: 700, transformOrigin: '50% 0%', duration: 1, ease: 'expo.out', stagger: 0.09, delay: 0.45, clearProps: 'transform' });
+    head.querySelectorAll('.xw-v').forEach(function (v) { var o = { v: 0 }, to = +v.textContent; g.to(o, { v: to, duration: 1.3, ease: 'power3.out', delay: 0.5, onUpdate: function () { v.textContent = Math.round(o.v); } }); });
+    TM.reveal([head.querySelector('.leader')], { now: true, delay: 0.9, y: 30 });
+  }
+  TM.spring('.chip, .xw-cell, .cd-close, .btn');
+
+  // pinned chapter: the four frameworks fill in one after another as you scroll
+  var fit = document.getElementById('fit');
+  TM.split(fit && fit.querySelector('h2'), 0, true);
+  TM.pin(fit, '200%', function (tl) {
+    var cols = fit.querySelectorAll('.fw'), take = fit.querySelector('.fit-take');
+    if (!tl) {
+      TM.reveal(cols, { stagger: 0.1 });
+      cols.forEach(function (c) { g.from(c.querySelectorAll('.fw-bar i'), { scaleX: 0, transformOrigin: '0 50%', duration: 1, ease: 'expo.out', stagger: 0.12, scrollTrigger: { trigger: c, start: 'top 88%', once: true } }); });
+      TM.reveal([take]);
+      return;
+    }
+    cols.forEach(function (c, i) {
+      var at = i * 0.7;
+      tl.fromTo(c, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power3.out' }, at);
+      tl.fromTo(c.querySelectorAll('.fw-bar i'), { scaleX: 0 }, { scaleX: 1, transformOrigin: '0 50%', duration: 0.5, stagger: 0.12, ease: 'power2.out' }, at + 0.2);
+      if (i) tl.to(cols[i - 1], { opacity: 0.55, duration: 0.3 }, at);
+    });
+    tl.to(cols, { opacity: 1, duration: 0.3 }, cols.length * 0.7);
+    tl.fromTo(take, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, cols.length * 0.7 + 0.1);
+    tl.to({}, { duration: 0.3 });
+  });
+
+  // heat grid settles in from its centre, row by column
+  var grid = document.querySelector('table.heatgrid');
+  if (grid) {
+    grid.classList.add('in');
+    var cells = grid.querySelectorAll('.cell');
+    // the cells carry a CSS opacity transition for the filter dim: switch it off while GSAP runs
+    grid.classList.add('tm-enter');
+    g.fromTo(cells, { scale: 0.3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.7, ease: 'back.out(1.7)', stagger: { grid: 'auto', from: 'center', amount: 0.9 },
+      scrollTrigger: { trigger: grid, start: 'top 80%', once: true }, clearProps: 'transform,opacity,visibility', onComplete: function () { grid.classList.remove('tm-enter'); } });
+  }
+  // filters: rows that stay slide into their new places instead of jumping
+  if (grid && window.Flip) {
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.chip[data-s], .xw-cell[data-s]')) return;
+      var rows = grid.querySelectorAll('tbody tr:not(.detail-row)');
+      var state = window.Flip.getState(rows);
+      requestAnimationFrame(function () { window.Flip.from(state, { duration: 0.55, ease: 'expo.out', absolute: false, prune: true }); });
+      g.fromTo(grid.querySelectorAll('td:not(.dim) .cell'), { scale: 0.8 }, { scale: 1, duration: 0.6, ease: 'elastic.out(1,0.5)', stagger: { amount: 0.25, from: 'start' }, clearProps: 'transform' });
+    }, true);
+  }
+  // cell detail rises into place when it opens
+  var det = document.getElementById('cellDetail');
+  if (det) new MutationObserver(function () { if (!det.hidden) g.fromTo(det, { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: 'expo.out', clearProps: 'transform' }); })
+    .observe(det, { childList: true });
 })();
 </script>
 <script id="rs-header-js">

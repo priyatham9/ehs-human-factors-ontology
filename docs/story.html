@@ -596,6 +596,34 @@ body{overflow-x:clip}
 .prog-card{position:relative;display:flex;flex-direction:column;gap:6px;min-height:132px;padding:20px 20px 44px;background:var(--surface);color:var(--ink);text-decoration:none;transition:background .15s}
 .prog-card:hover{background:var(--accent-wash)}
 
+
+/* round 7B: five-beat argument, pinned; GSAP owns transforms on spring targets */
+.arc-h{font-size:clamp(1.5rem,3vw,2.3rem);margin:12px 0 30px;max-width:26ch}
+.arc-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.arc-beat{position:relative;display:flex;flex-direction:column;gap:8px;padding:30px 16px 16px;border:2px solid var(--rule-soft);background:var(--surface)}
+.arc-rail{position:absolute;left:0;right:-16px;top:12px;width:calc(100% + 16px);height:6px;overflow:visible}
+.arc-beat:last-child .arc-rail{width:100%}
+.arc-rail line{stroke:var(--accent);stroke-width:2}
+.arc-dot{position:absolute;left:14px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-wash)}
+.arc-lab{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.arc-n{font-family:var(--font-display,inherit);font-stretch:125%;font-weight:900;font-size:clamp(1.8rem,2.6vw,2.5rem);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.arc-n small{font-size:.45em;font-weight:600;color:var(--muted)}
+.arc-quote{font-size:clamp(1.2rem,1.7vw,1.55rem)}
+.arc{--arc-bad:#B3261E;--arc-good:#1D7A3E}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .arc{--arc-bad:#FF8A80;--arc-good:#6FD69A}}
+:root[data-theme="dark"] .arc{--arc-bad:#FF8A80;--arc-good:#6FD69A}
+.arc-bad .arc-n,.arc-bad .arc-lab{color:var(--arc-bad)}
+.arc-warn .arc-n,.arc-warn .arc-lab{color:var(--warn)}
+.arc-good .arc-n{color:var(--arc-good)}
+.arc-beat p{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-2)}
+.arc-go{margin-top:auto;display:inline-flex;align-items:center;min-height:44px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;font-weight:700;align-self:flex-start}
+.arc-go:hover{text-decoration:underline}
+@media (max-width:1100px){.arc-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.arc-row{grid-template-columns:1fr}.arc-rail{width:100%}}
+.m-prog{display:block;height:3px;width:100%;max-width:220px;margin:0 0 14px;background:var(--accent);border-radius:3px;transform:scaleX(0);transform-origin:0 50%}
+html:not(.m-desk) .m-prog{display:none}
+.m-on [data-m-spring]{transition-property:border-color,color,background,box-shadow!important}
+@media print{.m-prog{display:none}}
 </style>
 <style>/*STORY_CSS_START*/
 /* ============================================================
@@ -1274,6 +1302,15 @@ html:not(.m-desk) [data-m-progress]{transform:none}
 .m-desk [data-m-hero]{overflow:clip}
 @media (prefers-reduced-motion: reduce){[data-m-step],[data-m-hero-part],[data-m-reveal]{opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important;clip-path:none!important}}
 .st-reduced [data-m-step],.st-reduced [data-m-hero-part],.st-printing [data-m-step]{opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important;clip-path:none!important}
+/* v2.1 motion polish: nothing flashes in its final or unsplit state before GSAP takes it.
+   html.m-ready is set by story.js once the layer is set up (or found missing / reduced);
+   the 2.5s failsafe shows everything even if the script never runs. */
+@keyframes m-failsafe{to{visibility:visible}}
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference){
+  html:not(.m-ready):not(.st-reduced):not(.st-printing) :is([data-m-split]:not([data-m-split-done]),[data-m-hero-part],[data-m-pin] [data-m-step],[data-m-reveal]){visibility:hidden;animation:m-failsafe 0s 2.5s forwards}
+}
+[data-m-count]{font-variant-numeric:tabular-nums}
+.m-on [data-m-split-done]{font-variant-ligatures:none}
 /*STORY_CSS_END*/</style>
 <style>
 /* ============ story page ============ */
@@ -1642,35 +1679,87 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 <a class="skip" href="#main">Skip to content</a><header class="rs-header" id="rs-header"><div class="rs-bar"><div class="rs-row"><a class="rs-brand" href="https://priyatham9.github.io/grounded/" aria-label="Grounded research hub"><span class="rs-mark" aria-hidden="true"></span>Grounded</a><a class="rs-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a><nav class="rs-nav" aria-label="Research site"><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><details class="rs-menu" data-current="true"><summary class="rs-item" aria-haspopup="true">Projects<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a></div></details><details class="rs-menu"><summary class="rs-item" aria-haspopup="true">Papers<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a></div></details></nav><span class="rs-sep" aria-hidden="true"></span><button class="rs-btn" id="rs-theme" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch colour theme"><svg class="rs-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="rs-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button><button class="rs-btn rs-burger" id="rs-menu-btn" type="button" aria-expanded="false" aria-controls="rs-sheet" aria-label="Open menu"><i></i></button></div></div><div class="rs-sub"><div class="rs-row rs-subrow"><span class="rs-sublabel">On this page</span><nav class="rs-sections" id="rs-sections" aria-label="On this page"><a class="rs-sec" href="#scene1">20 checkable conditions</a><a class="rs-sec" href="#scene2">31 links to 5 functions</a><a class="rs-sec" href="#scene3">21 rules, 89 inferences</a><a class="rs-sec" href="#scene4">31 of 80 cells close</a><a class="rs-sec" href="#honesty">What this does not establish</a><a class="rs-sec" href="#monday">What a leader does Monday</a></nav><button class="rs-subbtn" id="rs-subbtn" type="button" aria-expanded="false" aria-controls="rs-sublist">On this page:<b id="rs-now">20 checkable conditions</b><span class="rs-caret" aria-hidden="true"></span></button></div><nav class="rs-sublist" id="rs-sublist" aria-label="On this page (list)" hidden><a class="rs-sec" href="#scene1">20 checkable conditions</a><a class="rs-sec" href="#scene2">31 links to 5 functions</a><a class="rs-sec" href="#scene3">21 rules, 89 inferences</a><a class="rs-sec" href="#scene4">31 of 80 cells close</a><a class="rs-sec" href="#honesty">What this does not establish</a><a class="rs-sec" href="#monday">What a leader does Monday</a></nav></div><div class="rs-sheet" id="rs-sheet" hidden><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><span class="rs-group">Projects</span><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a><span class="rs-group">Papers</span><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a><a class="rs-sheet-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a></div><span class="rs-progress" aria-hidden="true"></span></header>
 <main id="main">
 
-<section class="hero-wrap">
+<section class="hero-wrap" data-m-hero>
   <div class="wide">
     <p class="crumb"><a href="https://priyatham9.github.io/grounded/">Grounded</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">ehs-human-factors-ontology</a> <span aria-hidden="true">&rsaquo;</span> <b>Story</b></p>
     <div class="st-hero" id="hero">
-      <div class="hero-copy">
-        <div class="hero-eyebrow"><span class="pulse" aria-hidden="true"></span><span class="label">Story &middot; 4 of 7 in the path</span></div>
-        <h1 class="display">Why people err, as a graph</h1>
-        <p class="thesis">An investigation says the operator made a mistake. That is a label, not a cause. Take one restart apart and <em>four conditions set before the shift</em> carry it to stop-and-review, every step a rule you can read back line by line.</p>
-        <div class="status" role="group" aria-label="The story in four numbers">
-          <a class="st-cell st-cell-link" href="#incident" data-st-spotlight><span class="st-k">Conditions below nominal</span><span class="st-v accent" data-count="4">4</span></a>
-          <a class="st-cell st-cell-link" href="#incident" data-st-spotlight><span class="st-k">Thinking functions loaded</span><span class="st-v" data-count="3">3</span></a>
-          <a class="st-cell st-cell-link" href="#scene3" data-st-spotlight><span class="st-k">Inferences, all readable</span><span class="st-v" data-count="89">89</span></a>
-          <a class="st-cell st-cell-link" href="#scene4" data-st-spotlight><span class="st-k">Close crosswalk cells of 80</span><span class="st-v" data-count="31">31</span></a>
+      <div class="hero-copy" data-m-hero-copy>
+        <div class="hero-eyebrow" data-m-hero-part="text"><span class="pulse" aria-hidden="true"></span><span class="label">Story &middot; 4 of 7 in the path</span></div>
+        <h1 class="display" data-m-split="words">Why people err, as a graph</h1>
+        <p class="thesis" data-m-hero-part="text">An investigation says the operator made a mistake. That is a label, not a cause. Take one restart apart and <em>four conditions set before the shift</em> carry it to stop-and-review, every step a rule you can read back line by line.</p>
+        <div class="status" data-m-hero-part="text" role="group" aria-label="The story in four numbers">
+          <a data-m-spring="0.6" class="st-cell st-cell-link" href="#incident" data-st-spotlight><span class="st-k">Conditions below nominal</span><span class="st-v accent" data-count="4">4</span></a>
+          <a data-m-spring="0.6" class="st-cell st-cell-link" href="#incident" data-st-spotlight><span class="st-k">Thinking functions loaded</span><span class="st-v" data-count="3">3</span></a>
+          <a data-m-spring="0.6" class="st-cell st-cell-link" href="#scene3" data-st-spotlight><span class="st-k">Inferences, all readable</span><span class="st-v" data-count="89">89</span></a>
+          <a data-m-spring="0.6" class="st-cell st-cell-link" href="#scene4" data-st-spotlight><span class="st-k">Close crosswalk cells of 80</span><span class="st-v" data-count="31">31</span></a>
         </div>
-        <div class="hero-links st-hide-on-present">
-          <a class="btn btn-primary" href="#incident">Start with the incident</a>
-          <a class="btn" href="index.html">Project page</a>
-          <a class="btn" href="walkthrough.html">Derivation tool</a>
+        <div class="hero-links st-hide-on-present" data-m-hero-part="text">
+          <a data-m-spring class="btn btn-primary" href="#incident">Start with the incident</a>
+          <a data-m-spring class="btn" href="index.html">Project page</a>
+          <a data-m-spring class="btn" href="walkthrough.html">Derivation tool</a>
         </div>
         <p class="src">Counts read from docs/walkthrough-data.json and docs/crosswalk-data.json. The worked scenario is illustrative, written by hand for this repository. Press P for presenter mode, M for the site map.</p>
       </div>
-      <div class="st-hero-orb"><canvas id="orb-hero" class="st-orb" role="img" aria-label="Animated dotted orb standing for the reasoning system under review"></canvas></div>
+      <div class="st-hero-orb" data-m-hero-part="visual"><canvas id="orb-hero" class="st-orb" role="img" aria-label="Animated dotted orb standing for the reasoning system under review"></canvas></div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== THE ARGUMENT IN FIVE BEATS (pinned on desktop) ===================== -->
+<section class="section arc" id="arc" aria-labelledby="arc-h" data-m-pin="250%">
+  <div class="wide">
+    <span class="m-prog" data-m-progress aria-hidden="true"></span>
+    <span class="label">The argument in five beats</span>
+    <h2 class="display arc-h" id="arc-h" data-m-split="words">From a label about a person to conditions you can check</h2>
+    <ol class="arc-row">
+      <li class="arc-beat arc-bad" data-m-step="0" data-m-from="up blur">
+        <svg class="arc-rail" aria-hidden="true" data-m-draw data-m-at="0.00"><line x1="0" y1="3" x2="100%" y2="3"/></svg>
+        <span class="arc-dot" aria-hidden="true"></span>
+        <span class="arc-lab mono">01 Problem</span>
+        <span class="arc-n arc-quote">&ldquo;Human error&rdquo;</span>
+        <p>The report says <b>operator error</b>. That is a label, not a cause, and it ends the investigation too early.</p>
+        <a class="arc-go mono" href="#incident" data-m-spring="0.6">See it &rarr;</a>
+      </li>
+      <li class="arc-beat arc-warn" data-m-step="1" data-m-from="down blur">
+        <svg class="arc-rail" aria-hidden="true" data-m-draw data-m-at="0.65"><line x1="0" y1="3" x2="100%" y2="3"/></svg>
+        <span class="arc-dot" aria-hidden="true"></span>
+        <span class="arc-lab mono">02 Evidence</span>
+        <span class="arc-n mono" data-m-count data-m-at="1.25">4</span>
+        <p>conditions set before the shift sit below nominal in the worked restart: familiarity, procedure, training, time.</p>
+        <a class="arc-go mono" href="#incident" data-m-spring="0.6">See it &rarr;</a>
+      </li>
+      <li class="arc-beat" data-m-step="2" data-m-from="up blur">
+        <svg class="arc-rail" aria-hidden="true" data-m-draw data-m-at="1.65"><line x1="0" y1="3" x2="100%" y2="3"/></svg>
+        <span class="arc-dot" aria-hidden="true"></span>
+        <span class="arc-lab mono">03 Method</span>
+        <span class="arc-n mono" data-m-count data-m-at="2.25">31</span>
+        <p>links tie 20 checkable risk factors to 5 thinking functions, and 21 rules read them.</p>
+        <a class="arc-go mono" href="#scene2" data-m-spring="0.6">See it &rarr;</a>
+      </li>
+      <li class="arc-beat arc-good" data-m-step="3" data-m-from="down blur">
+        <svg class="arc-rail" aria-hidden="true" data-m-draw data-m-at="2.65"><line x1="0" y1="3" x2="100%" y2="3"/></svg>
+        <span class="arc-dot" aria-hidden="true"></span>
+        <span class="arc-lab mono">04 Finding</span>
+        <span class="arc-n mono" data-m-count data-m-at="3.25">89</span>
+        <p>inferences carry the restart to stop-and-review, and every one can be read back line by line.</p>
+        <a class="arc-go mono" href="#scene3" data-m-spring="0.6">See it &rarr;</a>
+      </li>
+      <li class="arc-beat" data-m-step="4" data-m-from="up blur">
+        <svg class="arc-rail" aria-hidden="true" data-m-draw data-m-at="3.65"><line x1="0" y1="3" x2="100%" y2="3"/></svg>
+        <span class="arc-dot" aria-hidden="true"></span>
+        <span class="arc-lab mono">05 So what</span>
+        <span class="arc-n mono"><span data-m-count data-m-at="4.25">31</span><small> of 80</small></span>
+        <p>crosswalk cells are close matches, so ask which condition drove a score, and check any mapping before you reuse it.</p>
+        <a class="arc-go mono" href="#monday" data-m-spring="0.6">See it &rarr;</a>
+      </li>
+    </ol>
+    <p class="src">Counts read from docs/walkthrough-data.json and docs/crosswalk-data.json. The restart is an illustrative scenario written for this repository.</p>
   </div>
 </section>
 
 <!-- ===================== CHAPTER 1: THE WORKED INCIDENT ===================== -->
 <section class="st-chapter" data-key="4" data-num="01" data-orb="solving" data-orb-label="Solving">
-  <h2>Four conditions set before the shift, not one person, put this restart at stop-and-review</h2>
+  <h2 data-m-split="words">Four conditions set before the shift, not one person, put this restart at stop-and-review</h2>
   <p>Take one job apart the way the graph does. A label that would have ended the investigation turns into a chain of conditions, and every link in it is a rule you can read.</p>
 </section>
 
@@ -1764,7 +1853,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 1 ===================== -->
 <section class="st-chapter" data-key="20" data-num="02" data-orb="connecting" data-orb-label="Connecting">
-  <h2>All 20 risk factors are conditions you can check before the job</h2>
+  <h2 data-m-split="words">All 20 risk factors are conditions you can check before the job</h2>
   <p>Each factor sits in one of four context dimensions and carries a level, an observable proxy and a citation, so a claim about it can be evidenced from records a site already keeps.</p>
 </section>
 
@@ -1818,7 +1907,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 2 ===================== -->
 <section class="st-chapter" data-key="31" data-num="03" data-orb="connecting" data-orb-label="Connecting">
-  <h2>31 links tie those 20 factors to 5 cognitive functions</h2>
+  <h2 data-m-split="words">31 links tie those 20 factors to 5 cognitive functions</h2>
   <p>A degraded condition matters through the work it makes harder, and 11 of the 20 factors bear on more than one function, so a single bad condition rarely stays in one place.</p>
 </section>
 
@@ -1872,7 +1961,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 3 ===================== -->
 <section class="st-chapter" data-key="89" data-num="04" data-orb="solving" data-orb-label="Solving">
-  <h2>The same restart, as the engine records it: 21 rules, 89 inferences, one stop-and-review band</h2>
+  <h2 data-m-split="words">The same restart, as the engine records it: 21 rules, 89 inferences, one stop-and-review band</h2>
   <p>Every step names the rule that produced it and the premises it used, so a screening decision can be argued with instead of taken on trust.</p>
 </section>
 
@@ -1925,7 +2014,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <!-- ===================== CHAPTER 4 ===================== -->
 <section class="st-chapter" data-key="80" data-num="05" data-orb="searching" data-orb-label="Searching">
-  <h2>Only 31 of 80 crosswalk cells are close matches to prior frameworks</h2>
+  <h2 data-m-split="words">Only 31 of 80 crosswalk cells are close matches to prior frameworks</h2>
   <p>Twenty-three map to a broader parent term, twenty are partial and six have no counterpart, so an assessment carried between frameworks can change meaning without anyone noticing.</p>
 </section>
 
@@ -1979,19 +2068,20 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 </div>
 
 <!-- ===================== HONESTY ===================== -->
-<section class="section" id="honesty">
+<section class="section" id="honesty" data-m-pin="200%">
   <div class="wrap">
     <span class="label">Scene 05</span>
-    <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px">What this does not establish</h2>
-    <div class="panel" data-st-reveal data-st-spotlight>
+    <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px" data-m-split="words">What this does not establish</h2>
+    <div class="panel" data-st-spotlight>
+      <span class="m-prog" data-m-progress aria-hidden="true"></span>
       <h3>Read this before quoting anything above</h3>
       <ul>
-        <li>The worked scenario is an illustrative example written by hand for this repository. It is not a record of a real event at any site and contains no site data. Nothing went wrong in it; the &ldquo;operator error&rdquo; write-up in the first scene is a framing this story argues against, not a quotation from a report.</li>
-        <li>The screening band is a screening output. It is not a human error probability and it is not calibrated against outcomes.</li>
-        <li>The rule set encodes relationships stated in published human reliability work. Encoding them does not validate them. No prospective study has been run against incident data.</li>
-        <li>Factor levels are assessed by a person. The graph reasons faithfully from whatever levels it is given, including wrong ones.</li>
-        <li>The crosswalk is a judgement about terminology made by one author and recorded so it can be disputed. Partial and broader rows are the ones most likely to be wrong.</li>
-        <li>Inter-team coordination has the fewest attached factors and the thinnest supporting literature of the five functions.</li>
+        <li data-m-step="0" data-m-from="left">The worked scenario is an illustrative example written by hand for this repository. It is not a record of a real event at any site and contains no site data. Nothing went wrong in it; the &ldquo;operator error&rdquo; write-up in the first scene is a framing this story argues against, not a quotation from a report.</li>
+        <li data-m-step="1" data-m-from="left">The screening band is a screening output. It is not a human error probability and it is not calibrated against outcomes.</li>
+        <li data-m-step="2" data-m-from="left">The rule set encodes relationships stated in published human reliability work. Encoding them does not validate them. No prospective study has been run against incident data.</li>
+        <li data-m-step="3" data-m-from="left">Factor levels are assessed by a person. The graph reasons faithfully from whatever levels it is given, including wrong ones.</li>
+        <li data-m-step="4" data-m-from="left">The crosswalk is a judgement about terminology made by one author and recorded so it can be disputed. Partial and broader rows are the ones most likely to be wrong.</li>
+        <li data-m-step="5" data-m-from="left">Inter-team coordination has the fewest attached factors and the thinnest supporting literature of the five functions.</li>
       </ul>
     </div>
   </div>
@@ -2001,18 +2091,18 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 <section class="section" id="monday">
   <div class="wrap">
     <span class="label">What a leader does Monday</span>
-    <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px">Ask which condition, not who</h2>
+    <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px" data-m-split="words">Ask which condition, not who</h2>
     <div class="monday" data-st-reveal data-st-spotlight>
       <h3>Take your last three serious investigations and re-read the conclusions.</h3>
       <p>For each one that ends in a label about a person, name the conditions instead: was the task covered by a procedure, had the operator run it before, was the window fixed by someone downstream. Those three questions are factors in this graph, and each has a record on your site that can be pulled. If two or more come back degraded on the same job, that job was a stop-and-review before anyone touched it.</p>
     </div>
-    <ol class="actions" aria-label="What to do on Monday">
+    <ol class="actions" aria-label="What to do on Monday" data-m-reveal data-m-stagger="0.12">
       <li><b>Re-read three investigations.</b><span>Wherever the conclusion is a label about a person, rewrite it as conditions. Use the four in the worked restart as the first questions: familiarity, procedure, training, time.</span></li>
       <li><b>Pull four records before the next non-routine job.</b><span>Work-order type and prior executions, the procedure register, the qualification record, and any expedite flag on the schedule. Each is the observable proxy the ontology proposes for one of the four conditions.</span></li>
       <li><b>Hold the conversation before the work, not after it.</b><span>If familiarity and procedures both come back degraded on one job, the rules record that there is no rule-based fallback. Decide who reviews that job before it starts. The band thresholds here are the author&rsquo;s convention, so set your own trigger, and write it down.</span></li>
       <li><b>Ask every screening tool for its trace.</b><span>Any score your team relies on should show which condition drove it. If it cannot, it cannot be argued with, and it will not survive the first serious incident.</span></li>
     </ol>
-    <div class="asks">
+    <div class="asks" data-m-reveal>
       <h3>Ask your team this week</h3>
       <ul>
         <li>&ldquo;What was the last job we ran with no approved procedure, and who knew before it started?&rdquo;</li>
@@ -2021,10 +2111,10 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </ul>
     </div>
     <div class="nextlinks st-hide-on-present">
-      <a class="btn" href="index.html">This project page</a>
-      <a class="btn" href="crosswalk.html">Full crosswalk</a>
-      <a class="btn" href="walkthrough.html">Full derivation trace</a>
-      <a class="btn" href="https://priyatham9.github.io/grounded/">Research hub</a>
+      <a data-m-spring class="btn" href="index.html">This project page</a>
+      <a data-m-spring class="btn" href="crosswalk.html">Full crosswalk</a>
+      <a data-m-spring class="btn" href="walkthrough.html">Full derivation trace</a>
+      <a data-m-spring class="btn" href="https://priyatham9.github.io/grounded/">Research hub</a>
     </div>
   </div>
 </section>
@@ -2035,7 +2125,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <a class="nextcard" data-st-spotlight href="https://priyatham9.github.io/ehs-risk-sem/story.html">
       <div>
         <span class="label">Next in the path &middot; 5 of 7</span>
-        <h2 class="display">Where the method breaks</h2>
+        <h2 class="display" data-m-split="words">Where the method breaks</h2>
         <p>A structural model recovers the right coefficients until the model itself is wrong. Then it keeps fitting, and the fit test says nothing.</p>
         <span class="nextcard-go">Read it &rarr;</span>
       </div>
@@ -2103,6 +2193,20 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
                                filters or re-orders the children
    Aliases: data-st-kinetic -> data-m-split="words" when GSAP is present.
    JS: Story.motion.scan(root) re-applies after DOM changes; Story.motion.kill().
+
+   Rules the engine enforces (v2.1):
+   - Until the layer is ready, split headlines, hero parts, pinned steps and
+     reveals are hidden by story.css (no flash of the unsplit/final state);
+     html gets .m-ready once set up. A 2.5s CSS failsafe shows them anyway.
+   - An element GSAP animates must not also carry a page CSS animation or a
+     CSS transition on transform/opacity/visibility/filter: the engine turns
+     those off inline on that element while motion runs (they fight GSAP and
+     can leave it stuck at opacity 0). Put page animations on a wrapper.
+   - One ease vocabulary (M_EASE) and one scrub lag (M_SCRUB = 0.8s).
+   - Pinned chapters shorter than the screen are centred in it (no dead strip).
+   - ScrollTrigger re-measures after fonts, images (load) and bfcache restore;
+     a #hash in the URL, or an in-page link into a pinned chapter, lands on
+     the chapter's pin start.
    ============================================================ */
 (function (global) {
   "use strict";
@@ -5504,8 +5608,35 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
      Nothing here animates layout properties: transforms, opacity, clip-path
      and stroke-dashoffset only.
      --------------------------------------------------------- */
-  var M = { ready: false, mm: null, scanned: [] };
-  var M_EASE = { out: "expo.out", soft: "power3.out", io: "power2.inOut", back: "back.out(1.6)" };
+  var M = { ready: false, mm: null, mms: [], scanned: [] };
+  var M_EASE = { out: "expo.out", soft: "power3.out", io: "power2.inOut", back: "back.out(1.6)", spring: "elastic.out(1.1,0.5)" };
+  var M_SCRUB = 0.8; // one catch-up lag for every scrubbed timeline
+  // an element GSAP drives must not also run a page CSS animation, or a CSS
+  // transition on the properties GSAP tweens: turn those off inline (restored on revert)
+  var M_TAMED = [];
+  function mTame(n) {
+    if (!n || n.__mTamed || !(n instanceof Element)) return;
+    var cs = getComputedStyle(n), fix = {};
+    if (cs.animationName && cs.animationName !== "none") fix.animation = "none";
+    var props = (cs.transitionProperty || "").split(/\s*,\s*/);
+    var durs = (cs.transitionDuration || "0s").split(/\s*,\s*/);
+    var live = props.filter(function (p, i) { return parseFloat(durs[i % durs.length]) > 0; });
+    if (live.some(function (p) { return /^(all|transform|translate|scale|rotate|opacity|visibility|filter)$/.test(p); })) {
+      var keep = live.filter(function (p) { return !/^(transform|translate|scale|rotate|opacity|visibility|filter)$/.test(p); });
+      if (keep.indexOf("all") >= 0) keep = keep.filter(function (p) { return p !== "all"; }).concat(["color", "background-color", "border-color", "box-shadow", "outline-color", "text-decoration-color"]);
+      fix.transitionProperty = keep.length ? keep.join(",") : "none";
+    }
+    if (!fix.animation && !fix.transitionProperty) return;
+    n.__mTamed = { animation: n.style.animation, transitionProperty: n.style.transitionProperty };
+    if (fix.animation) n.style.animation = "none";
+    if (fix.transitionProperty) n.style.transitionProperty = fix.transitionProperty;
+    M_TAMED.push(n);
+  }
+  function mUntameAll() {
+    M_TAMED.forEach(function (n) { var o = n.__mTamed; if (!o) return; n.style.animation = o.animation; n.style.transitionProperty = o.transitionProperty; n.__mTamed = null; });
+    M_TAMED = [];
+  }
+  function mTameAll(list) { list.forEach(mTame); return list; }
   function gsapOK() {
     var g = global.gsap;
     return !!(g && global.ScrollTrigger);
@@ -5546,6 +5677,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   function mSplit(n, phone) {
     if (!global.SplitText || n.__mSplit) return;
     n.__mSplit = 1;
+    mTame(n);
     // soft hyphens do not survive a split (the word breaks mid-line): reveal the block whole
     if ((n.textContent || "").indexOf("\u00AD") >= 0) {
       global.gsap.from(n, { autoAlpha: 0, y: 40, duration: 1, ease: M_EASE.out, delay: n.closest("[data-m-hero]") ? 0.15 : 0,
@@ -5562,6 +5694,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       autoSplit: type === "lines",
       onSplit: function (self) {
         var parts = self[type];
+        n.setAttribute("data-m-split-done", "");
         var hero = n.closest("[data-m-hero]");
         var t = global.gsap.from(parts, {
           yPercent: 110, autoAlpha: type === "chars" ? 1 : 0, rotate: type === "chars" && !phone ? 6 : 0,
@@ -5588,10 +5721,13 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       mSel(sec, "[data-m-count]").forEach(function (c) { mCount(c); });
       return null;
     }
+    mTameAll(steps);
+    mCenterPin(sec);
     var len = sec.getAttribute("data-m-pin") || (100 + steps.length * 60) + "%";
     var tl = g.timeline({
       defaults: { ease: "none" },
-      scrollTrigger: { trigger: sec, start: "top top", end: "+=" + len, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true }
+      scrollTrigger: { trigger: sec, start: "top top", end: "+=" + len, pin: true, scrub: M_SCRUB, anticipatePin: 1, invalidateOnRefresh: true,
+        onRefreshInit: function () { mCenterPin(sec); } }
     });
     steps.sort(function (a, b) { return mNum(a.getAttribute("data-m-step"), 0) - mNum(b.getAttribute("data-m-step"), 0); });
     steps.forEach(function (s, i) {
@@ -5610,8 +5746,29 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     return tl;
   }
 
+  // a pinned chapter shorter than the screen would leave a dead strip under it:
+  // centre its content in a screen-tall box. Uses the section's own layout mode,
+  // set inline so page CSS cannot undo it; restored when motion is reverted.
+  function mCenterPin(sec) {
+    if (!sec.__mPinOrig) sec.__mPinOrig = { display: sec.style.display, fd: sec.style.flexDirection, jc: sec.style.justifyContent, ac: sec.style.alignContent, mh: sec.style.minHeight };
+    var o = sec.__mPinOrig;
+    sec.style.minHeight = o.mh; sec.style.justifyContent = o.jc; sec.style.alignContent = o.ac; sec.style.display = o.display; sec.style.flexDirection = o.fd;
+    var cs = getComputedStyle(sec), d = cs.display;
+    sec.style.minHeight = innerHeight + "px";
+    if (/grid/.test(d)) sec.style.alignContent = "center";
+    else if (/flex/.test(d)) { if (/column/.test(cs.flexDirection)) sec.style.justifyContent = "center"; else sec.style.alignItems = sec.style.alignItems || "center"; }
+    else { sec.style.display = "flex"; sec.style.flexDirection = "column"; sec.style.justifyContent = "center"; }
+  }
+  function mUncenterPins() {
+    els("[data-m-pin]").forEach(function (sec) {
+      var o = sec.__mPinOrig; if (!o) return;
+      sec.style.display = o.display; sec.style.flexDirection = o.fd; sec.style.justifyContent = o.jc; sec.style.alignContent = o.ac; sec.style.minHeight = o.mh;
+      sec.__mPinOrig = null;
+    });
+  }
   // phone (or an over-tall chapter): the chapter scrolls normally and each step reveals once
   function mStepsOnce(steps) {
+    mTameAll(steps);
     steps.forEach(function (s) {
       global.gsap.from(s, { autoAlpha: 0, y: 24, duration: 0.7, ease: M_EASE.out, scrollTrigger: { trigger: s, start: "top 88%", once: true } });
     });
@@ -5645,7 +5802,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     var vars = { strokeDashoffset: 0, duration: 1, ease: "none", stagger: 0.08 };
     var from = { strokeDashoffset: function (i, p) { return p.__mLen; } };
     if (tl) { tl.fromTo(live, from, vars, at || 0); return; }
-    vars.scrollTrigger = { trigger: n, start: n.getAttribute("data-m-start") || "top 80%", end: n.getAttribute("data-m-end") || "bottom 45%", scrub: 0.6 };
+    vars.scrollTrigger = { trigger: n, start: n.getAttribute("data-m-start") || "top 80%", end: n.getAttribute("data-m-end") || "bottom 45%", scrub: M_SCRUB };
     g.fromTo(live, from, vars);
   }
   // --- bars grow from their baseline: data-m-bars="y" (default) or "x" ---
@@ -5663,7 +5820,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     var to = { scaleY: 1, scaleX: 1, duration: 0.8, ease: M_EASE.soft, stagger: 0.06 };
     bars.forEach(function (b) { if (b instanceof SVGElement) b.style.transformBox = "fill-box"; });
     if (tl) { tl.fromTo(bars, from, to, at || 0); return; }
-    to.scrollTrigger = { trigger: n, start: "top 82%", end: "bottom 50%", scrub: 0.6 };
+    mTameAll(bars.filter(function (b) { return !(b instanceof SVGElement); }));
+    to.scrollTrigger = { trigger: n, start: "top 82%", end: "bottom 50%", scrub: M_SCRUB };
     g.fromTo(bars, from, to);
   }
   // --- counters: the element's own text is the final value ---
@@ -5674,8 +5832,10 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     var final = n.textContent;
     var o = { v: 0 };
     n.setAttribute("aria-label", final.trim());
-    function upd() { n.textContent = mFmtNum(p, o.v); }
-    var vars = { v: p.value, duration: 1.6, ease: "power2.out", onUpdate: upd, onComplete: function () { n.textContent = final; } };
+    // land on the page's own text exactly (formatting, spaces, units), never a rounded neighbour
+    var step = Math.pow(10, -p.dec) / 2;
+    function upd() { n.textContent = Math.abs(p.value - o.v) < step ? final : mFmtNum(p, o.v); }
+    var vars = { v: p.value, duration: 1.6, ease: M_EASE.soft, onUpdate: upd, onComplete: function () { n.textContent = final; } };
     upd();
     if (tl) { vars.duration = 1; vars.ease = "none"; tl.to(o, vars, at || 0); return; }
     vars.scrollTrigger = { trigger: n, start: "top 88%", once: true };
@@ -5685,6 +5845,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   function mReveal(n) {
     if (n.__mRev) return; n.__mRev = 1;
     var kids = n.hasAttribute("data-m-stagger") ? Array.prototype.slice.call(n.children) : [n];
+    mTameAll(kids);
     var from = mFrom(n); from.duration = 0.9; from.ease = M_EASE.out;
     from.stagger = mNum(n.getAttribute("data-m-stagger"), 0.08) || 0.08;
     from.scrollTrigger = { trigger: n, start: n.getAttribute("data-m-start") || "top 85%", once: true };
@@ -5699,8 +5860,9 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   function mSpring(n) {
     if (n.__mSpring) return; n.__mSpring = 1;
     var g = global.gsap, amt = mNum(n.getAttribute("data-m-spring"), 1) || 1;
-    var qs = g.quickTo(n, "scale", { duration: 0.55, ease: "elastic.out(1.1,0.5)" });
-    var qy = g.quickTo(n, "y", { duration: 0.55, ease: "elastic.out(1.1,0.5)" });
+    mTame(n);
+    var qs = g.quickTo(n, "scale", { duration: 0.55, ease: M_EASE.spring });
+    var qy = g.quickTo(n, "y", { duration: 0.55, ease: M_EASE.spring });
     function on(e) { if (e.pointerType === "touch") return; qs(1 + 0.035 * amt); qy(-3 * amt); }
     function off() { qs(1); qy(0); }
     n.addEventListener("pointerenter", on);
@@ -5730,13 +5892,13 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   // --- cinematic hero: headline chars, then lede, actions and visual ---
   function mHero(h, phone) {
     var g = global.gsap, tl = g.timeline({ defaults: { ease: M_EASE.out } });
-    var parts = els("[data-m-hero-part]", h);
+    var parts = mTameAll(els("[data-m-hero-part]", h));
     if (!parts.length) return tl;
     parts.forEach(function (p, i) {
       var kind = p.getAttribute("data-m-hero-part");
       var at = i === 0 ? 0.1 : "-=0.55";
-      if (kind === "visual") tl.from(p, { autoAlpha: 0, scale: phone ? 0.96 : 0.82, rotate: phone ? 0 : -8, duration: 1.4, ease: "expo.out" }, i === 0 ? 0 : "-=1.0");
-      else if (kind === "rule") tl.from(p, { scaleX: 0, transformOrigin: "0 50%", duration: 1.1, ease: "expo.inOut" }, at);
+      if (kind === "visual") tl.from(p, { autoAlpha: 0, scale: phone ? 0.96 : 0.82, rotate: phone ? 0 : -8, duration: 1.4, ease: M_EASE.out }, i === 0 ? 0 : "-=1.0");
+      else if (kind === "rule") tl.from(p, { scaleX: 0, transformOrigin: "0 50%", duration: 1.1, ease: M_EASE.io }, at);
       else tl.from(p, { autoAlpha: 0, y: 28, duration: 0.9 }, at);
     });
     if (!phone) {
@@ -5749,19 +5911,23 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     return tl;
   }
 
+  // set up a root added after boot (new DOM); elements already set up are skipped by their guards
   function motionScan(root) {
     root = root || document;
     if (!gsapOK() || !M.mm) return false;
     M.scanned.push(root);
+    motionSetup(root, true);
     return true;
   }
-  function motionSetup(root) {
+  function motionSetup(root, extra) {
     var g = global.gsap;
     root = root || document;
     var desk = "(min-width: 900px) and (prefers-reduced-motion: no-preference)";
     var phone = "(max-width: 899.98px) and (prefers-reduced-motion: no-preference)";
-    M.mm = g.matchMedia();
-    M.mm.add({ desk: desk, phone: phone }, function (ctx) {
+    var mm = g.matchMedia();
+    M.mms.push(mm);
+    if (!extra) M.mm = mm;
+    mm.add({ desk: desk, phone: phone }, function (ctx) {
       if (forceReduced || printing) return;
       var isPhone = !!ctx.conditions.phone;
       document.documentElement.classList.add("m-on", isPhone ? "m-phone" : "m-desk");
@@ -5777,20 +5943,95 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       if (!isPhone) mSel(root, "[data-m-parallax]").forEach(mParallax);
       mSel(root, "[data-m-spring]").forEach(mSpring);
       mSel(root, "[data-m-flip]").forEach(mFlip);
+      // triggers were created by kind, not in page order: order them by position so
+      // everything below a pin accounts for its spacer
+      global.ScrollTrigger.sort();
       return function () {
         // leaving a breakpoint: gsap.matchMedia reverts tweens; clear our guards so the next tier rebuilds
         mSel(root, "[data-m-split],[data-m-draw],[data-m-bars],[data-m-count],[data-m-reveal],[data-m-spring],[data-m-flip]").forEach(function (n) {
           n.__mSplit = n.__mDraw = n.__mBars = n.__mCount = n.__mRev = n.__mSpring = n.__mFlip = 0;
         });
+        mUntameAll();
+        mUncenterPins();
         document.documentElement.classList.remove("m-on", "m-phone", "m-desk");
       };
     });
-    // late fonts and images change heights: re-measure pins once everything has settled
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { global.ScrollTrigger.refresh(); }, function () { });
-    addEventListener("load", function () { global.ScrollTrigger.refresh(); });
+    if (!extra) mSettle();
   }
+  // late fonts and images change heights: re-measure once each has settled, then
+  // land any #hash on its final position (pins add spacer height after first layout)
+  var mSettled = false, mUserScrolled = false;
+  function mSettle() {
+    if (mSettled) return; mSettled = true;
+    var ST = global.ScrollTrigger;
+    ST.config({ ignoreMobileResize: true });
+    ["wheel", "touchstart", "keydown", "pointerdown"].forEach(function (ev) {
+      addEventListener(ev, function () { mUserScrolled = true; }, { passive: true, once: true });
+    });
+    var fontsDone = !(document.fonts && document.fonts.ready), loadDone = document.readyState === "complete";
+    function settle() { if (!(fontsDone && loadDone)) return; ST.refresh(); mLandHash(); }
+    if (!fontsDone) document.fonts.ready.then(function () { fontsDone = true; ST.refresh(); settle(); }, function () { fontsDone = true; settle(); });
+    if (!loadDone) addEventListener("load", function () { loadDone = true; settle(); }, { once: true });
+    settle();
+    // content above a pin that grows later (charts drawn on idle, lazy images, late
+    // widgets) would leave every trigger below it stale: re-measure when the page
+    // height changes by itself, debounced, and ignore the change a refresh makes
+    if (global.ResizeObserver && document.body) {
+      var lastH = -1, tid = 0;
+      ST.addEventListener("refresh", function () { lastH = document.body.offsetHeight; });
+      new ResizeObserver(function () {
+        clearTimeout(tid);
+        tid = setTimeout(function () {
+          var h = document.body.offsetHeight;
+          if (lastH < 0 || Math.abs(h - lastH) < 2) return;
+          ST.refresh();
+        }, 180);
+      }).observe(document.body);
+    }
+    // back/forward cache: layout may have changed while the page was frozen
+    addEventListener("pageshow", function (e) { if (e.persisted) ST.refresh(); });
+    // in-page links whose target sits inside a pinned chapter go to the pin start
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest("a[href^='#']");
+      if (!a || a.getAttribute("href").length < 2) return;
+      var t = mHashTarget(a.getAttribute("href"));
+      if (!t || !mPinOf(t)) return;
+      e.preventDefault();
+      var smooth = !reduced() && getComputedStyle(document.documentElement).scrollBehavior === "smooth";
+      scrollTo({ top: mAnchorY(t), behavior: smooth ? "smooth" : "auto" });
+      if (history.pushState) history.pushState(null, "", a.getAttribute("href"));
+      // the target may still be hidden by the chapter's first step: focus the chapter then
+      var f = getComputedStyle(t).visibility === "hidden" ? mPinOf(t).pin : t;
+      if (!f.hasAttribute("tabindex") && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(f.tagName)) f.setAttribute("tabindex", "-1");
+      try { f.focus({ preventScroll: true }); } catch (e2) { }
+    });
+  }
+  function mHashTarget(h) {
+    if (!h || h.length < 2) return null;
+    try { return document.getElementById(decodeURIComponent(h.slice(1))); } catch (e) { return null; }
+  }
+  function mPinOf(t) {
+    var hit = null;
+    global.ScrollTrigger.getAll().forEach(function (s) { if (!hit && s.pin && (s.pin === t || s.pin.contains(t))) hit = s; });
+    return hit;
+  }
+  function mAnchorY(t) {
+    var s = mPinOf(t);
+    if (s) return Math.ceil(s.start) + 1;
+    var sm = parseFloat(getComputedStyle(t).scrollMarginTop) || 0;
+    return Math.max(0, t.getBoundingClientRect().top + scrollY - sm);
+  }
+  function mLandHash() {
+    if (mUserScrolled) return;
+    var t = mHashTarget(location.hash);
+    if (!t) return;
+    var y = mAnchorY(t);
+    if (Math.abs(scrollY - y) > 2) scrollTo(0, y);
+  }
+  function mReady() { document.documentElement.classList.add("m-ready"); }
   function autoGsap() {
-    if (!gsapOK()) { document.documentElement.classList.add("m-off"); return; }
+    if (!gsapOK()) { document.documentElement.classList.add("m-off"); mReady(); return; }
     var plugins = [global.ScrollTrigger];
     if (global.SplitText) plugins.push(global.SplitText);
     if (global.Flip) plugins.push(global.Flip);
@@ -5799,11 +6040,12 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     els("[data-st-kinetic]").forEach(function (n) { if (!n.hasAttribute("data-m-split")) n.setAttribute("data-m-split", "words"); });
     motionSetup(document);
     M.ready = true;
+    mReady();
   }
-  function motionKill() { if (M.mm) M.mm.revert(); M.mm = null; }
+  function motionKill() { M.mms.forEach(function (mm) { mm.revert(); }); M.mms = []; M.mm = null; mUntameAll(); mUncenterPins(); }
 
   var Story = {
-    version: "1.4.0",
+    version: "2.1.0",
     orb: orb,
     orbInline: orbInline,
     companion: companion,
@@ -5834,7 +6076,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     marks: marks,
     kinetic: kinetic,
     viewTransition: viewTransition,
-    motion: { scan: function (r) { motionKill(); motionSetup(r || document); }, kill: motionKill, get on() { return M.ready; } },
+    motion: { scan: function (r) { if (r && r !== document && M.mm) { motionScan(r); return; } motionKill(); motionSetup(document); }, kill: motionKill, refresh: function () { if (gsapOK()) global.ScrollTrigger.refresh(); }, get on() { return M.ready; } },
     stagger: stagger,
     trail: trail,
     draw: draw,
@@ -6653,5 +6895,18 @@ if(document.readyState!=="loading")ready();else document.addEventListener("DOMCo
  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',function(){pad();onScroll();});
  pad();frame();
 })();
-</script></body>
+</script><script id="pin-anchor-js">
+/* In-page links to a pinned chapter land at the end of its pin, so every number in it is already on screen */
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a||!window.ScrollTrigger)return;
+    var id=a.getAttribute('href').slice(1); if(!id)return;
+    var t=ScrollTrigger.getAll().filter(function(s){return s.pin&&s.trigger&&s.trigger.id===id;})[0]; if(!t)return;
+    e.preventDefault();
+    window.scrollTo({top:Math.max(0,t.end-4),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    if(history.replaceState)history.replaceState(null,'','#'+id);
+  });
+})();
+</script>
+</body>
 </html>
