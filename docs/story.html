@@ -1575,6 +1575,58 @@ html.st-printing #fig-xw text[fill="var(--accent-ink)"]{fill:#fff!important}
 html.st-printing .leadbox-row,html.st-printing .actions li{background:#fff!important;border:1px solid #999!important}
 html.st-printing .inc-frame{display:none!important}
 </style>
+<style id="r8-page">
+/* figure data: every plotted number as a table */
+details.fd{border:2px solid var(--rule-soft);background:var(--surface)}
+details.fd > summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;gap:8px;padding:0 14px;font-family:var(--font-mono);font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+details.fd > summary::-webkit-details-marker{display:none}
+details.fd > summary::before{content:"+";font-weight:700;width:1ch}
+details.fd[open] > summary::before{content:"\2212"}
+.fd-n{color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0}
+.fd-body{padding:0 14px 14px}
+.fd-scroll{overflow-x:auto;margin-top:10px;overscroll-behavior-x:contain}
+.fd-scroll:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.fd table{border-collapse:collapse;width:100%;font-size:.9375rem;line-height:1.4;font-variant-numeric:tabular-nums}
+.fd caption{text-align:left;caption-side:top;padding:4px 0 8px;color:var(--ink-2);font-size:.9375rem;max-width:72ch}
+.fd th,.fd td{padding:8px 10px;border-bottom:1px solid var(--rule-soft);text-align:left;vertical-align:top}
+.fd thead th{font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);border-bottom:2px solid var(--rule);vertical-align:bottom}
+.fd .num{text-align:right;font-family:var(--font-mono);white-space:nowrap}
+.fd tbody th{font-weight:600;color:var(--ink)}
+.fd tbody td{color:var(--ink-2)}
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+/* round 8: readability floor, tap targets */
+.label,.crumb,.src,.lgd,.inc-frame-k,.leadbox-k,.stage-num small,details.data summary,.inc-owners summary,.inc-owners thead th,.lvl{font-size:.75rem}
+.stage-head h4{font-size:.8125rem}
+.crumb a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;text-decoration:underline;text-decoration-color:var(--rule-soft);text-underline-offset:4px}
+.crumb{padding-top:14px}
+.inc-seg button{font-size:.75rem;min-height:44px}
+details.data summary{min-height:44px;display:flex;align-items:center}
+details.data table{font-size:.875rem}
+.nextalt button{min-height:44px}
+.footer .footer-links a{display:inline-flex;align-items:center;min-height:44px}
+.leadbox p{font-size:1.0625rem}
+.panel ul{font-size:1.0625rem}
+.actions span{font-size:1rem}
+.inc-owners table{font-size:.9375rem}
+.fd{margin:22px 0 0;max-width:980px}
+.st-chapter .st-chapter-num{display:flex;align-items:center;gap:2px}
+/* the scenes' own SVG type: small presentation sizes lift to 14.5 units, which renders at 12 px or more
+   at every width the page draws them (compact drawings take over below an 820 px stage) */
+#fig-net text[font-size="11"],#fig-net text[font-size="11.5"],#fig-net text[font-size="12"],#fig-net text[font-size="12.5"],#fig-net text[font-size="13"],#fig-net text[font-size="13.5"],#fig-net text[font-size="14"],
+#fig-fn text[font-size="11"],#fig-fn text[font-size="11.5"],#fig-fn text[font-size="12"],#fig-fn text[font-size="12.5"],#fig-fn text[font-size="13"],#fig-fn text[font-size="13.5"],#fig-fn text[font-size="14"],
+#fig-derive text[font-size="11"],#fig-derive text[font-size="11.5"],#fig-derive text[font-size="12"],#fig-derive text[font-size="12.5"],#fig-derive text[font-size="13"],#fig-derive text[font-size="13.5"],#fig-derive text[font-size="14"],
+#fig-xw text[font-size="11"],#fig-xw text[font-size="11.5"],#fig-xw text[font-size="12"],#fig-xw text[font-size="12.5"],#fig-xw text[font-size="13"],#fig-xw text[font-size="13.5"],#fig-xw text[font-size="14"]{font-size:14.5px}
+@media(max-width:800px){
+  .stage-head h4{font-size:.75rem}
+  .stage-num small{font-size:.75rem;line-height:1.25}
+  .src{font-size:.75rem}
+  .inc-seg button{min-height:44px;padding:0 12px}
+  .stage-head{padding-right:64px}
+  .st-scene .st-stage,.st-scene[data-side="left"] .st-stage{height:62vh;height:62svh}
+  .inc-frame-k{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+</style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
  --rs-paper:var(--paper,#F7F7F3);--rs-surface:var(--surface,#FFFFFF);--rs-surface-2:var(--surface-2,#EFEFE9);
@@ -1717,7 +1769,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   <div class="wide">
     <span class="m-prog" data-m-progress aria-hidden="true"></span>
     <span class="label">The argument in five beats</span>
-    <h2 class="display arc-h" id="arc-h" data-m-split="words">From a label about a person to conditions you can check</h2>
+    <h2 class="display arc-h" id="arc-h" data-st-anchor data-m-split="words">From a label about a person to conditions you can check</h2>
     <ol class="arc-row">
       <li class="arc-beat arc-bad" data-m-step="0" data-m-from="up blur">
         <svg class="arc-rail" aria-hidden="true" data-m-draw data-m-at="0.00"><line x1="0" y1="3" x2="100%" y2="3"/></svg>
@@ -1834,6 +1886,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <details class="fd" data-table="inc"><summary>Data behind this figure <span class="fd-n">(table)</span></summary><div class="fd-body"></div></details>
 
   <div class="leadbox st-hide-on-present">
     <div class="leadbox-row">
@@ -1905,6 +1958,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <details class="fd" data-table="net"><summary>Data behind this figure <span class="fd-n">(table)</span></summary><div class="fd-body"></div></details>
   <div class="leadbox st-hide-on-present"><div class="leadbox-row">
       <div><span class="leadbox-k">What it means for a leader</span><p>None of the 20 is a trait of a person. Each is a condition the organisation sets or already measures, which makes every one of them a place to act before the job instead of a finding after it.</p></div>
       <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;For our next non-routine job, which of these 20 conditions could we evidence from a record today, and which would be a guess?&rdquo;</p></div>
@@ -1959,6 +2013,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <details class="fd" data-table="fn"><summary>Data behind this figure <span class="fd-n">(table)</span></summary><div class="fd-body"></div></details>
   <div class="leadbox st-hide-on-present"><div class="leadbox-row">
       <div><span class="leadbox-k">What it means for a leader</span><p>A bad condition rarely stays in one place: 11 of the 20 factors bear on more than one function. Fixing the condition protects several kinds of work at once, where coaching one person protects one.</p></div>
       <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;When a report says someone failed to notice or made the wrong call, which condition was bearing on that function at the time?&rdquo;</p></div>
@@ -2012,6 +2067,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <details class="fd" data-table="der"><summary>Data behind this figure <span class="fd-n">(table)</span></summary><div class="fd-body"></div></details>
   <div class="leadbox st-hide-on-present"><div class="leadbox-row">
       <div><span class="leadbox-k">What it means for a leader</span><p>The screening result comes with its whole argument attached. A supervisor can challenge any line of it before the job, which a score from a black box does not allow.</p></div>
       <div><span class="leadbox-k">Ask your team</span><p class="ask">&ldquo;Can the screening tool we use today show which condition drove its answer?&rdquo;</p></div>
@@ -2066,6 +2122,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
     </div>
   </section>
+  <details class="fd" data-table="xw"><summary>Counts behind this figure <span class="fd-n">(table)</span></summary><div class="fd-body"></div></details>
   <details class="data st-hide-on-present"><summary>All 80 crosswalk cells as a table</summary><div class="scrollx"><table id="tbl-xw"><thead><tr><th>Factor</th><th>Framework</th><th>Strength</th><th>Nearest term</th></tr></thead><tbody></tbody></table></div></details>
   <div class="leadbox st-hide-on-present"><div class="leadbox-row">
       <div><span class="leadbox-k">What it means for a leader</span><p>Only 31 of 80 cells are close matches. A finding carried between SPAR-H, CREAM, HFACS and the HSE list can change meaning without anyone noticing, unless the mapping is written down and checked.</p></div>
@@ -2078,7 +2135,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 <section class="section" id="honesty" data-m-pin="200%">
   <div class="wrap">
     <span class="label">Scene 05</span>
-    <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px" data-m-split="words">What this does not establish</h2>
+    <h2 class="display" id="honesty-h" data-st-anchor style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px" data-m-split="words">What this does not establish</h2>
     <div class="panel" data-st-spotlight>
       <span class="m-prog" data-m-progress aria-hidden="true"></span>
       <h3>Read this before quoting anything above</h3>
@@ -2098,7 +2155,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 <section class="section" id="monday">
   <div class="wrap">
     <span class="label">What a leader does Monday</span>
-    <h2 class="display" style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px" data-m-split="words">Ask which condition, not who</h2>
+    <h2 class="display" id="monday-h" data-st-anchor style="font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 24px" data-m-split="words">Ask which condition, not who</h2>
     <div class="monday" data-st-reveal data-st-spotlight>
       <h3>Take your last three serious investigations and re-read the conclusions.</h3>
       <p>For each one that ends in a label about a person, name the conditions instead: was the task covered by a procedure, had the operator run it before, was the window fixed by someone downstream. Those three questions are factors in this graph, and each has a record on your site that can be pulled. If two or more come back degraded on the same job, that job was a stop-and-review before anyone touched it.</p>
@@ -6158,7 +6215,13 @@ var DIMK={"Human context":"human","Operational context":"operational","System co
 var DIMSUB={"Human context":"Procedures, staffing, training","Operational context":"Noise, heat, access, light","System context":"Equipment, interface, display","Task context":"Familiarity, time, fatigue"};
 
 var PQ=window.matchMedia("(max-width:800px)");
-function phone(){return PQ.matches;}
+/* compact drawings on phones, and on laptops where the stage is narrower than 820 px:
+   there the 1000-unit desktop figures would set their labels under 12 px */
+function phone(){
+  if(PQ.matches)return true;
+  var f=document.querySelector(".st-scene .st-stage-inner"),w=f?f.getBoundingClientRect().width:1000;
+  return w>0&&w<820;
+}
 
 var SHORT={
  ProceduresGuidanceAndInstructions:"Procedures",Staffing:"Staffing",
@@ -6500,6 +6563,8 @@ function derStep(k){
 var SOP={close:1,broader:.58,partial:.3,none:.9};
 var SLAB={close:"close",broader:"broader",partial:"partial",none:"none"};
 var SHORTFW={"HSE Performance Influencing Factors":"HSE PIF"};
+var WIDE_LAB={ProceduresGuidanceAndInstructions:"Procedures and instructions",WorkplaceAccessibilityAndHabitability:"Workplace accessibility",
+ InformationAvailabilityAndReliability:"Information availability",MultitaskingInterruptionsAndDistractions:"Multitasking and interruptions"};
 var STR=["close","broader","partial","none"];
 var xw={mode:null,cells:[],heads:[],rows:[],active:"all"};
 function fwCounts(fw){
@@ -6543,7 +6608,7 @@ function buildXwWide(svg){
   el("line",{x1:left,y1:top-10,x2:W,y2:top-10,"class":"st-axis-line"},g);
   D.factors.forEach(function(f,r){
     var y=top+r*ch;
-    var t=txt(g,left-12,y+ch/2+5,f.label,"end");
+    var t=txt(g,left-12,y+ch/2+5,WIDE_LAB[f.id]||f.label,"end");
     t.setAttribute("font-size","13.5");
     t.setAttribute("fill","var(--ink)");
     var ti=el("title",{},t); ti.textContent=f.label+" - "+f.dim;
@@ -6554,7 +6619,7 @@ function buildXwWide(svg){
       var gg=el("g",{},g);
       el("rect",{x:left+cw*i+2,y:y+1.5,width:cw-4,height:ch-3,
         fill:st==="none"?"var(--warn)":"var(--accent)",opacity:SOP[st]},gg);
-      var lt=txt(gg,left+cw*i+cw/2,y+ch/2+4.5,st==="none"?"no counterpart":SLAB[st],"middle");
+      var lt=txt(gg,left+cw*i+cw/2,y+ch/2+5,SLAB[st],"middle");
       lt.setAttribute("font-size","11.5");
       lt.setAttribute("letter-spacing",".08em");
       lt.setAttribute("fill",(st==="close"||st==="none")?"var(--accent-ink)":"var(--ink)");
@@ -6675,15 +6740,15 @@ function incLayout(ph){
     L.rev={x:848,y:382,w:148,h:64};L.ele={x:848,y:276,w:148,h:64};L.stop={x:848,y:150,w:148,h:84};
     L.blame={x:220,y:228,w:560,h:104};
   }else{
-    L.vb=[360,470];
-    INC.cond.forEach(function(c,i){L[c.id]={x:(i%2)*182+2,y:2+Math.floor(i/2)*70,w:174,h:62};});
+    L.vb=[360,392];
+    INC.cond.forEach(function(c,i){L[c.id]={x:(i%2)*182+1,y:2+Math.floor(i/2)*58,w:177,h:52};});
     /* chip widths follow label length so "Understand" and "Coordinate" are not cramped */
-    var fw=[58,104,62,38,86],fx=2;INC.fn.forEach(function(f,i){L[f.id]={x:fx,y:162,w:fw[i]-1,h:42};fx+=fw[i]+2.5;});
-    L.kbd={x:2,y:238,w:174,h:44};L.uns={x:184,y:238,w:174,h:44};
-    L.nofb={x:2,y:290,w:174,h:44};L.rbm={x:184,y:290,w:174,h:44};
-    L.kbm={x:2,y:342,w:356,h:40};
-    L.rev={x:2,y:414,w:112,h:52};L.ele={x:124,y:414,w:112,h:52};L.stop={x:246,y:414,w:112,h:52};
-    L.blame={x:20,y:150,w:320,h:96};
+    var fw=[58,104,62,38,86],fx=1;INC.fn.forEach(function(f,i){L[f.id]={x:fx,y:134,w:fw[i]-1,h:40};fx+=fw[i]+2.5;});
+    L.kbd={x:1,y:198,w:177,h:38};L.uns={x:183,y:198,w:177,h:38};
+    L.nofb={x:1,y:242,w:177,h:38};L.rbm={x:183,y:242,w:177,h:38};
+    L.kbm={x:1,y:286,w:359,h:36};
+    L.rev={x:1,y:344,w:116,h:44};L.ele={x:122,y:344,w:116,h:44};L.stop={x:243,y:344,w:117,h:44};
+    L.blame={x:20,y:140,w:320,h:96};
   }
   return L;
 }
@@ -6731,35 +6796,35 @@ function buildInc(){
   INC.cond.forEach(function(c,i){
     var g=box(c.id,"inc-cond"+(c.sev?" is-sev":" is-deg")),R=L[c.id];
     el("rect",{x:0,y:0,width:ph?5:6,height:R.h,"class":"inc-bar"},g);
-    var t=txt(g,ph?12:16,ph?22:30,c.t,"start","inc-t");t.setAttribute("font-size",ph?"12.5":"16");
-    var l=txt(g,ph?12:16,ph?40:54,(c.sev?"↓↓ ":"↓ ")+c.lvl,"start","inc-lvl");l.setAttribute("font-size",ph?"10.5":"14.5");
+    var t=txt(g,ph?11:16,ph?21:30,c.t,"start","inc-t");t.setAttribute("font-size",ph?"13.5":"16");
+    var l=txt(g,ph?11:16,ph?41:54,(c.sev?"↓↓ ":"↓ ")+c.lvl,"start","inc-lvl");l.setAttribute("font-size",ph?"13":"14.5");
     if(!ph){var s=txt(g,16,76,c.sub,"start","inc-sub");s.setAttribute("font-size","14.5");}
-    else{var s2=txt(g,12,55,c.sub,"start","inc-sub");s2.setAttribute("font-size","9.5");}
     g.__k=i;
   });
   INC.fn.forEach(function(f){
     var g=box(f.id,"inc-fn"+(f.on?" is-on":" is-off")),R=L[f.id];
     if(!ph){var hb=el("rect",{x:-6,y:-6,width:R.w+12,height:R.h+12,rx:12,"class":"inc-halo"},g);g.insertBefore(hb,g.firstChild);}
-    var t=txt(g,R.w/2,R.h/2+(ph?5:5),ph?f.p:f.t,"middle","inc-t");t.setAttribute("font-size",ph?"14":"14");
+    var t=txt(g,R.w/2,R.h/2+5,ph?f.p:f.t,"middle","inc-t");t.setAttribute("font-size",ph?"14":"15");
     if(!f.on&&!ph){var s=txt(g,R.w/2,R.h-6,"not reached","middle","inc-sub");s.setAttribute("font-size","14.5");t.setAttribute("y",R.h/2-4);}
   });
   INC.mech.forEach(function(m){
     var g=box(m.id,"inc-mech"+(m.id==="kbm"?" is-key":"")),R=L[m.id];
     g.setAttribute("data-s",m.s);
-    var t=txt(g,ph?10:14,ph?19:30,ph&&m.p?m.p:m.t,"start","inc-t");t.setAttribute("font-size",ph?"11":"14.5");
+    var t=txt(g,ph?10:14,ph?R.h/2+5:30,ph&&m.p?m.p:m.t,"start","inc-t");t.setAttribute("font-size",ph?"13":"14.5");
     if(!ph&&m.t.length>24){ /* wrap long labels on two lines */
       var k=m.t.indexOf(":");if(k>0){t.textContent=m.t.slice(0,k+1);var t2=txt(g,14,48,m.t.slice(k+2),"start","inc-t");t2.setAttribute("font-size","14.5");}
     }
-    var r=txt(g,ph?10:14,ph?35:(m.t.length>24?69:54),m.r,"start","inc-rule");r.setAttribute("font-size",ph?"9.5":"14.5");
+    if(ph){var rp=txt(g,R.w-9,R.h/2+5,m.r,"end","inc-rule");rp.setAttribute("font-size","13");if(m.id!=="kbm")rp.setAttribute("display","none");}
+    else{var r=txt(g,14,m.t.length>24?69:54,m.r,"start","inc-rule");r.setAttribute("font-size","14.5");}
   });
   INC.band.forEach(function(b){
     var g=box(b.id,"inc-band inc-band-"+b.id),R=L[b.id];
-    var t=txt(g,R.w/2,ph?22:(b.id==="stop"?36:28),b.t,"middle","inc-t");t.setAttribute("font-size",ph?"11":(b.id==="stop"?"15":"14"));
-    var r=txt(g,R.w/2,ph?40:(b.id==="stop"?60:48),b.r,"middle","inc-rule");r.setAttribute("font-size",ph?"9.5":"14.5");
+    var t=txt(g,R.w/2,ph?27:(b.id==="stop"?36:28),b.t,"middle","inc-t");t.setAttribute("font-size",ph?"13":(b.id==="stop"?"15":"15"));
+    if(!ph){var r=txt(g,R.w/2,b.id==="stop"?60:48,b.r,"middle","inc-rule");r.setAttribute("font-size","14.5");}
   });
   /* the label the report would write, drawn over the four condition boxes */
   var lb=el("g",{"class":"inc-label"},ng),B=L.blame;
-  var cap=txt(lb,B.x+B.w/2,B.y-14,"THE WRITE-UP SAYS","middle","inc-cap");cap.setAttribute("font-size",ph?"10":"14.5");
+  var cap=txt(lb,B.x+B.w/2,B.y-14,"THE WRITE-UP SAYS","middle","inc-cap");cap.setAttribute("font-size",ph?"13":"14.5");
   var big=txt(lb,B.x+B.w/2,B.y+B.h/2+(ph?10:16),"OPERATOR ERROR","middle","inc-big");big.setAttribute("font-size",ph?"30":"50");
   /* the label must sit inside the four tiles: shrink it to fit once the display font has loaded */
   var fitBig=function(){try{big.setAttribute("font-size",ph?"30":"50");var tl=big.getComputedTextLength(),room=B.w-(ph?16:32);if(tl>room)big.setAttribute("font-size",((ph?30:50)*room/tl).toFixed(1));}catch(e){}};
@@ -6819,11 +6884,46 @@ function incBindFrame(){
   });
 }
 
+/* the plotted numbers as tables, one per figure: the engine's Story.dataTable when present,
+   otherwise a plain <details> table in the same place */
+function tblHtml(t){
+  var h='<div class="fd-scroll" role="region" tabindex="0" aria-label="'+t.caption.replace(/"/g,"")+'"><table><caption>'+t.caption+'</caption><thead><tr>'+
+    t.columns.map(function(c){return '<th scope="col">'+c+'</th>';}).join("")+'</tr></thead><tbody>';
+  t.rows.forEach(function(r){h+='<tr>'+r.map(function(c,i){return i?'<td'+(/^\d+$/.test(String(c))?' class="num"':'')+'>'+c+'</td>':'<th scope="row">'+c+'</th>';}).join("")+'</tr>';});
+  return h+'</tbody></table></div>';
+}
+var FNNAME={Detection:"Detection",Understanding:"Understanding",Decisionmaking:"Decision making",ActionExecution:"Action execution",InterteamCoordination:"Inter-team coordination"};
+function fillTables(){
+  var name={};["cond","fn","mech","band"].forEach(function(k){INC[k].forEach(function(n){name[n.id]=n.t;});});
+  var T={
+    inc:{src:"examples/reactor_startup_nonroutine.json and docs/walkthrough-data.json",f:function(){return {caption:"Every link in the worked restart, with the rule that draws it. Illustrative scenario, not a real event",
+      columns:["From","To","Rule","Appears at step"],rows:INC.edges.map(function(e){return [name[e[0]],name[e[1]],e[3],String(e[2]+1)];})};}},
+    net:{src:"docs/crosswalk-data.json and ontology/ehs-hfo.ttl",f:function(){return {caption:"The 20 performance influencing factors by context dimension, with the level assessed in the worked restart",
+      columns:["Factor","Context dimension","Level in the worked restart"],rows:D.factors.map(function(f){return [f.label,f.dim,f.lvl];})};}},
+    fn:{src:"ontology/ehs-hfo.ttl, property ehs:appliesToFunction",f:function(){var fns=["Detection","Understanding","Decisionmaking","ActionExecution","InterteamCoordination"];
+      return {caption:"Factors attached to each macrocognitive function (31 links; 11 factors attach to more than one function)",
+      columns:["Function","Factors","Which factors"],rows:fns.map(function(k){var l=D.factors.filter(function(f){return f.fn.indexOf(k)>=0;});return [FNNAME[k],String(l.length),l.map(function(f){return f.label;}).join("; ")];})};}},
+    der:{src:"docs/walkthrough-data.json",f:function(){return {caption:"The derivation chain in the figure: each derived fact and the rule that produced it ("+D.fired+" inferences from "+D.rules+" rules in total)",
+      columns:["Stage","Fact","Rule"],rows:DER.nodes.map(function(n){return [String(n.s+1),n.L?n.t+" ("+n.u+")":n.t,n.L?"input":n.r];})};}},
+    xw:{src:"docs/crosswalk-data.json",f:function(){return {caption:"Match strength by framework, 20 factors each (80 cells)",
+      columns:["Framework","Close","Broader","Partial","None"],rows:D.frameworks.map(function(fw){var c=fwCounts(fw);return [fw,String(c.close),String(c.broader),String(c.partial),String(c.none)];})};}}
+  };
+  var S=window.Story,eng=S&&typeof S.dataTable==="function";
+  Array.prototype.forEach.call(document.querySelectorAll("details.fd[data-table]"),function(d){
+    var o=T[d.getAttribute("data-table")],b=d.querySelector(".fd-body");if(!o||!b||b.firstChild)return;
+    var t=o.f();
+    if(eng){try{var sc=d.previousElementSibling;var fig=sc&&sc.querySelector(".st-chart");
+      var out=S.dataTable(fig||sc,{caption:t.caption,columns:t.columns,rows:t.rows,source:o.src,summary:"Data behind this figure"});
+      if(out){if(out.parentNode!==d.parentNode||out.previousElementSibling!==d)d.parentNode.insertBefore(out,d);d.remove();return;}}catch(e){}}
+    b.innerHTML=tblHtml(t);
+  });
+}
+
 function ready(){
   var heroOrb=null,c=document.getElementById("orb-hero");
   if(c&&window.Story&&Story.orb){try{heroOrb=Story.orb(c,{state:"breathing"});}catch(e){}}
   if(window.Story&&Story.field){var hv=document.getElementById("hero");if(hv)try{Story.field(hv,{density:1.0});}catch(e){}}
-  buildInc(); incBindFrame(); buildNet(); buildFn(); buildDer(); buildXw();
+  buildInc(); incBindFrame(); buildNet(); buildFn(); buildDer(); buildXw(); fillTables();
 
   var counts={human:0,operational:0,system:0,task:0};
   D.factors.forEach(function(f){counts[DIMK[f.dim]]++;});

@@ -330,6 +330,61 @@ kbd{font-family:var(--font-mono);font-size:.625rem;border:1px solid var(--rule-s
 .tm-on .btn,.tm-on .tile,.tm-on .stage,.tm-on .linkbtn,.tm-on .chain-node{transition-property:border-color,color,background,box-shadow,opacity}
 @media print{.chain-node,.chain-take{opacity:1!important;transform:none!important}.chain-line line{stroke-dashoffset:0!important}}
 </style>
+<style id="r8-page">
+/* shareable headings: copy-link button */
+.hl-link{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:-14px -8px -14px 4px;padding:0;vertical-align:middle;border:0;border-radius:4px;background:none;color:var(--muted);cursor:pointer;position:relative;flex:none;align-self:center;opacity:.75;transition:color .15s,opacity .15s}
+.hl-link svg{width:17px;height:17px}
+.hl-link:hover,.hl-link:focus-visible{color:var(--accent);opacity:1}
+.hl-link:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.hl-tip{position:absolute;left:calc(100% + 2px);top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--font-mono);font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:none;padding:5px 9px;background:var(--ink);color:var(--paper);pointer-events:none;z-index:5}
+/* figure data: every plotted number as a table */
+details.fd{border:2px solid var(--rule-soft);background:var(--surface)}
+details.fd > summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;gap:8px;padding:0 14px;font-family:var(--font-mono);font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+details.fd > summary::-webkit-details-marker{display:none}
+details.fd > summary::before{content:"+";font-weight:700;width:1ch}
+details.fd[open] > summary::before{content:"\2212"}
+.fd-n{color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0}
+.fd-body{padding:0 14px 14px}
+.fd-scroll{overflow-x:auto;margin-top:10px;overscroll-behavior-x:contain}
+.fd-scroll:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.fd table{border-collapse:collapse;width:100%;font-size:.9375rem;line-height:1.4;font-variant-numeric:tabular-nums}
+.fd caption{text-align:left;caption-side:top;padding:4px 0 8px;color:var(--ink-2);font-size:.9375rem;max-width:72ch}
+.fd th,.fd td{padding:8px 10px;border-bottom:1px solid var(--rule-soft);text-align:left;vertical-align:top}
+.fd thead th{font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);border-bottom:2px solid var(--rule);vertical-align:bottom}
+.fd .num{text-align:right;font-family:var(--font-mono);white-space:nowrap}
+.fd tbody th{font-weight:600;color:var(--ink)}
+.fd tbody td{color:var(--ink-2)}
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+/* round 8: readable type, solid controls */
+.label,.context-title .idheas,.tile .t-level,.t-uses,.tag,.legend-item,.stage-n,.stage-c,.kbd-hint,kbd,.fh-n,.fh-r,.wt-k,.legend-basis,.rule-more summary,.linkbtn,.legend-mark{font-size:.75rem}
+.tile .t-label{font-size:.8125rem}
+.finder-count,.derived-list li,.step-count{font-size:.8125rem}
+.panel .sec-sub,.notice p,.howto li{font-size:.9375rem}
+.rule-because,.stage-note p{font-size:1rem}
+.linkbtn{min-height:44px}
+.btn{min-height:44px}
+.btn:disabled{opacity:1;color:var(--muted);border-color:var(--rule-soft);background:var(--surface-2)}
+.btn-reset{background:none;border-color:var(--rule-soft);color:var(--ink-2)}
+.btn-reset:hover{border-color:var(--accent);color:var(--accent);background:none}
+.controls{flex-wrap:wrap}
+.rule-more summary{min-height:44px;display:flex;align-items:center}
+.finder>summary{min-height:44px;display:flex;align-items:center;gap:6px}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px}
+.chain-end .chain-r,.stage.is-current .stage-c,.derived-list li:first-child .d-stratum{color:var(--ink-2)}
+.crumb{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 6px;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.crumb a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.crumb a:hover{color:var(--accent)}
+.crumb b{color:var(--ink)}
+.wt-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.wt-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:2px solid var(--rule);background:var(--surface);color:var(--ink);text-decoration:none;font:600 .8125rem/1.2 var(--font-mono);letter-spacing:.04em}
+.wt-btn:hover{background:var(--surface-2)}
+.wt-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.wt-btn-primary:hover{background:var(--accent-2);color:var(--accent-ink)}
+.progress-track{height:8px}
+#derivation,#scenario-panel,#assessment,#chain{scroll-margin-top:64px}
+.panel h2{display:flex;align-items:center}
+</style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
  --rs-paper:var(--paper,#F7F7F3);--rs-surface:var(--surface,#FFFFFF);--rs-surface-2:var(--surface-2,#EFEFE9);
@@ -438,9 +493,15 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <main id="main">
 <section class="hero"><div class="wrap">
+  <nav class="crumb" aria-label="You are here"><a href="https://priyatham9.github.io/grounded/">Grounded</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">ehs-human-factors-ontology</a> <span aria-hidden="true">&rsaquo;</span> <b>Derivation tool</b></nav>
   <p class="label eyebrow">Worked example &middot; reactor-startup-nonroutine</p>
   <h1 class="display">Twenty factor levels to one screening band</h1>
   <p class="dek">Four of the twenty conditions on this job were below nominal. Twenty-one rules, fired 89 times, carry those four conditions to a stop-and-review band, and every firing is shown below with the premises it used. Nothing here is summarised: this is the trace <code class="mono">python -m ehs_hfo assess --json</code> produces, read back out.</p>
+  <div class="wt-actions">
+    <a class="wt-btn wt-btn-primary" href="#derivation">Step through the 89 firings</a>
+    <a class="wt-btn" href="story.html">Read the story first</a>
+    <a class="wt-btn" href="crosswalk.html">Crosswalk</a>
+  </div>
   <div class="wt-strip" role="list" aria-label="The derivation in four numbers">
     <a class="wt-cell" role="listitem" href="#scenario-panel"><span class="wt-k">Conditions below nominal</span><span class="wt-v" id="sumDegraded">4<small> of 20</small></span></a>
     <a class="wt-cell" role="listitem" href="#stages"><span class="wt-k">Stages of reasoning</span><span class="wt-v" id="sumStages">6</span></a>
@@ -478,7 +539,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 
 <div class="layout">
   <div class="panel panel-left" id="scenario-panel"><div class="panel-inner">
-    <h2>The conditions</h2>
+    <h2 id="conditions-h">The conditions</h2>
     <p class="sec-sub">Four IDHEAS-G context categories, twenty factors, one analyst-assigned level each. Select a tile to trace that condition through the derivation.</p>
     <div class="legend" id="legend" aria-label="Level legend"></div>
     <div class="tile-tools">
@@ -488,7 +549,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   </div></div>
 
   <div class="panel panel-right" id="derivation"><div class="panel-inner">
-    <h2>The derivation</h2>
+    <h2 id="derivation-h">The derivation</h2>
     <p class="sec-sub"><span id="totalFiredLabel">89</span> rule firings ran to reach the screening band, in the order the engine's fixpoint loop found them.</p>
 
     <nav class="stages" id="stages" aria-label="Stages of the derivation"></nav>
@@ -505,10 +566,11 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
         <button type="button" class="btn" id="btnPrev" aria-label="Previous step">&larr; Prev</button>
         <button type="button" class="btn primary" id="btnPlay" aria-pressed="false">Play</button>
         <button type="button" class="btn" id="btnNext" aria-label="Next step">Next &rarr;</button>
+        <button type="button" class="btn btn-reset" id="btnReset" aria-label="Reset to step 1, show every firing">Reset</button>
       </div>
     </div>
-    <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div><div class="progress-ticks" id="progressTicks"></div></div>
-    <p class="kbd-hint">Keys: <kbd>&larr;</kbd> <kbd>&rarr;</kbd> step, <kbd>Home</kbd> <kbd>End</kbd> first and last.</p>
+    <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Position in the derivation" aria-valuemin="1" aria-valuemax="89" aria-valuenow="1"><div class="progress-fill" id="progressFill"></div><div class="progress-ticks" id="progressTicks"></div></div>
+    <p class="kbd-hint">Keys: <kbd>&larr;</kbd> <kbd>&rarr;</kbd> step, <kbd>Home</kbd> <kbd>End</kbd> first and last. The address bar keeps your step, so a link opens here.</p>
 
     <div class="rule-card" id="ruleCard"></div>
 
@@ -539,7 +601,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 </div>
 
 <section class="assessment-section" id="assessment"><div class="wrap">
-  <h2 style="margin-bottom:6px">The final assessment</h2>
+  <h2 style="margin-bottom:6px" id="assessment-h">The final assessment</h2>
   <p class="sec-sub" style="color:var(--muted);font-size:.875rem;margin-bottom:22px">Printed verbatim by <code class="mono">python -m ehs_hfo assess</code> against the committed scenario file, including its own trace of the screening-band rule.</p>
   <div class="assessment-grid">
     <div>
@@ -1029,6 +1091,9 @@ Standing caveats
     var p = pos(), n = order.length;
     stepCount.textContent = (trace ? 'Firing ' + (p + 1) + ' of ' + n + ' that use ' + nm(trace) + ' · ' : '') + 'Step ' + (idx + 1) + ' of ' + total;
     progressFill.style.width = ((idx + 1) / total * 100) + '%';
+    var pt = document.getElementById('progressTrack');
+    if (pt) { pt.setAttribute('aria-valuemax', String(total)); pt.setAttribute('aria-valuenow', String(idx + 1)); pt.setAttribute('aria-valuetext', 'Step ' + (idx + 1) + ' of ' + total + ', stage ' + (step._stage + 1) + ' of ' + STAGES.length); }
+    saveState();
     btnPrev.disabled = p === 0;
     btnNext.disabled = p === n - 1;
     rebuildDerived();
@@ -1124,7 +1189,51 @@ Standing caveats
   });
   runFinder();
 
-  goTo(0);
+  /* ---- shareable state: ?step=N&trace=factor. Stepping replaces the entry; tracing, stage jumps and Reset add one ---- */
+  var restoring = false, pendingPush = false;
+  function stateUrl() {
+    var u = new URLSearchParams(location.search);
+    if (idx > 0) u.set('step', String(idx + 1)); else u.delete('step');
+    if (trace) u.set('trace', trace.replace(/^ehs:/, '')); else u.delete('trace');
+    var qs = u.toString();
+    return location.pathname + (qs ? '?' + qs : '') + location.hash;
+  }
+  function saveState(push) {
+    if (restoring || !history.replaceState) return;
+    var url = stateUrl();
+    if (url === location.pathname + location.search + location.hash) { pendingPush = false; return; }
+    if (push || pendingPush) history.pushState({ wt: 1 }, '', url); else history.replaceState(history.state, '', url);
+    pendingPush = false;
+  }
+  function readState() {
+    var u = new URLSearchParams(location.search);
+    var t = u.get('trace'), n = parseInt(u.get('step'), 10);
+    restoring = true;
+    var cur = t ? 'ehs:' + t.replace(/^ehs:/, '') : null;
+    if (cur && !tileByFactor[cur]) cur = null;
+    if (cur !== trace) setTrace(cur, true);
+    var want = isNaN(n) ? 0 : n - 1;
+    if (trace && order.indexOf(want) < 0) { var nx = order.filter(function (i) { return i >= want; })[0]; want = nx == null ? order[order.length - 1] : nx; }
+    goTo(want);
+    restoring = false;
+    saveState();
+  }
+  addEventListener('popstate', function () { stopPlay(); readState(); });
+  /* discrete jumps get their own history entry, so the back button walks them */
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.tile, .stage, #btnClearTrace, #btnReset, .find-hit')) { pendingPush = true; setTimeout(function () { pendingPush = false; }, 0); }
+  }, true);
+  document.getElementById('btnReset').addEventListener('click', function () {
+    stopPlay(); if (trace) setTrace(null, true); goTo(0);
+    fq.value = ''; fs.value = ''; runFinder();
+    saveState(true);
+    stepCount.textContent = 'Reset to step 1 of ' + total;
+  });
+
+  if (location.search) readState(); else goTo(0);
+  if (/[?&]step=/.test(location.search) && !location.hash) {
+    setTimeout(function () { var d = document.getElementById('derivation'); if (d) d.scrollIntoView({ block: 'start' }); }, 80);
+  }
 
   /* headline numbers roll into place once, when the strip is first seen */
   if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -1277,8 +1386,9 @@ var TM = (function () {
 
   // tiles settle in from the centre of each group
   document.querySelectorAll('#contextGroups .tile-grid').forEach(function (grid) {
-    g.fromTo(grid.children, { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: 'back.out(1.6)', stagger: { grid: 'auto', from: 'center', amount: 0.4 },
-      scrollTrigger: { trigger: grid, start: 'top 88%', once: true }, clearProps: 'transform,opacity,visibility' });
+    // opacity only (never visibility), so keyboard users can Tab to a tile before its entrance has played
+    g.fromTo(grid.children, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.6)', stagger: { grid: 'auto', from: 'center', amount: 0.4 },
+      scrollTrigger: { trigger: grid, start: 'top 88%', once: true }, clearProps: 'transform,opacity' });
   });
   // showing or hiding the 16 nominal factors: tiles slide into place (Flip)
   var btnN = document.getElementById('btnNominal');
@@ -1367,5 +1477,62 @@ var TM = (function () {
  if(nav)nav.addEventListener('scroll',fades,{passive:true});
  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',function(){pad();onScroll();});
  pad();frame();
+})();
+</script>
+<script id="r8-links-cfg">
+window.R8_LINKS = [
+  ['#chain-h', function (h) { return { id: 'chain', name: h.textContent.trim() }; }],
+  ['#conditions-h', function () { return { id: 'scenario-panel', name: 'The conditions' }; }],
+  ['#derivation-h', function () { return { id: 'derivation', name: 'The derivation' }; }],
+  ['#assessment-h', function () { return { id: 'assessment', name: 'The final assessment' }; }]
+];
+</script>
+<script id="r8-links-js">
+/* Shareable sections: a small "copy link" button beside each finding or section heading.
+   window.R8_LINKS = [[hostSelector, targetResolver], ...] is read on load. The link is the
+   page URL with #id; nothing about the page changes when it is copied. */
+(function () {
+  'use strict';
+  var ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.5 9.5l3-3M7 4.5l1.2-1.2a2.6 2.6 0 013.7 3.7L10.7 8.2M9 11.5l-1.2 1.2a2.6 2.6 0 01-3.7-3.7L5.3 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  var live = null;
+  function say(t) {
+    if (!live) { live = document.createElement('p'); live.className = 'sr-only'; live.setAttribute('role', 'status'); document.body.appendChild(live); }
+    live.textContent = ''; setTimeout(function () { live.textContent = t; }, 30);
+  }
+  function copy(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise(function (ok, no) {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'absolute'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? ok() : no(); } catch (e) { no(e); } finally { ta.remove(); }
+    });
+  }
+  function add(host, id, name) {
+    if (!host || !id || host.querySelector('.hl-link')) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'hl-link';
+    b.setAttribute('aria-label', 'Copy link to ' + (name || 'this section'));
+    b.innerHTML = ICON;
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var url = location.href.split('#')[0] + '#' + id;
+      var done = function (msg) {
+        var old = b.querySelector('.hl-tip'); if (old) old.remove();
+        var tip = document.createElement('span'); tip.className = 'hl-tip'; tip.setAttribute('aria-hidden', 'true'); tip.textContent = msg; b.appendChild(tip);
+        setTimeout(function () { tip.remove(); }, 1800); say(msg);
+      };
+      copy(url).then(function () { done('Link copied'); }, function () { done('Copy failed: ' + url); });
+    });
+    host.appendChild(b);
+  }
+  function run() {
+    (window.R8_LINKS || []).forEach(function (r) {
+      [].forEach.call(document.querySelectorAll(r[0]), function (host) {
+        var t = r[1](host); if (t) add(host, t.id, t.name);
+      });
+    });
+  }
+  function start() { run(); setTimeout(run, 1200); }
+  if (document.readyState === 'complete') start(); else addEventListener('load', start);
 })();
 </script>

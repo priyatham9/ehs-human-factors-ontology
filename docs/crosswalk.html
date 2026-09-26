@@ -257,6 +257,91 @@ table.datatbl{border-collapse:separate;border-spacing:0;width:100%;font-family:v
 .tm-on .chip,.tm-on .xw-cell,.tm-on .btn{transition-property:border-color,color,background,box-shadow}
 @media print{.fit .fw,.fit-take,.fw-bar i,.heatgrid .cell{opacity:1!important;transform:none!important}}
 </style>
+<style id="r8-page">
+/* shareable headings: copy-link button */
+.hl-link{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:-14px -8px -14px 4px;padding:0;vertical-align:middle;border:0;border-radius:4px;background:none;color:var(--muted);cursor:pointer;position:relative;flex:none;align-self:center;opacity:.75;transition:color .15s,opacity .15s}
+.hl-link svg{width:17px;height:17px}
+.hl-link:hover,.hl-link:focus-visible{color:var(--accent);opacity:1}
+.hl-link:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.hl-tip{position:absolute;left:calc(100% + 2px);top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--font-mono);font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:none;padding:5px 9px;background:var(--ink);color:var(--paper);pointer-events:none;z-index:5}
+/* figure data: every plotted number as a table */
+details.fd{border:2px solid var(--rule-soft);background:var(--surface)}
+details.fd > summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;gap:8px;padding:0 14px;font-family:var(--font-mono);font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+details.fd > summary::-webkit-details-marker{display:none}
+details.fd > summary::before{content:"+";font-weight:700;width:1ch}
+details.fd[open] > summary::before{content:"\2212"}
+.fd-n{color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0}
+.fd-body{padding:0 14px 14px}
+.fd-scroll{overflow-x:auto;margin-top:10px;overscroll-behavior-x:contain}
+.fd-scroll:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.fd table{border-collapse:collapse;width:100%;font-size:.9375rem;line-height:1.4;font-variant-numeric:tabular-nums}
+.fd caption{text-align:left;caption-side:top;padding:4px 0 8px;color:var(--ink-2);font-size:.9375rem;max-width:72ch}
+.fd th,.fd td{padding:8px 10px;border-bottom:1px solid var(--rule-soft);text-align:left;vertical-align:top}
+.fd thead th{font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);border-bottom:2px solid var(--rule);vertical-align:bottom}
+.fd .num{text-align:right;font-family:var(--font-mono);white-space:nowrap}
+.fd tbody th{font-weight:600;color:var(--ink)}
+.fd tbody td{color:var(--ink-2)}
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+/* round 8: readable type, solid tool controls */
+.label,.rail-num,.heatgrid thead th,.grid-dim-row th.grid-dim,.cell,.cell-none,.legend-item,details.datatable>summary,.datatbl thead th,.src,.backlink,.xw-k,.xw-strip-cap,.leader-k,.chip,.cd-tag,.cd-close{font-size:.75rem}
+.pagehead .lede{font-size:1.0625rem}
+.explainer p,.leader p{font-size:1rem}
+.tbl-cap{font-size:.9375rem}
+.datatbl{font-size:.8125rem}
+.fw-cap,.xw-count,.xw-hint{font-size:.8125rem}
+.grid-factor{font-size:.875rem}
+.crumb{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 10px;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.crumb a{color:var(--muted);display:inline-flex;align-items:center;min-height:44px}
+.crumb a:hover{color:var(--accent)}
+.crumb b{color:var(--ink)}
+/* match strength colours as solid values (AA in both themes): darker = closer on paper, brighter = closer on dark */
+.cell-r3{background:#1E40AF;color:#fff}
+.cell-r2{background:#A9BAEC;color:#101311}
+.cell-r1{background:#DCE3F8;color:#101311}
+.cell-r0{color:#555B57}
+:root[data-theme="dark"] .cell-r3{background:#7C9EFF;color:#06101F}
+:root[data-theme="dark"] .cell-r2{background:#3A55A3;color:#EAECF2}
+:root[data-theme="dark"] .cell-r1{background:#1D2848;color:#EAECF2}
+:root[data-theme="dark"] .cell-r0{color:#A3A9B6}
+@media (prefers-color-scheme:dark){
+ :root:not([data-theme="light"]) .cell-r3{background:#7C9EFF;color:#06101F}
+ :root:not([data-theme="light"]) .cell-r2{background:#3A55A3;color:#EAECF2}
+ :root:not([data-theme="light"]) .cell-r1{background:#1D2848;color:#EAECF2}
+ :root:not([data-theme="light"]) .cell-r0{color:#A3A9B6}
+}
+.cell{min-height:44px;padding:0 8px;display:flex;align-items:center;justify-content:center}
+.cd-close{min-height:44px}
+.fw-bar i{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fw-bar i span{font:700 .75rem/1 var(--font-mono)}
+.fw-bar i.cell-r0 span{color:var(--ink-2)}
+/* row and column highlight */
+.heatgrid tr.hl-row .grid-factor{background:var(--accent-wash);color:var(--ink);box-shadow:inset 4px 0 0 var(--accent),inset 0 -1px 0 var(--rule-soft)}
+.heatgrid td.hl-col{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.heatgrid thead th.hl-col{background:var(--accent-wash);box-shadow:inset 0 -3px 0 var(--accent)}
+.heatgrid tr.hl-row td.cell-td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.grid-scroll:focus-visible,.tbl-wrap:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.xw-status{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:4px 0 6px}
+.xw-status .xw-count{margin:0}
+.xw-reset{min-height:44px;padding:0 14px;border:2px solid var(--rule-soft);background:var(--surface);color:var(--ink-2);font:600 .75rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.xw-reset:hover{border-color:var(--accent);color:var(--accent)}
+.xw-hint{color:var(--muted);margin:0 0 12px}
+.xw-empty{margin:0;padding:18px 16px;color:var(--ink-2)}
+.linkish{font:inherit;color:var(--accent);background:none;border:0;border-bottom:2px solid var(--accent);padding:0;min-height:44px;cursor:pointer}
+.xw-next-links{display:flex;flex-wrap:wrap;gap:10px}
+.xw-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:2px solid var(--rule);background:var(--surface);color:var(--ink);text-decoration:none;font:600 .8125rem/1.2 var(--font-mono);letter-spacing:.04em}
+.xw-btn:hover{background:var(--surface-2)}
+.xw-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.xw-btn-primary:hover{background:var(--accent-2);color:var(--accent-ink)}
+.footer-links a{min-height:44px}
+.pn .label{font-size:.75rem}
+.section[id]{scroll-margin-top:64px}
+.rail-head{align-items:center;flex-wrap:nowrap}
+.rail-head h2{min-width:0}
+.heatgrid thead th:first-child,.grid-factor{width:32%}
+.crumb a{text-decoration:none}
+@media(max-width:760px){.grid-factor{font-size:.8125rem}.xw-cell{padding:12px}.xw-d{font-size:.8125rem}}
+</style>
 <script id="rs-theme-init">try{var t=localStorage.getItem("pc-theme")||localStorage.getItem("ehs-ai-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script><style id="rs-header-css">
 .rs-header{
  --rs-paper:var(--paper,#F7F7F3);--rs-surface:var(--surface,#FFFFFF);--rs-surface-2:var(--surface-2,#EFEFE9);
@@ -364,7 +449,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 <a class="skip" href="#main">Skip to content</a><header class="rs-header" id="rs-header"><div class="rs-bar"><div class="rs-row"><a class="rs-brand" href="https://priyatham9.github.io/grounded/" aria-label="Grounded research hub"><span class="rs-mark" aria-hidden="true"></span>Grounded</a><a class="rs-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a><nav class="rs-nav" aria-label="Research site"><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><details class="rs-menu" data-current="true"><summary class="rs-item" aria-haspopup="true">Projects<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a></div></details><details class="rs-menu"><summary class="rs-item" aria-haspopup="true">Papers<span class="rs-caret" aria-hidden="true"></span></summary><div class="rs-panel"><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a></div></details></nav><span class="rs-sep" aria-hidden="true"></span><button class="rs-btn" id="rs-theme" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch colour theme"><svg class="rs-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="rs-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button><button class="rs-btn rs-burger" id="rs-menu-btn" type="button" aria-expanded="false" aria-controls="rs-sheet" aria-label="Open menu"><i></i></button></div></div><div class="rs-sub"><div class="rs-row rs-subrow"><span class="rs-sublabel">On this page</span><nav class="rs-sections" id="rs-sections" aria-label="On this page"><a class="rs-sec" href="#top">Grid</a><a class="rs-sec" href="#legend">Legend</a><a class="rs-sec" href="#data">Data</a></nav><button class="rs-subbtn" id="rs-subbtn" type="button" aria-expanded="false" aria-controls="rs-sublist">On this page:<b id="rs-now">Grid</b><span class="rs-caret" aria-hidden="true"></span></button></div><nav class="rs-sublist" id="rs-sublist" aria-label="On this page (list)" hidden><a class="rs-sec" href="#top">Grid</a><a class="rs-sec" href="#legend">Legend</a><a class="rs-sec" href="#data">Data</a></nav></div><div class="rs-sheet" id="rs-sheet" hidden><a class="rs-item" href="https://priyatham9.github.io/grounded/">Overview</a><a class="rs-item" href="https://priyatham9.github.io/grounded/start.html">Start here</a><a class="rs-item" href="https://priyatham9.github.io/grounded/observatory.html">Observatory</a><span class="rs-group">Projects</span><a class="rs-opt" href="https://priyatham9.github.io/ehs-osha-analysis/"><span class="rs-t">OSHA data quality</span><span class="rs-n">2.8M real filings</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-ai-grounding-eval/"><span class="rs-t">Grounding benchmark</span><span class="rs-n">first baselines</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-human-factors-ontology/" aria-current="page"><span class="rs-t">Human factors ontology</span><span class="rs-n">derivation traces</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-risk-sem/"><span class="rs-t">SEM for safety risk</span><span class="rs-n">simulation studies</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-capitals-calculator/"><span class="rs-t">Cost-benefit calculator</span><span class="rs-n">interactive tool</span></a><a class="rs-opt" href="https://priyatham9.github.io/ehs-benchmarks/"><span class="rs-t">OSHA benchmarks</span><span class="rs-n">TRIR/DART library</span></a><span class="rs-group">Papers</span><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper.html"><span class="rs-t">Grounded reasoning for safety-critical AI</span><span class="rs-n">bundled draft</span></a><a class="rs-opt" href="https://priyatham9.github.io/grounded/paper-osha.html"><span class="rs-t">The hours denominator</span><span class="rs-n">standalone OSHA paper</span></a><a class="rs-sheet-author" href="https://priyatham9.github.io/">Priyatham Chimmani&nbsp;&#8599;</a></div><span class="rs-progress" aria-hidden="true"></span></header>
 <section class="pagehead" id="top">
   <div class="wrap">
-    <span class="label">Crosswalk &middot; heat grid</span>
+    <nav class="crumb" aria-label="You are here"><a href="https://priyatham9.github.io/grounded/">Grounded</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">ehs-human-factors-ontology</a> <span aria-hidden="true">&rsaquo;</span> <b>Crosswalk</b></nav>
     <h1 class="display">Match strength, factor by framework</h1>
     <p class="lede">Every one of the 20 adopted context factors against SPAR-H, CREAM, HFACS and the HSE performance-influencing-factor list: 80 factor&times;framework cells, 96 cited correspondences. Read <a href="index.html#crosswalk">the full crosswalk narrative</a> or the underlying <a href="https://github.com/priyatham9/ehs-human-factors-ontology/blob/main/crosswalk/crosswalk.csv">crosswalk.csv</a>.</p>
     <div class="xw-strip" role="group" aria-label="The 80 cells by match strength. Select one to highlight those cells in the grid.">
@@ -394,7 +479,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
     <div class="explainer">
       <p><strong>What a crosswalk match does and does not mean.</strong> A match strength here is <q>one person's judgement, no second coder, no inter-rater reliability, no adjudication</q>, recorded so a reader can check and argue with it rather than trust it silently. The strength <code>exact</code> is declared in the ontology and deliberately never used, because <q>asserting exact identity between factors written decades apart for different industries would claim more than the sources support</q>. A cell marked none is not a blank: it is <q>an assertion that a framework has no counterpart at all, which is a claim someone can argue with rather than a silence</q>.</p>
     </div>
-    <div class="rail-head"><span class="rail-num">Grid</span><h2 class="display">20 factors &times; 4 frameworks</h2></div>
+    <div class="rail-head"><span class="rail-num">Grid</span><h2 class="display" id="grid-h">20 factors &times; 4 frameworks</h2></div>
     <div class="xw-tools" role="search">
       <label class="fld"><span class="label">Find a factor</span><input type="search" id="xwQ" placeholder="e.g. fatigue, procedures, noise" autocomplete="off" /></label>
       <div class="fld"><span class="label" id="xwShowLab">Highlight</span>
@@ -407,15 +492,17 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
         </div>
       </div>
     </div>
-    <p class="xw-count mono" id="xwCount" aria-live="polite"></p>
+    <div class="xw-status"><p class="xw-count mono" id="xwCount" aria-live="polite"></p><button type="button" class="xw-reset" id="xwReset">Reset filters</button></div>
+    <p class="xw-hint mono">Keys: Tab to a cell, arrow keys to move, Enter for details, Esc to close. The grid scrolls sideways on small screens.</p>
     <div class="grid-frame">
-      <div class="grid-scroll">
+      <div class="grid-scroll" role="region" aria-labelledby="grid-h" tabindex="0">
         <table class="heatgrid">
           <thead><tr><th scope="col">Factor</th><th scope="col">SPAR-H</th><th scope="col">CREAM</th><th scope="col">HFACS</th><th scope="col">HSE PIF</th></tr></thead>
           <tbody>
 <tr class="grid-dim-row"><th class="grid-dim" colspan="5" scope="colgroup">Human context</th></tr><tr><th class="grid-factor" scope="row">Procedures, guidance and instructions</th><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-ProceduresGuidanceAndInstructions-SPAR-H" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-ProceduresGuidanceAndInstructions-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Procedures</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-ProceduresGuidanceAndInstructions-CREAM" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-ProceduresGuidanceAndInstructions-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Availability of procedures and plans</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-ProceduresGuidanceAndInstructions-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-ProceduresGuidanceAndInstructions-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Operational process</span> <span class="pop-ref">shappell2006</span></div><div class="pop-note">HFACS has no procedures category at the precondition level; the nearest home is the organisational-level operational process.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-ProceduresGuidanceAndInstructions-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-ProceduresGuidanceAndInstructions-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Preparation for task</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Procedures inadequate or inappropriate</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Staffing</th><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-Staffing-SPAR-H" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-Staffing-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Work processes</span> <span class="pop-ref">gertman2005</span></div><div class="pop-note">SPAR-H has no staffing PSF. Staffing adequacy falls inside its work-processes PSF only by implication.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-Staffing-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-Staffing-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of organisation</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-Staffing-HFACS" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-Staffing-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Resource management</span> <span class="pop-ref">shappell2006</span></div><div class="pop-note">Note the level shift: a precondition-level factor here maps to an organisational-level HFACS category.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-Staffing-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-Staffing-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Manning levels</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Team and organisation factors</th><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-TeamAndOrganizationFactors-SPAR-H" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-TeamAndOrganizationFactors-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Work processes</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-TeamAndOrganizationFactors-CREAM" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-TeamAndOrganizationFactors-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of organisation</span> <span class="pop-ref">hollnagel1998</span></div><div class="pop-row"><span class="pop-ext">Crew collaboration quality</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-TeamAndOrganizationFactors-HFACS" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-TeamAndOrganizationFactors-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Crew resource management</span> <span class="pop-ref">shappell2000</span></div><div class="pop-row"><span class="pop-ext">Organizational climate</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-TeamAndOrganizationFactors-HSEPerformanceInfluencingFactors" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-TeamAndOrganizationFactors-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Clarity of roles and responsibilities</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Communication (organisation)</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-note">One local factor absorbing four HSE organisation factors is a sign of coarseness, not of coverage.</div><div class="pop-row"><span class="pop-ext">Level and nature of supervision/leadership</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Organisational or safety culture</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Training</th><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-Training-SPAR-H" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-Training-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Experience and training</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-Training-CREAM" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-Training-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of training and experience</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-Training-HFACS" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-Training-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Inadequate supervision</span> <span class="pop-ref">shappell2000</span></div><div class="pop-row"><span class="pop-ext">Resource management</span> <span class="pop-ref">shappell2006</span></div><div class="pop-note">Interpretive. HFACS distributes training deficiency across organisational resource management and supervisory failure rather than giving it a precondition category.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-Training-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-Training-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Competence</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Work processes</th><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-WorkProcesses-SPAR-H" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-WorkProcesses-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Work processes</span> <span class="pop-ref">gertman2005</span></div><div class="pop-note">Identical label in both frameworks; IDHEAS-G took the term from SPAR-H.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-WorkProcesses-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-WorkProcesses-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of organisation</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-WorkProcesses-HFACS" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-WorkProcesses-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Operational process</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-WorkProcesses-HSEPerformanceInfluencingFactors" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-WorkProcesses-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Consequences of failure to follow rules/procedures</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Work pressures</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr class="grid-dim-row"><th class="grid-dim" colspan="5" scope="colgroup">Operational context</th></tr><tr><th class="grid-factor" scope="row">Noise and communication pathways</th><td class="cell-td"><button type="button" class="cell cell-r0" aria-describedby="c-NoiseAndCommunicationPathways-SPAR-H" data-strength="none"><span class="cell-label">None</span></button><div class="pop" id="c-NoiseAndCommunicationPathways-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext"><em>(no counterpart)</em></span></div><div class="pop-note">Asserted absence: no counterpart in this framework.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-NoiseAndCommunicationPathways-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-NoiseAndCommunicationPathways-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Crew collaboration quality</span> <span class="pop-ref">hollnagel1998</span></div><div class="pop-note">Only the communication-pathway half of the local factor overlaps.</div><div class="pop-row"><span class="pop-ext">Working conditions</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-NoiseAndCommunicationPathways-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-NoiseAndCommunicationPathways-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Physical environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-NoiseAndCommunicationPathways-HSEPerformanceInfluencingFactors" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-NoiseAndCommunicationPathways-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Communication (job)</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Working environment</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Resistance to physical movement</th><td class="cell-td"><button type="button" class="cell cell-r0" aria-describedby="c-ResistanceToPhysicalMovement-SPAR-H" data-strength="none"><span class="cell-label">None</span></button><div class="pop" id="c-ResistanceToPhysicalMovement-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext"><em>(no counterpart)</em></span></div><div class="pop-note">Asserted absence: no counterpart in this framework.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-ResistanceToPhysicalMovement-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-ResistanceToPhysicalMovement-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Working conditions</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-ResistanceToPhysicalMovement-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-ResistanceToPhysicalMovement-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Physical environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-ResistanceToPhysicalMovement-HSEPerformanceInfluencingFactors" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-ResistanceToPhysicalMovement-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Working environment</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Thermal conditions</th><td class="cell-td"><button type="button" class="cell cell-r0" aria-describedby="c-ThermalConditions-SPAR-H" data-strength="none"><span class="cell-label">None</span></button><div class="pop" id="c-ThermalConditions-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext"><em>(no counterpart)</em></span></div><div class="pop-note">Asserted absence: no counterpart in this framework.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-ThermalConditions-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-ThermalConditions-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Working conditions</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-ThermalConditions-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-ThermalConditions-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Physical environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-ThermalConditions-HSEPerformanceInfluencingFactors" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-ThermalConditions-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Working environment</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Workplace accessibility and habitability</th><td class="cell-td"><button type="button" class="cell cell-r0" aria-describedby="c-WorkplaceAccessibilityAndHabitability-SPAR-H" data-strength="none"><span class="cell-label">None</span></button><div class="pop" id="c-WorkplaceAccessibilityAndHabitability-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext"><em>(no counterpart)</em></span></div><div class="pop-note">Asserted absence: no counterpart in this framework.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-WorkplaceAccessibilityAndHabitability-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-WorkplaceAccessibilityAndHabitability-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Working conditions</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-WorkplaceAccessibilityAndHabitability-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-WorkplaceAccessibilityAndHabitability-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Physical environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-WorkplaceAccessibilityAndHabitability-HSEPerformanceInfluencingFactors" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-WorkplaceAccessibilityAndHabitability-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Working environment</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-note">HSE bundles noise, heat, space, lighting and ventilation into one factor; IDHEAS-G splits them across four.</div></div></td></tr><tr><th class="grid-factor" scope="row">Workplace visibility</th><td class="cell-td"><button type="button" class="cell cell-r0" aria-describedby="c-WorkplaceVisibility-SPAR-H" data-strength="none"><span class="cell-label">None</span></button><div class="pop" id="c-WorkplaceVisibility-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext"><em>(no counterpart)</em></span></div><div class="pop-note">Asserted absence: no counterpart in this framework.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-WorkplaceVisibility-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-WorkplaceVisibility-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Working conditions</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-WorkplaceVisibility-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-WorkplaceVisibility-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Physical environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-WorkplaceVisibility-HSEPerformanceInfluencingFactors" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-WorkplaceVisibility-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Working environment</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr class="grid-dim-row"><th class="grid-dim" colspan="5" scope="colgroup">System context</th></tr><tr><th class="grid-factor" scope="row">Equipment and tools</th><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-EquipmentAndTools-SPAR-H" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-EquipmentAndTools-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Ergonomics and human-machine interface</span> <span class="pop-ref">gertman2005</span></div><div class="pop-note">SPAR-H has no tools-and-parts PSF; the correspondence is to the ergonomics PSF only in so far as tools form part of the interface.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-EquipmentAndTools-CREAM" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-EquipmentAndTools-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of MMI and operational support</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-EquipmentAndTools-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-EquipmentAndTools-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Technological environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-EquipmentAndTools-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-EquipmentAndTools-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Tools appropriate for task</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Human-system interface</th><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-HumanSystemInterface-SPAR-H" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-HumanSystemInterface-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Ergonomics and human-machine interface</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-HumanSystemInterface-CREAM" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-HumanSystemInterface-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of MMI and operational support</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-HumanSystemInterface-HFACS" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-HumanSystemInterface-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Technological environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-HumanSystemInterface-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-HumanSystemInterface-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">System/equipment interface</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">System transparency to personnel</th><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-SystemTransparency-SPAR-H" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-SystemTransparency-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Ergonomics and human-machine interface</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-SystemTransparency-CREAM" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-SystemTransparency-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of MMI and operational support</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-SystemTransparency-HFACS" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-SystemTransparency-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Technological environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-SystemTransparency-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-SystemTransparency-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Clarity of signs, signals, instructions and other information</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr class="grid-dim-row"><th class="grid-dim" colspan="5" scope="colgroup">Task context</th></tr><tr><th class="grid-factor" scope="row">Information availability and reliability</th><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-InformationAvailabilityAndReliability-SPAR-H" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-InformationAvailabilityAndReliability-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Ergonomics and human-machine interface</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-InformationAvailabilityAndReliability-CREAM" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-InformationAvailabilityAndReliability-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of MMI and operational support</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-InformationAvailabilityAndReliability-HFACS" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-InformationAvailabilityAndReliability-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Technological environment</span> <span class="pop-ref">shappell2006</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-InformationAvailabilityAndReliability-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-InformationAvailabilityAndReliability-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Clarity of signs, signals, instructions and other information</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Mental fatigue</th><td class="cell-td"><button type="button" class="cell cell-r2" aria-describedby="c-MentalFatigue-SPAR-H" data-strength="broader"><span class="cell-label">Broader</span></button><div class="pop" id="c-MentalFatigue-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Fitness for duty</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-MentalFatigue-CREAM" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-MentalFatigue-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Time of day (circadian rhythm)</span> <span class="pop-ref">hollnagel1998</span></div><div class="pop-note">CREAM&#x27;s circadian CPC is the only explicit time-of-day factor in any of the five frameworks, and it is not the same construct as mental fatigue.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-MentalFatigue-HFACS" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-MentalFatigue-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Adverse mental states</span> <span class="pop-ref">shappell2000</span></div><div class="pop-row"><span class="pop-ext">Adverse physiological states</span> <span class="pop-ref">shappell2000</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-MentalFatigue-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-MentalFatigue-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Fatigue</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Multitasking, interruptions and distractions</th><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-MultitaskingInterruptionsAndDistractions-SPAR-H" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-MultitaskingInterruptionsAndDistractions-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Complexity</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-MultitaskingInterruptionsAndDistractions-CREAM" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-MultitaskingInterruptionsAndDistractions-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Number of simultaneous goals</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-MultitaskingInterruptionsAndDistractions-HFACS" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-MultitaskingInterruptionsAndDistractions-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Adverse mental states</span> <span class="pop-ref">shappell2000</span></div><div class="pop-note">HFACS lists distraction among adverse mental states, which conflates an environmental demand with an operator state.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-MultitaskingInterruptionsAndDistractions-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-MultitaskingInterruptionsAndDistractions-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Divided attention</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Physical demands</th><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-PhysicalDemands-SPAR-H" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-PhysicalDemands-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Fitness for duty</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-PhysicalDemands-CREAM" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-PhysicalDemands-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Working conditions</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-PhysicalDemands-HFACS" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-PhysicalDemands-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Adverse physiological states</span> <span class="pop-ref">shappell2000</span></div><div class="pop-row"><span class="pop-ext">Physical/mental limitations</span> <span class="pop-ref">shappell2000</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-PhysicalDemands-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-PhysicalDemands-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Physical capability and condition</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Work overload/underload</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Scenario familiarity</th><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-ScenarioFamiliarity-SPAR-H" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-ScenarioFamiliarity-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Experience and training</span> <span class="pop-ref">gertman2005</span></div><div class="pop-note">SPAR-H treats novelty as a property of the operator (experience) rather than of the scenario. The two are not the same construct.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-ScenarioFamiliarity-CREAM" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-ScenarioFamiliarity-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Adequacy of training and experience</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r0" aria-describedby="c-ScenarioFamiliarity-HFACS" data-strength="none"><span class="cell-label">None</span></button><div class="pop" id="c-ScenarioFamiliarity-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext"><em>(no counterpart)</em></span></div><div class="pop-note">Asserted absence: no counterpart in this framework.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-ScenarioFamiliarity-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-ScenarioFamiliarity-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Routine or unusual</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Task complexity</th><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-TaskComplexity-SPAR-H" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-TaskComplexity-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Complexity</span> <span class="pop-ref">gertman2005</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-TaskComplexity-CREAM" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-TaskComplexity-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Number of simultaneous goals</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-TaskComplexity-HFACS" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-TaskComplexity-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Planned inappropriate operations</span> <span class="pop-ref">shappell2000</span></div><div class="pop-note">Weak. HFACS has no task-complexity category; the nearest is a supervisory failure to match task to crew.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-TaskComplexity-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-TaskComplexity-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Difficulty/complexity of task</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr><tr><th class="grid-factor" scope="row">Time pressure and stress</th><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-TimePressureAndStress-SPAR-H" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-TimePressureAndStress-SPAR-H" role="tooltip"><div class="pop-row"><span class="pop-ext">Available time</span> <span class="pop-ref">gertman2005</span></div><div class="pop-row"><span class="pop-ext">Stress and stressors</span> <span class="pop-ref">gertman2005</span></div><div class="pop-note">One IDHEAS-G factor spans two SPAR-H PSFs. Anyone porting SPAR-H multipliers across this boundary is double counting.</div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-TimePressureAndStress-CREAM" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-TimePressureAndStress-CREAM" role="tooltip"><div class="pop-row"><span class="pop-ext">Available time</span> <span class="pop-ref">hollnagel1998</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r1" aria-describedby="c-TimePressureAndStress-HFACS" data-strength="partial"><span class="cell-label">Partial</span></button><div class="pop" id="c-TimePressureAndStress-HFACS" role="tooltip"><div class="pop-row"><span class="pop-ext">Adverse mental states</span> <span class="pop-ref">shappell2000</span></div></div></td><td class="cell-td"><button type="button" class="cell cell-r3" aria-describedby="c-TimePressureAndStress-HSEPerformanceInfluencingFactors" data-strength="close"><span class="cell-label">Close</span></button><div class="pop" id="c-TimePressureAndStress-HSEPerformanceInfluencingFactors" role="tooltip"><div class="pop-row"><span class="pop-ext">Stress/morale</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Time available/required</span> <span class="pop-ref">hse_pifs</span></div><div class="pop-row"><span class="pop-ext">Work pressures</span> <span class="pop-ref">hse_pifs</span></div></div></td></tr>
           </tbody>
         </table>
+        <p class="xw-empty" id="xwEmpty" hidden>No factor matches that search. <button type="button" class="linkish" id="xwClear">Clear the search</button></p>
       </div>
     </div>
     <div class="legend" id="legend" aria-label="Match strength legend">
@@ -430,7 +517,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
 </section>
 <section class="section" id="data">
   <div class="wrap">
-    <div class="rail-head"><span class="rail-num">Data</span><h2 class="display">All 96 correspondences</h2></div>
+    <div class="rail-head"><span class="rail-num">Data</span><h2 class="display" id="data-h">All 96 correspondences</h2></div>
     <details class="datatable">
       <summary>Open the full data table</summary>
       <div class="xw-tools xw-tools-tbl">
@@ -438,8 +525,8 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
         <label class="fld"><span class="label">Framework</span><select id="tblFw"><option value="">All frameworks</option><option>SPAR-H</option><option>CREAM</option><option>HFACS</option><option>HSE PIF</option></select></label>
         <label class="fld"><span class="label">Strength</span><select id="tblS"><option value="">Any strength</option><option>Close</option><option>Broader</option><option>Partial</option><option>None</option></select></label>
       </div>
-      <p class="xw-count mono" id="tblCount" aria-live="polite"></p>
-      <div class="tbl-wrap">
+      <div class="xw-status"><p class="xw-count mono" id="tblCount" aria-live="polite"></p><button type="button" class="xw-reset" id="tblReset">Reset filters</button></div>
+      <div class="tbl-wrap" role="region" aria-labelledby="data-h" tabindex="0">
         <table class="datatbl">
           <thead><tr><th>Dimension</th><th>Local factor</th><th>Framework</th><th>External counterpart</th><th>Strength</th><th>Citation</th><th>Note</th></tr></thead>
           <tbody>
@@ -449,6 +536,17 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
       </div>
       <p class="tbl-cap">One row per correspondence, including the 6 asserted absences (strength none). <a class="backlink" href="crosswalk-data.json">crosswalk-data.json</a> carries the same rows, grouped by cell, for programmatic use. <span class="src">Source artifact: crosswalk/crosswalk.csv</span></p>
     </details>
+  </div>
+</section>
+<section class="section xw-next" id="next" aria-labelledby="next-h">
+  <div class="wrap">
+    <div class="rail-head"><span class="rail-num">Next</span><h2 class="display" id="next-h">See the factors at work</h2></div>
+    <p class="fit-lede">The crosswalk says what each factor means in other frameworks. The story and the derivation tool show what the factors do on one job.</p>
+    <div class="xw-next-links">
+      <a class="xw-btn xw-btn-primary" href="story.html">Read the story: why people err, as a graph</a>
+      <a class="xw-btn" href="walkthrough.html">Step through the derivation</a>
+      <a class="xw-btn" href="index.html">Project page</a>
+    </div>
   </div>
 </section>
 </main>
@@ -496,7 +594,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
    if(!(s in counts))return;
    counts[s]++;byFw[k][s]++;byFw[k].n++;
    b.setAttribute('aria-label',r.name+' against '+FW[k]+': '+LAB[s]+'. Select for details.');
-   cells.push({td:td,b:b,s:s,fw:FW[k],row:r,pop:td.querySelector('.pop')});
+   cells.push({td:td,b:b,s:s,fw:FW[k],col:k,row:r,pop:td.querySelector('.pop')});
   });
  });
  var all=cells.length;
@@ -520,7 +618,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
  bars.innerHTML=FW.map(function(f,k){var c=byFw[k];
   return '<div class="fw"><div class="fw-h"><span>'+f+'</span><span>'+c.close+' of '+c.n+' close</span></div>'+
    '<div class="fw-bar" role="img" aria-label="'+f+': '+c.close+' close, '+c.broader+' broader, '+c.partial+' partial, '+c.none+' none">'+
-   ['close','broader','partial','none'].map(function(s){return c[s]?'<i class="'+CV[s]+'" style="width:'+(c[s]/c.n*100)+'%"></i>':'';}).join('')+'</div>'+
+   ['close','broader','partial','none'].map(function(s){return c[s]?'<i class="'+CV[s]+'" style="width:'+(c[s]/c.n*100)+'%">'+(c[s]>=2?'<span aria-hidden="true">'+c[s]+'</span>':'')+'</i>':'';}).join('')+'</div>'+
    '<p class="fw-cap">'+c.broader+' broader &middot; '+c.partial+' partial &middot; '+c.none+' none</p></div>';}).join('');
 
  /* grid filters */
@@ -537,11 +635,12 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   cells.forEach(function(c){var on=strength==='all'||c.s===strength;c.td.classList.toggle('dim',!on);if(on&&c.row.ok)lit++;});
   chips.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===strength?'true':'false');});
   tiles.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===strength?'true':'false');});
+  var emp=document.getElementById('xwEmpty');if(emp)emp.hidden=shownRows>0;
   countEl.textContent=shownRows+' of '+rows.length+' factors shown'+(strength==='all'?'':' · '+lit+' '+LAB[strength].toLowerCase()+' cells highlighted');
  }
- q.addEventListener('input',apply);
- chips.forEach(function(b){b.addEventListener('click',function(){strength=b.getAttribute('data-s');apply();});});
- tiles.forEach(function(b){b.addEventListener('click',function(){var s=b.getAttribute('data-s');strength=strength===s?'all':s;apply();
+ q.addEventListener('input',function(){apply();save(false);});
+ chips.forEach(function(b){b.addEventListener('click',function(){strength=b.getAttribute('data-s');apply();save(true);});});
+ tiles.forEach(function(b){b.addEventListener('click',function(){var s=b.getAttribute('data-s');strength=strength===s?'all':s;apply();save(true);
   if(strength!=='all')document.getElementById('grid').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});});});
  apply();
 
@@ -549,7 +648,7 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
  var det=document.getElementById('cellDetail'),picked=null,dRow=null;
  function detRow(){if(!dRow){dRow=document.createElement('tr');dRow.className='detail-row';var td=document.createElement('td');td.colSpan=FW.length+1;dRow.appendChild(td);td.appendChild(det);}return dRow;}
  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
- cells.forEach(function(c){c.b.addEventListener('click',function(){
+ function pick(c){
   if(picked)picked.td.classList.remove('is-picked');picked=c;c.td.classList.add('is-picked');
   var rowsH='';
   if(c.pop){
@@ -562,9 +661,11 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   det.hidden=false;det.innerHTML='<div class="cd-head"><span class="cd-tag '+CV[c.s]+'">'+LAB[c.s]+'</span><h3>'+esc(c.row.name)+' &rarr; '+esc(c.fw)+'</h3><button type="button" class="cd-close">Close</button></div>'+rowsH+'<p class="cd-mean">'+MEAN[c.s]+'</p>';
   var tr=detRow();c.row.tr.parentNode.insertBefore(tr,c.row.tr.nextSibling);tr.hidden=false;
   det.style.animation='none';void det.offsetWidth;det.style.animation='';
-  det.querySelector('.cd-close').addEventListener('click',function(){tr.hidden=true;c.td.classList.remove('is-picked');picked=null;c.b.focus();});
+  det.querySelector('.cd-close').addEventListener('click',function(){unpick();save(true);});
   det.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'});
- });});
+ }
+ function unpick(){var tr=grid.querySelector('tr.detail-row');if(tr)tr.hidden=true;if(picked){picked.td.classList.remove('is-picked');var b=picked.b;picked=null;b.focus();}}
+ cells.forEach(function(c){c.b.addEventListener('click',function(){pick(c);save(true);});});
 
  /* data table filters */
  var tq=document.getElementById('tblQ'),tf=document.getElementById('tblFw'),ts=document.getElementById('tblS'),tc=document.getElementById('tblCount');
@@ -574,8 +675,72 @@ html.rs-lock,html.rs-lock body{overflow:hidden}
   trs.forEach(function(tr){var ok=(!tf.value||tr._c[2]===tf.value)&&(!ts.value||tr._c[4]===ts.value)&&terms.every(function(t){return tr._h.indexOf(t)>=0;});
    tr.classList.toggle('is-hidden',!ok);if(ok)n++;});
   tc.textContent=n+' of '+trs.length+' correspondences shown';}
- [tq,tf,ts].forEach(function(e){e.addEventListener(e.tagName==='INPUT'?'input':'change',tbl);});
+ [tq,tf,ts].forEach(function(e){e.addEventListener(e.tagName==='INPUT'?'input':'change',function(){tbl();save(e.tagName!=='INPUT');});});
  tbl();
+
+ /* ---- shareable state: every filter and the selected cell live in the URL ---- */
+ function save(push){
+  if(!history.replaceState)return;
+  var u=new URLSearchParams();
+  if(q.value.trim())u.set('q',q.value.trim());
+  if(strength!=='all')u.set('s',strength);
+  var dr=grid.querySelector('tr.detail-row');
+  if(picked&&dr&&!dr.hidden)u.set('cell',picked.row.name+'|'+picked.fw);
+  if(tq.value.trim())u.set('tq',tq.value.trim());
+  if(tf.value)u.set('fw',tf.value);
+  if(ts.value)u.set('ts',ts.value);
+  var qs=u.toString(),url=location.pathname+(qs?'?'+qs:'')+location.hash;
+  if(url===location.pathname+location.search+location.hash)return;
+  if(push)history.pushState({xw:1},'',url);else history.replaceState(history.state,'',url);
+ }
+ function load(first){
+  var u=new URLSearchParams(location.search);
+  q.value=u.get('q')||'';
+  var sv=u.get('s');strength=(sv&&LAB[sv])?sv:'all';
+  tq.value=u.get('tq')||'';
+  var fv=u.get('fw')||'';tf.value=[].some.call(tf.options,function(o){return o.value===fv;})?fv:'';
+  var sv2=u.get('ts')||'';ts.value=[].some.call(ts.options,function(o){return o.value===sv2;})?sv2:'';
+  apply();tbl();
+  if(u.get('tq')||u.get('fw')||u.get('ts')){var d=document.querySelector('details.datatable');if(d)d.open=true;}
+  var cv=u.get('cell');
+  if(cv){var bits=cv.split('|'),hit=cells.filter(function(c){return c.row.name===bits[0]&&c.fw===bits[1]&&c.row.ok;})[0];if(hit){pick(hit);if(first)setTimeout(function(){hit.td.scrollIntoView({block:'center'});},60);}}
+  else if(picked){var dr=grid.querySelector('tr.detail-row');if(dr)dr.hidden=true;picked.td.classList.remove('is-picked');picked=null;}
+ }
+ addEventListener('popstate',function(){load(false);});
+ load(true);
+
+ /* reset, clear */
+ document.getElementById('xwReset').addEventListener('click',function(){q.value='';strength='all';var dr=grid.querySelector('tr.detail-row');if(dr)dr.hidden=true;if(picked){picked.td.classList.remove('is-picked');picked=null;}apply();save(true);});
+ document.getElementById('xwClear').addEventListener('click',function(){q.value='';apply();save(true);q.focus();});
+ document.getElementById('tblReset').addEventListener('click',function(){tq.value='';tf.value='';ts.value='';tbl();save(true);});
+
+ /* keyboard: arrow keys move between cells, Escape closes the detail */
+ grid.addEventListener('keydown',function(e){
+  var b=e.target.closest&&e.target.closest('.cell');
+  if(e.key==='Escape'&&picked){e.preventDefault();unpick();save(true);return;}
+  if(!b)return;
+  var c=cells.filter(function(x){return x.b===b;})[0];if(!c)return;
+  var vis=rows.filter(function(r){return r.ok;}),ri=vis.indexOf(c.row),ci=c.col,d={ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1],Home:[0,-9],End:[0,9]}[e.key];
+  if(!d)return;
+  e.preventDefault();
+  var nr=Math.max(0,Math.min(vis.length-1,ri+d[0])),nc=Math.max(0,Math.min(FW.length-1,ci+d[1]));
+  var t=cells.filter(function(x){return x.row===vis[nr]&&x.col===nc;})[0];if(t)t.b.focus();
+ });
+
+ /* row and column highlight follow the pointer and the keyboard focus */
+ var heads=[].slice.call(grid.querySelectorAll('thead th'));
+ function hl(c){
+  [].forEach.call(grid.querySelectorAll('.hl-row,.hl-col'),function(n){n.classList.remove('hl-row','hl-col');});
+  if(!c)return;
+  c.row.tr.classList.add('hl-row');
+  cells.forEach(function(x){if(x.col===c.col)x.td.classList.add('hl-col');});
+  if(heads[c.col+1])heads[c.col+1].classList.add('hl-col');
+ }
+ function cellOf(n){var td=n&&n.closest&&n.closest('td.cell-td');return td?cells.filter(function(x){return x.td===td;})[0]:null;}
+ grid.addEventListener('pointerover',function(e){hl(cellOf(e.target));});
+ grid.addEventListener('pointerleave',function(){hl(cellOf(document.activeElement));});
+ grid.addEventListener('focusin',function(e){hl(cellOf(e.target));});
+ grid.addEventListener('focusout',function(e){if(!grid.contains(e.relatedTarget))hl(null);});
 })();
 </script>
 <script id="tm-motion-js">
@@ -704,8 +869,9 @@ var TM = (function () {
     var cells = grid.querySelectorAll('.cell');
     // the cells carry a CSS opacity transition for the filter dim: switch it off while GSAP runs
     grid.classList.add('tm-enter');
-    g.fromTo(cells, { scale: 0.3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.7, ease: 'back.out(1.7)', stagger: { grid: 'auto', from: 'center', amount: 0.9 },
-      scrollTrigger: { trigger: grid, start: 'top 80%', once: true }, clearProps: 'transform,opacity,visibility', onComplete: function () { grid.classList.remove('tm-enter'); } });
+    // opacity only (never visibility), so keyboard users can Tab into cells before the entrance has played
+    g.fromTo(cells, { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', stagger: { grid: 'auto', from: 'center', amount: 0.9 },
+      scrollTrigger: { trigger: grid, start: 'top 80%', once: true }, clearProps: 'transform,opacity', onComplete: function () { grid.classList.remove('tm-enter'); } });
   }
   // filters: rows that stay slide into their new places instead of jumping
   if (grid && window.Flip) {
@@ -791,5 +957,59 @@ var TM = (function () {
  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',function(){pad();onScroll();});
  pad();frame();
 })();
-</script></body>
+</script><script id="r8-links-cfg">
+window.R8_LINKS = [
+  ['.section[id] .rail-head', function (h) { var s = h.closest('section[id]'); var t = h.querySelector('h2'); return s ? { id: s.id, name: t ? t.textContent.trim() : '' } : null; }]
+];
+</script>
+<script id="r8-links-js">
+/* Shareable sections: a small "copy link" button beside each finding or section heading.
+   window.R8_LINKS = [[hostSelector, targetResolver], ...] is read on load. The link is the
+   page URL with #id; nothing about the page changes when it is copied. */
+(function () {
+  'use strict';
+  var ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.5 9.5l3-3M7 4.5l1.2-1.2a2.6 2.6 0 013.7 3.7L10.7 8.2M9 11.5l-1.2 1.2a2.6 2.6 0 01-3.7-3.7L5.3 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  var live = null;
+  function say(t) {
+    if (!live) { live = document.createElement('p'); live.className = 'sr-only'; live.setAttribute('role', 'status'); document.body.appendChild(live); }
+    live.textContent = ''; setTimeout(function () { live.textContent = t; }, 30);
+  }
+  function copy(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise(function (ok, no) {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'absolute'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? ok() : no(); } catch (e) { no(e); } finally { ta.remove(); }
+    });
+  }
+  function add(host, id, name) {
+    if (!host || !id || host.querySelector('.hl-link')) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'hl-link';
+    b.setAttribute('aria-label', 'Copy link to ' + (name || 'this section'));
+    b.innerHTML = ICON;
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var url = location.href.split('#')[0] + '#' + id;
+      var done = function (msg) {
+        var old = b.querySelector('.hl-tip'); if (old) old.remove();
+        var tip = document.createElement('span'); tip.className = 'hl-tip'; tip.setAttribute('aria-hidden', 'true'); tip.textContent = msg; b.appendChild(tip);
+        setTimeout(function () { tip.remove(); }, 1800); say(msg);
+      };
+      copy(url).then(function () { done('Link copied'); }, function () { done('Copy failed: ' + url); });
+    });
+    host.appendChild(b);
+  }
+  function run() {
+    (window.R8_LINKS || []).forEach(function (r) {
+      [].forEach.call(document.querySelectorAll(r[0]), function (host) {
+        var t = r[1](host); if (t) add(host, t.id, t.name);
+      });
+    });
+  }
+  function start() { run(); setTimeout(run, 1200); }
+  if (document.readyState === 'complete') start(); else addEventListener('load', start);
+})();
+</script>
+</body>
 </html>
