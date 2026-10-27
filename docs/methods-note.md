@@ -276,7 +276,44 @@ screeningBand(stop-and-review)  <- R33-band-stop-and-review [convention; no sour
 The band is an ordinal label. It is not a human error probability, and no
 SPAR-H multiplier or other quantification is used anywhere in the repository.
 
-## 6 Limitations
+## 6 Rule-based narrative suggester and its first evaluation
+
+`python -m ehs_hfo suggest` takes incident narrative text and returns candidate
+PIFs. It uses keyword and phrase rules only, with no learned component. A
+curated set of 97 rules (`crosswalk/pif_rules.csv`) pairs a phrase with a PIF
+and with an external SPAR-H, CREAM, HFACS or HSE factor that the ontology
+aligns to that PIF; a test fails if the alignment is missing, so each hit can be
+read back through the crosswalk to a citation. A second, baseline set is derived
+by code from the ontology's own labels: a stemmed word becomes a rule for a PIF
+if it occurs in that PIF's label vocabulary and in no other PIF's.
+
+The evaluation compares each set with the PIFs hand-coded for 10 CSB
+investigations in `incidents/` (25 investigation-PIF pairs over 9 PIFs). The
+only incident text in the repository is the set of quoted passages those codings
+rest on, so the "narrative" for an investigation is its concatenated quotes. This
+has three consequences that limit what the figures mean. First, recall measures
+whether the rules' vocabulary reaches words a coder already pointed at, not
+discovery in unseen narratives. Second, the curated rules were written after the
+author read those quotes; their scores are resubstitution and optimistic, and a
+variant without the 11 rules whose phrase was taken from the quotes is reported
+beside it. Cross-validation was not used because the rules are hand-written, not
+fitted, and the quotes are too few to hold any out without leaving each fold
+empty for most PIFs. Third, the gold labels are incomplete (a PIF is coded only
+when a passage was quoted for it), so a false positive may be a real condition
+nobody coded.
+
+Results are in `incidents/suggester_eval.md` and `docs/suggester.html`, both
+generated and tested. In summary, the untuned baseline recovered 5 of 25 pairs
+(precision 0.31); the curated set recovered 20 of 25 (precision 0.74, recall
+0.80); the curated set without the quote-derived phrases recovered 14 of 25
+(precision 0.74, recall 0.56); a control that always predicts the most frequent
+PIF (team and organisation factors) scored precision 0.80 and recall 0.32. Eleven
+of the 20 PIFs have no gold coding, so their rules are untested. The suggester
+has therefore not been shown to work on unseen narratives. A real test needs
+narratives outside the gold set, coded by someone other than the rule author,
+with the rules frozen first.
+
+## 7 Limitations
 
 1. **Single author.** Every match strength, every asserted absence and every
    PIF-to-function assignment is one person's judgement. No second coder
@@ -299,7 +336,7 @@ SPAR-H multiplier or other quantification is used anywhere in the repository.
 7. **Factor levels are inputs.** The engine reasons from levels an analyst
    supplies and cannot check whether those levels are right.
 
-## 7 References
+## 8 References
 
 Each entry below was checked against the issuing body, the publisher, or the
 DOI record during preparation of this note. Fuller verification notes for the
@@ -338,7 +375,7 @@ entries the code relies on are in `CITATIONS.md`.
   J. Xing, Y.J. Chang and J. DeJesus Segarra. Washington, DC: Office of Nuclear
   Regulatory Research. ADAMS ML21127A272.
 
-## 8 Suggested citation
+## 9 Suggested citation
 
 Chimmani, P. (2026). *A traceable crosswalk of IDHEAS-G performance-influencing
 factors to SPAR-H, CREAM, HFACS and the HSE PIF list* (methods note, version

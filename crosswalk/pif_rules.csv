@@ -1,0 +1,98 @@
+rule_id,factor_curie,phrase,external_curie,rationale,phrase_seen_in_incident_set
+R01,ehs:ProceduresGuidanceAndInstructions,procedure*,xw:sparh-Procedures,SPAR-H Procedures names the condition directly,no
+R02,ehs:ProceduresGuidanceAndInstructions,work instruction*,xw:hse-ProceduresInadequate,HSE: procedures inadequate or inappropriate,no
+R03,ehs:ProceduresGuidanceAndInstructions,checklist*,xw:cream-AvailabilityOfProcedures,CREAM: availability of procedures and plans,no
+R04,ehs:ProceduresGuidanceAndInstructions,emergency plan*,xw:cream-AvailabilityOfProcedures,CREAM label includes plans,no
+R05,ehs:ProceduresGuidanceAndInstructions,evacuation plan*,xw:cream-AvailabilityOfProcedures,CREAM label includes plans,yes
+R06,ehs:ProceduresGuidanceAndInstructions,work permit*,xw:hse-PreparationForTask,HSE preparation for task lists permits,no
+R07,ehs:ProceduresGuidanceAndInstructions,risk assessment*,xw:hse-PreparationForTask,HSE preparation for task lists risk assessments,no
+R08,ehs:Staffing,staffing,xw:hse-ManningLevels,HSE manning levels,no
+R09,ehs:Staffing,understaffed,xw:hse-ManningLevels,HSE manning levels,no
+R10,ehs:Staffing,manning,xw:hse-ManningLevels,HSE manning levels,no
+R11,ehs:Staffing,number of operators,xw:hse-ManningLevels,HSE manning levels,no
+R12,ehs:Staffing,headcount,xw:hfacs-ResourceManagement,HFACS resource management covers personnel resources,no
+R13,ehs:TeamAndOrganizationFactors,safety culture,xw:hse-SafetyCulture,HSE organisational or safety culture,no
+R14,ehs:TeamAndOrganizationFactors,supervis*,xw:hse-SupervisionLeadership,HSE supervision/leadership,no
+R15,ehs:TeamAndOrganizationFactors,leadership,xw:hse-SupervisionLeadership,HSE supervision/leadership,no
+R16,ehs:TeamAndOrganizationFactors,management,xw:cream-AdequacyOfOrganisation,CREAM adequacy of organisation,no
+R17,ehs:TeamAndOrganizationFactors,organizational,xw:cream-AdequacyOfOrganisation,CREAM adequacy of organisation,no
+R18,ehs:TeamAndOrganizationFactors,organisational,xw:cream-AdequacyOfOrganisation,CREAM adequacy of organisation,no
+R19,ehs:TeamAndOrganizationFactors,shift turnover,xw:hse-CommunicationOrg,HSE organisational communication,yes
+R20,ehs:TeamAndOrganizationFactors,shift handover,xw:hse-CommunicationOrg,HSE organisational communication,no
+R21,ehs:TeamAndOrganizationFactors,roles and responsibilities,xw:hse-ClarityOfRoles,HSE clarity of roles and responsibilities,no
+R22,ehs:TeamAndOrganizationFactors,complacen*,xw:hfacs-OrganizationalClimate,HFACS organizational climate,yes
+R23,ehs:TeamAndOrganizationFactors,stop work authority,xw:hse-SafetyCulture,Stop-work authority is a safety-culture control,yes
+R24,ehs:TeamAndOrganizationFactors,crew communication,xw:cream-CrewCollaborationQuality,CREAM crew collaboration quality,no
+R25,ehs:Training,train*,xw:sparh-ExperienceAndTraining,SPAR-H experience and training,no
+R26,ehs:Training,drill*,xw:cream-AdequacyOfTrainingAndExperience,CREAM adequacy of training and experience,no
+R27,ehs:Training,competen*,xw:hse-Competence,HSE competence,no
+R28,ehs:Training,refresher,xw:cream-AdequacyOfTrainingAndExperience,CREAM adequacy of training and experience,no
+R29,ehs:Training,qualification*,xw:hse-Competence,HSE competence,no
+R30,ehs:WorkProcesses,workaround*,xw:hse-ConsequencesOfFailure,HSE consequences of failure to follow rules/procedures,yes
+R31,ehs:WorkProcesses,management of change,xw:hfacs-OperationalProcess,HFACS operational process,no
+R32,ehs:WorkProcesses,work process*,xw:sparh-WorkProcesses,SPAR-H work processes,no
+R33,ehs:WorkProcesses,work practice*,xw:sparh-WorkProcesses,SPAR-H work processes,no
+R34,ehs:NoiseAndCommunicationPathways,communicat*,xw:hse-CommunicationJob,HSE job communication,no
+R35,ehs:NoiseAndCommunicationPathways,noise,xw:hse-WorkingEnvironment,HSE working environment,no
+R36,ehs:NoiseAndCommunicationPathways,radio*,xw:hse-CommunicationJob,HSE job communication,no
+R37,ehs:NoiseAndCommunicationPathways,verbal,xw:hse-CommunicationJob,HSE job communication,yes
+R38,ehs:ThermalConditions,heat stress,xw:hse-WorkingEnvironment,HSE working environment,no
+R39,ehs:ThermalConditions,extreme cold,xw:hse-WorkingEnvironment,HSE working environment,no
+R40,ehs:ThermalConditions,hot environment*,xw:hse-WorkingEnvironment,HSE working environment,no
+R41,ehs:WorkplaceVisibility,visibility,xw:hfacs-PhysicalEnvironment,HFACS physical environment,no
+R42,ehs:WorkplaceVisibility,lighting,xw:hfacs-PhysicalEnvironment,HFACS physical environment,no
+R43,ehs:WorkplaceVisibility,darkness,xw:hfacs-PhysicalEnvironment,HFACS physical environment,no
+R44,ehs:ResistanceToPhysicalMovement,confined space*,xw:hse-WorkingEnvironment,HSE working environment,no
+R45,ehs:ResistanceToPhysicalMovement,obstruct*,xw:hfacs-PhysicalEnvironment,HFACS physical environment,no
+R46,ehs:WorkplaceAccessibilityAndHabitability,inaccessible,xw:hfacs-PhysicalEnvironment,HFACS physical environment,no
+R47,ehs:WorkplaceAccessibilityAndHabitability,egress,xw:hfacs-PhysicalEnvironment,HFACS physical environment,no
+R48,ehs:WorkplaceAccessibilityAndHabitability,escape route*,xw:hfacs-PhysicalEnvironment,HFACS physical environment,no
+R49,ehs:EquipmentAndTools,equipment,xw:hse-ToolsAppropriateForTask,HSE tools appropriate for task,no
+R50,ehs:EquipmentAndTools,maintenance,xw:hse-ToolsAppropriateForTask,HSE tools appropriate for task,no
+R51,ehs:EquipmentAndTools,valve*,xw:hfacs-TechnologicalEnvironment,HFACS technological environment,no
+R52,ehs:EquipmentAndTools,malfunction*,xw:hfacs-TechnologicalEnvironment,HFACS technological environment,no
+R53,ehs:EquipmentAndTools,tools,xw:hse-ToolsAppropriateForTask,HSE tools appropriate for task,no
+R54,ehs:HumanSystemInterface,alarm*,xw:cream-AdequacyOfMMI,CREAM adequacy of MMI,no
+R55,ehs:HumanSystemInterface,control room,xw:cream-AdequacyOfMMI,CREAM adequacy of MMI,no
+R56,ehs:HumanSystemInterface,control board,xw:cream-AdequacyOfMMI,CREAM adequacy of MMI,yes
+R57,ehs:HumanSystemInterface,control screen*,xw:sparh-ErgonomicsHMI,SPAR-H ergonomics and HMI,yes
+R58,ehs:HumanSystemInterface,display*,xw:sparh-ErgonomicsHMI,SPAR-H ergonomics and HMI,no
+R59,ehs:HumanSystemInterface,interface*,xw:hse-SystemEquipmentInterface,HSE system/equipment interface,no
+R60,ehs:HumanSystemInterface,alert*,xw:cream-AdequacyOfMMI,CREAM adequacy of MMI,no
+R61,ehs:SystemTransparency,indicator*,xw:hse-ClarityOfSignsSignals,HSE clarity of signs and signals,no
+R62,ehs:SystemTransparency,labeling,xw:hse-ClarityOfSignsSignals,HSE clarity of signs and signals,no
+R63,ehs:SystemTransparency,labelling,xw:hse-ClarityOfSignsSignals,HSE clarity of signs and signals,no
+R64,ehs:SystemTransparency,signage,xw:hse-ClarityOfSignsSignals,HSE clarity of signs and signals,no
+R65,ehs:InformationAvailabilityAndReliability,information,xw:hse-ClarityOfSignsSignals,HSE clarity of signs signals and other information,no
+R66,ehs:InformationAvailabilityAndReliability,documentation,xw:hse-ClarityOfSignsSignals,HSE clarity of signs signals and other information,no
+R67,ehs:InformationAvailabilityAndReliability,drawings,xw:hse-ClarityOfSignsSignals,HSE clarity of signs signals and other information,no
+R68,ehs:InformationAvailabilityAndReliability,identifier*,xw:hse-ClarityOfSignsSignals,HSE clarity of signs signals and other information,yes
+R69,ehs:MentalFatigue,fatigue*,xw:hse-Fatigue,HSE fatigue,no
+R70,ehs:MentalFatigue,12-hour shift*,xw:hse-Fatigue,Long shifts are the usual fatigue indicator,yes
+R71,ehs:MentalFatigue,extended shift*,xw:hse-Fatigue,Long shifts are the usual fatigue indicator,no
+R72,ehs:MentalFatigue,overtime,xw:hse-Fatigue,Long hours are the usual fatigue indicator,no
+R73,ehs:MentalFatigue,consecutive days,xw:hse-Fatigue,Long runs of shifts are the usual fatigue indicator,yes
+R74,ehs:MentalFatigue,night shift*,xw:cream-TimeOfDay,CREAM time of day (circadian rhythm),no
+R75,ehs:MentalFatigue,sleep,xw:hse-Fatigue,HSE fatigue,no
+R76,ehs:MultitaskingInterruptionsAndDistractions,multitask*,xw:cream-NumberOfSimultaneousGoals,CREAM simultaneous goals,no
+R77,ehs:MultitaskingInterruptionsAndDistractions,interrupt*,xw:hse-DividedAttention,HSE divided attention,no
+R78,ehs:MultitaskingInterruptionsAndDistractions,distract*,xw:hse-DividedAttention,HSE divided attention,no
+R79,ehs:MultitaskingInterruptionsAndDistractions,simultaneous,xw:cream-NumberOfSimultaneousGoals,CREAM simultaneous goals,no
+R80,ehs:PhysicalDemands,physically demanding,xw:hse-PhysicalCapability,HSE physical capability and condition,no
+R81,ehs:PhysicalDemands,manual handling,xw:hse-PhysicalCapability,HSE physical capability and condition,no
+R82,ehs:PhysicalDemands,lifting,xw:hse-PhysicalCapability,HSE physical capability and condition,no
+R83,ehs:PhysicalDemands,strenuous,xw:hse-PhysicalCapability,HSE physical capability and condition,no
+R84,ehs:ScenarioFamiliarity,unfamiliar,xw:hse-RoutineOrUnusual,HSE routine or unusual,no
+R85,ehs:ScenarioFamiliarity,non-routine,xw:hse-RoutineOrUnusual,HSE routine or unusual,no
+R86,ehs:ScenarioFamiliarity,nonroutine,xw:hse-RoutineOrUnusual,HSE routine or unusual,no
+R87,ehs:ScenarioFamiliarity,unusual,xw:hse-RoutineOrUnusual,HSE routine or unusual,no
+R88,ehs:ScenarioFamiliarity,startup,xw:hse-RoutineOrUnusual,Start-up is the textbook infrequent operation,no
+R89,ehs:ScenarioFamiliarity,start-up,xw:hse-RoutineOrUnusual,Start-up is the textbook infrequent operation,no
+R90,ehs:TaskComplexity,complex*,xw:sparh-Complexity,SPAR-H complexity,no
+R91,ehs:TaskComplexity,difficult*,xw:hse-DifficultyComplexityOfTask,HSE difficulty/complexity of task,no
+R92,ehs:TaskComplexity,multiple steps,xw:sparh-Complexity,SPAR-H complexity,no
+R93,ehs:TimePressureAndStress,time pressure,xw:hse-TimeAvailableRequired,HSE time available/required,no
+R94,ehs:TimePressureAndStress,stress*,xw:sparh-StressAndStressors,SPAR-H stress and stressors,no
+R95,ehs:TimePressureAndStress,rushed,xw:hse-TimeAvailableRequired,HSE time available/required,no
+R96,ehs:TimePressureAndStress,deadline*,xw:hse-WorkPressures,HSE work pressures,no
+R97,ehs:TimePressureAndStress,production pressure*,xw:hse-WorkPressures,HSE work pressures,no
