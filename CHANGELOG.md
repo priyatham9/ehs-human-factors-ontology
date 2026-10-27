@@ -6,6 +6,7 @@ Keep a Changelog and this project uses semantic versioning.
 ## [Unreleased]
 
 ### Added
+- `incidents/`: 10 U.S. Chemical Safety Board investigations coded to the PIF crosswalk (25 codings, each with a quoted CSB passage and source URL; 3 listed investigations marked not coded), `tools/build_csb_coding.py` and `tests/test_csb_coding.py`
 - `docs/story.html`: motion layer on story engine 2.0 (GSAP 3.15 from cdnjs): cinematic hero, word-mask headline reveals, a new pinned "argument in five beats" chapter (problem, evidence, method, finding, so what) whose connector rail draws as you scroll and whose counts (4, 31, 89, 31 of 80) roll from the walkthrough and crosswalk data, a pinned "what this does not establish" chapter, spring hover and press; in-page links to a pinned chapter land at its end
 - `docs/crosswalk.html`: GSAP motion layer: masked headline reveal, match-strength tiles flip up with counters, a pinned "Four frameworks, four different fits" chapter where each framework's bar fills in turn, the heat grid settles in from its centre, filters slide the remaining rows with Flip, the cell detail rises into place
 - `docs/walkthrough.html`: a pinned "Four conditions, six stages, one band" chain whose connector draws as you scroll (each stage links to that stage in the tool), tiles settle in from the centre, showing or hiding the 16 nominal factors uses Flip, and each rule card slides in from the direction you stepped

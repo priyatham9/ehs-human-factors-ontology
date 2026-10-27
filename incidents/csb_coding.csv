@@ -1,0 +1,26 @@
+investigation_id,factor_curie,evidence_type,quoted_text
+bp-texas-city,ehs:MentalFatigue,finding,"By March 23, operators had been working 12-hour shifts for 29 or more consecutive days."
+bp-texas-city,ehs:Staffing,finding,"the Texas City Refinery halved the number of control board operators in the ISOM area, from two to one."
+bp-texas-city,ehs:Training,finding,The 25% budget cut from 1999 also resulted in significant training reductions for operators
+bp-texas-city,ehs:ProceduresGuidanceAndInstructions,finding,"Procedural workarounds were accepted as normal,"
+bp-texas-city,ehs:TeamAndOrganizationFactors,finding,"BP had no policy for effective shift communication or requirements for shift turnover,"
+imperial-sugar,ehs:ProceduresGuidanceAndInstructions,finding,Imperial Sugar emergency evacuation plans were inadequate.
+imperial-sugar,ehs:Training,finding,the company did not conduct emergency evacuation drills.
+imperial-sugar,ehs:NoiseAndCommunicationPathways,finding,Many workers had to rely on face-to-face verbal alerts in the event of an emergency.
+tesoro-anacortes,ehs:TeamAndOrganizationFactors,finding,Tesoro management had been complacent about these hazardous leaks and did not always investigate the cause of the leaks.
+tesoro-anacortes,ehs:EquipmentAndTools,finding,The difficulties with valve operation during startup typically resulted in the need for additional operator assistance.
+chevron-richmond,ehs:TeamAndOrganizationFactors,finding,Reluctance among employees to use their Stop Work Authority.
+chevron-richmond,ehs:EquipmentAndTools,finding,Substandard equipment maintenance practices.
+williams-geismar,ehs:TeamAndOrganizationFactors,recommendation,Implement a continual improvement program to improve the process safety culture at the Williams Geismar Olefins Plant.
+williams-geismar,ehs:ProceduresGuidanceAndInstructions,recommendation,Measure the effectiveness of the Williams Geismar development and implementation of operating procedures.
+dupont-la-porte,ehs:TeamAndOrganizationFactors,finding,"The emergency response efforts at the La Porte facility were disorganized and placed operators, emergency responders, and potentially the public at risk."
+cuisine-solutions,ehs:HumanSystemInterface,recommendation,Add an alarm or alarms specific to ammonia releases
+cuisine-solutions,ehs:Training,recommendation,Include requirements to conduct annual ammonia release drills that include all onsite personnel.
+givaudan-louisville,ehs:HumanSystemInterface,recommendation,"establish automatic alerts, such as alarms or control screen indications"
+givaudan-louisville,ehs:Training,recommendation,Provide initial and refresher training for operations personnel on the established safe operating limits.
+givaudan-louisville,ehs:TeamAndOrganizationFactors,recommendation,Create and fill a corporate senior leadership position responsible for overseeing process safety.
+pemex-deer-park,ehs:InformationAvailabilityAndReliability,recommendation,clear identifiers of the area to be opened
+pemex-deer-park,ehs:TeamAndOrganizationFactors,recommendation,"define the hazards, safeguards, and requirements of the unit."
+clairton,ehs:Training,recommendation,Ensure that all workers who will or might participate in such operations are trained on the policies and procedures.
+clairton,ehs:ProceduresGuidanceAndInstructions,recommendation,"Ensure that the procedure includes steps and other controls, including overpressure protection,"
+clairton,ehs:TeamAndOrganizationFactors,recommendation,"require the documentation of process safety deficiencies, when identified, and prompt corrective action."

@@ -1,0 +1,14 @@
+investigation_id,name,incident_date,location,fatalities,final_report_date,source_url,coded
+bp-texas-city,BP Texas City Refinery explosion,2005-03-23,"Texas City, Texas",15,2007-03-20,https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/,yes
+imperial-sugar,Imperial Sugar Company dust explosion,2008-02-07,"Port Wentworth, Georgia",14,,https://www.csb.gov/assets/1/20/imperial_sugar_report_final_updated.pdf,yes
+tesoro-anacortes,Tesoro Anacortes Refinery heat exchanger rupture,2010-04-02,"Anacortes, Washington",7,,https://www.csb.gov/assets/1/7/tesoro_anacortes_2014-may-01.pdf,yes
+chevron-richmond,Chevron Richmond Refinery fire,2012-08-06,"Richmond, California",0,2015-01-28,https://www.csb.gov/chevron-richmond-refinery-fire/,yes
+williams-geismar,Williams Olefins Plant explosion and fire,2013-06-13,"Geismar, Louisiana",2,2016-10-19,https://www.csb.gov/williams-olefins-plant-explosion-and-fire-/,yes
+dupont-la-porte,DuPont La Porte toxic chemical release,2014-11-15,"La Porte, Texas",4,2019-06-25,https://www.csb.gov/-csb-releases-final-report-into-fatal-2014-incident-at-dupont-la-porte-facility-final-report-cites-numerous-safety-deficiencies/,yes
+cuisine-solutions,Cuisine Solutions ammonia release,2024-07-31,"Sterling, Virginia",0,2025-09-25,https://www.csb.gov/cuisine-solutions-ammonia-release-/,yes
+givaudan-louisville,Givaudan Sense Colour explosion,2024-11-12,"Louisville, Kentucky",2,2026-05-27,https://www.csb.gov/givaudan-sense-colour-explosion-/,yes
+pemex-deer-park,PEMEX Deer Park chemical release,2024-10-10,"Deer Park, Texas",2,2026-02-23,https://www.csb.gov/pemex-deer-park-chemical-release-/,yes
+clairton,United States Steel Clairton Plant coke oven explosion,2025-08-11,"Clairton, Pennsylvania",2,2026-08-10,https://www.csb.gov/united-states-steel-corporation-clairton-plant-coke-oven-explosion-/,yes
+dow-louisiana,Dow Louisiana Operations explosions,2023-07-14,"Plaquemine, Louisiana",0,2026-02-26,https://www.csb.gov/dow-louisiana-operations-explosions/,no
+bio-lab-conyers,Bio-Lab Conyers fire and chemical release,2024-09-29,"Conyers, Georgia",,2026-07-21,https://www.csb.gov/bio-lab-inc-conyers-fire-and-chemical-release-/,no
+shell-monaca,Shell Polymers furnace explosion and fire,2025-06-04,"Monaca, Pennsylvania",,2026-09-16,https://www.csb.gov/shell-polymers-furnace-explosion-and-fire/,no
