@@ -16,7 +16,7 @@ Python 3.9+, standard library only. No pip installs, no build step.
 | --- | --- |
 | Status | v0.1.0 |
 | Data | Real ontology and crosswalk data; the scenario corpus in `synthetic/` is fabricated and labelled as such |
-| Tests | 217 tests, `python3 -m unittest discover -s tests -t .` |
+| Tests | 229 tests, `python3 -m unittest discover -s tests -t .` |
 | Quickstart | `PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json` |
 | Licence | MIT |
 
@@ -82,7 +82,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 217 tests
+python3 -m unittest discover -s tests -t .          # 229 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
@@ -270,7 +270,9 @@ The ones most likely to matter, in rough order of severity.
    consulted; the nine CPCs come from Shirali et al. (2019). Check them against
    the original before relying on them. See `docs/PROVENANCE.md`.
 6. **Match strengths are one person's judgement.** No second coder, no
-   inter-rater reliability, no adjudication.
+   inter-rater reliability, no adjudication. For the incident codings, a blinded
+   second-coder protocol is in place ([docs/second-coder-protocol.md](docs/second-coder-protocol.md))
+   and outside coders are invited; no second-coder data exists yet.
 7. **The `observableProxy` annotations are speculation.** They suggest what
    might be measured to assess a factor from routinely collected data. None has
    been validated. Read them as a research agenda.
@@ -339,16 +341,17 @@ src/ehs_hfo/
 tools/build_crosswalk.py    regenerates crosswalk/ from the Turtle
 src/ehs_hfo/suggest.py      rule-based narrative-to-PIF suggester (rules: crosswalk/pif_rules.csv; evaluation: incidents/suggester_eval.md)
 incidents/                  CSB investigations coded to the PIFs (quoted, sourced)
+tools/second_coder.py       blinded second-coder sheet export and kappa report (docs/second-coder-protocol.md)
 synthetic/                  fabricated corpus + generator (read its README)
 examples/                   hand-written worked scenario
-tests/                      217 tests, stdlib unittest
+tests/                      229 tests, stdlib unittest
 docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency policy, and testing. Reports of errors in alignments or security issues can be filed as [issues](https://github.com/priyatham9/ehs-human-factors-ontology/issues). See [SECURITY.md](SECURITY.md) for reporting details.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency policy, and testing. An outside coder can also contribute a blinded second coding of the incident excerpts ([protocol](docs/second-coder-protocol.md)). Reports of errors in alignments or security issues can be filed as [issues](https://github.com/priyatham9/ehs-human-factors-ontology/issues). See [SECURITY.md](SECURITY.md) for reporting details.
 
 ## Tests
 
@@ -356,7 +359,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency 
 python3 -m unittest discover -s tests -t .
 ```
 
-217 tests, no third-party dependencies. Beyond ordinary unit coverage they
+229 tests, no third-party dependencies. Beyond ordinary unit coverage they
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of
