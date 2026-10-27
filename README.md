@@ -16,7 +16,7 @@ Python 3.9+, standard library only. No pip installs, no build step.
 | --- | --- |
 | Status | v0.1.0 |
 | Data | Real ontology and crosswalk data; the scenario corpus in `synthetic/` is fabricated and labelled as such |
-| Tests | 202 tests, `python3 -m unittest discover -s tests -t .` |
+| Tests | 214 tests, `python3 -m unittest discover -s tests -t .` |
 | Quickstart | `PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json` |
 | Licence | MIT |
 
@@ -82,7 +82,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 202 tests
+python3 -m unittest discover -s tests -t .          # 214 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
@@ -95,6 +95,7 @@ PYTHONPATH=src python3 -m ehs_hfo crosswalk          # every correspondence
 PYTHONPATH=src python3 -m ehs_hfo crosswalk --framework xw:fw-SPARH
 PYTHONPATH=src python3 -m ehs_hfo gaps               # what is not covered
 PYTHONPATH=src python3 -m ehs_hfo rules              # the rule base, by stratum
+PYTHONPATH=src python3 -m ehs_hfo suggest <narrative.txt>   # candidate PIFs for a narrative, each hit traced to the crosswalk
 
 python3 tools/build_crosswalk.py --check             # crosswalk is current
 python3 synthetic/generate_scenarios.py --check      # corpus is reproducible
@@ -336,10 +337,11 @@ src/ehs_hfo/
   assessment.py             scenario evaluation and report rendering
   cli.py                    command line interface
 tools/build_crosswalk.py    regenerates crosswalk/ from the Turtle
+src/ehs_hfo/suggest.py      rule-based narrative-to-PIF suggester (rules: crosswalk/pif_rules.csv; evaluation: incidents/suggester_eval.md)
 incidents/                  CSB investigations coded to the PIFs (quoted, sourced)
 synthetic/                  fabricated corpus + generator (read its README)
 examples/                   hand-written worked scenario
-tests/                      202 tests, stdlib unittest
+tests/                      214 tests, stdlib unittest
 docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
@@ -354,7 +356,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency 
 python3 -m unittest discover -s tests -t .
 ```
 
-202 tests, no third-party dependencies. Beyond ordinary unit coverage they
+214 tests, no third-party dependencies. Beyond ordinary unit coverage they
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of

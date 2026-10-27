@@ -29,3 +29,10 @@ One coder, no second-rater agreement. 25 codings across 10 investigations is a w
 demonstration, not a sample of CSB work, and says nothing about how common any factor is.
 Factors with no coding (for example Thermal conditions) are absent from these excerpts,
 not shown to be absent from the incidents.
+
+## Suggester evaluation
+
+`suggester_eval.md` scores the rule-based PIF suggester (`python -m ehs_hfo suggest`)
+against these codings. The text it reads is these same quotes, so the scores measure
+vocabulary overlap, not performance on unseen narratives; see that file and
+`docs/suggester.html` for the caveats.

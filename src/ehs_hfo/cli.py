@@ -5,6 +5,7 @@
     python -m ehs_hfo crosswalk --framework xw:fw-SPARH
     python -m ehs_hfo gaps
     python -m ehs_hfo rules
+    python -m ehs_hfo suggest narrative.txt [--rules baseline] [--json]
 """
 
 from __future__ import annotations
@@ -19,6 +20,8 @@ from .export import export
 from .facts import Scenario
 from .ontology import Ontology
 from .rules import build_program
+from .suggest import build_baseline, load_curated, read_text, suggest, to_json
+from .suggest import render as render_suggestions
 
 
 def _cmd_assess(args: argparse.Namespace) -> int:
@@ -122,6 +125,18 @@ def _cmd_rules(args: argparse.Namespace) -> int:
 
 
 
+def _cmd_suggest(args: argparse.Namespace) -> int:
+    ontology = Ontology.load(args.ontology)
+    rules = build_baseline(ontology) if args.rules == "baseline" else load_curated()
+    text = read_text(args.narrative, sys.stdin)
+    found = suggest(text, rules)
+    if args.json:
+        print(json.dumps({"rule_set": args.rules, "suggestions": to_json(found)}, indent=2))
+    else:
+        print(render_suggestions(found, ontology), end="")
+    return 0
+
+
 def _cmd_export(args: argparse.Namespace) -> int:
     ontology = Ontology.load(args.ontology)
     output = export(ontology, format=args.format)
@@ -176,6 +191,17 @@ def build_parser() -> argparse.ArgumentParser:
     rules_parser = sub.add_parser("rules", help="print the rule base and its strata")
     rules_parser.set_defaults(func=_cmd_rules)
 
+
+    suggest_parser = sub.add_parser(
+        "suggest", help="suggest candidate PIFs for an incident narrative (rule-based, traceable)"
+    )
+    suggest_parser.add_argument("narrative", nargs="?", default="-", help="text file, or - for stdin")
+    suggest_parser.add_argument(
+        "--rules", choices=["curated", "baseline"], default="curated",
+        help="curated = crosswalk/pif_rules.csv; baseline = words from ontology labels",
+    )
+    suggest_parser.add_argument("--json", action="store_true", help="emit machine-readable output")
+    suggest_parser.set_defaults(func=_cmd_suggest)
 
     export_parser = sub.add_parser("export", help="export ontology in standard formats")
     export_parser.add_argument(
