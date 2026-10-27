@@ -1,0 +1,3422 @@
+{
+  "@context": {
+    "dcterms": "http://purl.org/dc/terms/",
+    "ehs": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xw": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#"
+  },
+  "@graph": [
+    {
+      "@id": "ehs:EquipmentAndTools",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:hfacs-TechnologicalEnvironment"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:SystemContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hse-ToolsAppropriateForTask"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Equipment and tools",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfMMI"
+        },
+        {
+          "@id": "xw:sparh-ErgonomicsHMI"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:HumanContext",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:idheas-Personnel"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Attributes of the people, teams and organisational processes performing the work.",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "ehs:ProceduresGuidanceAndInstructions"
+        },
+        {
+          "@id": "ehs:Staffing"
+        },
+        {
+          "@id": "ehs:TeamAndOrganizationFactors"
+        },
+        {
+          "@id": "ehs:Training"
+        },
+        {
+          "@id": "ehs:WorkProcesses"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "Synonym for the IDHEAS-G category 'Personnel'.",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Human context",
+          "@language": "en"
+        }
+      ],
+      "skos:topConceptOf": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:HumanSystemInterface",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "HSI",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:SystemContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfMMI"
+        },
+        {
+          "@id": "xw:hfacs-TechnologicalEnvironment"
+        },
+        {
+          "@id": "xw:hse-SystemEquipmentInterface"
+        },
+        {
+          "@id": "xw:sparh-ErgonomicsHMI"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Human-system interface",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:InformationAvailabilityAndReliability",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hse-ClarityOfSignsSignals"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Information availability and reliability",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfMMI"
+        },
+        {
+          "@id": "xw:hfacs-TechnologicalEnvironment"
+        },
+        {
+          "@id": "xw:sparh-ErgonomicsHMI"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:MentalFatigue",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:sparh-FitnessForDuty"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hfacs-AdverseMentalStates"
+        },
+        {
+          "@id": "xw:hse-Fatigue"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "Time-on-shift is the natural proxy here, and it is also where this ontology's claims stop: hour-of-shift injury counts are not risk rates without an exposure denominator (Hanecke et al. 1998; Folkard and Tucker 2003).",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Mental fatigue",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:cream-TimeOfDay"
+        },
+        {
+          "@id": "xw:hfacs-AdversePhysiologicalStates"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "IDHEAS-G files mental fatigue under Task. An occupational-safety practitioner would ordinarily file it under Human or Operational. The disagreement is recorded rather than resolved.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:MultitaskingInterruptionsAndDistractions",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Multitasking, interruptions, and distractions",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:cream-NumberOfSimultaneousGoals"
+        },
+        {
+          "@id": "xw:hse-DividedAttention"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Multitasking, interruptions and distractions",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:hfacs-AdverseMentalStates"
+        },
+        {
+          "@id": "xw:sparh-Complexity"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:NoiseAndCommunicationPathways",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Noise in workplace and communication pathways",
+          "@language": "en"
+        }
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-WorkingConditions"
+        },
+        {
+          "@id": "xw:hfacs-PhysicalEnvironment"
+        },
+        {
+          "@id": "xw:hse-WorkingEnvironment"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:OperationalContext"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Noise and communication pathways",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:cream-CrewCollaborationQuality"
+        },
+        {
+          "@id": "xw:hse-CommunicationJob"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:OperationalContext",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:idheas-EnvironmentAndSituation"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Physical conditions of the place where the work occurs.",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "ehs:NoiseAndCommunicationPathways"
+        },
+        {
+          "@id": "ehs:ResistanceToPhysicalMovement"
+        },
+        {
+          "@id": "ehs:ThermalConditions"
+        },
+        {
+          "@id": "ehs:WorkplaceAccessibilityAndHabitability"
+        },
+        {
+          "@id": "ehs:WorkplaceVisibility"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "Synonym for the IDHEAS-G category 'Environment and situation'. The rename buys familiarity for an occupational-safety audience and nothing else.",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Operational context",
+          "@language": "en"
+        }
+      ],
+      "skos:topConceptOf": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:PIFConceptScheme",
+      "dcterms:creator": [
+        {
+          "@value": "Priyatham Chimmani"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "SKOS rendering of the four context dimensions and twenty performance-influencing factors of IDHEAS-G (NUREG-2198), with analyst-judged mappings to SPAR-H, CREAM, HFACS and the HSE PIF list. Generated from ontology/ehs-hfo.ttl. Not endorsed by any standards body.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:hasVersion": [
+        {
+          "@value": "0.1.0"
+        }
+      ],
+      "dcterms:license": [
+        {
+          "@id": "https://opensource.org/licenses/MIT"
+        }
+      ],
+      "dcterms:source": [
+        {
+          "@id": "https://raw.githubusercontent.com/priyatham9/ehs-human-factors-ontology/main/ontology/ehs-hfo.ttl"
+        }
+      ],
+      "dcterms:title": [
+        {
+          "@value": "EHS Human Factors Ontology: performance-influencing factors",
+          "@language": "en"
+        }
+      ],
+      "@type": [
+        "skos:ConceptScheme"
+      ],
+      "skos:hasTopConcept": [
+        {
+          "@id": "ehs:HumanContext"
+        },
+        {
+          "@id": "ehs:OperationalContext"
+        },
+        {
+          "@id": "ehs:SystemContext"
+        },
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:PhysicalDemands",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hfacs-PhysicalMentalLimitations"
+        },
+        {
+          "@id": "xw:hse-PhysicalCapability"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Physical demands",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:cream-WorkingConditions"
+        },
+        {
+          "@id": "xw:hfacs-AdversePhysiologicalStates"
+        },
+        {
+          "@id": "xw:hse-WorkOverloadUnderload"
+        },
+        {
+          "@id": "xw:sparh-FitnessForDuty"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:ProceduresGuidanceAndInstructions",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Procedures, guidance, and instructions",
+          "@language": "en"
+        }
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:hfacs-OperationalProcess"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:HumanContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:cream-AvailabilityOfProcedures"
+        },
+        {
+          "@id": "xw:hse-ProceduresInadequate"
+        },
+        {
+          "@id": "xw:sparh-Procedures"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Procedures, guidance and instructions",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:hse-PreparationForTask"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "IDHEAS-G files procedures under Personnel. Practitioners frequently file them under Task or System. The disagreement is recorded rather than resolved.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:ResistanceToPhysicalMovement",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-WorkingConditions"
+        },
+        {
+          "@id": "xw:hfacs-PhysicalEnvironment"
+        },
+        {
+          "@id": "xw:hse-WorkingEnvironment"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:OperationalContext"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Resistance to physical movement",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:ScenarioFamiliarity",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hse-RoutineOrUnusual"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "The demand claim is Rasmussen's: an unfamiliar situation for which no rule is stored must be handled at the knowledge-based level.",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Scenario familiarity",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfTrainingAndExperience"
+        },
+        {
+          "@id": "xw:sparh-ExperienceAndTraining"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:Staffing",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfOrganisation"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:HumanContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hfacs-ResourceManagement"
+        },
+        {
+          "@id": "xw:hse-ManningLevels"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Staffing",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:sparh-WorkProcesses"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:SystemContext",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:idheas-System"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Attributes of the plant, equipment, tools and interfaces the work is performed through.",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "ehs:EquipmentAndTools"
+        },
+        {
+          "@id": "ehs:HumanSystemInterface"
+        },
+        {
+          "@id": "ehs:SystemTransparency"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "Label identical to the IDHEAS-G category.",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "System context",
+          "@language": "en"
+        }
+      ],
+      "skos:topConceptOf": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:SystemTransparency",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "System and I&C transparency to personnel",
+          "@language": "en"
+        }
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfMMI"
+        },
+        {
+          "@id": "xw:hfacs-TechnologicalEnvironment"
+        },
+        {
+          "@id": "xw:sparh-ErgonomicsHMI"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:SystemContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hse-ClarityOfSignsSignals"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "The link to knowledge-based mistakes is interpretive: an opaque system denies the operator the mental model that knowledge-based reasoning requires (Rasmussen 1983).",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "System transparency to personnel",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:TaskComplexity",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hse-DifficultyComplexityOfTask"
+        },
+        {
+          "@id": "xw:sparh-Complexity"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "Interpretive. SPAR-H treats complexity as difficulty of performance; the step from difficulty to knowledge-based demand is this ontology's reading, not a finding.",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Task complexity",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:cream-NumberOfSimultaneousGoals"
+        },
+        {
+          "@id": "xw:hfacs-PlannedInappropriateOperations"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:TaskContext",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:idheas-Task"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Characteristics of the task being performed and of the information it requires.",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "ehs:InformationAvailabilityAndReliability"
+        },
+        {
+          "@id": "ehs:MentalFatigue"
+        },
+        {
+          "@id": "ehs:MultitaskingInterruptionsAndDistractions"
+        },
+        {
+          "@id": "ehs:PhysicalDemands"
+        },
+        {
+          "@id": "ehs:ScenarioFamiliarity"
+        },
+        {
+          "@id": "ehs:TaskComplexity"
+        },
+        {
+          "@id": "ehs:TimePressureAndStress"
+        }
+      ],
+      "skos:note": [
+        {
+          "@value": "Label identical to the IDHEAS-G category.",
+          "@language": "en"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Task context",
+          "@language": "en"
+        }
+      ],
+      "skos:topConceptOf": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:TeamAndOrganizationFactors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Team and organization factors",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:HumanContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfOrganisation"
+        },
+        {
+          "@id": "xw:cream-CrewCollaborationQuality"
+        },
+        {
+          "@id": "xw:hfacs-CrewResourceManagement"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Team and organisation factors",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:hfacs-OrganizationalClimate"
+        },
+        {
+          "@id": "xw:hse-ClarityOfRoles"
+        },
+        {
+          "@id": "xw:hse-CommunicationOrg"
+        },
+        {
+          "@id": "xw:hse-SafetyCulture"
+        },
+        {
+          "@id": "xw:hse-SupervisionLeadership"
+        },
+        {
+          "@id": "xw:sparh-WorkProcesses"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:ThermalConditions",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Cold/heat/humidity",
+          "@language": "en"
+        }
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-WorkingConditions"
+        },
+        {
+          "@id": "xw:hfacs-PhysicalEnvironment"
+        },
+        {
+          "@id": "xw:hse-WorkingEnvironment"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:OperationalContext"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Thermal conditions",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:TimePressureAndStress",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:TaskContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:cream-AvailableTime"
+        },
+        {
+          "@id": "xw:hse-StressMorale"
+        },
+        {
+          "@id": "xw:hse-TimeAvailableRequired"
+        },
+        {
+          "@id": "xw:sparh-AvailableTime"
+        },
+        {
+          "@id": "xw:sparh-StressAndStressors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Time pressure and stress",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:hfacs-AdverseMentalStates"
+        },
+        {
+          "@id": "xw:hse-WorkPressures"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "IDHEAS-G files time pressure and stress under Task. SPAR-H splits the same content across two separate PSFs (available time; stress and stressors).",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:Training",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:HumanContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfTrainingAndExperience"
+        },
+        {
+          "@id": "xw:hse-Competence"
+        },
+        {
+          "@id": "xw:sparh-ExperienceAndTraining"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Training",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:hfacs-InadequateSupervision"
+        },
+        {
+          "@id": "xw:hfacs-ResourceManagement"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:WorkProcesses",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-AdequacyOfOrganisation"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:HumanContext"
+        }
+      ],
+      "skos:closeMatch": [
+        {
+          "@id": "xw:hfacs-OperationalProcess"
+        },
+        {
+          "@id": "xw:sparh-WorkProcesses"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Work processes",
+          "@language": "en"
+        }
+      ],
+      "skos:relatedMatch": [
+        {
+          "@id": "xw:hse-ConsequencesOfFailure"
+        },
+        {
+          "@id": "xw:hse-WorkPressures"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:WorkplaceAccessibilityAndHabitability",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Accessibility/habitability of workplace including travel paths",
+          "@language": "en"
+        }
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-WorkingConditions"
+        },
+        {
+          "@id": "xw:hfacs-PhysicalEnvironment"
+        },
+        {
+          "@id": "xw:hse-WorkingEnvironment"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:OperationalContext"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Workplace accessibility and habitability",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "ehs:WorkplaceVisibility",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broadMatch": [
+        {
+          "@id": "xw:cream-WorkingConditions"
+        },
+        {
+          "@id": "xw:hfacs-PhysicalEnvironment"
+        },
+        {
+          "@id": "xw:hse-WorkingEnvironment"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "ehs:OperationalContext"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "ehs:PIFConceptScheme"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Workplace visibility",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-AdequacyOfMMI",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Adequacy of man-machine interface and operational support",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Adequacy of MMI and operational support",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-AdequacyOfOrganisation",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Adequacy of organization",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Adequacy of organisation",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-AdequacyOfTrainingAndExperience",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Adequacy of training and experience",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-AvailabilityOfProcedures",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Availability of procedures and plans",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-AvailableTime",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Available time",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-CrewCollaborationQuality",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Crew collaboration quality",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-NumberOfSimultaneousGoals",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Number of simultaneous goals",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-TimeOfDay",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Time of the day",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Time of day (circadian rhythm)",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:cream-WorkingConditions",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-CREAM"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Working conditions",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:fw-CREAM",
+      "dcterms:bibliographicCitation": [
+        {
+          "@value": "Hollnagel, E. (1998). Cognitive Reliability and Error Analysis Method (CREAM). Oxford: Elsevier Science."
+        }
+      ],
+      "dcterms:title": [
+        {
+          "@value": "CREAM",
+          "@language": "en"
+        }
+      ],
+      "@type": [
+        "skos:ConceptScheme"
+      ],
+      "skos:note": [
+        {
+          "@value": "The nine CPC labels used here were transcribed from an open-access secondary source (Shirali et al. 2019, MethodsX) because the book text was not consulted directly. See ../docs/PROVENANCE.md.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:fw-HFACS",
+      "dcterms:bibliographicCitation": [
+        {
+          "@value": "Shappell, S.A. & Wiegmann, D.A. (2000). The Human Factors Analysis and Classification System--HFACS. DOT/FAA/AM-00/7. Revised taxonomy as figured in Shappell et al. (2006), DOT/FAA/AM-06/18."
+        }
+      ],
+      "dcterms:title": [
+        {
+          "@value": "HFACS",
+          "@language": "en"
+        }
+      ],
+      "@type": [
+        "skos:ConceptScheme"
+      ],
+      "skos:note": [
+        {
+          "@value": "Two versions matter here. The 2000 report subdivides Preconditions into Substandard Conditions and Substandard Practices of Operators. The revised taxonomy figured in the 2006 report uses Environmental Factors, Condition of Operators and Personnel Factors. The crosswalk maps to the revised taxonomy and says so.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:fw-HSE-PIF",
+      "dcterms:bibliographicCitation": [
+        {
+          "@value": "Health and Safety Executive. Performance Influencing Factors (PIFs). HSE human factors guidance, https://www.hse.gov.uk/humanfactors/assets/docs/pifs.pdf"
+        }
+      ],
+      "dcterms:title": [
+        {
+          "@value": "HSE Performance Influencing Factors",
+          "@language": "en"
+        }
+      ],
+      "@type": [
+        "skos:ConceptScheme"
+      ],
+      "skos:note": [
+        {
+          "@value": "HSE states of its own list: 'NB. This list is not exhaustive'.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:fw-IDHEAS-G",
+      "dcterms:bibliographicCitation": [
+        {
+          "@value": "U.S. Nuclear Regulatory Commission (2021). The General Methodology of an Integrated Human Event Analysis System (IDHEAS-G). NUREG-2198."
+        }
+      ],
+      "dcterms:title": [
+        {
+          "@value": "IDHEAS-G",
+          "@language": "en"
+        }
+      ],
+      "@type": [
+        "skos:ConceptScheme"
+      ]
+    },
+    {
+      "@id": "xw:fw-SPARH",
+      "dcterms:bibliographicCitation": [
+        {
+          "@value": "Gertman, D.I., Blackman, H.S., Marble, J.L., Byers, J.C. & Smith, C.L. (2005). The SPAR-H Human Reliability Analysis Method. NUREG/CR-6883, INL/EXT-05-00509."
+        }
+      ],
+      "dcterms:title": [
+        {
+          "@value": "SPAR-H",
+          "@language": "en"
+        }
+      ],
+      "@type": [
+        "skos:ConceptScheme"
+      ]
+    },
+    {
+      "@id": "xw:hfacs-AdverseMentalStates",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Adverse Mental States",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-ConditionOfOperators"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Adverse mental states",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-AdversePhysiologicalStates",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Adverse Physiological States",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-ConditionOfOperators"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Adverse physiological states",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-ConditionOfOperators",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Condition of Operators",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Preconditions"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-AdverseMentalStates"
+        },
+        {
+          "@id": "xw:hfacs-AdversePhysiologicalStates"
+        },
+        {
+          "@id": "xw:hfacs-PhysicalMentalLimitations"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Condition of operators",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Structural container; its children are crosswalked individually.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-CrewResourceManagement",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Crew Resource Management",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-PersonnelFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Crew resource management",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-DecisionErrors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Decision Errors",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Errors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Decision errors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Corresponds to the mistake classes in section 6, not to a factor.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-EnvironmentalFactors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Environmental Factors",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Preconditions"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-PhysicalEnvironment"
+        },
+        {
+          "@id": "xw:hfacs-TechnologicalEnvironment"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Environmental factors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Structural container; its children are crosswalked individually.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-Errors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-UnsafeActs"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-DecisionErrors"
+        },
+        {
+          "@id": "xw:hfacs-PerceptualErrors"
+        },
+        {
+          "@id": "xw:hfacs-SkillBasedErrors"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Errors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Outcome category, not context.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-ExceptionalViolations",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Exceptional",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Violations"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Exceptional violations",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "See parent.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-FailedToCorrectProblem",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Failed to Correct Problem",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-UnsafeSupervision"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Failed to correct problem",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-InadequateSupervision",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Inadequate Supervision",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-UnsafeSupervision"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Inadequate supervision",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-OperationalProcess",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Operational Process",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-OrganizationalInfluences"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Operational process",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-OrganizationalClimate",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Organizational Climate",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-OrganizationalInfluences"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Organizational climate",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-OrganizationalInfluences",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "ORGANIZATIONAL INFLUENCES",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-OperationalProcess"
+        },
+        {
+          "@id": "xw:hfacs-OrganizationalClimate"
+        },
+        {
+          "@id": "xw:hfacs-ResourceManagement"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Organizational influences",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Structural container; its children are crosswalked individually.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-PerceptualErrors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Perceptual Errors",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Errors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Perceptual errors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Outcome category, not context.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-PersonalReadiness",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Personal Readiness",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-PersonnelFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Personal readiness",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-PersonnelFactors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Personnel Factors",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Preconditions"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-CrewResourceManagement"
+        },
+        {
+          "@id": "xw:hfacs-PersonalReadiness"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Personnel factors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Structural container; its children are crosswalked individually.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-PhysicalEnvironment",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Physical Environment",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-EnvironmentalFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Physical environment",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-PhysicalMentalLimitations",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Physical/Mental Limitations",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-ConditionOfOperators"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Physical/mental limitations",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-PlannedInappropriateOperations",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Planned Inappropriate Operations",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-UnsafeSupervision"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Planned inappropriate operations",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-Preconditions",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "PRECONDITIONS FOR UNSAFE ACTS",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-ConditionOfOperators"
+        },
+        {
+          "@id": "xw:hfacs-EnvironmentalFactors"
+        },
+        {
+          "@id": "xw:hfacs-PersonnelFactors"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Preconditions for unsafe acts",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Structural container; its children are crosswalked individually.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-ResourceManagement",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Resource Management",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-OrganizationalInfluences"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Resource management",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-RoutineViolations",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Routine",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Violations"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Routine violations",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "See parent.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-SkillBasedErrors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Skill-Based Errors",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-Errors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Skill-based errors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Corresponds to ehs:SkillBasedSlipOrLapse, not to a factor.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-SupervisoryViolations",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Supervisory Violations",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-UnsafeSupervision"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Supervisory violations",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-TechnologicalEnvironment",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Technological Environment",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-EnvironmentalFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Technological environment",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-UnsafeActs",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "UNSAFE ACTS",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-Errors"
+        },
+        {
+          "@id": "xw:hfacs-Violations"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Unsafe acts",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Unsafe acts are outcomes, not context. Modelled here as error modes (section 6), not as performance-influencing factors.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-UnsafeSupervision",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "UNSAFE SUPERVISION",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-FailedToCorrectProblem"
+        },
+        {
+          "@id": "xw:hfacs-InadequateSupervision"
+        },
+        {
+          "@id": "xw:hfacs-PlannedInappropriateOperations"
+        },
+        {
+          "@id": "xw:hfacs-SupervisoryViolations"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Unsafe supervision",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Structural container; its children are crosswalked individually.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hfacs-Violations",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hfacs-UnsafeActs"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HFACS"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hfacs-ExceptionalViolations"
+        },
+        {
+          "@id": "xw:hfacs-RoutineViolations"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Violations",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Violations are intentional deviations and are outside the error taxonomy this ontology encodes.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-ClarityOfRoles",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Clarity of roles and responsibilities",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-ClarityOfSignsSignals",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Clarity of signs, signals, instructions and other information",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-CommunicationJob",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Communication, with colleagues, supervision, contractor, other",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Communication (job)",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-CommunicationOrg",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Communication",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Communication (organisation)",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-Competence",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Competence to deal with circumstances",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-PersonFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Competence",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-ConsequencesOfFailure",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Consequences of failure to follow rules/procedures",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-DifficultyComplexityOfTask",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Difficulty/complexity of task",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-DividedAttention",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Divided attention",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-Fatigue",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Fatigue (acute from temporary situation, or chronic)",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-PersonFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Fatigue",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-JobFactors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hse-ClarityOfSignsSignals"
+        },
+        {
+          "@id": "xw:hse-CommunicationJob"
+        },
+        {
+          "@id": "xw:hse-DifficultyComplexityOfTask"
+        },
+        {
+          "@id": "xw:hse-DividedAttention"
+        },
+        {
+          "@id": "xw:hse-PreparationForTask"
+        },
+        {
+          "@id": "xw:hse-ProceduresInadequate"
+        },
+        {
+          "@id": "xw:hse-RoutineOrUnusual"
+        },
+        {
+          "@id": "xw:hse-SystemEquipmentInterface"
+        },
+        {
+          "@id": "xw:hse-TimeAvailableRequired"
+        },
+        {
+          "@id": "xw:hse-ToolsAppropriateForTask"
+        },
+        {
+          "@id": "xw:hse-WorkingEnvironment"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Job factors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Heading, not a factor.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-ManningLevels",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Manning levels",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-Motivation",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-PersonFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Motivation vs. other priorities",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-OrganisationFactors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hse-ClarityOfRoles"
+        },
+        {
+          "@id": "xw:hse-CommunicationOrg"
+        },
+        {
+          "@id": "xw:hse-ConsequencesOfFailure"
+        },
+        {
+          "@id": "xw:hse-ManningLevels"
+        },
+        {
+          "@id": "xw:hse-OrganisationalLearning"
+        },
+        {
+          "@id": "xw:hse-PeerPressure"
+        },
+        {
+          "@id": "xw:hse-SafetyCulture"
+        },
+        {
+          "@id": "xw:hse-SupervisionLeadership"
+        },
+        {
+          "@id": "xw:hse-WorkPressures"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Organisation factors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Heading, not a factor.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-OrganisationalLearning",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Effectiveness of organisational learning (learning from experiences)",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Effectiveness of organisational learning",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-PeerPressure",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Peer pressure",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-PersonFactors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:narrower": [
+        {
+          "@id": "xw:hse-Competence"
+        },
+        {
+          "@id": "xw:hse-Fatigue"
+        },
+        {
+          "@id": "xw:hse-Motivation"
+        },
+        {
+          "@id": "xw:hse-PhysicalCapability"
+        },
+        {
+          "@id": "xw:hse-StressMorale"
+        },
+        {
+          "@id": "xw:hse-WorkOverloadUnderload"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Person factors",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Heading, not a factor.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-PhysicalCapability",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-PersonFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Physical capability and condition",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-PreparationForTask",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Preparation for task (e.g. permits, risk assessments, checking)",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Preparation for task",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-ProceduresInadequate",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Procedures inadequate or inappropriate",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-RoutineOrUnusual",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Routine or unusual",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-SafetyCulture",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Organisational or safety culture, e.g. everyone breaks the rules",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Organisational or safety culture",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-StressMorale",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-PersonFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Stress/morale",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-SupervisionLeadership",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Level and nature of supervision / leadership",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Level and nature of supervision/leadership",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-SystemEquipmentInterface",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "System/equipment interface (labelling, alarms, error avoidance/ tolerance)",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "System/equipment interface",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-TimeAvailableRequired",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Time available/required",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-ToolsAppropriateForTask",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Tools appropriate for task",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-WorkOverloadUnderload",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-PersonFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Work overload/underload",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-WorkPressures",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Work pressures e.g. production vs. safety",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-OrganisationFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Work pressures",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:hse-WorkingEnvironment",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Working environment (noise, heat, space, lighting, ventilation)",
+          "@language": "en"
+        }
+      ],
+      "skos:broader": [
+        {
+          "@id": "xw:hse-JobFactors"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-HSE-PIF"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Working environment",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:idheas-EnvironmentAndSituation",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "environment and situation",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-IDHEAS-G"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Environment and situation",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Bound to a context dimension by ehs:correspondsToIdheasCategory, not by a factor-level alignment.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:idheas-Personnel",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "personnel",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-IDHEAS-G"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Personnel",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Bound to a context dimension by ehs:correspondsToIdheasCategory.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:idheas-System",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "system",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-IDHEAS-G"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "System",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Bound to a context dimension by ehs:correspondsToIdheasCategory.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:idheas-Task",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "task",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-IDHEAS-G"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Task",
+          "@language": "en"
+        }
+      ],
+      "skos:scopeNote": [
+        {
+          "@value": "Bound to a context dimension by ehs:correspondsToIdheasCategory.",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-AvailableTime",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Available time",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-Complexity",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Complexity",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-ErgonomicsHMI",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Ergonomics (including the human-machine interface)",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Ergonomics and human-machine interface",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-ExperienceAndTraining",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Experience and training",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-FitnessForDuty",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Fitness for duty",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-Procedures",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:altLabel": [
+        {
+          "@value": "Procedures (including job aids)",
+          "@language": "en"
+        }
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Procedures",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-StressAndStressors",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Stress and stressors",
+          "@language": "en"
+        }
+      ]
+    },
+    {
+      "@id": "xw:sparh-WorkProcesses",
+      "@type": [
+        "skos:Concept"
+      ],
+      "skos:inScheme": [
+        {
+          "@id": "xw:fw-SPARH"
+        }
+      ],
+      "skos:prefLabel": [
+        {
+          "@value": "Work processes",
+          "@language": "en"
+        }
+      ]
+    }
+  ]
+}
