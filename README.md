@@ -16,7 +16,7 @@ Python 3.9+, standard library only. No pip installs, no build step.
 | --- | --- |
 | Status | v0.1.0 |
 | Data | Real ontology and crosswalk data; the scenario corpus in `synthetic/` is fabricated and labelled as such |
-| Tests | 240 tests, `python3 -m unittest discover -s tests -t .` |
+| Tests | 257 tests, `python3 -m unittest discover -s tests -t .` |
 | Quickstart | `PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json` |
 | Licence | MIT |
 
@@ -82,7 +82,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 240 tests
+python3 -m unittest discover -s tests -t .          # 257 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
@@ -347,7 +347,7 @@ incidents/                  CSB investigations coded to the PIFs (quoted, source
 tools/second_coder.py       blinded second-coder sheet export and kappa report (docs/second-coder-protocol.md)
 synthetic/                  fabricated corpus + generator (read its README)
 examples/                   hand-written worked scenario
-tests/                      240 tests, stdlib unittest
+tests/                      257 tests, stdlib unittest
 docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
@@ -362,7 +362,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency 
 python3 -m unittest discover -s tests -t .
 ```
 
-240 tests, no third-party dependencies. Beyond ordinary unit coverage they
+257 tests, no third-party dependencies. Beyond ordinary unit coverage they
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of
@@ -383,7 +383,7 @@ repository. If the encoding or the crosswalk is useful, cite this repository for
 those and the underlying frameworks for their content. `CITATIONS.md` gives the
 full references with verification status.
 
-The methods note, which separates what is adopted from IDHEAS-G from what this work adds and reports figures computed from the data, is [docs/methods-note.md](docs/methods-note.md).
+The methods note, which separates what is adopted from IDHEAS-G from what this work adds and reports figures computed from the data, is [docs/methods-note.md](docs/methods-note.md). An unsubmitted IMRaD manuscript draft, with a register tying every figure to a source file, is [docs/manuscript/manuscript.md](docs/manuscript/manuscript.md).
 
 Every entry in `CITATIONS.md` records how it was checked, and seven of the twelve
 are marked `primary`, meaning the document was retrieved and the specific wording
