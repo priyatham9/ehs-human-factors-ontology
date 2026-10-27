@@ -24,3 +24,45 @@ pemex-deer-park,ehs:TeamAndOrganizationFactors,recommendation,"define the hazard
 clairton,ehs:Training,recommendation,Ensure that all workers who will or might participate in such operations are trained on the policies and procedures.
 clairton,ehs:ProceduresGuidanceAndInstructions,recommendation,"Ensure that the procedure includes steps and other controls, including overpressure protection,"
 clairton,ehs:TeamAndOrganizationFactors,recommendation,"require the documentation of process safety deficiencies, when identified, and prompt corrective action."
+bayer-institute,ehs:Training,finding,incomplete operator training on a new computer control system
+bayer-institute,ehs:ProceduresGuidanceAndInstructions,finding,an overly complex Standard Operating Procedure (SOP) that was not reviewed and approved
+bayer-institute,ehs:EquipmentAndTools,finding,critical operating equipment and instruments were not installed before the restart
+bayer-institute,ehs:TimePressureAndStress,finding,"the startup was begun prematurely, a result of pressures to resume production"
+tesoro-martinez,ehs:TimePressureAndStress,finding,Perceived pressure on alkylation unit workers to expedite training and reduce cost.
+tesoro-martinez,ehs:TeamAndOrganizationFactors,finding,Failure to develop an action plan to address concerns identified in a 2007 safety culture survey;
+tesoro-martinez,ehs:EquipmentAndTools,finding,Failure to provide alkylation unit workers with necessary protective equipment;
+husky-superior,ehs:EquipmentAndTools,finding,essential safeguards at the FCC unit were either not implemented or not effective
+husky-superior,ehs:TeamAndOrganizationFactors,finding,"The use of external experts was limited, and the refinery had minimal technical engagement with other refineries."
+husky-superior,ehs:InformationAvailabilityAndReliability,finding,failed to adequately maintain process safety information
+tpc-port-neches,ehs:ProceduresGuidanceAndInstructions,finding,that dead leg procedure did not identify all potential temporary dead legs within the unit
+tpc-port-neches,ehs:EquipmentAndTools,finding,there were no remotely operated emergency isolation valves installed
+tpc-port-neches,ehs:InformationAvailabilityAndReliability,finding,does not contain information on the potential consequences of dead legs
+kuraray-pasadena,ehs:Training,recommendation,"Strengthen the EVAL Plant’s operator training program by 1) including the known activities,"
+kuraray-pasadena,ehs:ProceduresGuidanceAndInstructions,recommendation,Develop and implement a program to ensure that the company’s EVAL Plant nightly operating instructions do not conflict
+kuraray-pasadena,ehs:HumanSystemInterface,recommendation,Complete the alarm management efforts at the EVAL Plant and implement a continual program
+kuraray-pasadena,ehs:TeamAndOrganizationFactors,recommendation,Develop and implement a policy detailing how to effectively address recommendations generated from company
+didion-milling,ehs:Training,recommendation,train all employees on updated emergency response plan
+didion-milling,ehs:ProceduresGuidanceAndInstructions,recommendation,Provide instructions for when to notify emergency responders for need of assistance
+didion-milling,ehs:EquipmentAndTools,recommendation,Implement a periodic inspection and testing program for pneumatic conveying and dust collector ductwork systems
+didion-milling,ehs:TeamAndOrganizationFactors,recommendation,Contract a competent third party to develop and implement a process safety leadership and culture program
+watson-grinding,ehs:TeamAndOrganizationFactors,recommendation,develop and implement effective process safety management systems.
+watson-grinding,ehs:InformationAvailabilityAndReliability,recommendation,Provide your customers with information about (1) the safety issues described in this report.
+honeywell-geismar,ehs:TeamAndOrganizationFactors,recommendation,Evaluate other internal management systems that contributed to these incidents.
+marathon-martinez,ehs:Training,recommendation,"Reinforce Walk the Line concepts, including the expectation for only trained operators to control valve line-ups"
+marathon-martinez,ehs:ProceduresGuidanceAndInstructions,recommendation,Update the corporate “Heater Application Standard” with the following requirements:
+marathon-martinez,ehs:HumanSystemInterface,recommendation,Implement tube metal temperature alarming consistent with corporate guidance to alert operators when safe operating limits
+marathon-martinez,ehs:TeamAndOrganizationFactors,recommendation,Complete a comprehensive gap assessment of the Martinez facility against Marathon Petroleum Corporation policies.
+wacker-polysilicon,ehs:Training,recommendation,Ensure relevant staff are trained on execution of the SIMOPs program.
+wacker-polysilicon,ehs:ProceduresGuidanceAndInstructions,recommendation,Develop detailed maintenance procedures for torquing activities which:
+yenkin-majestic,ehs:Training,recommendation,"Develop and implement employee training on actions to take, such as prompt evacuation, when such alarms are activated."
+yenkin-majestic,ehs:ProceduresGuidanceAndInstructions,recommendation,"Update mechanical integrity procedures for all process vessels in highly hazardous chemicals service,"
+yenkin-majestic,ehs:HumanSystemInterface,recommendation,Ensure that detection of hazardous conditions automatically triggers both visual and audible alarms
+foundation-food,ehs:Training,recommendation,Address requirements for employee training and hazard awareness specific to cryogenic asphyxiants
+foundation-food,ehs:ProceduresGuidanceAndInstructions,recommendation,Require an emergency action plan in accordance with 29 CFR 1910.38
+foundation-food,ehs:HumanSystemInterface,recommendation,requirements for visible and audible alarm indication distinct from the building's fire alarm system
+foundation-food,ehs:TeamAndOrganizationFactors,recommendation,develop and implement effective safety management systems to control asphyxiation hazards
+foundation-food,ehs:InformationAvailabilityAndReliability,recommendation,"inform local emergency responders of the existence, nature, and location of hazardous substances at its facilities"
+bp-husky-oregon,ehs:Training,recommendation,"Recommended field and board operator process safety training topics and methods to prevent a pressure vessel overflow,"
+bp-husky-oregon,ehs:ProceduresGuidanceAndInstructions,recommendation,Revise the Abnormal Situation Management policy to incorporate guidance
+bp-husky-oregon,ehs:HumanSystemInterface,recommendation,not limiting alarm performance to a single metric averaged over a month.
+bp-husky-oregon,ehs:TeamAndOrganizationFactors,recommendation,clearly provides employees with the authority to stop work that is perceived to be unsafe

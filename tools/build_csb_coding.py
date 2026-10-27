@@ -60,8 +60,8 @@ def render(ont: Ontology) -> str:
     for r in inv:
         if r["coded"] != "yes":
             out.append(
-                f"- {r['name']} ({r['incident_date']}): the fetched CSB page gives only "
-                f"recommendations that do not map to a PIF without interpretation. {r['source_url']}"
+                f"- {r['name']} ({r['incident_date']}): the fetched CSB page "
+                f"offered nothing that could be coded to a PIF without interpretation. {r['source_url']}"
             )
     out += ["", "## Codings per factor", "", "| Factor | Codings |", "| --- | --- |"]
     counts = Counter(x["factor_curie"] for x in rows)

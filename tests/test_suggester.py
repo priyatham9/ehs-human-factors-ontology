@@ -128,19 +128,33 @@ class TestEvaluation(unittest.TestCase):
         self.assertLess(cut, cur)  # page says "clearly fewer"
 
     def test_methods_note_quotes_current_figures(self) -> None:
-        _, _, _, results, _ = ev.evaluate(self.ont)
         with open(context.REPO_ROOT + "/docs/methods-note.md", encoding="utf-8") as handle:
             note = " ".join(handle.read().split())
-        names = list(results)
         expect = [
             "the untuned baseline recovered {tp} of {n} pairs (precision {p})",
             "the curated set recovered {tp} of {n} (precision {p}, recall {r})",
             "without the quote-derived phrases recovered {tp} of {n} (precision {p}, recall {r})",
         ]
-        for name, template in zip(names, expect):
-            tp, fp, fn = ev.summarise(results[name])
+        _, _, _, dev, _ = ev.evaluate(self.ont, "development")
+        for name, template in zip(list(dev), expect):
+            tp, fp, fn = ev.summarise(dev[name])
             text = template.format(tp=tp, n=tp + fn, p=ev.ratio(tp, tp + fp), r=ev.ratio(tp, tp + fn))
             self.assertIn(text, note)
+        _, _, _, held, _ = ev.evaluate(self.ont, "held_out")
+        names = list(held)
+        tp, fp, fn = ev.summarise(held[names[0]])
+        self.assertIn(f"the baseline recovered {tp} of {tp + fn} pairs (precision {ev.ratio(tp, tp + fp)})", note)
+        tp, fp, fn = ev.summarise(held[names[1]])
+        self.assertIn(f"the curated set recovered {tp} of {tp + fn} (precision {ev.ratio(tp, tp + fp)}, "
+                      f"recall {ev.ratio(tp, tp + fn)})", note)
+
+    def test_cohorts_partition_the_data(self) -> None:
+        a = ev.evaluate(self.ont)
+        d = ev.evaluate(self.ont, "development")
+        h = ev.evaluate(self.ont, "held_out")
+        self.assertEqual(a[0], d[0] + h[0])
+        self.assertEqual(a[1], d[1] + h[1])
+        self.assertGreaterEqual(h[0], 10)
 
     def test_reports_are_current(self) -> None:
         with open(ev.OUTPUT, encoding="utf-8") as handle:

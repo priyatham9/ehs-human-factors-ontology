@@ -287,31 +287,40 @@ read back through the crosswalk to a citation. A second, baseline set is derived
 by code from the ontology's own labels: a stemmed word becomes a rule for a PIF
 if it occurs in that PIF's label vocabulary and in no other PIF's.
 
-The evaluation compares each set with the PIFs hand-coded for 10 CSB
-investigations in `incidents/` (25 investigation-PIF pairs over 9 PIFs). The
+The evaluation compares each set with the PIFs hand-coded for 23 CSB
+investigations in `incidents/` (67 investigation-PIF pairs over 10 PIFs). The
 only incident text in the repository is the set of quoted passages those codings
-rest on, so the "narrative" for an investigation is its concatenated quotes. This
-has three consequences that limit what the figures mean. First, recall measures
-whether the rules' vocabulary reaches words a coder already pointed at, not
-discovery in unseen narratives. Second, the curated rules were written after the
-author read those quotes; their scores are resubstitution and optimistic, and a
+rest on, so the "narrative" for an investigation is its concatenated quotes. The
+investigations fall into two cohorts. The development cohort (10 investigations,
+25 pairs) was coded before the rules were written; the author had read those
+quotes, so the curated scores on it are resubstitution and optimistic, and a
 variant without the 11 rules whose phrase was taken from the quotes is reported
-beside it. Cross-validation was not used because the rules are hand-written, not
-fitted, and the quotes are too few to hold any out without leaving each fold
-empty for most PIFs. Third, the gold labels are incomplete (a PIF is coded only
-when a passage was quoted for it), so a false positive may be a real condition
-nobody coded.
+beside it. The held-out cohort (13 investigations, 42 pairs) was coded afterwards
+from 15 further CSB investigations, with the rules frozen first, and is a genuine
+out-of-sample test. Three caveats apply to both. Recall measures whether the
+rules' vocabulary reaches words a coder already pointed at, not discovery in
+free-running narratives; the held-out passages were also chosen by looking for
+text on each factor's topic and are mostly recommendation wording from summary
+pages, which inflates recall. The same person coded both cohorts and wrote the
+rules. The gold labels are incomplete (a PIF is coded only when a passage was
+quoted for it), so a false positive may be a real condition nobody coded.
 
 Results are in `incidents/suggester_eval.md` and `docs/suggester.html`, both
-generated and tested. In summary, the untuned baseline recovered 5 of 25 pairs
-(precision 0.31); the curated set recovered 20 of 25 (precision 0.74, recall
-0.80); the curated set without the quote-derived phrases recovered 14 of 25
-(precision 0.74, recall 0.56); a control that always predicts the most frequent
-PIF (team and organisation factors) scored precision 0.80 and recall 0.32. Eleven
-of the 20 PIFs have no gold coding, so their rules are untested. The suggester
-has therefore not been shown to work on unseen narratives. A real test needs
-narratives outside the gold set, coded by someone other than the rule author,
-with the rules frozen first.
+generated and tested. On the development cohort, the untuned baseline recovered
+5 of 25 pairs (precision 0.31); the curated set recovered 20 of 25 (precision
+0.74, recall 0.80); the curated set without the quote-derived phrases recovered
+14 of 25 (precision 0.74, recall 0.56). On the held-out cohort, the baseline
+recovered 10 of 42 pairs (precision 0.42); the curated set recovered 30 of 42
+(precision 0.86, recall 0.71). A control that always predicts the most frequent
+development PIF (team and organisation factors) scored precision 0.69 and recall
+0.21 on the held-out cohort. The earlier figures therefore held up out of sample
+in kind: recall fell from 0.80 to 0.71 and precision rose from 0.74 to 0.86, but
+it stayed above the 0.56 of the development-derived-phrase-free variant, which is
+the fairer comparison. Time pressure and stress (2 held-out pairs) was missed
+both times. Ten of the 20 PIFs have gold coding in either cohort, so the rules
+for the other ten remain untested. With 42 held-out pairs one pair moves recall
+by about 2.4 points, and no confidence interval is claimed. A stronger test
+needs full-report narratives coded by someone other than the rule author.
 
 ## 7 Limitations
 

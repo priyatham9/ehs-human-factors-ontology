@@ -36,6 +36,12 @@ class TestCsbCoding(unittest.TestCase):
         for r in self.inv:
             self.assertEqual(r["coded"] == "yes", r["investigation_id"] in with_rows, r["name"])
 
+    def test_cohort_is_set_and_held_out_set_is_large_enough(self) -> None:
+        for r in self.inv:
+            self.assertIn(r["cohort"], {"development", "held_out"}, r["name"])
+        held = [r for r in self.inv if r["cohort"] == "held_out" and r["coded"] == "yes"]
+        self.assertGreaterEqual(len(held), 10)
+
     def test_no_duplicate_codings(self) -> None:
         keys = [(r["investigation_id"], r["factor_curie"], r["quoted_text"]) for r in self.rows]
         self.assertEqual(len(keys), len(set(keys)))
