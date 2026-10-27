@@ -141,18 +141,18 @@ Every figure in this manuscript that comes from the repository appears below wit
 | N06 | 34 close, 23 broader, 0 narrower, 33 partial, 0 exact | docs/methods-note.md | `\| **All** \| 34 \| 23 \| 0 \| 33 \| 0 \| 90 \|` | yes |
 | N07 | SPAR-H 16, CREAM 22, HFACS 23, HSE 29 | docs/methods-note.md | `\| HSE PIF list \| 14 \| 5 \| 0 \| 10 \| 0 \| 29 \|` | yes |
 | N08 | Fourteen | docs/methods-note.md | `- Local factors aligned in 4 of 4 frameworks: 14.` | no |
-| N09 | 24 engine rules | docs/methods-note.md | `- Rules: 24, of which 18 are marked` | no |
+| N09 | 24 rules | docs/methods-note.md | `- Rules: 24, of which 18 are marked` | no |
 | N10 | 97 curated rules, 59 baseline rules | incidents/suggester_eval.md | `\| baseline (words unique to a PIF's ontology labels; not tuned) \| 59 \| 10 \| 14 \| 32 \| 0.42 \| 0.24 \| 0.17 \|` | yes |
 | N11 | 23 investigations, 67 pairs, 10 PIFs | incidents/suggester_eval.md | `Data: 23 coded investigations, 67 (investigation, PIF) gold pairs over 10 distinct PIFs` | yes |
-| N12 | development 10 coded investigations, 25 pairs; held-out 13, 42 | incidents/suggester_eval.md | `## Held-out cohort (13 investigations, 42 pairs, rules not fit to these)` | yes |
-| N13 | 28 CSB investigations listed | incidents/README.md | `28 U.S. Chemical Safety Board investigations` | yes |
+| N12 | 25 pairs; development 10 coded investigations; held-out 13 investigations, 42 pairs | incidents/suggester_eval.md | `## Held-out cohort (13 investigations, 42 pairs, rules not fit to these)` | yes |
+| N13 | 28 CSB investigations | incidents/README.md | `28 U.S. Chemical Safety Board investigations` | yes |
 | N14 | 90 mapping triples; 38 closeMatch | docs/skos.md | `triples, 38 in the file` | no |
 | N15 | 67 excerpts; no second coder | docs/second-coder-protocol.md | `**Status: no second coder has contributed yet, so there are no agreement figures.**` | yes |
-| N16 | 11 quote-derived rules, 86 remain | incidents/suggester_eval.md | `\| curated without the rules whose phrase was taken from the development quotes \| 86 \| 14 \| 5 \| 11 \| 0.74 \| 0.56 \| 0.43 \|` | yes |
-| N17 | development: curated 20/7/5, 0.74, 0.80; baseline 5 TP, 0.31; no-quote variant 14 TP, 0.56 | incidents/suggester_eval.md | `\| curated (crosswalk/pif_rules.csv; written after reading the development quotes) \| 97 \| 20 \| 7 \| 5 \| 0.74 \| 0.80 \| 0.82 \|` | yes |
-| N18 | held-out: curated 30/5/12, 0.86, 0.71; baseline 10 TP, 0.42, 0.24 | incidents/suggester_eval.md | `\| curated (crosswalk/pif_rules.csv; written after reading the development quotes) \| 97 \| 30 \| 5 \| 12 \| 0.86 \| 0.71 \| 0.65 \|` | yes |
-| N19 | majority control held-out 0.69, 0.21 | incidents/suggester_eval.md | `\| majority-class control (always predict Team and organisation factors) \| 1 \| 9 \| 4 \| 33 \| 0.69 \| 0.21 \| 0.14 \|` | yes |
-| N20 | about 2.4 points per pair | docs/methods-note.md | `by about 2.4 points` | yes |
+| N16 | 11 rules; 86 remain | incidents/suggester_eval.md | `\| curated without the rules whose phrase was taken from the development quotes \| 86 \| 14 \| 5 \| 11 \| 0.74 \| 0.56 \| 0.43 \|` | yes |
+| N17 | precision 0.74 and recall 0.80; development curated TP 20, FP 7, FN 5; baseline 5 TP, 0.31; no-quote variant 14 TP, 0.56 | incidents/suggester_eval.md | `\| curated (crosswalk/pif_rules.csv; written after reading the development quotes) \| 97 \| 20 \| 7 \| 5 \| 0.74 \| 0.80 \| 0.82 \|` | yes |
+| N18 | precision 0.86 and recall 0.71; held-out curated TP 30, FP 5, FN 12; baseline 10 TP, 0.42, 0.24 | incidents/suggester_eval.md | `\| curated (crosswalk/pif_rules.csv; written after reading the development quotes) \| 97 \| 30 \| 5 \| 12 \| 0.86 \| 0.71 \| 0.65 \|` | yes |
+| N19 | precision 0.69 and recall 0.21; majority-class control, held-out | incidents/suggester_eval.md | `\| majority-class control (always predict Team and organisation factors) \| 1 \| 9 \| 4 \| 33 \| 0.69 \| 0.21 \| 0.14 \|` | yes |
+| N20 | about 2.4 points | docs/methods-note.md | `by about 2.4 points` | yes |
 | N21 | Time pressure and stress, 2 held-out pairs, missed | incidents/suggester_eval.md | `\| Time pressure and stress \| 2 \| 0 \| 0 \| 2 \| n/a \| 0.00 \|` | yes |
 | N22 | 15 further investigations, 13 coded | incidents/README.md | `(the 15 added` | yes |
-| N23 | 10 of 20 PIFs have gold coding | docs/methods-note.md | `Ten of the 20 PIFs have gold coding in either cohort` | yes |
+| N23 | Ten of the 20 PIFs; have gold coding | docs/methods-note.md | `Ten of the 20 PIFs have gold coding in either cohort` | yes |
