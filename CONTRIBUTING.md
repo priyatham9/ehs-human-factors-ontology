@@ -46,3 +46,8 @@ Every factor's verbatim label is transcribed from its source (NUREG-2198 for IDH
 - Files are used only to exercise the engine and test rule evaluation, never as evidence
 - `synthetic/generate_scenarios.py --check` verifies the corpus is byte-reproducible
 - See `synthetic/README.md` for the generator's design and limitations
+
+## Second-coder contributions
+
+Independent coding of the CSB incident excerpts is the most useful outside contribution. Follow
+`docs/second-coder-protocol.md`; completed sheets go in `incidents/second_coder/`.

@@ -36,7 +36,8 @@ First application of the PIF ontology to real incidents. Files:
 
 ## Limits
 
-One coder, no second-rater agreement. 67 codings across 23 investigations is a worked
+One coder, no second-rater agreement yet: a blinded second-coder protocol and agreement tool
+exist (`docs/second-coder-protocol.md`) but no second coder has returned a sheet. 67 codings across 23 investigations is a worked
 demonstration, not a sample of CSB work, and says nothing about how common any factor is.
 Factors with no coding (for example Thermal conditions) are absent from these excerpts,
 not shown to be absent from the incidents.
