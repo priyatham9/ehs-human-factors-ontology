@@ -374,6 +374,8 @@ repository. If the encoding or the crosswalk is useful, cite this repository for
 those and the underlying frameworks for their content. `CITATIONS.md` gives the
 full references with verification status.
 
+The methods note, which separates what is adopted from IDHEAS-G from what this work adds and reports figures computed from the data, is [docs/methods-note.md](docs/methods-note.md).
+
 Every entry in `CITATIONS.md` records how it was checked, and seven of the twelve
 are marked `primary`, meaning the document was retrieved and the specific wording
 read in it rather than taken on trust. That includes NUREG-2198, where the
