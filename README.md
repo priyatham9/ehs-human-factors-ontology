@@ -16,7 +16,7 @@ Python 3.9+, standard library only. No pip installs, no build step.
 | --- | --- |
 | Status | v0.1.0 |
 | Data | Real ontology and crosswalk data; the scenario corpus in `synthetic/` is fabricated and labelled as such |
-| Tests | 189 tests, `python3 -m unittest discover -s tests -t .` |
+| Tests | 196 tests, `python3 -m unittest discover -s tests -t .` |
 | Quickstart | `PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json` |
 | Licence | MIT |
 
@@ -82,7 +82,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 189 tests
+python3 -m unittest discover -s tests -t .          # 196 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
@@ -188,7 +188,7 @@ A bottom-up Datalog evaluator with stratified negation as failure.
   scenario produce byte-identical reports. An audit record that changes between
   runs is not an audit record.
 - Data complexity is PTIME. The implementation is naive iteration to a fixpoint
-  per stratum, which is ample for twenty factors and twenty-one rules.
+  per stratum, which is ample for twenty factors and twenty-four rules.
 
 Every rule declares a `basis`. `literature` means the proposition appears in the
 cited source and the rule must carry a citation - enforced in `Rule.__post_init__`.
@@ -338,7 +338,7 @@ src/ehs_hfo/
 tools/build_crosswalk.py    regenerates crosswalk/ from the Turtle
 synthetic/                  fabricated corpus + generator (read its README)
 examples/                   hand-written worked scenario
-tests/                      171 tests, stdlib unittest
+tests/                      196 tests, stdlib unittest
 docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
@@ -353,7 +353,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency 
 python3 -m unittest discover -s tests -t .
 ```
 
-171 tests, no third-party dependencies. Beyond ordinary unit coverage they
+196 tests, no third-party dependencies. Beyond ordinary unit coverage they
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of
