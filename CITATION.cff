@@ -11,6 +11,14 @@ url: "https://priyatham9.github.io/ehs-human-factors-ontology/"
 license: MIT
 date-released: "2026-09-07"
 version: 0.1.0
+keywords:
+  - human reliability analysis
+  - performance-influencing factors
+  - ontology
+  - IDHEAS-G
+  - human factors
+  - EHS
+  - knowledge representation
 references:
   - type: report
     title: "The General Methodology of an Integrated Human Event Analysis System (IDHEAS-G)"
