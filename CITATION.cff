@@ -11,3 +11,18 @@ url: "https://priyatham9.github.io/ehs-human-factors-ontology/"
 license: MIT
 date-released: "2026-09-07"
 version: 0.1.0
+references:
+  - type: report
+    title: "The General Methodology of an Integrated Human Event Analysis System (IDHEAS-G)"
+    authors:
+      - family-names: Xing
+        given-names: J.
+      - family-names: Chang
+        given-names: Y. J.
+      - family-names: DeJesus Segarra
+        given-names: J.
+    institution:
+      name: "U.S. Nuclear Regulatory Commission, Office of Nuclear Regulatory Research"
+    number: "NUREG-2198"
+    year: 2021
+    notes: "Source of the four-context structure and the twenty PIFs, adopted unchanged. See docs/methods-note.md for what this repository adds."
