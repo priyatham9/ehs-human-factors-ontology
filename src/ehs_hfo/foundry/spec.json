@@ -1,0 +1,921 @@
+{
+  "ontology": {
+    "api_name": "ehs_hfo_human_factors",
+    "display_name": "EHS human-factors ontology (PIFs, crosswalk, rules, CSB evidence)",
+    "version": "1.0.0",
+    "description": "Foundry-style object/link/action/function view of the repository's committed data: the performance-influencing factors, their crosswalk to CREAM, HFACS, HSE PIFs, SPAR-H and IDHEAS-G, the curated suggester rules, and the CSB investigations coded to the PIFs. Independent design in the style of a Palantir Foundry Ontology; not affiliated with Palantir. Every object is read from a committed file; nothing is invented."
+  },
+  "object_types": [
+    {
+      "api_name": "ContextDimension",
+      "display_name": "Context dimension",
+      "plural_display_name": "Context dimensions",
+      "description": "One of the four context dimensions the PIFs are grouped under; carries the IDHEAS-G category it corresponds to.",
+      "backing_dataset": "ontology/ehs-hfo.ttl (ehs:ContextDimension)",
+      "primary_key": "dimension_curie",
+      "title_property": "label",
+      "properties": [
+        {
+          "api_name": "dimension_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "CURIE, e.g. ehs:TaskContext."
+        },
+        {
+          "api_name": "label",
+          "type": "string",
+          "nullable": false,
+          "description": "Label."
+        },
+        {
+          "api_name": "definition",
+          "type": "string",
+          "nullable": true,
+          "description": "SKOS definition."
+        },
+        {
+          "api_name": "idheas_item_curie",
+          "type": "string",
+          "nullable": true,
+          "description": "Foreign key to FrameworkItem: the IDHEAS-G category this dimension corresponds to."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        }
+      ]
+    },
+    {
+      "api_name": "Pif",
+      "display_name": "Performance-influencing factor",
+      "plural_display_name": "Performance-influencing factors",
+      "description": "A PIF of the ontology: a condition of the task, operation, human or system context that shifts the likelihood of an error mode.",
+      "backing_dataset": "ontology/ehs-hfo.ttl (ehs:PerformanceInfluencingFactor)",
+      "primary_key": "factor_curie",
+      "title_property": "label",
+      "properties": [
+        {
+          "api_name": "factor_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "CURIE, e.g. ehs:Training."
+        },
+        {
+          "api_name": "label",
+          "type": "string",
+          "nullable": false,
+          "description": "Label."
+        },
+        {
+          "api_name": "verbatim_label",
+          "type": "string",
+          "nullable": true,
+          "description": "Label as worded in the source framework."
+        },
+        {
+          "api_name": "dimension_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to ContextDimension."
+        },
+        {
+          "api_name": "source_refs",
+          "type": "string_array",
+          "nullable": false,
+          "description": "Citation keys in CITATIONS.md."
+        },
+        {
+          "api_name": "comment",
+          "type": "string",
+          "nullable": true,
+          "description": "Definition or scoping note."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        }
+      ]
+    },
+    {
+      "api_name": "Framework",
+      "display_name": "External framework",
+      "plural_display_name": "External frameworks",
+      "description": "A published human-factors framework the PIFs are aligned to (CREAM, HFACS, HSE PIFs, SPAR-H, IDHEAS-G).",
+      "backing_dataset": "ontology/ehs-hfo.ttl (ehs:ExternalFramework)",
+      "primary_key": "framework_curie",
+      "title_property": "label",
+      "properties": [
+        {
+          "api_name": "framework_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "CURIE, e.g. xw:fw-CREAM."
+        },
+        {
+          "api_name": "label",
+          "type": "string",
+          "nullable": false,
+          "description": "Short name."
+        },
+        {
+          "api_name": "citation",
+          "type": "string",
+          "nullable": true,
+          "description": "Full citation."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        }
+      ]
+    },
+    {
+      "api_name": "FrameworkItem",
+      "display_name": "Framework item",
+      "plural_display_name": "Framework items",
+      "description": "One factor, category or condition of an external framework, e.g. an IDHEAS-G category or a CREAM common performance condition.",
+      "backing_dataset": "ontology/ehs-hfo.ttl (ehs:ExternalFactor)",
+      "primary_key": "external_curie",
+      "title_property": "label",
+      "properties": [
+        {
+          "api_name": "external_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "CURIE, e.g. xw:cream-AvailabilityOfProcedures."
+        },
+        {
+          "api_name": "label",
+          "type": "string",
+          "nullable": false,
+          "description": "Label."
+        },
+        {
+          "api_name": "verbatim_label",
+          "type": "string",
+          "nullable": true,
+          "description": "Label as worded in the framework."
+        },
+        {
+          "api_name": "framework_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Framework."
+        },
+        {
+          "api_name": "out_of_scope_note",
+          "type": "string",
+          "nullable": true,
+          "description": "Why the item has no factor-level alignment, where the ontology says so."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        }
+      ]
+    },
+    {
+      "api_name": "CrosswalkEntry",
+      "display_name": "Crosswalk entry",
+      "plural_display_name": "Crosswalk entries",
+      "description": "One PIF-to-framework-item correspondence with its match strength (close, partial or broader). The join object between Pif and FrameworkItem.",
+      "backing_dataset": "crosswalk/crosswalk.csv rows with an external item",
+      "primary_key": "entry_key",
+      "title_property": "entry_key",
+      "properties": [
+        {
+          "api_name": "entry_key",
+          "type": "string",
+          "nullable": false,
+          "description": "factor_curie|external_curie."
+        },
+        {
+          "api_name": "factor_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Pif."
+        },
+        {
+          "api_name": "external_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to FrameworkItem."
+        },
+        {
+          "api_name": "framework_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Framework."
+        },
+        {
+          "api_name": "match_strength",
+          "type": "string",
+          "nullable": false,
+          "description": "close, partial or broader."
+        },
+        {
+          "api_name": "source_refs",
+          "type": "string_array",
+          "nullable": false,
+          "description": "Citation keys."
+        },
+        {
+          "api_name": "note",
+          "type": "string",
+          "nullable": true,
+          "description": "Alignment note."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        },
+        {
+          "api_name": "review_status",
+          "type": "string",
+          "nullable": false,
+          "description": "Writeback: active/under_review/rejected state of the crosswalk entry.",
+          "editable": true,
+          "default": "active"
+        },
+        {
+          "api_name": "review_reason",
+          "type": "string",
+          "nullable": true,
+          "description": "Writeback: coded reason.",
+          "editable": true
+        },
+        {
+          "api_name": "review_note",
+          "type": "string",
+          "nullable": true,
+          "description": "Writeback: free-text justification.",
+          "editable": true
+        }
+      ]
+    },
+    {
+      "api_name": "AssertedAbsence",
+      "display_name": "Asserted absence",
+      "plural_display_name": "Asserted absences",
+      "description": "The ontology asserts that a framework has no counterpart for a PIF. Kept apart from CrosswalkEntry so an absence is never read as a match.",
+      "backing_dataset": "crosswalk/crosswalk.csv rows with match_strength none",
+      "primary_key": "absence_key",
+      "title_property": "absence_key",
+      "properties": [
+        {
+          "api_name": "absence_key",
+          "type": "string",
+          "nullable": false,
+          "description": "factor_curie|framework_curie."
+        },
+        {
+          "api_name": "factor_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Pif."
+        },
+        {
+          "api_name": "framework_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Framework."
+        },
+        {
+          "api_name": "note",
+          "type": "string",
+          "nullable": true,
+          "description": "Why there is no counterpart."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        }
+      ]
+    },
+    {
+      "api_name": "Rule",
+      "display_name": "Suggester rule",
+      "plural_display_name": "Suggester rules",
+      "description": "A curated phrase rule that suggests a PIF (and the framework item it was written against) from free text.",
+      "backing_dataset": "crosswalk/pif_rules.csv",
+      "primary_key": "rule_id",
+      "title_property": "rule_id",
+      "properties": [
+        {
+          "api_name": "rule_id",
+          "type": "string",
+          "nullable": false,
+          "description": "R01 ..."
+        },
+        {
+          "api_name": "factor_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Pif."
+        },
+        {
+          "api_name": "external_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to FrameworkItem."
+        },
+        {
+          "api_name": "phrase",
+          "type": "string",
+          "nullable": false,
+          "description": "Whole-word phrase; trailing * matches any ending."
+        },
+        {
+          "api_name": "rationale",
+          "type": "string",
+          "nullable": false,
+          "description": "Why the phrase indicates the factor."
+        },
+        {
+          "api_name": "phrase_seen_in_incident_set",
+          "type": "boolean",
+          "nullable": false,
+          "description": "True if the phrase was seen in the development incident set when written."
+        },
+        {
+          "api_name": "status",
+          "type": "string",
+          "nullable": false,
+          "description": "Writeback: active or retired.",
+          "editable": true,
+          "default": "active"
+        },
+        {
+          "api_name": "status_reason",
+          "type": "string",
+          "nullable": true,
+          "description": "Writeback: why retired.",
+          "editable": true
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        }
+      ]
+    },
+    {
+      "api_name": "Investigation",
+      "display_name": "CSB investigation",
+      "plural_display_name": "CSB investigations",
+      "description": "One U.S. Chemical Safety Board investigation listed in the repository's incident set. Only investigations in incidents/csb_investigations.csv exist here.",
+      "backing_dataset": "incidents/csb_investigations.csv",
+      "primary_key": "investigation_id",
+      "title_property": "name",
+      "properties": [
+        {
+          "api_name": "investigation_id",
+          "type": "string",
+          "nullable": false,
+          "description": "Slug."
+        },
+        {
+          "api_name": "name",
+          "type": "string",
+          "nullable": false,
+          "description": "Investigation name."
+        },
+        {
+          "api_name": "incident_date",
+          "type": "string",
+          "nullable": true,
+          "description": "YYYY-MM-DD."
+        },
+        {
+          "api_name": "location",
+          "type": "string",
+          "nullable": true,
+          "description": "Location."
+        },
+        {
+          "api_name": "fatalities",
+          "type": "integer",
+          "nullable": true,
+          "description": "Fatalities as listed."
+        },
+        {
+          "api_name": "final_report_date",
+          "type": "string",
+          "nullable": true,
+          "description": "Final report date."
+        },
+        {
+          "api_name": "source_url",
+          "type": "string",
+          "nullable": false,
+          "description": "csb.gov source."
+        },
+        {
+          "api_name": "coded",
+          "type": "boolean",
+          "nullable": false,
+          "description": "True if any factor was coded."
+        },
+        {
+          "api_name": "cohort",
+          "type": "string",
+          "nullable": false,
+          "description": "development or held_out."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        }
+      ]
+    },
+    {
+      "api_name": "EvidenceExcerpt",
+      "display_name": "Evidence excerpt",
+      "plural_display_name": "Evidence excerpts",
+      "description": "A quoted CSB passage that supports coding one PIF to one investigation. The join object between Investigation and Pif.",
+      "backing_dataset": "incidents/csb_coding.csv",
+      "primary_key": "evidence_key",
+      "title_property": "evidence_key",
+      "properties": [
+        {
+          "api_name": "evidence_key",
+          "type": "string",
+          "nullable": false,
+          "description": "E<row number in csb_coding.csv>."
+        },
+        {
+          "api_name": "investigation_id",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Investigation."
+        },
+        {
+          "api_name": "factor_curie",
+          "type": "string",
+          "nullable": false,
+          "description": "Foreign key to Pif."
+        },
+        {
+          "api_name": "evidence_type",
+          "type": "string",
+          "nullable": false,
+          "description": "finding or recommendation."
+        },
+        {
+          "api_name": "quoted_text",
+          "type": "string",
+          "nullable": false,
+          "description": "Excerpt as returned by the retrieval tool; not checked against the full report."
+        },
+        {
+          "api_name": "source",
+          "type": "string",
+          "nullable": false,
+          "description": "Committed file the object was read from."
+        },
+        {
+          "api_name": "review_status",
+          "type": "string",
+          "nullable": false,
+          "description": "Writeback: active/under_review/rejected state of the excerpt.",
+          "editable": true,
+          "default": "active"
+        },
+        {
+          "api_name": "review_reason",
+          "type": "string",
+          "nullable": true,
+          "description": "Writeback: coded reason.",
+          "editable": true
+        },
+        {
+          "api_name": "review_note",
+          "type": "string",
+          "nullable": true,
+          "description": "Writeback: free-text justification.",
+          "editable": true
+        }
+      ]
+    }
+  ],
+  "link_types": [
+    {
+      "api_name": "pif_dimension",
+      "source": "Pif",
+      "target": "ContextDimension",
+      "cardinality": "many_to_one",
+      "foreign_key": "dimension_curie",
+      "source_link_name": "dimension",
+      "target_link_name": "pifs",
+      "description": "The dimension a PIF belongs to."
+    },
+    {
+      "api_name": "dimension_idheas_item",
+      "source": "ContextDimension",
+      "target": "FrameworkItem",
+      "cardinality": "many_to_one",
+      "foreign_key": "idheas_item_curie",
+      "source_link_name": "idheas_category",
+      "target_link_name": "dimensions",
+      "description": "The IDHEAS-G category a dimension corresponds to."
+    },
+    {
+      "api_name": "item_framework",
+      "source": "FrameworkItem",
+      "target": "Framework",
+      "cardinality": "many_to_one",
+      "foreign_key": "framework_curie",
+      "source_link_name": "framework",
+      "target_link_name": "items",
+      "description": "The framework an item belongs to."
+    },
+    {
+      "api_name": "entry_pif",
+      "source": "CrosswalkEntry",
+      "target": "Pif",
+      "cardinality": "many_to_one",
+      "foreign_key": "factor_curie",
+      "source_link_name": "pif",
+      "target_link_name": "crosswalk_entries",
+      "description": "The PIF of an entry."
+    },
+    {
+      "api_name": "entry_item",
+      "source": "CrosswalkEntry",
+      "target": "FrameworkItem",
+      "cardinality": "many_to_one",
+      "foreign_key": "external_curie",
+      "source_link_name": "item",
+      "target_link_name": "crosswalk_entries",
+      "description": "The framework item of an entry."
+    },
+    {
+      "api_name": "entry_framework",
+      "source": "CrosswalkEntry",
+      "target": "Framework",
+      "cardinality": "many_to_one",
+      "foreign_key": "framework_curie",
+      "source_link_name": "framework",
+      "target_link_name": "crosswalk_entries",
+      "description": "The framework of an entry."
+    },
+    {
+      "api_name": "absence_pif",
+      "source": "AssertedAbsence",
+      "target": "Pif",
+      "cardinality": "many_to_one",
+      "foreign_key": "factor_curie",
+      "source_link_name": "pif",
+      "target_link_name": "asserted_absences",
+      "description": "The PIF with no counterpart."
+    },
+    {
+      "api_name": "absence_framework",
+      "source": "AssertedAbsence",
+      "target": "Framework",
+      "cardinality": "many_to_one",
+      "foreign_key": "framework_curie",
+      "source_link_name": "framework",
+      "target_link_name": "asserted_absences",
+      "description": "The framework lacking the counterpart."
+    },
+    {
+      "api_name": "rule_pif",
+      "source": "Rule",
+      "target": "Pif",
+      "cardinality": "many_to_one",
+      "foreign_key": "factor_curie",
+      "source_link_name": "pif",
+      "target_link_name": "rules",
+      "description": "The PIF a rule suggests."
+    },
+    {
+      "api_name": "rule_item",
+      "source": "Rule",
+      "target": "FrameworkItem",
+      "cardinality": "many_to_one",
+      "foreign_key": "external_curie",
+      "source_link_name": "item",
+      "target_link_name": "rules",
+      "description": "The framework item a rule was written against."
+    },
+    {
+      "api_name": "excerpt_investigation",
+      "source": "EvidenceExcerpt",
+      "target": "Investigation",
+      "cardinality": "many_to_one",
+      "foreign_key": "investigation_id",
+      "source_link_name": "investigation",
+      "target_link_name": "excerpts",
+      "description": "The investigation an excerpt comes from."
+    },
+    {
+      "api_name": "excerpt_pif",
+      "source": "EvidenceExcerpt",
+      "target": "Pif",
+      "cardinality": "many_to_one",
+      "foreign_key": "factor_curie",
+      "source_link_name": "pif",
+      "target_link_name": "excerpts",
+      "description": "The PIF the excerpt supports."
+    },
+    {
+      "api_name": "pif_framework_item",
+      "source": "Pif",
+      "target": "FrameworkItem",
+      "cardinality": "many_to_many",
+      "join_rule": "through_object",
+      "through": "CrosswalkEntry",
+      "through_source_key": "factor_curie",
+      "through_target_key": "external_curie",
+      "link_properties": [
+        "match_strength",
+        "framework_curie"
+      ],
+      "hide_when": {
+        "property": "review_status",
+        "equals": "rejected"
+      },
+      "source_link_name": "framework_items",
+      "target_link_name": "pifs",
+      "description": "The crosswalk. Backed by CrosswalkEntry; match strength travels as a link property; rejected entries are not traversed."
+    },
+    {
+      "api_name": "investigation_pif",
+      "source": "Investigation",
+      "target": "Pif",
+      "cardinality": "many_to_many",
+      "join_rule": "through_object",
+      "through": "EvidenceExcerpt",
+      "through_source_key": "investigation_id",
+      "through_target_key": "factor_curie",
+      "link_properties": [
+        "evidence_type"
+      ],
+      "hide_when": {
+        "property": "review_status",
+        "equals": "rejected"
+      },
+      "source_link_name": "pifs",
+      "target_link_name": "investigations",
+      "description": "Which PIFs were coded to which CSB investigation. Backed by EvidenceExcerpt; rejected excerpts are not traversed."
+    }
+  ],
+  "action_types": [
+    {
+      "api_name": "flag_crosswalk_entry",
+      "display_name": "Flag crosswalk entry for review",
+      "description": "Mark an entry as under review. It stays traversable.",
+      "parameters": [
+        {
+          "api_name": "entry",
+          "type": "object_reference",
+          "object_type": "CrosswalkEntry",
+          "required": true
+        },
+        {
+          "api_name": "reason",
+          "type": "string",
+          "required": true,
+          "allowed_values": [
+            "alignment_too_strong",
+            "alignment_too_weak",
+            "wrong_counterpart",
+            "other"
+          ]
+        },
+        {
+          "api_name": "note",
+          "type": "string",
+          "required": false,
+          "max_length": 500,
+          "required_when": {
+            "parameter": "reason",
+            "equals": "other"
+          }
+        }
+      ],
+      "submission_criteria": [
+        {
+          "parameter": "entry",
+          "property": "review_status",
+          "operator": "not_equals",
+          "value": "rejected",
+          "failure_message": "Entry is already rejected."
+        },
+        {
+          "parameter": "entry",
+          "property": "review_status",
+          "operator": "not_equals",
+          "value": "under_review",
+          "failure_message": "Entry is already under review."
+        }
+      ],
+      "edits": [
+        {
+          "object_parameter": "entry",
+          "set": {
+            "review_status": "under_review",
+            "review_reason": "$reason",
+            "review_note": "$note"
+          }
+        }
+      ]
+    },
+    {
+      "api_name": "reject_crosswalk_entry",
+      "display_name": "Reject crosswalk entry",
+      "description": "Record that an entry is wrong. It leaves every traversal and coverage function.",
+      "parameters": [
+        {
+          "api_name": "entry",
+          "type": "object_reference",
+          "object_type": "CrosswalkEntry",
+          "required": true
+        },
+        {
+          "api_name": "reason",
+          "type": "string",
+          "required": true,
+          "allowed_values": [
+            "alignment_too_strong",
+            "alignment_too_weak",
+            "wrong_counterpart",
+            "other"
+          ]
+        },
+        {
+          "api_name": "note",
+          "type": "string",
+          "required": false,
+          "max_length": 500,
+          "required_when": {
+            "parameter": "reason",
+            "equals": "other"
+          }
+        }
+      ],
+      "submission_criteria": [
+        {
+          "parameter": "entry",
+          "property": "review_status",
+          "operator": "not_equals",
+          "value": "rejected",
+          "failure_message": "Entry is already rejected."
+        }
+      ],
+      "edits": [
+        {
+          "object_parameter": "entry",
+          "set": {
+            "review_status": "rejected",
+            "review_reason": "$reason",
+            "review_note": "$note"
+          }
+        }
+      ]
+    },
+    {
+      "api_name": "reject_evidence_excerpt",
+      "display_name": "Reject evidence excerpt",
+      "description": "Record that a quoted passage does not support the PIF coded to it. The PIF link to the investigation is hidden.",
+      "parameters": [
+        {
+          "api_name": "excerpt",
+          "type": "object_reference",
+          "object_type": "EvidenceExcerpt",
+          "required": true
+        },
+        {
+          "api_name": "reason",
+          "type": "string",
+          "required": true,
+          "allowed_values": [
+            "quote_not_in_source",
+            "quote_does_not_state_factor",
+            "other"
+          ]
+        },
+        {
+          "api_name": "note",
+          "type": "string",
+          "required": false,
+          "max_length": 500,
+          "required_when": {
+            "parameter": "reason",
+            "equals": "other"
+          }
+        }
+      ],
+      "submission_criteria": [
+        {
+          "parameter": "excerpt",
+          "property": "review_status",
+          "operator": "not_equals",
+          "value": "rejected",
+          "failure_message": "Excerpt is already rejected."
+        }
+      ],
+      "edits": [
+        {
+          "object_parameter": "excerpt",
+          "set": {
+            "review_status": "rejected",
+            "review_reason": "$reason",
+            "review_note": "$note"
+          }
+        }
+      ]
+    },
+    {
+      "api_name": "retire_rule",
+      "display_name": "Retire suggester rule",
+      "description": "Take a phrase rule out of rules_triggered.",
+      "parameters": [
+        {
+          "api_name": "rule",
+          "type": "object_reference",
+          "object_type": "Rule",
+          "required": true
+        },
+        {
+          "api_name": "reason",
+          "type": "string",
+          "required": true,
+          "min_length": 10,
+          "max_length": 500
+        }
+      ],
+      "submission_criteria": [
+        {
+          "parameter": "rule",
+          "property": "status",
+          "operator": "not_equals",
+          "value": "retired",
+          "failure_message": "Rule is already retired."
+        }
+      ],
+      "edits": [
+        {
+          "object_parameter": "rule",
+          "set": {
+            "status": "retired",
+            "status_reason": "$reason"
+          }
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "api_name": "framework_coverage",
+      "input": "ObjectStore, framework, optional PIF set, minimum strength",
+      "output": "struct",
+      "reuses": "ehs_hfo.foundry.functions.framework_coverage",
+      "description": "How much of one framework a set of PIFs (default: all) reaches through non-rejected crosswalk entries at or above a match strength, and which PIFs have a counterpart, an asserted absence, or neither."
+    },
+    {
+      "api_name": "rules_triggered",
+      "input": "ObjectStore, PIF set",
+      "output": "list of Rule objects",
+      "reuses": "ehs_hfo.foundry.functions.rules_triggered",
+      "description": "Active suggester rules whose PIF is in the set."
+    },
+    {
+      "api_name": "rules_triggered_by_text",
+      "input": "ObjectStore, free text",
+      "output": "dict PIF -> matched phrases",
+      "reuses": "ehs_hfo.suggest.suggest",
+      "description": "Runs the active Rule objects over text with the suggester's own matcher."
+    },
+    {
+      "api_name": "pif_evidence",
+      "input": "ObjectStore, PIF",
+      "output": "struct",
+      "reuses": "ehs_hfo.foundry.functions.pif_evidence",
+      "description": "Non-rejected excerpts and distinct investigations coded to a PIF, split by finding and recommendation."
+    },
+    {
+      "api_name": "coverage_table",
+      "input": "ObjectStore",
+      "output": "struct",
+      "reuses": "ehs_hfo.foundry.functions.coverage_table",
+      "description": "The per-framework and per-PIF counts behind docs/ontology-coverage.md."
+    }
+  ]
+}
