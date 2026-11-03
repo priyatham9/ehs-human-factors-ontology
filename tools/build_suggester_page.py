@@ -23,7 +23,7 @@ from ehs_hfo.ontology import Ontology  # noqa: E402
 from tools.evaluate_suggester import evaluate, macro_recall, ratio, summarise  # noqa: E402
 
 OUTPUT = os.path.join(_REPO_ROOT, "docs", "suggester.html")
-SITE = "https://priyatham9.github.io/ehs-human-factors-ontology/"
+SITE = "https://ehs-human-factors-ontology.vercel.app/"
 
 CSS = """
 :root{color-scheme:light;--paper:#F7F7F3;--surface:#FFFFFF;--ink:#101311;--ink-2:#3A403C;--muted:#666D68;--rule:#D6D7CE;--accent:#1E40AF;--warn:#8A5A00;--warn-wash:#FBF0DC}
@@ -99,7 +99,7 @@ def render(ont: Ontology) -> str:
 <style>{CSS}</style>
 </head>
 <body>
-<header class="top"><div class="wrap"><a href="https://priyatham9.github.io/grounded/">Grounded</a><a href="{SITE}">ehs-human-factors-ontology</a><a href="{SITE}crosswalk.html">Crosswalk</a><b>Suggester</b></div></header>
+<header class="top"><div class="wrap"><a href="https://grounded-chi-five.vercel.app/">Grounded</a><a href="{SITE}">ehs-human-factors-ontology</a><a href="{SITE}crosswalk.html">Crosswalk</a><b>Suggester</b></div></header>
 <main class="wrap">
 <h1>From incident narrative to candidate PIFs, with the rule shown</h1>
 <p>A keyword and phrase matcher. No machine learning. Each suggestion names the rule that fired, the words it matched,

@@ -1,8 +1,8 @@
 # ehs-human-factors-ontology
 
-[![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml) [![site](https://img.shields.io/badge/site-github.io-blue)](https://priyatham9.github.io/ehs-human-factors-ontology/)
+[![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml) [![site](https://img.shields.io/badge/site-github.io-blue)](https://ehs-human-factors-ontology.vercel.app/)
 
-Part of the Grounded research programme: https://priyatham9.github.io/grounded/
+Part of the Grounded research programme: https://grounded-chi-five.vercel.app/
 
 A machine-readable encoding of the four-context performance-influencing-factor structure used in human reliability analysis. It provides 20 PIFs, 90 alignments to SPAR-H, CREAM, HFACS and the HSE PIF list, and a rule engine for scenario assessment.
 
