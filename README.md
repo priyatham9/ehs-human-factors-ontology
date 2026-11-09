@@ -16,7 +16,7 @@ Python 3.9+, standard library only. No pip installs, no build step.
 | --- | --- |
 | Status | v0.1.0 |
 | Data | Real ontology and crosswalk data; the scenario corpus in `synthetic/` is fabricated and labelled as such |
-| Tests | 287 tests, `python3 -m unittest discover -s tests -t .` |
+| Tests | 296 tests, `python3 -m unittest discover -s tests -t .` |
 | Quickstart | `PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json` |
 | Licence | MIT |
 
@@ -82,7 +82,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 287 tests
+python3 -m unittest discover -s tests -t .          # 296 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
@@ -112,6 +112,8 @@ PYTHONPATH=src python3 -m ehs_hfo export --format owlxml --out ontology/ehs-hfo.
 ```
 
 **JSON-LD** (`ontology/ehs-hfo.jsonld`): A JSON-LD 1.1 serialisation with a `@context` mapping all prefixes, one node per ontology subject, and typed literals preserved.
+
+**Data health and lineage** ([docs/health.md](docs/health.md)): 71 named expectations over the committed ontology, crosswalk, rules, CSB coding and co-occurrence tables (69 pass, 2 warn: 9 of 28 investigations have no fatality count, 10 of 20 PIFs are never coded), plus a declared 7-stage build lineage checked against the repository (`make health`).
 
 **PIF co-occurrence** ([docs/pif-cooccurrence.md](docs/pif-cooccurrence.md)): which PIFs are coded together across the 23 coded CSB investigations, against a margin-preserving permutation null (`make pif-cooccurrence`). No pair survives multiplicity correction; small-n and single-coder limits are stated.
 
@@ -346,11 +348,12 @@ tools/build_crosswalk.py    regenerates crosswalk/ from the Turtle
 tools/build_skos.py         regenerates docs/skos/ (SKOS Turtle and JSON-LD) from the Turtle
 src/ehs_hfo/suggest.py      rule-based narrative-to-PIF suggester (rules: crosswalk/pif_rules.csv; evaluation: incidents/suggester_eval.md)
 incidents/                  CSB investigations coded to the PIFs (quoted, sourced)
+tools/health.py             Data expectations and validated lineage (docs/health.md)
 tools/pif_cooccurrence.py   PIF co-occurrence network with swap-null and intervals (docs/pif-cooccurrence.md)
 tools/second_coder.py       blinded second-coder sheet export and kappa report (docs/second-coder-protocol.md)
 synthetic/                  fabricated corpus + generator (read its README)
 examples/                   hand-written worked scenario
-tests/                      287 tests, stdlib unittest
+tests/                      296 tests, stdlib unittest
 docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
@@ -365,7 +368,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency 
 python3 -m unittest discover -s tests -t .
 ```
 
-287 tests, no third-party dependencies. Beyond ordinary unit coverage they
+296 tests, no third-party dependencies. Beyond ordinary unit coverage they
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of
