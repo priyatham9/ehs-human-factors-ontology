@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "description": "Declared lineage of the ehs-human-factors-ontology build. Validated against the repository by tools/health.py and rendered to docs/health.md.",
+  "must_be_declared": [
+    "crosswalk/*",
+    "incidents/*.csv",
+    "incidents/*.md",
+    "ontology/*",
+    "docs/skos/*",
+    "docs/suggester.html",
+    "docs/pif-cooccurrence.*",
+    "docs/methods-note.md",
+    "health/*",
+    "docs/health.*"
+  ],
+  "artifacts": {
+    "ontology": {"label": "Ontology (Turtle, hand-authored)", "kind": "file", "source": true, "paths": ["ontology/ehs-hfo.ttl"]},
+    "ontology_exports": {"label": "Ontology JSON-LD and OWL/XML exports", "kind": "file", "source": true, "paths": ["ontology/ehs-hfo.jsonld", "ontology/ehs-hfo.owx"]},
+    "crosswalk": {"label": "Crosswalk tables", "kind": "file", "paths": ["crosswalk/crosswalk.csv", "crosswalk/crosswalk.md"]},
+    "rules": {"label": "Suggester phrase rules (hand-authored)", "kind": "file", "source": true, "paths": ["crosswalk/pif_rules.csv"]},
+    "investigations": {"label": "CSB investigation list (hand-curated)", "kind": "file", "source": true, "paths": ["incidents/csb_investigations.csv"]},
+    "coding": {"label": "CSB coding (hand-curated quoted passages)", "kind": "file", "source": true, "paths": ["incidents/csb_coding.csv"]},
+    "coding_md": {"label": "CSB coding report", "kind": "file", "paths": ["incidents/csb_coding.md"]},
+    "incidents_readme": {"label": "Incidents README", "kind": "file", "source": true, "paths": ["incidents/README.md"]},
+    "suggester_eval": {"label": "Suggester evaluation", "kind": "file", "paths": ["incidents/suggester_eval.md"]},
+    "suggester_page": {"label": "Suggester page", "kind": "file", "paths": ["docs/suggester.html"]},
+    "skos": {"label": "SKOS export", "kind": "file", "paths": ["docs/skos/ehs-hfo-skos.ttl", "docs/skos/ehs-hfo-skos.jsonld"]},
+    "cooccurrence_tables": {"label": "PIF co-occurrence tables", "kind": "file", "paths": ["incidents/pif_cooccurrence_pairs.csv", "incidents/pif_cooccurrence_pifs.csv"]},
+    "cooccurrence_doc": {"label": "PIF co-occurrence doc and figure", "kind": "file", "paths": ["docs/pif-cooccurrence.md", "docs/pif-cooccurrence.svg"]},
+    "methods_note": {"label": "Methods note", "kind": "file", "source": true, "paths": ["docs/methods-note.md"]},
+    "health_tables": {"label": "Health tables", "kind": "file", "paths": ["health/health_checks.csv", "health/health_columns.csv", "health/lineage_stages.csv"]},
+    "health_doc": {"label": "Health doc and figure", "kind": "file", "paths": ["docs/health.md", "docs/health.svg"]}
+  },
+  "stages": [
+    {"id": "crosswalk", "label": "Build crosswalk", "script": "tools/build_crosswalk.py", "function": "write_all", "command": "python3 tools/build_crosswalk.py", "inputs": ["ontology"], "outputs": ["crosswalk"]},
+    {"id": "coding_report", "label": "Render CSB coding report", "script": "tools/build_csb_coding.py", "function": "render", "command": "python3 tools/build_csb_coding.py", "inputs": ["ontology", "investigations", "coding"], "outputs": ["coding_md"]},
+    {"id": "suggester_eval", "label": "Evaluate suggester", "script": "tools/evaluate_suggester.py", "function": "evaluate", "command": "python3 tools/evaluate_suggester.py", "inputs": ["ontology", "rules", "investigations", "coding"], "outputs": ["suggester_eval"]},
+    {"id": "suggester_page", "label": "Build suggester page", "script": "tools/build_suggester_page.py", "function": "render", "command": "python3 tools/build_suggester_page.py", "inputs": ["ontology", "rules", "investigations", "coding"], "outputs": ["suggester_page"]},
+    {"id": "skos", "label": "Export SKOS", "script": "tools/build_skos.py", "function": "build_triples", "command": "python3 tools/build_skos.py", "inputs": ["ontology"], "outputs": ["skos"]},
+    {"id": "cooccurrence", "label": "PIF co-occurrence network", "script": "tools/pif_cooccurrence.py", "function": "compute", "command": "make pif-cooccurrence", "inputs": ["ontology", "coding"], "outputs": ["cooccurrence_tables", "cooccurrence_doc"]},
+    {"id": "health", "label": "Data expectations and lineage check", "script": "tools/health.py", "function": "run_checks", "command": "make health", "inputs": ["ontology", "crosswalk", "rules", "investigations", "coding", "cooccurrence_tables"], "outputs": ["health_tables", "health_doc"]}
+  ]
+}

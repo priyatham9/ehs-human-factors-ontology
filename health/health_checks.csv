@@ -1,0 +1,72 @@
+id,dataset,rule,observed,limit,status,severity
+H01,ontology,every factor sits in a declared dimension,0,0,pass,error
+H02,ontology,every alignment names a local factor and an external factor in the ontology,0,0,pass,error
+H03,ontology,every external factor belongs to a declared framework,0,0,pass,error
+H04,ontology,every alignment cites at least one source key,0,0,pass,error
+H05,ontology,every source key used in the ontology has an entry in CITATIONS.md,0,0,pass,error
+H06,ontology,no local factor is aligned twice to the same external factor,0,0,pass,error
+H07,crosswalk,row count equals alignments plus asserted absences in the ontology,96,96,pass,error
+H08,crosswalk,"match_strength is close, partial, broader or none",0,0,pass,error
+H09,crosswalk,factor_curie is a factor and dimension is its declared dimension,0,0,pass,error
+H10,crosswalk,framework is a declared framework,0,0,pass,error
+H11,crosswalk,external_curie is an external factor of the same framework,0,0,pass,error
+H12,crosswalk,external_curie is empty exactly when match_strength is none,0,0,pass,error
+H13,crosswalk,"no duplicate (factor, framework, external factor) rows",0,0,pass,error
+H14,crosswalk,strength counts agree with the ontology alignments,0,0,pass,error
+H15,crosswalk,every source key in the CSV has an entry in CITATIONS.md,0,0,pass,error
+H16,crosswalk,every factor has a row (match or asserted absence) for every framework used,80,80,pass,warn
+H17,rules,rule_id is unique,0,0,pass,error
+H18,rules,factor_curie is a factor,0,0,pass,error
+H19,rules,external_curie is an external factor,0,0,pass,error
+H20,rules,each rule's external factor is aligned to the rule's factor in the ontology (traceability),0,0,pass,error
+H21,rules,phrase_seen_in_incident_set is yes or no,0,0,pass,error
+H22,rules,no factor carries the same phrase twice,0,0,pass,error
+H23,rules,factors with no suggester rule (the suggester cannot propose them),0,0,pass,warn
+H24,investigations,investigation_id is unique,0,0,pass,error
+H25,investigations,incident_date is yyyy-mm-dd or yyyy-mm,0,0,pass,error
+H26,investigations,final_report_date is empty or yyyy-mm-dd,0,0,pass,error
+H27,investigations,no date after 2026-11-09,0,0,pass,error
+H28,investigations,final report is not before the incident,0,0,pass,error
+H29,investigations,"fatalities, where recorded, is a non-negative integer",0,0,pass,error
+H30,investigations,"investigations with no fatality count recorded (left empty, not zero)",9,0,warn,warn
+H31,investigations,source_url is https,0,0,pass,error
+H32,investigations,coded is yes or no,0,0,pass,error
+H33,investigations,cohort is development or held_out,0,0,pass,error
+H34,coding,every coding row points at an investigation marked coded,0,0,pass,error
+H35,coding,every investigation marked coded has at least one coding row,0,0,pass,error
+H36,coding,factor_curie is a factor in the ontology,0,0,pass,error
+H37,coding,evidence_type is finding or recommendation,0,0,pass,error
+H38,coding,no investigation is coded twice to the same factor and passage,0,0,pass,error
+H39,coding,quoted passages are at least 20 characters,0,0,pass,error
+H40,coding,the same passage is not reused for different factors or investigations,0,0,pass,warn
+H41,coding,factors never coded in any investigation (the incident set cannot test them),10,0,warn,warn
+H42,investigations,held-out cohort is the larger share of listed investigations (it was added later),15 of 28,> 50%,pass,warn
+H43,cooccurrence,observed pair counts equal a recount from csb_coding.csv,0,0,pass,error
+H44,cooccurrence,pair table lists every pair observed at least once,0,0,pass,error
+H45,cooccurrence,pair table has one row per pair of the PIFs that appear in the coding,45,45,pass,error
+H46,cooccurrence,PIF investigation counts equal a recount from csb_coding.csv,0,0,pass,error
+H47,cooccurrence,Holm-adjusted p is never below the smaller one-sided p,0,0,pass,error
+H48,cooccurrence,prevalence lies inside its Wilson interval,0,0,pass,error
+H49,crosswalk,column dimension has no empty values,0,0,pass,error
+H50,crosswalk,column factor_curie has no empty values,0,0,pass,error
+H51,crosswalk,column framework has no empty values,0,0,pass,error
+H52,crosswalk,column match_strength has no empty values,0,0,pass,error
+H53,crosswalk,column external_curie is empty in at most 7.0% of rows,6.25,7.0,pass,error
+H54,crosswalk,column note is empty in at most 85.0% of rows,79.17,85.0,pass,error
+H55,crosswalk,column source_refs is empty in at most 7.0% of rows,6.25,7.0,pass,error
+H56,rules,column rule_id has no empty values,0,0,pass,error
+H57,rules,column factor_curie has no empty values,0,0,pass,error
+H58,rules,column phrase has no empty values,0,0,pass,error
+H59,rules,column external_curie has no empty values,0,0,pass,error
+H60,rules,column rationale has no empty values,0,0,pass,error
+H61,coding,column investigation_id has no empty values,0,0,pass,error
+H62,coding,column factor_curie has no empty values,0,0,pass,error
+H63,coding,column evidence_type has no empty values,0,0,pass,error
+H64,coding,column quoted_text has no empty values,0,0,pass,error
+H65,investigations,column investigation_id has no empty values,0,0,pass,error
+H66,investigations,column name has no empty values,0,0,pass,error
+H67,investigations,column incident_date has no empty values,0,0,pass,error
+H68,investigations,column source_url has no empty values,0,0,pass,error
+H69,investigations,column coded has no empty values,0,0,pass,error
+H70,investigations,column cohort has no empty values,0,0,pass,error
+H71,investigations,column final_report_date is empty in at most 10.0% of rows,7.14,10.0,pass,error

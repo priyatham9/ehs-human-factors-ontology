@@ -7,7 +7,7 @@ cd /path/to/ehs-human-factors-ontology
 PYTHONPATH=src python3 -m unittest discover -s tests -t .
 ```
 
-287 tests, standard library only. The `PYTHONPATH=src` is required for all invocations.
+296 tests, standard library only. The `PYTHONPATH=src` is required for all invocations.
 
 Other common commands:
 

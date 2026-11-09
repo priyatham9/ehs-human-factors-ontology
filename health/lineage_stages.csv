@@ -1,0 +1,8 @@
+order,stage,label,script,command,inputs,outputs,upstream_stages
+1,crosswalk,Build crosswalk,tools/build_crosswalk.py,python3 tools/build_crosswalk.py,ontology,crosswalk,
+2,coding_report,Render CSB coding report,tools/build_csb_coding.py,python3 tools/build_csb_coding.py,ontology;investigations;coding,coding_md,
+3,suggester_eval,Evaluate suggester,tools/evaluate_suggester.py,python3 tools/evaluate_suggester.py,ontology;rules;investigations;coding,suggester_eval,
+4,suggester_page,Build suggester page,tools/build_suggester_page.py,python3 tools/build_suggester_page.py,ontology;rules;investigations;coding,suggester_page,
+5,skos,Export SKOS,tools/build_skos.py,python3 tools/build_skos.py,ontology,skos,
+6,cooccurrence,PIF co-occurrence network,tools/pif_cooccurrence.py,make pif-cooccurrence,ontology;coding,cooccurrence_tables;cooccurrence_doc,
+7,health,Data expectations and lineage check,tools/health.py,make health,ontology;crosswalk;rules;investigations;coding;cooccurrence_tables,health_tables;health_doc,cooccurrence;crosswalk
