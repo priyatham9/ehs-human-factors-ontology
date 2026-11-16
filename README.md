@@ -388,6 +388,21 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency 
 
 ## Tests
 
+Browser regressions check the translation audit's absence, mapping and gap views,
+source-preserving downloads, deep links and mobile layout. They start an isolated
+static server and need no ontology dependencies:
+
+```bash
+python -m pip install playwright==1.62.0
+python -m playwright install --with-deps chromium
+python scripts/check_translation_ui.py
+```
+
+Use `--base-url https://ehs-human-factors-ontology.vercel.app` for a deployed docs
+root, or `--artifacts PATH` for screenshots and downloaded reviews. Without an
+artifact path, the script prints a fresh temporary directory. The browser CI job
+runs the same check.
+
 ```
 python3 -m unittest discover -s tests -t .
 ```
