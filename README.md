@@ -4,6 +4,12 @@
 
 Part of the Grounded research programme: https://grounded-chi-five.vercel.app/
 
+[Open the interactive project](https://ehs-human-factors-ontology.vercel.app/crosswalk.html) · [Data and methods](https://ehs-human-factors-ontology.vercel.app/)
+
+**Research question:** How can human reliability factors be represented with an auditable derivation?
+
+**Evidence and limits:** An ontology, crosswalk and rule traces; fabricated scenarios are labelled, and the context structure is adopted from prior work.
+
 A machine-readable encoding of the four-context performance-influencing-factor structure used in human reliability analysis. It provides 20 PIFs, 90 alignments to SPAR-H, CREAM, HFACS and the HSE PIF list, and a rule engine for scenario assessment.
 
 The four context dimensions are not new; they are adopted from IDHEAS-G (NUREG-2198, 2021).
