@@ -1,12 +1,12 @@
 # ehs-human-factors-ontology
 
-[![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml) [![site](https://img.shields.io/badge/site-github.io-blue)](https://ehs-human-factors-ontology.vercel.app/)
+[![tests](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml/badge.svg)](https://github.com/priyatham9/ehs-human-factors-ontology/actions/workflows/tests.yml) [![site](https://img.shields.io/badge/site-live%20audit-blue)](https://ehs-human-factors-ontology.vercel.app/)
 
 Part of the Grounded research programme: https://grounded-chi-five.vercel.app/
 
 [![Ontology translation audit comparing source assertions and export preservation](docs/audit-preview.jpg)](https://ehs-human-factors-ontology.vercel.app/translation-audit.html)
 
-[Open the interactive project](https://ehs-human-factors-ontology.vercel.app/crosswalk.html) · [Data and methods](https://ehs-human-factors-ontology.vercel.app/)
+[Open the translation audit](https://ehs-human-factors-ontology.vercel.app/translation-audit.html) · [Original crosswalk explorer](https://ehs-human-factors-ontology.vercel.app/crosswalk.html) · [Data and methods](https://ehs-human-factors-ontology.vercel.app/)
 
 **Research question:** How can human reliability factors be represented with an auditable derivation?
 
