@@ -1,4 +1,7 @@
-.PHONY: pif-cooccurrence health test
+.PHONY: pif-cooccurrence health test translation-audit
+
+translation-audit:
+	python3 tools/build_translation_audit.py
 
 pif-cooccurrence:
 	python3 tools/pif_cooccurrence.py --write

@@ -49,7 +49,7 @@ the ontology treats these as analyst judgements, not asserted identity.
 
 ## What is not in it
 
-SKOS has no way to say "this PIF has no counterpart in framework X", so the 6
+SKOS has no standard mapping property meaning "this PIF has no counterpart in framework X", so the 6
 "no counterpart" assertions are absent here (they remain in the OWL file and in
 `crosswalk/crosswalk.md`). The per-row source keys and comments of the reified
 alignments, the factor levels, macrocognitive functions, failure modes and
@@ -57,6 +57,14 @@ observable proxies are likewise not exported; use `ontology/ehs-hfo.ttl` for
 those. The mapping triples carry the analyst judgement and the framework
 schemes carry the bibliographic citation, but the row-level citation is only in
 the source.
+
+The [translation audit](translation-audit.html) measures these omissions and
+provides a separate RDF sidecar preserving the original alignment records,
+explicit no-counterpart assertions and coverage-gap records with source-file
+provenance. The standard SKOS files and mapping semantics remain unchanged.
+See the [round-trip contract](translation-audit.md) and
+[generated loss report](skos/translation-loss-report.json). The sidecar does not
+reconstruct the full ontology or validate the author's proposed alignments.
 
 ## Identifiers
 

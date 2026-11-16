@@ -1,0 +1,3284 @@
+{
+  "@graph": [
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#NoiseAndCommunicationPathways",
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ResistanceToPhysicalMovement",
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ScenarioFamiliarity",
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-HFACS"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ThermalConditions",
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceAccessibilityAndHabitability",
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceVisibility",
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/skos/ehs-hfo-crosswalk-sidecar",
+      "http://purl.org/dc/terms/description": [
+        {
+          "@value": "Author-proposed crosswalk assertions preserved alongside, not inside, the SKOS projection. Scope: original alignment records, explicit no-counterpart assertions and coverage-gap records. Not a complete ontology round trip, independent validation, or a prediction of risk.",
+          "@language": "en"
+        }
+      ],
+      "http://purl.org/dc/terms/hasPart": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-216c73e448dc84cf77956d3fa9bf31539c3c7ff4624ecd64879fdfc4233d4f8c"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-321d2b655ddabb815df025d66e11ed4d7f803a00d31bbbbb18480c9b2edd64b0"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-3b6fea4c0dd3954f2d0368af8797a9f1285aa2acdc6e3393d9b3bfa7c9c4c825"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-788d37f73d3cd621f555a1fe5b308f124d26e36475622b37f388b23d301ef0c2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-b5902dc47c2c889433b8c30cba8b5fdf7dbd74d21ccf47e40ee69a5b2ae857af"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-d16324c4bcdc91c48e9e8fb9ab176153a99bf180df1986bb58d7e95eaa4de104"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fam-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fam-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fam-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-hfacs2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-cream2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-hse2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hfacs2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hse2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-hse2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Resist-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Resist-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Resist-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-cream2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hfacs2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse3"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse4"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Thermal-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Thermal-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Thermal-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hse2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hse3"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-sparh2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-hfacs2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Vis-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Vis-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Vis-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WAH-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WAH-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WAH-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-cream"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-hfacs"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-hse2"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-hse"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-sparh"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-cream-TimeOfDay"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hfacs-FailedToCorrectProblem"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hfacs-PersonalReadiness"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hfacs-SupervisoryViolations"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hse-Motivation"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hse-OrganisationalLearning"
+        },
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hse-PeerPressure"
+        }
+      ],
+      "http://purl.org/dc/terms/title": [
+        {
+          "@value": "EHS-HFO crosswalk translation sidecar",
+          "@language": "en"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/ns/prov#Entity"
+      ],
+      "http://www.w3.org/ns/prov#wasDerivedFrom": [
+        {
+          "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-216c73e448dc84cf77956d3fa9bf31539c3c7ff4624ecd64879fdfc4233d4f8c",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#object": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ThermalConditions"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Source-file provenance only. The source asserts this triple directly and does not attach an assertion-specific citation or rationale. Factor-level annotations are not promoted to evidence for this absence. This is not a negated SKOS mapping.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/ns/prov#wasDerivedFrom": [
+        {
+          "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-321d2b655ddabb815df025d66e11ed4d7f803a00d31bbbbb18480c9b2edd64b0",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#object": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-HFACS"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ScenarioFamiliarity"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Source-file provenance only. The source asserts this triple directly and does not attach an assertion-specific citation or rationale. Factor-level annotations are not promoted to evidence for this absence. This is not a negated SKOS mapping.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/ns/prov#wasDerivedFrom": [
+        {
+          "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-3b6fea4c0dd3954f2d0368af8797a9f1285aa2acdc6e3393d9b3bfa7c9c4c825",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#object": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ResistanceToPhysicalMovement"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Source-file provenance only. The source asserts this triple directly and does not attach an assertion-specific citation or rationale. Factor-level annotations are not promoted to evidence for this absence. This is not a negated SKOS mapping.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/ns/prov#wasDerivedFrom": [
+        {
+          "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-788d37f73d3cd621f555a1fe5b308f124d26e36475622b37f388b23d301ef0c2",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#object": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#NoiseAndCommunicationPathways"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Source-file provenance only. The source asserts this triple directly and does not attach an assertion-specific citation or rationale. Factor-level annotations are not promoted to evidence for this absence. This is not a negated SKOS mapping.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/ns/prov#wasDerivedFrom": [
+        {
+          "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-b5902dc47c2c889433b8c30cba8b5fdf7dbd74d21ccf47e40ee69a5b2ae857af",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#object": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceAccessibilityAndHabitability"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Source-file provenance only. The source asserts this triple directly and does not attach an assertion-specific citation or rationale. Factor-level annotations are not promoted to evidence for this absence. This is not a negated SKOS mapping.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/ns/prov#wasDerivedFrom": [
+        {
+          "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/translation-audit#absence-d16324c4bcdc91c48e9e8fb9ab176153a99bf180df1986bb58d7e95eaa4de104",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#object": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#fw-SPARH"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#noCounterpartIn"
+        }
+      ],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceVisibility"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Source-file provenance only. The source asserts this triple directly and does not attach an assertion-specific citation or rationale. Factor-level annotations are not promoted to evidence for this absence. This is not a negated SKOS mapping.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/ns/prov#wasDerivedFrom": [
+        {
+          "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-NumberOfSimultaneousGoals"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TaskComplexity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Weak. HFACS has no task-complexity category; the nearest is a supervisory failure to match task to crew.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PlannedInappropriateOperations"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TaskComplexity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-DifficultyComplexityOfTask"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TaskComplexity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Cplx-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-Complexity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TaskComplexity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfMMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#EquipmentAndTools"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-TechnologicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#EquipmentAndTools"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-ToolsAppropriateForTask"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#EquipmentAndTools"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Equip-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "SPAR-H has no tools-and-parts PSF; the correspondence is to the ergonomics PSF only in so far as tools form part of the interface.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-ErgonomicsHMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#EquipmentAndTools"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fam-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfTrainingAndExperience"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ScenarioFamiliarity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fam-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-RoutineOrUnusual"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ScenarioFamiliarity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fam-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "SPAR-H treats novelty as a property of the operator (experience) rather than of the scenario. The two are not the same construct.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-ExperienceAndTraining"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ScenarioFamiliarity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "CREAM's circadian CPC is the only explicit time-of-day factor in any of the five frameworks, and it is not the same construct as mental fatigue.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-TimeOfDay"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MentalFatigue"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-AdverseMentalStates"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MentalFatigue"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-hfacs2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-AdversePhysiologicalStates"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MentalFatigue"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-Fatigue"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MentalFatigue"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Fatigue-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-FitnessForDuty"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MentalFatigue"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfMMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#HumanSystemInterface"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-TechnologicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#HumanSystemInterface"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-SystemEquipmentInterface"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#HumanSystemInterface"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-HSI-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-ErgonomicsHMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#HumanSystemInterface"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfMMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#InformationAvailabilityAndReliability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-TechnologicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#InformationAvailabilityAndReliability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-ClarityOfSignsSignals"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#InformationAvailabilityAndReliability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Info-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-ErgonomicsHMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#InformationAvailabilityAndReliability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-NumberOfSimultaneousGoals"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MultitaskingInterruptionsAndDistractions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "HFACS lists distraction among adverse mental states, which conflates an environmental demand with an operator state.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-AdverseMentalStates"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MultitaskingInterruptionsAndDistractions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-DividedAttention"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MultitaskingInterruptionsAndDistractions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Multi-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-Complexity"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MultitaskingInterruptionsAndDistractions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-WorkingConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#NoiseAndCommunicationPathways"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-cream2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Only the communication-pathway half of the local factor overlaps.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-CrewCollaborationQuality"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#NoiseAndCommunicationPathways"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PhysicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#NoiseAndCommunicationPathways"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkingEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#NoiseAndCommunicationPathways"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Noise-hse2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-CommunicationJob"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#NoiseAndCommunicationPathways"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-WorkingConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#PhysicalDemands"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PhysicalMentalLimitations"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#PhysicalDemands"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hfacs2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-AdversePhysiologicalStates"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#PhysicalDemands"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-PhysicalCapability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#PhysicalDemands"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-hse2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkOverloadUnderload"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#PhysicalDemands"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Phys-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-FitnessForDuty"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#PhysicalDemands"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AvailabilityOfProcedures"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ProceduresGuidanceAndInstructions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "HFACS has no procedures category at the precondition level; the nearest home is the organisational-level operational process.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-OperationalProcess"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ProceduresGuidanceAndInstructions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-ProceduresInadequate"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ProceduresGuidanceAndInstructions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-hse2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-PreparationForTask"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ProceduresGuidanceAndInstructions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Proc-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-Procedures"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ProceduresGuidanceAndInstructions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Resist-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-WorkingConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ResistanceToPhysicalMovement"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Resist-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PhysicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ResistanceToPhysicalMovement"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Resist-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkingEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ResistanceToPhysicalMovement"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfOrganisation"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Staffing"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Note the level shift: a precondition-level factor here maps to an organisational-level HFACS category.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-ResourceManagement"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Staffing"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-ManningLevels"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Staffing"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Staff-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "SPAR-H has no staffing PSF. Staffing adequacy falls inside its work-processes PSF only by implication.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Staffing"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfMMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#SystemTransparency"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-TechnologicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#SystemTransparency"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-ClarityOfSignsSignals"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#SystemTransparency"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-SysTrans-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-ErgonomicsHMI"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#SystemTransparency"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfOrganisation"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-cream2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-CrewCollaborationQuality"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-CrewResourceManagement"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hfacs2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-OrganizationalClimate"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-SupervisionLeadership"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-ClarityOfRoles"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse3",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-SafetyCulture"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-hse4",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "One local factor absorbing four HSE organisation factors is a sign of coarseness, not of coverage.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-CommunicationOrg"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Team-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TeamAndOrganizationFactors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Thermal-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-WorkingConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ThermalConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Thermal-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PhysicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ThermalConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Thermal-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkingEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#ThermalConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AvailableTime"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TimePressureAndStress"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-AdverseMentalStates"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TimePressureAndStress"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-TimeAvailableRequired"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TimePressureAndStress"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hse2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-StressMorale"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TimePressureAndStress"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-hse3",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkPressures"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TimePressureAndStress"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-AvailableTime"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TimePressureAndStress"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Time-sparh2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "One IDHEAS-G factor spans two SPAR-H PSFs. Anyone porting SPAR-H multipliers across this boundary is double counting.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-StressAndStressors"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#TimePressureAndStress"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfTrainingAndExperience"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Training"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Interpretive. HFACS distributes training deficiency across organisational resource management and supervisory failure rather than giving it a precondition category.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-ResourceManagement"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Training"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-hfacs2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-InadequateSupervision"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Training"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-Competence"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Training"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Train-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-ExperienceAndTraining"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Training"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Vis-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-WorkingConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceVisibility"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Vis-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PhysicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceVisibility"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-Vis-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkingEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceVisibility"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WAH-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-WorkingConditions"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceAccessibilityAndHabitability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WAH-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PhysicalEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceAccessibilityAndHabitability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WAH-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "HSE bundles noise, heat, space, lighting and ventilation into one factor; IDHEAS-G splits them across four.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkingEnvironment"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkplaceAccessibilityAndHabitability"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-cream",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-AdequacyOfOrganisation"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchBroader"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hollnagel1998"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-hfacs",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-OperationalProcess"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2006"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-hse",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-WorkPressures"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-hse2",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-ConsequencesOfFailure"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchPartial"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#al-WP-sparh",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#Alignment"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "Identical label in both frameworks; IDHEAS-G took the term from SPAR-H.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#externalFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#sparh-WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#hasMatchStrength": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#MatchClose"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#localFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#WorkProcesses"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-cream-TimeOfDay",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#CoverageGap"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "No local factor represents time of day or circadian phase. IDHEAS-G has no such\nPIF either, so the gap is inherited rather than introduced. This is the gap that\nmatters most for shift-based occupational settings, and closing it would require\nan exposure denominator by hour of shift that no public dataset currently\nsupplies (Hanecke et al. 1998; Folkard and Tucker 2003).",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "folkard2003"
+        },
+        {
+          "@value": "hanecke1998"
+        },
+        {
+          "@value": "hollnagel1998"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#uncoveredFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#cream-TimeOfDay"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hfacs-FailedToCorrectProblem",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#CoverageGap"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "No local factor represents a supervisor's failure to correct a known deficiency.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#uncoveredFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-FailedToCorrectProblem"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hfacs-PersonalReadiness",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#CoverageGap"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "No local factor represents personal readiness in the HFACS sense: an\nindividual's off-duty preparation for work, including rest, diet and compliance\nwith alcohol and self-medication rules. The gap is inherited rather than\nintroduced. IDHEAS-G has no fitness-for-duty PIF, whereas SPAR-H does, and the\ntwenty factors here are IDHEAS-G's twenty adopted unchanged. ehs:MentalFatigue\nis the nearest local factor and is deliberately not aligned to this one: fatigue\nis a state during the task, personal readiness is conduct before it, and one\ncauses the other rather than being it.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "gertman2005"
+        },
+        {
+          "@value": "nureg2198"
+        },
+        {
+          "@value": "shappell2000"
+        },
+        {
+          "@value": "shappell2006"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#uncoveredFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-PersonalReadiness"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hfacs-SupervisoryViolations",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#CoverageGap"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "No local factor represents wilful supervisory disregard of rules.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "shappell2000"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#uncoveredFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hfacs-SupervisoryViolations"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hse-Motivation",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#CoverageGap"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "No local factor represents motivation or competing priorities as an attribute of the individual.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#uncoveredFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-Motivation"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hse-OrganisationalLearning",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#CoverageGap"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "No local factor represents the effectiveness of organisational learning.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#uncoveredFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-OrganisationalLearning"
+        }
+      ]
+    },
+    {
+      "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#gap-hse-PeerPressure",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#CoverageGap"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        {
+          "@value": "No local factor represents peer pressure. Team and organisation factors is too coarse to stand in for it.",
+          "@language": "en"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#sourceRef": [
+        {
+          "@value": "hse_pifs"
+        }
+      ],
+      "https://priyatham9.github.io/ehs-human-factors-ontology/ehs-hfo#uncoveredFactor": [
+        {
+          "@id": "https://priyatham9.github.io/ehs-human-factors-ontology/xwalk#hse-PeerPressure"
+        }
+      ]
+    },
+    {
+      "@id": "urn:sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977",
+      "http://purl.org/dc/terms/identifier": [
+        {
+          "@value": "sha256:cb54539a6bfc5a6defe5c6b76a65bd55168e768bf64b3afed05756e9e86e0977"
+        }
+      ],
+      "@type": [
+        "http://www.w3.org/ns/prov#Entity"
+      ],
+      "http://www.w3.org/ns/prov#specializationOf": [
+        {
+          "@id": "https://raw.githubusercontent.com/priyatham9/ehs-human-factors-ontology/main/ontology/ehs-hfo.ttl"
+        }
+      ]
+    }
+  ]
+}

@@ -25,6 +25,7 @@
     "suggester_eval": {"label": "Suggester evaluation", "kind": "file", "paths": ["incidents/suggester_eval.md"]},
     "suggester_page": {"label": "Suggester page", "kind": "file", "paths": ["docs/suggester.html"]},
     "skos": {"label": "SKOS export", "kind": "file", "paths": ["docs/skos/ehs-hfo-skos.ttl", "docs/skos/ehs-hfo-skos.jsonld"]},
+    "translation_audit": {"label": "Crosswalk translation sidecar and loss report", "kind": "file", "paths": ["docs/skos/ehs-hfo-crosswalk-sidecar.ttl", "docs/skos/ehs-hfo-crosswalk-sidecar.jsonld", "docs/skos/translation-loss-report.json"]},
     "cooccurrence_tables": {"label": "PIF co-occurrence tables", "kind": "file", "paths": ["incidents/pif_cooccurrence_pairs.csv", "incidents/pif_cooccurrence_pifs.csv"]},
     "cooccurrence_doc": {"label": "PIF co-occurrence doc and figure", "kind": "file", "paths": ["docs/pif-cooccurrence.md", "docs/pif-cooccurrence.svg"]},
     "methods_note": {"label": "Methods note", "kind": "file", "source": true, "paths": ["docs/methods-note.md"]},
@@ -37,6 +38,7 @@
     {"id": "suggester_eval", "label": "Evaluate suggester", "script": "tools/evaluate_suggester.py", "function": "evaluate", "command": "python3 tools/evaluate_suggester.py", "inputs": ["ontology", "rules", "investigations", "coding"], "outputs": ["suggester_eval"]},
     {"id": "suggester_page", "label": "Build suggester page", "script": "tools/build_suggester_page.py", "function": "render", "command": "python3 tools/build_suggester_page.py", "inputs": ["ontology", "rules", "investigations", "coding"], "outputs": ["suggester_page"]},
     {"id": "skos", "label": "Export SKOS", "script": "tools/build_skos.py", "function": "build_triples", "command": "python3 tools/build_skos.py", "inputs": ["ontology"], "outputs": ["skos"]},
+    {"id": "translation_audit", "label": "Audit SKOS translation and preserve scoped assertions", "script": "tools/build_translation_audit.py", "function": "build_all", "command": "python3 tools/build_translation_audit.py", "inputs": ["ontology"], "outputs": ["translation_audit"]},
     {"id": "cooccurrence", "label": "PIF co-occurrence network", "script": "tools/pif_cooccurrence.py", "function": "compute", "command": "make pif-cooccurrence", "inputs": ["ontology", "coding"], "outputs": ["cooccurrence_tables", "cooccurrence_doc"]},
     {"id": "health", "label": "Data expectations and lineage check", "script": "tools/health.py", "function": "run_checks", "command": "make health", "inputs": ["ontology", "crosswalk", "rules", "investigations", "coding", "cooccurrence_tables"], "outputs": ["health_tables", "health_doc"]}
   ]

@@ -1,0 +1,293 @@
+#!/usr/bin/env python3
+"""Audit the crosswalk-to-SKOS projection and preserve its scoped losses.
+
+The standard SKOS exporter is not modified. A separate RDF sidecar carries the
+original reified alignment/gap records and noCounterpartIn assertions. This is
+an archival interchange contract, not OWL entailment or validation of mappings.
+"""
+from __future__ import annotations
+
+import argparse
+from collections import Counter
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT))
+
+from ehs_hfo.ontology import Ontology  # noqa: E402
+from ehs_hfo.turtle import IRI, Literal, parse  # noqa: E402
+from tools import build_skos  # noqa: E402
+from tools.build_crosswalk import FRAMEWORK_COLUMNS  # noqa: E402
+
+BASE = build_skos.BASE
+EHS = BASE + "ehs-hfo#"
+RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+PROV = "http://www.w3.org/ns/prov#"
+DCT = "http://purl.org/dc/terms/"
+RDFS = "http://www.w3.org/2000/01/rdf-schema#"
+SIDE_ID = BASE + "skos/ehs-hfo-crosswalk-sidecar"
+SOURCE_URL = build_skos.RAW_BASE + "ontology/ehs-hfo.ttl"
+OUT = ROOT / "docs" / "skos"
+TTL_NAME = "ehs-hfo-crosswalk-sidecar.ttl"
+JSONLD_NAME = "ehs-hfo-crosswalk-sidecar.jsonld"
+REPORT_NAME = "translation-loss-report.json"
+CONTRACT_TYPES = {IRI(EHS + "Alignment"), IRI(EHS + "CoverageGap")}
+ABSENCE = IRI(EHS + "noCounterpartIn")
+TYPE = IRI(RDF + "type")
+
+
+def iri(curie):
+    return build_skos._iri(curie)
+
+
+def contract_projection(triples):
+    """Precisely scoped original triples, with no closed-world completion.
+
+    All outgoing triples of Alignment/CoverageGap subjects, plus the direct
+    noCounterpartIn triples. This does NOT reconstruct the whole ontology.
+    """
+    triples = set(triples)
+    records = {s for s, p, o in triples if p == TYPE and o in CONTRACT_TYPES}
+    return {t for t in triples if t[0] in records or t[1] == ABSENCE}
+
+
+def _term(term):
+    if isinstance(term, IRI):
+        return f"<{term.value}>"
+    if isinstance(term, Literal):
+        value = json.dumps(term.value, ensure_ascii=False)
+        if term.lang:
+            return value + "@" + term.lang
+        if term.datatype:
+            return value + "^^<" + term.datatype + ">"
+        return value
+    raise ValueError("The translation contract requires named RDF resources")
+
+
+def triple_text(triple):
+    return " ".join(_term(x) for x in triple) + " ."
+
+
+def absence_statement_id(subject, framework):
+    key = triple_text((IRI(subject), ABSENCE, IRI(framework)))
+    return BASE + "translation-audit#absence-" + hashlib.sha256(key.encode()).hexdigest()
+
+
+def build_sidecar(ont, source_bytes):
+    """A separate graph, retaining original predicates and original literals."""
+    graph = contract_projection(ont.graph.triples)
+    snapshot = IRI("urn:sha256:" + hashlib.sha256(source_bytes).hexdigest())
+    document = IRI(SIDE_ID)
+    graph.update({
+        (document, TYPE, IRI(PROV + "Entity")),
+        (document, IRI(PROV + "wasDerivedFrom"), snapshot),
+        (document, IRI(DCT + "title"), Literal("EHS-HFO crosswalk translation sidecar", lang="en")),
+        (document, IRI(DCT + "description"), Literal(
+            "Author-proposed crosswalk assertions preserved alongside, not inside, the SKOS projection. "
+            "Scope: original alignment records, explicit no-counterpart assertions and coverage-gap records. "
+            "Not a complete ontology round trip, independent validation, or a prediction of risk.", lang="en")),
+        (snapshot, TYPE, IRI(PROV + "Entity")),
+        (snapshot, IRI(PROV + "specializationOf"), IRI(SOURCE_URL)),
+        (snapshot, IRI(DCT + "identifier"), Literal("sha256:" + hashlib.sha256(source_bytes).hexdigest())),
+    })
+    records = {s for s, p, o in graph if p == TYPE and o in CONTRACT_TYPES}
+    for record in records:
+        graph.add((document, IRI(DCT + "hasPart"), record))
+    for s, p, o in sorted(contract_projection(ont.graph.triples), key=triple_text):
+        if p != ABSENCE:
+            continue
+        statement = IRI(absence_statement_id(s.value, o.value))
+        graph.update({
+            (statement, TYPE, IRI(RDF + "Statement")),
+            (statement, IRI(RDF + "subject"), s),
+            (statement, IRI(RDF + "predicate"), p),
+            (statement, IRI(RDF + "object"), o),
+            (statement, IRI(PROV + "wasDerivedFrom"), snapshot),
+            (statement, IRI(RDFS + "comment"), Literal(
+                "Source-file provenance only. The source asserts this triple directly and does not attach "
+                "an assertion-specific citation or rationale. Factor-level annotations are not promoted "
+                "to evidence for this absence. This is not a negated SKOS mapping.", lang="en")),
+            (document, IRI(DCT + "hasPart"), statement),
+        })
+    return graph
+
+
+def to_turtle(triples):
+    return (
+        "# GENERATED by tools/build_translation_audit.py. Do not edit.\n"
+        "# Separate RDF sidecar; the standard SKOS graph is unchanged.\n"
+        + "\n".join(sorted(triple_text(t) for t in triples)) + "\n"
+    )
+
+
+def to_jsonld(triples):
+    """Absolute IRIs and explicit value objects: no remote context required."""
+    nodes = {}
+    for s, p, o in sorted(triples, key=triple_text):
+        node = nodes.setdefault(s.value, {"@id": s.value})
+        if p == TYPE:
+            node.setdefault("@type", []).append(o.value)
+            continue
+        if isinstance(o, IRI):
+            value = {"@id": o.value}
+        else:
+            value = {"@value": o.value}
+            if o.lang:
+                value["@language"] = o.lang
+            if o.datatype:
+                value["@type"] = o.datatype
+        node.setdefault(p.value, []).append(value)
+    return json.dumps({"@graph": [nodes[k] for k in sorted(nodes)]}, indent=2, ensure_ascii=False) + "\n"
+
+
+def from_jsonld(text):
+    """Read only this generator's flat absolute-IRI JSON-LD profile.
+
+    This is a round-trip checker, not a general JSON-LD processor.
+    """
+    doc = json.loads(text)
+    if "@context" in doc:
+        raise ValueError("Only the absolute-IRI sidecar profile is supported")
+    triples = set()
+    for node in doc["@graph"]:
+        s = IRI(node["@id"])
+        for key, values in node.items():
+            if key == "@id":
+                continue
+            for v in values:
+                if key == "@type":
+                    triples.add((s, TYPE, IRI(v)))
+                elif "@id" in v:
+                    triples.add((s, IRI(key), IRI(v["@id"])))
+                else:
+                    triples.add((s, IRI(key), Literal(v["@value"], v.get("@language"), v.get("@type"))))
+    return triples
+
+
+def cell_status(ont, local_factor, framework):
+    """Unknown is lack of an assertion, never a no-counterpart inference."""
+    if local_factor not in ont.factors or framework not in ont.frameworks:
+        raise ValueError("Unknown factor or framework identifier")
+    mapped = [a for a in ont.alignments_for(local_factor)
+              if ont.external_factors[a.external_factor].framework == framework]
+    absent = framework in ont.no_counterpart.get(local_factor, ())
+    if mapped and absent:
+        return "conflicting-assertions"
+    return "mapped" if mapped else "asserted-no-counterpart" if absent else "unasserted"
+
+
+def build_report(ont, source_bytes, sidecar):
+    skos = build_skos.build_triples(ont)
+    skos_set = set(skos)
+    skos_subjects = {s for s, _, _ in skos}
+    skos_source_rows = {s for s, p, _ in skos if p == EHS + "sourceRef"}
+    skos_comment_rows = {s for s, p, _ in skos if p == RDFS + "comment"}
+    strengths = Counter(a.match_strength.split("Match")[-1].lower() for a in ont.alignments.values())
+    mapping_set = set()
+    rows = []
+    for a in sorted(ont.alignments.values(), key=lambda a: a.curie):
+        predicate = build_skos.MATCH_PROPERTY[a.match_strength]
+        triple = (iri(a.local_factor), predicate, ("iri", iri(a.external_factor)))
+        mapping_set.add(triple)
+        rows.append({
+            "id": a.curie, "localFactor": a.local_factor, "externalFactor": a.external_factor,
+            "externalLabel": ont.external_factors[a.external_factor].label,
+            "framework": ont.external_factors[a.external_factor].framework,
+            "strength": a.match_strength, "sourceRefs": list(a.source_refs), "comment": a.comment,
+            "skosPredicate": predicate, "skosPresent": triple in skos_set,
+            "sourceTriples": [triple_text(t) for t in sorted(ont.graph.triples, key=triple_text) if t[0] == IRI(iri(a.curie))],
+        })
+    absences = []
+    for factor, frameworks in sorted(ont.no_counterpart.items()):
+        for framework in sorted(frameworks):
+            absences.append({
+                "localFactor": factor, "framework": framework,
+                "statementId": absence_statement_id(iri(factor), iri(framework)),
+                "sourceTriple": triple_text((IRI(iri(factor)), ABSENCE, IRI(iri(framework)))),
+                "skosStatus": "unasserted", "sidecarStatus": "asserted-no-counterpart",
+                "provenanceScope": "Exact source-file snapshot; no assertion-specific citation or rationale is attached in the source.",
+            })
+    gaps = []
+    for g in sorted(ont.coverage_gaps.values(), key=lambda g: g.curie):
+        mappings = [a.curie for a in ont.alignments.values() if a.external_factor == g.uncovered_factor]
+        gaps.append({"id": g.curie, "externalFactor": g.uncovered_factor,
+                     "label": ont.external_factors[g.uncovered_factor].label,
+                     "framework": ont.external_factors[g.uncovered_factor].framework,
+                     "sourceRefs": list(g.source_refs), "comment": g.comment,
+                     "coexistingAlignments": sorted(mappings),
+                     "skosConceptPresent": (iri(g.uncovered_factor), build_skos.RDF_TYPE, ("iri", build_skos.SKOS + "Concept")) in skos_set,
+                     "sourceTriples": [triple_text(t) for t in sorted(ont.graph.triples, key=triple_text) if t[0] == IRI(iri(g.curie))]})
+    cells = [{"localFactor": f, "framework": fw, "sourceStatus": cell_status(ont, f, fw),
+              "skosStatus": "mapped" if any(a["localFactor"] == f and a["framework"] == fw for a in rows) else "unasserted"}
+             for f in sorted(ont.factors) for fw, _ in FRAMEWORK_COLUMNS]
+    contract = contract_projection(ont.graph.triples)
+    recovered = contract_projection(sidecar)
+    original_skos = build_skos.build_all(ont)
+    return {
+        "schemaVersion": "1.0", "source": {"path": "ontology/ehs-hfo.ttl", "url": SOURCE_URL,
+            "sha256": hashlib.sha256(source_bytes).hexdigest(), "assertionStatus": "Author-proposed crosswalk; not independently adjudicated or validated against incidents."},
+        "scope": "Original Alignment and CoverageGap resource triples plus explicit noCounterpartIn triples. Not a complete ontology reconstruction.",
+        "counts": {"pifAlignments": len(rows), "byStrength": dict(sorted(strengths.items())),
+                   "uniquePifSkosMappings": len(mapping_set), "mappingCollisions": len(rows) - len(mapping_set),
+                   "dimensionMappingsSeparate": sum(bool(d.idheas_category) for d in ont.dimensions.values()),
+                   "explicitAbsences": len(absences), "coverageGapRecords": len(gaps),
+                   "cells": len(cells), "sourceCellStatus": dict(sorted(Counter(c["sourceStatus"] for c in cells).items())),
+                   "skosCellStatus": dict(sorted(Counter(c["skosStatus"] for c in cells).items()))},
+        "lossLedger": [
+            {"feature": "PIF mapping expressions", "source": len(rows), "skos": sum(a["skosPresent"] for a in rows), "sidecar": len(rows), "meaning": "Mapping endpoints and projected SKOS relation retained; local strength definitions are not claimed equivalent to SKOS semantics."},
+            {"feature": "Original alignment resource identities", "source": len(rows), "skos": sum(iri(a.curie) in skos_subjects for a in ont.alignments.values()), "sidecar": len(rows), "meaning": "Original assertion IDs distinguish the proposed, cited rows."},
+            {"feature": "Alignment records with source keys", "source": sum(bool(a.source_refs) for a in ont.alignments.values()), "skos": sum(iri(a.curie) in skos_source_rows for a in ont.alignments.values()), "sidecar": sum(bool(a.source_refs) for a in ont.alignments.values()), "meaning": "Framework citations in SKOS do not replace per-alignment source keys."},
+            {"feature": "Alignment records with comments", "source": sum(bool(a.comment) for a in ont.alignments.values()), "skos": sum(iri(a.curie) in skos_comment_rows for a in ont.alignments.values()), "sidecar": sum(bool(a.comment) for a in ont.alignments.values()), "meaning": "Author caveats and boundary judgments are preserved verbatim."},
+            {"feature": "Explicit no-counterpart assertions", "source": len(absences), "skos": sum(p == EHS + "noCounterpartIn" for _, p, _ in skos), "sidecar": len(absences), "meaning": "No mapping under open-world semantics does not assert no counterpart."},
+            {"feature": "Explicit external coverage-gap records", "source": len(gaps), "skos": sum(iri(g.curie) in skos_subjects for g in ont.coverage_gaps.values()), "sidecar": len(gaps), "meaning": "The external concept may survive, while the recorded gap and rationale do not."},
+        ],
+        "roundTrip": {"contractTriples": len(contract), "recoveredTriples": len(recovered),
+                      "missing": len(contract - recovered), "added": len(recovered - contract),
+                      "equal": contract == recovered},
+        "standardSkosSha256": {name: hashlib.sha256(text.encode()).hexdigest() for name, text in sorted(original_skos.items())},
+        "frameworks": [{"id": fw, "label": ont.frameworks[fw].label} for fw, _ in FRAMEWORK_COLUMNS],
+        "factors": [{"id": f.curie, "label": f.label, "dimension": ont.dimensions[f.dimension].label}
+                    for f in sorted(ont.factors.values(), key=lambda f: f.label)],
+        "alignments": rows, "absences": absences, "coverageGaps": gaps, "cells": cells,
+        "notPreservedByThisSidecar": ["Complete OWL ontology semantics", "factor levels", "macrocognitive functions and failure modes", "observable proxies", "unrelated concept annotations"],
+        "interpretation": ["A proposed alignment is not validated equivalence or a causal/predictive relationship.",
+                           "A gap record can coexist with a partial mapping; coverage is not a binary mapped/unmapped label.",
+                           "No explicit absence is inferred from a missing mapping.",
+                           "Absence statement provenance identifies the source snapshot, not independent evidence supporting that assertion."],
+    }
+
+
+def build_all(source_bytes=None):
+    if source_bytes is None:
+        source_bytes = (ROOT / "ontology" / "ehs-hfo.ttl").read_bytes()
+    ont = Ontology(parse(source_bytes.decode("utf-8")))
+    sidecar = build_sidecar(ont, source_bytes)
+    report = build_report(ont, source_bytes, sidecar)
+    return {TTL_NAME: to_turtle(sidecar), JSONLD_NAME: to_jsonld(sidecar),
+            REPORT_NAME: json.dumps(report, indent=2, ensure_ascii=False) + "\n"}
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args(argv)
+    stale = []
+    for name, text in build_all().items():
+        path = OUT / name
+        if not path.exists() or path.read_text(encoding="utf-8") != text:
+            stale.append(name)
+            if not args.check:
+                OUT.mkdir(parents=True, exist_ok=True)
+                path.write_text(text, encoding="utf-8")
+    if args.check and stale:
+        print("Out of date: " + ", ".join(stale) + "; run python3 tools/build_translation_audit.py")
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
