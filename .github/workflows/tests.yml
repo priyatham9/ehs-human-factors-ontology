@@ -2,6 +2,7 @@ name: tests
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
@@ -47,3 +48,13 @@ jobs:
         run: PYTHONPATH=src coverage run -m unittest discover -s tests -t .
       - name: Generate coverage report
         run: coverage report -m >> $GITHUB_STEP_SUMMARY
+
+  translation-artifacts:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check scoped translation sidecars and loss report
+        run: python tools/build_translation_audit.py --check

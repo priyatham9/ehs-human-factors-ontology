@@ -34,7 +34,7 @@ Warnings describe the data as it is: they are reported so a reader knows the lim
 
 ## Pipeline lineage
 
-7 stages, 16 artifacts. Hexagons are hand-curated sources, rectangles are committed files.
+8 stages, 17 artifacts. Hexagons are hand-curated sources, rectangles are committed files.
 
 ```mermaid
 flowchart LR
@@ -49,6 +49,7 @@ flowchart LR
   A_suggester_eval["Suggester evaluation"]
   A_suggester_page["Suggester page"]
   A_skos["SKOS export"]
+  A_translation_audit["Crosswalk translation sidecar and loss report"]
   A_cooccurrence_tables["PIF co-occurrence tables"]
   A_cooccurrence_doc["PIF co-occurrence doc and figure"]
   A_methods_note{{"Methods note"}}
@@ -59,6 +60,7 @@ flowchart LR
   S_suggester_eval("Evaluate suggester")
   S_suggester_page("Build suggester page")
   S_skos("Export SKOS")
+  S_translation_audit("Audit SKOS translation and preserve scoped assertions")
   S_cooccurrence("PIF co-occurrence network")
   S_health("Data expectations and lineage check")
   A_ontology --> S_crosswalk
@@ -79,6 +81,8 @@ flowchart LR
   S_suggester_page --> A_suggester_page
   A_ontology --> S_skos
   S_skos --> A_skos
+  A_ontology --> S_translation_audit
+  S_translation_audit --> A_translation_audit
   A_ontology --> S_cooccurrence
   A_coding --> S_cooccurrence
   S_cooccurrence --> A_cooccurrence_tables
@@ -100,8 +104,9 @@ flowchart LR
 | 3 | Evaluate suggester | `python3 tools/evaluate_suggester.py` | Ontology (Turtle, hand-authored), Suggester phrase rules (hand-authored), CSB investigation list (hand-curated), CSB coding (hand-curated quoted passages) | Suggester evaluation |
 | 4 | Build suggester page | `python3 tools/build_suggester_page.py` | Ontology (Turtle, hand-authored), Suggester phrase rules (hand-authored), CSB investigation list (hand-curated), CSB coding (hand-curated quoted passages) | Suggester page |
 | 5 | Export SKOS | `python3 tools/build_skos.py` | Ontology (Turtle, hand-authored) | SKOS export |
-| 6 | PIF co-occurrence network | `make pif-cooccurrence` | Ontology (Turtle, hand-authored), CSB coding (hand-curated quoted passages) | PIF co-occurrence tables, PIF co-occurrence doc and figure |
-| 7 | Data expectations and lineage check | `make health` | Ontology (Turtle, hand-authored), Crosswalk tables, Suggester phrase rules (hand-authored), CSB investigation list (hand-curated), CSB coding (hand-curated quoted passages), PIF co-occurrence tables | Health tables, Health doc and figure |
+| 6 | Audit SKOS translation and preserve scoped assertions | `python3 tools/build_translation_audit.py` | Ontology (Turtle, hand-authored) | Crosswalk translation sidecar and loss report |
+| 7 | PIF co-occurrence network | `make pif-cooccurrence` | Ontology (Turtle, hand-authored), CSB coding (hand-curated quoted passages) | PIF co-occurrence tables, PIF co-occurrence doc and figure |
+| 8 | Data expectations and lineage check | `make health` | Ontology (Turtle, hand-authored), Crosswalk tables, Suggester phrase rules (hand-authored), CSB investigation list (hand-curated), CSB coding (hand-curated quoted passages), PIF co-occurrence tables | Health tables, Health doc and figure |
 
 ## Reproduce
 

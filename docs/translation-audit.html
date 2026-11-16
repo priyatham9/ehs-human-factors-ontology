@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>What disappears in translation? · EHS-HFO</title>
+    <meta
+      name="description"
+      content="Audit the information preserved and lost when an author-proposed human-factors crosswalk is projected into SKOS. Inspect source assertions and a provenance-preserving RDF sidecar."
+    />
+    <link rel="stylesheet" href="portfolio.css" />
+    <link rel="stylesheet" href="translation-audit.css" />
+    <link
+      rel="canonical"
+      href="https://ehs-human-factors-ontology.vercel.app/translation-audit.html"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="What does an ontology export leave behind?"
+    />
+    <meta
+      property="og:description"
+      content="Audit which source assertions survive standard SKOS and a separate provenance-preserving sidecar."
+    />
+    <meta
+      property="og:url"
+      content="https://ehs-human-factors-ontology.vercel.app/translation-audit.html"
+    />
+    <meta
+      property="og:image"
+      content="https://ehs-human-factors-ontology.vercel.app/audit-preview.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to audit</a>
+    <header class="audit-header">
+      <a class="brand" href="./"
+        >Human factors <span>/ research workbench</span></a
+      >
+      <nav aria-label="Project navigation">
+        <a href="./">Overview</a><a href="crosswalk.html">Crosswalk</a
+        ><a href="translation-audit.html" aria-current="page"
+          >Translation audit</a
+        ><a href="walkthrough.html">Reasoning trace</a>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="kicker">INTEROPERABILITY / AN ASSERTION-LEVEL AUDIT</div>
+      <h1>What disappears<br />in translation?</h1>
+      <p class="lede">
+        Every proposed mapping survives the SKOS export. The reasons for missing
+        mappings do not. A consumer cannot tell an explicit “no counterpart”
+        assertion from a comparison nobody recorded.
+      </p>
+      <p class="scope-line">
+        Author-proposed crosswalk of adopted frameworks · no new taxonomy · no
+        validated risk or incident prediction
+      </p>
+      <div id="error" role="alert" hidden></div>
+      <p id="loading" role="status">
+        Loading the audit derived from the committed ontology…
+      </p>
+      <div id="audit" hidden>
+        <section class="headline-ledger" aria-label="Translation findings">
+          <div>
+            <strong id="mapping-count"></strong
+            ><span>PIF mapping expressions retained</span>
+          </div>
+          <div>
+            <strong id="absence-count"></strong
+            ><span>explicit absences missing from SKOS</span>
+          </div>
+          <div>
+            <strong id="gap-count"></strong
+            ><span>coverage-gap records missing from SKOS</span>
+          </div>
+        </section>
+        <section aria-labelledby="inspect-title">
+          <div class="section-heading">
+            <div class="kicker">01 / INSPECT A REAL ASSERTION</div>
+            <h2 id="inspect-title">
+              The same empty cell can mean different things.
+            </h2>
+          </div>
+          <p class="section-intro">
+            Choose a local factor and an external framework. These are the
+            repository’s actual assertions; the audit does not generate new
+            correspondences.
+          </p>
+          <div class="selectors">
+            <label for="factor"
+              >Local performance-influencing factor<select
+                id="factor"
+              ></select></label
+            ><label for="framework"
+              >Compare against<select id="framework"></select
+            ></label>
+          </div>
+          <p id="selection-context" class="small"></p>
+          <div
+            class="translation"
+            aria-label="Source, export and recovered comparison"
+          >
+            <section class="translation-stage">
+              <div class="stage-label">SOURCE ONTOLOGY</div>
+              <h3 id="source-status"></h3>
+              <div id="source-content"></div>
+            </section>
+            <section class="translation-stage middle">
+              <div class="stage-label">STANDARD SKOS ONLY</div>
+              <h3 id="skos-status"></h3>
+              <div id="skos-content"></div>
+            </section>
+            <section class="translation-stage">
+              <div class="stage-label">WITH THE RDF SIDECAR</div>
+              <h3 id="sidecar-status"></h3>
+              <div id="sidecar-content"></div>
+            </section>
+          </div>
+          <p
+            id="selection-conclusion"
+            class="conclusion"
+            aria-live="polite"
+          ></p>
+          <details class="raw">
+            <summary>Inspect exact source triples and provenance</summary>
+            <pre id="raw-source"></pre>
+            <p id="provenance-detail" class="small"></p>
+          </details>
+          <div class="actions">
+            <button id="export-selection" type="button">
+              Export this comparison · JSON</button
+            ><span id="export-status" role="status"></span>
+          </div>
+        </section>
+        <section aria-labelledby="loss-title">
+          <div class="section-heading">
+            <div class="kicker">02 / ACCOUNT FOR THE LOSS</div>
+            <h2 id="loss-title">
+              A complete mapping count is an incomplete fidelity check.
+            </h2>
+          </div>
+          <p id="counts-note" class="section-intro"></p>
+          <p class="mobile-scroll-hint small">
+            Scroll the table sideways to compare all three outputs.
+          </p>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Translation loss ledger, horizontally scrollable"
+          >
+            <table>
+              <caption>
+                Counts measure different aspects of the same records. Rows are
+                not additive.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Information being counted</th>
+                  <th scope="col">Source</th>
+                  <th scope="col">SKOS only</th>
+                  <th scope="col">Recoverable with sidecar</th>
+                </tr>
+              </thead>
+              <tbody id="loss-ledger"></tbody>
+            </table>
+          </div>
+          <p class="small">
+            SKOS properties retain the mapping expression, using the exporter’s
+            declared interpretation. They do not make the local match-strength
+            definitions logically equivalent to SKOS semantics. Framework-level
+            bibliographic citations survive; per-alignment source keys do not.
+          </p>
+        </section>
+        <section aria-labelledby="gap-title">
+          <div class="section-heading">
+            <div class="kicker">03 / CHECK THE OTHER DIRECTION</div>
+            <h2 id="gap-title">A coverage gap can coexist with a mapping.</h2>
+          </div>
+          <p class="section-intro">
+            “Local factor has no counterpart in a framework” and “external
+            factor is not fully covered locally” are different assertions. The
+            latter can remain true even when a partial mapping exists.
+          </p>
+          <label class="gap-select" for="gap"
+            >Recorded external coverage gap<select id="gap"></select
+          ></label>
+          <div id="gap-view" class="gap-view"></div>
+        </section>
+        <section aria-labelledby="proof-title">
+          <div class="section-heading">
+            <div class="kicker">04 / A TESTABLE REPAIR</div>
+            <h2 id="proof-title">
+              Keep SKOS standard. Carry its missing context alongside it.
+            </h2>
+          </div>
+          <div class="proof-grid">
+            <div>
+              <h3>A concrete impossibility result</h3>
+              <p>
+                Delete the source’s explicit
+                <code>WorkplaceVisibility → noCounterpartIn → SPAR-H</code>
+                assertion. The standard SKOS export is byte-identical. One
+                source now asserts no counterpart; the other says nothing. No
+                decoder of that export alone can recover which source it
+                received.
+              </p>
+              <p>
+                This is a tested information-loss counterexample, not a claim
+                that SKOS is defective. The projection deliberately serves a
+                narrower purpose.
+              </p>
+            </div>
+            <div>
+              <h3 id="roundtrip"></h3>
+              <p>
+                The sidecar preserves original alignment and gap resource IDs,
+                their source keys and comments, and the original
+                <code>ehs:noCounterpartIn</code> triples. Standard RDF
+                reification identifies each absence statement; PROV records its
+                exact source-file snapshot.
+              </p>
+              <p>
+                It adds no invented negative SKOS property, no new mapping, and
+                no assertion-specific citation that the source does not contain.
+              </p>
+            </div>
+          </div>
+          <p class="conclusion">
+            The guarantee is a round trip of the scoped crosswalk records, not
+            the full ontology. Factor levels, macrocognitive functions, failure
+            modes, proxies and unrelated annotations remain outside this
+            contract.
+          </p>
+          <div class="downloads">
+            <a href="skos/translation-loss-report.json" download
+              >Download full loss report · JSON</a
+            ><a href="skos/ehs-hfo-crosswalk-sidecar.ttl" download
+              >Sidecar · Turtle</a
+            ><a href="skos/ehs-hfo-crosswalk-sidecar.jsonld" download
+              >Sidecar · JSON-LD</a
+            ><a href="skos/ehs-hfo-skos.ttl" download
+              >Unchanged standard SKOS · Turtle</a
+            >
+          </div>
+        </section>
+        <section class="audit-trail" aria-labelledby="trail-title">
+          <h2 id="trail-title">Reproduce the audit</h2>
+          <p>
+            Generated from
+            <a
+              href="https://github.com/priyatham9/ehs-human-factors-ontology/blob/main/ontology/ehs-hfo.ttl"
+              >ontology/ehs-hfo.ttl</a
+            >, using the existing exporter and the repository’s dependency-free
+            RDF parser. No OWL entailment or external validation is claimed.
+          </p>
+          <pre>
+python3 tools/build_translation_audit.py --check
+PYTHONPATH=src python3 -m unittest tests.test_translation_audit tests.test_skos</pre
+          >
+          <dl>
+            <dt>Source snapshot · SHA-256</dt>
+            <dd id="source-hash"></dd>
+          </dl>
+          <p>
+            <a href="translation-audit.md"
+              >Read the contract and interpretation limits</a
+            >
+            · <a href="skos.md">Standard SKOS export documentation</a> ·
+            <a href="PROVENANCE.md">Source provenance</a>
+          </p>
+        </section>
+      </div>
+      <noscript
+        ><p>
+          This audit compares the committed ontology with its SKOS projection.
+          For the complete generated counts and assertions,
+          <a href="skos/translation-loss-report.json"
+            >download the loss report</a
+          >. JavaScript enables selection and inspection.
+        </p></noscript
+      >
+      <footer>
+        Translation fidelity is testable. The correctness of the author’s
+        proposed alignments remains a separate question.
+      </footer>
+    </main>
+    <script type="module" src="translation-audit.mjs"></script>
+  </body>
+</html>

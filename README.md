@@ -4,9 +4,19 @@
 
 Part of the Grounded research programme: https://grounded-chi-five.vercel.app/
 
+[![Ontology translation audit comparing source assertions and export preservation](docs/audit-preview.jpg)](https://ehs-human-factors-ontology.vercel.app/translation-audit.html)
+
 [Open the interactive project](https://ehs-human-factors-ontology.vercel.app/crosswalk.html) · [Data and methods](https://ehs-human-factors-ontology.vercel.app/)
 
 **Research question:** How can human reliability factors be represented with an auditable derivation?
+
+**New finding:** The standard SKOS export retains all 90 PIF mapping expressions,
+but omits six explicit no-counterpart assertions and seven coverage-gap records.
+A separate RDF sidecar recovers all 600 triples in the declared crosswalk-record
+contract, with none missing or added. This tests representation fidelity, not
+the correctness of the author-proposed alignments or a full ontology round trip.
+[Inspect the translation audit](https://ehs-human-factors-ontology.vercel.app/translation-audit.html)
+or [read the reproducible contract](docs/translation-audit.md).
 
 **Evidence and limits:** An ontology, crosswalk and rule traces; fabricated scenarios are labelled, and the context structure is adopted from prior work.
 
@@ -22,7 +32,7 @@ Python 3.9+, standard library only. No pip installs, no build step.
 | --- | --- |
 | Status | v0.1.0 |
 | Data | Real ontology and crosswalk data; the scenario corpus in `synthetic/` is fabricated and labelled as such |
-| Tests | 296 tests, `python3 -m unittest discover -s tests -t .` |
+| Tests | 309 tests, `python3 -m unittest discover -s tests -t .` |
 | Quickstart | `PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json` |
 | Licence | MIT |
 
@@ -88,7 +98,7 @@ in four places, and used only to exercise the engine. See `synthetic/README.md`.
 git clone <this repository>
 cd ehs-human-factors-ontology
 
-python3 -m unittest discover -s tests -t .          # 296 tests
+python3 -m unittest discover -s tests -t .          # 309 tests
 PYTHONPATH=src python3 -m ehs_hfo assess examples/reactor_startup_nonroutine.json
 ```
 
@@ -352,6 +362,7 @@ src/ehs_hfo/
   cli.py                    command line interface
 tools/build_crosswalk.py    regenerates crosswalk/ from the Turtle
 tools/build_skos.py         regenerates docs/skos/ (SKOS Turtle and JSON-LD) from the Turtle
+tools/build_translation_audit.py  audits SKOS losses and generates a separate provenance sidecar
 src/ehs_hfo/suggest.py      rule-based narrative-to-PIF suggester (rules: crosswalk/pif_rules.csv; evaluation: incidents/suggester_eval.md)
 incidents/                  CSB investigations coded to the PIFs (quoted, sourced)
 tools/health.py             Data expectations and validated lineage (docs/health.md)
@@ -359,12 +370,19 @@ tools/pif_cooccurrence.py   PIF co-occurrence network with swap-null and interva
 tools/second_coder.py       blinded second-coder sheet export and kappa report (docs/second-coder-protocol.md)
 synthetic/                  fabricated corpus + generator (read its README)
 examples/                   hand-written worked scenario
-tests/                      296 tests, stdlib unittest
+tests/                      309 tests, stdlib unittest
 docs/PROVENANCE.md          what was read, transcribed, or judged
 CITATIONS.md                bibliography with per-entry verification status
 ```
 
 ## Contributing
+
+The [translation audit](docs/translation-audit.html) measures what the standard
+SKOS projection preserves and loses, including explicit no-counterpart
+assertions and per-alignment provenance. A separate RDF sidecar round-trips
+the scoped crosswalk records without changing the standard SKOS export.
+The [contract](docs/translation-audit.md) distinguishes serialization fidelity
+from validation of the author's proposed alignments.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency policy, and testing. An outside coder can also contribute a blinded second coding of the incident excerpts ([protocol](docs/second-coder-protocol.md)). Reports of errors in alignments or security issues can be filed as [issues](https://github.com/priyatham9/ehs-human-factors-ontology/issues). See [SECURITY.md](SECURITY.md) for reporting details.
 
@@ -374,7 +392,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development instructions, dependency 
 python3 -m unittest discover -s tests -t .
 ```
 
-296 tests, no third-party dependencies. Beyond ordinary unit coverage they
+309 tests, no third-party dependencies. Beyond ordinary unit coverage they
 enforce the claims this README makes:
 
 - every external factor is crosswalked, recorded as a gap, or marked out of
