@@ -97,6 +97,7 @@ def render(ont: Ontology) -> str:
 <meta name="description" content="{e(desc)}" />
 <link rel="canonical" href="{SITE}suggester.html" />
 <style>{CSS}</style>
+<link rel="stylesheet" href="portfolio.css" />
 </head>
 <body>
 <header class="top"><div class="wrap"><a href="https://grounded-chi-five.vercel.app/">Grounded</a><a href="{SITE}">ehs-human-factors-ontology</a><a href="{SITE}crosswalk.html">Crosswalk</a><b>Suggester</b></div></header>
