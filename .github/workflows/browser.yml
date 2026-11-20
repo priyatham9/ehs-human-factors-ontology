@@ -24,7 +24,7 @@ jobs:
           python scripts/check_translation_ui.py --artifacts browser-artifacts/translation
       - name: Retain screenshots and downloaded reviews
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: browser-regression-artifacts
           path: browser-artifacts/
